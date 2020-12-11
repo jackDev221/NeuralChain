@@ -1,0 +1,76 @@
+{
+  "types": {
+    "EIP712Domain": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "version",
+        "type": "string"
+      },
+      {
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "name": "verifyingContract",
+        "type": "address"
+      }
+    ],
+    "Person": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "test",
+        "type": "uint8"
+      },
+      {
+        "name": "test2",
+        "type": "uint8"
+      },
+      {
+        "name": "wallet",
+        "type": "address"
+      }
+    ],
+    "Mail": [
+      {
+        "name": "from",
+        "type": "Person"
+      },
+      {
+        "name": "to",
+        "type": "Person"
+      },
+      {
+        "name": "contents",
+        "type": "string"
+      }
+    ]
+  },
+  "primaryType": "Mail",
+  "domain": {
+    "name": "Ether Mail",
+    "version": "1",
+    "chainId": "1",
+    "verifyingContract": "EbpngUGwQ6fR3T7XdP4NbEoPg3ugbofgeN"
+  },
+  "message": {
+    "from": {
+      "name": "Cow",
+      "test": "3",
+      "test2": 5.0,
+      "wallet": "Ebricr1hUkgTx8n4a3zNQBrbRnmzVHdaGf"
+    },
+    "to": {
+      "name": "Bob",
+      "test": "0",
+      "test2": 5,
+      "wallet": "EaGYkPzKV5xxTMa4E5yDdEKGmMHtQVHX5f"
+    },
+    "contents": "Hello, Bob!"
+  }
+}

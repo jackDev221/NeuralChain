@@ -1,0 +1,64 @@
+{
+  "types": {
+    "EIP712Domain": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "version",
+        "type": "string"
+      },
+      {
+        "name": "chainId",
+        "type": "int"
+      },
+      {
+        "name": "verifyingContract",
+        "type": "address"
+      }
+    ],
+    "Person": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "wallet",
+        "type": "address"
+      }
+    ],
+    "Mail": [
+      {
+        "name": "from",
+        "type": "Person"
+      },
+      {
+        "name": "to",
+        "type": "Mail"
+      },
+      {
+        "name": "s",
+        "type": "Person"
+      }
+    ]
+  },
+  "primaryType": "Mail",
+  "domain": {
+    "name": "l",
+    "version": "1",
+    "chainId": "",
+    "verifyingContract": "EbpngUGwQ6fR3T7XdP4NbEoPg3ugbofgeN"
+  },
+  "message": {
+    "from": {
+      "name": "",
+      "wallet": "Ebricr1hUkgTx8n4a3zNQBrbRnmzVHdaGf"
+    },
+    "to": {
+      "name": "",
+      "wallet": "EaGYkPzKV5xxTMa4E5yDdEKGmMHtQVHX5f"
+    },
+    "": ""
+  }
+}

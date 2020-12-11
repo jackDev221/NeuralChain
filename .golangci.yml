@@ -1,0 +1,17 @@
+run:
+  deadline: 5m
+  modules-download-mode: vendor
+  skip-files:
+    - core/vm/instructions_test.go
+  skip-dirs-use-default: true
+linters:
+  disable-all: true
+  enable:
+    - gofmt
+    - goimports
+    - misspell
+    - goconst
+# all available settings of specific linters
+linters-settings:
+  goconst:
+    min-occurrences: 6

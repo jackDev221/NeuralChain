@@ -1,0 +1,7 @@
+machine github.com
+login your_git_username
+password your_token
+
+machine api.github.com
+login your_git_username
+password your_token
