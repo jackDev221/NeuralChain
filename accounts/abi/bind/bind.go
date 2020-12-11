@@ -17,7 +17,7 @@
 // Package bind generates Evrynet contract Go bindings.
 //
 // Detailed usage document and tutorial available on the evrynet-node Wiki page:
-// https://github.com/Evrynetlabs/evrynet-node/wiki/Native-DApps:-Go-bindings-to-Evrynet-contracts
+// https://github.com/lvbin2012/NeuralChain/wiki/Native-DApps:-Go-bindings-to-Evrynet-contracts
 package bind
 
 import (
@@ -29,7 +29,7 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi"
+	"github.com/lvbin2012/NeuralChain/accounts/abi"
 )
 
 // Lang is a target programming language selector to generate bindings for.

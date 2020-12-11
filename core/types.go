@@ -17,9 +17,9 @@
 package core
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/core/state"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
+	"github.com/lvbin2012/NeuralChain/core/state"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/core/vm"
 )
 
 // Validator is an interface which defines the standard for block validation. It

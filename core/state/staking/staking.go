@@ -5,7 +5,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 var (

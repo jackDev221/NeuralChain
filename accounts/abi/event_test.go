@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -356,7 +356,7 @@ func unpackTestEventData(dest interface{}, hexData string, jsonEvent []byte, ass
 
 /*
 Taken from
-https://github.com/Evrynetlabs/evrynet-node/pull/15568
+https://github.com/lvbin2012/NeuralChain/pull/15568
 */
 
 type testResult struct {

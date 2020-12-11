@@ -22,7 +22,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 func init() {

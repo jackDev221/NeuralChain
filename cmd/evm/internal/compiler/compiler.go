@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/core/asm"
+	"github.com/lvbin2012/NeuralChain/core/asm"
 )
 
 func Compile(fn string, src []byte, debug bool) (string, error) {

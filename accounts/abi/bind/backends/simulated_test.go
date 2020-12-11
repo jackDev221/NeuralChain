@@ -21,13 +21,13 @@ import (
 	"math/big"
 	"testing"
 
-	evrynetNode "github.com/Evrynetlabs/evrynet-node"
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi/bind"
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi/bind/backends"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	evrynetNode "github.com/lvbin2012/NeuralChain"
+	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
+	"github.com/lvbin2012/NeuralChain/accounts/abi/bind/backends"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/crypto"
 )
 
 func TestSimulatedBackend(t *testing.T) {

@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/event"
+	"github.com/lvbin2012/NeuralChain/event"
 )
 
 func ExampleFeed_acknowledgedEvents() {

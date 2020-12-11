@@ -27,10 +27,10 @@ import (
 	"net"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enr"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/p2p/enr"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 var errMissingPrefix = errors.New("missing 'enr:' prefix for base64-encoded record")

@@ -23,14 +23,14 @@ import (
 	"strings"
 	"testing"
 
-	evrynetNode "github.com/Evrynetlabs/evrynet-node"
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi"
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi/bind"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	evrynetNode "github.com/lvbin2012/NeuralChain"
+	"github.com/lvbin2012/NeuralChain/accounts/abi"
+	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 type mockCaller struct {

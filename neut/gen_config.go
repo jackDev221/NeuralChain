@@ -6,12 +6,12 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus/ethash"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/neut/downloader"
-	"github.com/Evrynetlabs/evrynet-node/neut/gasprice"
-	"github.com/Evrynetlabs/evrynet-node/miner"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus/ethash"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/neut/gasprice"
+	"github.com/lvbin2012/NeuralChain/miner"
 )
 
 // MarshalTOML marshals as TOML.

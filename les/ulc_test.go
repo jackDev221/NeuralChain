@@ -25,14 +25,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/neut"
-	"github.com/Evrynetlabs/evrynet-node/light"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/light"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 func TestULCSyncWithOnePeer(t *testing.T) {

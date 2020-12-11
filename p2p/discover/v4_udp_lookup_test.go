@@ -24,8 +24,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 func TestUDPv4_Lookup(t *testing.T) {

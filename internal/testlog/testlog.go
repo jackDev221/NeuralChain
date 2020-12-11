@@ -20,7 +20,7 @@ package testlog
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // Logger returns a logger which logs to the unit test log of t.

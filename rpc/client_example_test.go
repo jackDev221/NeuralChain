@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 // In this example, our client wishes to track the latest 'block number'

@@ -26,9 +26,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 // prepare converts an ethash cache or dataset from a byte stream into the internal

@@ -21,7 +21,7 @@ import (
 	"io"
 	"net"
 
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 // Entry is implemented by known node record entry types.

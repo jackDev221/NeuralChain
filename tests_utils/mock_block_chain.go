@@ -1,10 +1,10 @@
 package tests_utils
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/state"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/event"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/state"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/event"
 )
 
 //MockBlockChain is mock struct for block chain

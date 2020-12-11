@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
 type MyType [5]byte

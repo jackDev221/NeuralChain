@@ -20,7 +20,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 var (

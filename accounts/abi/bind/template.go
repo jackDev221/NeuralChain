@@ -16,7 +16,7 @@
 
 package bind
 
-import "github.com/Evrynetlabs/evrynet-node/accounts/abi"
+import "github.com/lvbin2012/NeuralChain/accounts/abi"
 
 // tmplData is the data structure required to fill the binding template.
 type tmplData struct {
@@ -68,12 +68,12 @@ import (
 	"math/big"
 	"strings"
 
-	evrynetNode "github.com/Evrynetlabs/evrynet-node"
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi"
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi/bind"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/event"
+	evrynetNode "github.com/lvbin2012/NeuralChain"
+	"github.com/lvbin2012/NeuralChain/accounts/abi"
+	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/event"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

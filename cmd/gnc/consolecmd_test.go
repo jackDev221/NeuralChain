@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 const (

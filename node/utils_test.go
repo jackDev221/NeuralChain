@@ -22,8 +22,8 @@ package node
 import (
 	"reflect"
 
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 // NoopService is a trivial implementation of the Service interface.

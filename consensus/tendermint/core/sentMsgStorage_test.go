@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 func TestCore_StoreAndLookupSentMsg(t *testing.T) {

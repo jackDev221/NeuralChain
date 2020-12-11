@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
-	"github.com/Evrynetlabs/evrynet-node/common/prque"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
+	"github.com/lvbin2012/NeuralChain/common/prque"
 )
 
 // cmNodeFields are ClientNode fields used by the client manager

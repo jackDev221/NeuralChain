@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // handler handles JSON-RPC messages. There is one handler per connection. Note that

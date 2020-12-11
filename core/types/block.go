@@ -27,9 +27,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/rlp"
 	"golang.org/x/crypto/sha3"
 )
 

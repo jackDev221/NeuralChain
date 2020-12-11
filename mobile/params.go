@@ -21,9 +21,9 @@ package geth
 import (
 	"encoding/json"
 
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/p2p/discv5"
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/p2p/discv5"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 // MainnetGenesis returns the JSON spec to use for the main Evrynet network. It

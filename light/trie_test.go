@@ -24,13 +24,13 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/Evrynetlabs/evrynet-node/consensus/ethash"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
-	"github.com/Evrynetlabs/evrynet-node/core/state"
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
-	"github.com/Evrynetlabs/evrynet-node/params"
-	"github.com/Evrynetlabs/evrynet-node/trie"
+	"github.com/lvbin2012/NeuralChain/consensus/ethash"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/core/state"
+	"github.com/lvbin2012/NeuralChain/core/vm"
+	"github.com/lvbin2012/NeuralChain/params"
+	"github.com/lvbin2012/NeuralChain/trie"
 )
 
 func TestNodeIterator(t *testing.T) {

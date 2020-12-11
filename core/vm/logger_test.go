@@ -20,9 +20,9 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/state"
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/state"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 type dummyContractRef struct {

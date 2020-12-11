@@ -17,7 +17,7 @@
 package vm
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 func minSwapStack(n int) int {

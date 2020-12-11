@@ -19,9 +19,9 @@ package state
 import (
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/neutdb"
-	"github.com/Evrynetlabs/evrynet-node/trie"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/neutdb"
+	"github.com/lvbin2012/NeuralChain/trie"
 	lru "github.com/hashicorp/golang-lru"
 )
 

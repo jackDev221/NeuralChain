@@ -28,9 +28,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/Evrynetlabs/evrynet-node/internal/jsre"
-	"github.com/Evrynetlabs/evrynet-node/internal/web3ext"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/internal/jsre"
+	"github.com/lvbin2012/NeuralChain/internal/web3ext"
+	"github.com/lvbin2012/NeuralChain/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
 	"github.com/robertkrimen/otto"

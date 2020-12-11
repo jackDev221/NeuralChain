@@ -23,10 +23,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/Evrynetlabs/evrynet-node/core/state"
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/tests"
+	"github.com/lvbin2012/NeuralChain/core/state"
+	"github.com/lvbin2012/NeuralChain/core/vm"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/tests"
 
 	cli "github.com/urfave/cli"
 )

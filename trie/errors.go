@@ -19,7 +19,7 @@ package trie
 import (
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // MissingNodeError is returned by the trie functions (TryGet, TryUpdate, TryDelete)

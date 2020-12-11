@@ -20,7 +20,7 @@ import (
 	"crypto/sha256"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/crypto"
 	"golang.org/x/crypto/pbkdf2"
 )
 

@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 const (

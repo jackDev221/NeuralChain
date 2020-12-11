@@ -26,13 +26,13 @@ import (
 	"testing"
 	"time"
 
-	evrynetNode "github.com/Evrynetlabs/evrynet-node"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/event"
-	"github.com/Evrynetlabs/evrynet-node/neutdb"
-	"github.com/Evrynetlabs/evrynet-node/trie"
+	evrynetNode "github.com/lvbin2012/NeuralChain"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/event"
+	"github.com/lvbin2012/NeuralChain/neutdb"
+	"github.com/lvbin2012/NeuralChain/trie"
 )
 
 // Reduce some of the parameters to make the tester faster.

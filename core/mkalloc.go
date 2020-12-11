@@ -34,8 +34,8 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 type allocItem struct{ Addr, Balance *big.Int }

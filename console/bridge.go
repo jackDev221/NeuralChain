@@ -23,10 +23,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/scwallet"
-	"github.com/Evrynetlabs/evrynet-node/accounts/usbwallet"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/accounts/scwallet"
+	"github.com/lvbin2012/NeuralChain/accounts/usbwallet"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/rpc"
 	"github.com/robertkrimen/otto"
 )
 

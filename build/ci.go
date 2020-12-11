@@ -53,7 +53,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/internal/build"
+	"github.com/lvbin2012/NeuralChain/internal/build"
 )
 
 var GOBIN, _ = filepath.Abs(filepath.Join("build", "bin"))

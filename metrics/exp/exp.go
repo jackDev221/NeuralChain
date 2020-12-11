@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/metrics"
-	"github.com/Evrynetlabs/evrynet-node/metrics/prometheus"
+	"github.com/lvbin2012/NeuralChain/metrics"
+	"github.com/lvbin2012/NeuralChain/metrics/prometheus"
 )
 
 type exp struct {

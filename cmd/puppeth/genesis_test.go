@@ -26,7 +26,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/Evrynetlabs/evrynet-node/core"
+	"github.com/lvbin2012/NeuralChain/core"
 )
 
 // Tests the evrynet-node to Aleth chainspec conversion for the Stureby testnet.

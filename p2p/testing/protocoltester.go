@@ -32,14 +32,14 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/p2p/simulations"
-	"github.com/Evrynetlabs/evrynet-node/p2p/simulations/adapters"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/simulations"
+	"github.com/lvbin2012/NeuralChain/p2p/simulations/adapters"
+	"github.com/lvbin2012/NeuralChain/rlp"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 // ProtocolTester is the tester environment used for unit testing protocol

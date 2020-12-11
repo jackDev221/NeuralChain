@@ -26,9 +26,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enr"
-	"github.com/Evrynetlabs/evrynet-node/p2p/netutil"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/p2p/enr"
+	"github.com/lvbin2012/NeuralChain/p2p/netutil"
 )
 
 const (

@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
 // Tests that data bitset encoding and decoding works and is bijective.

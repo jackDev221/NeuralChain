@@ -21,7 +21,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/Evrynetlabs/evrynet-node/neut/tracers/internal/tracers"
+	"github.com/lvbin2012/NeuralChain/neut/tracers/internal/tracers"
 )
 
 // all contains all the built in JavaScript tracers by name.

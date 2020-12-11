@@ -25,10 +25,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/event"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/metrics"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/event"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/metrics"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 const (

@@ -20,7 +20,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 const (

@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
 )
 
 // Subscription represents a stream of events. The carrier of the events is typically a

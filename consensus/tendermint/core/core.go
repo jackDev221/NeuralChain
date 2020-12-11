@@ -8,12 +8,12 @@ import (
 	"github.com/Workiva/go-datastructures/queue"
 	"go.uber.org/zap"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint/utils"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/event"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint/utils"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/event"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 type Option func(c *core) error

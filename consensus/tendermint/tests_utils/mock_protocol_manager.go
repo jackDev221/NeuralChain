@@ -1,9 +1,9 @@
 package tests_utils
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 type MockProtocolManager struct{}

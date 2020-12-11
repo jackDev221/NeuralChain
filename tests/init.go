@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 // Forks table defines supported forks and their chain config.

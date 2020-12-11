@@ -24,10 +24,10 @@ import (
 
 	mapset "github.com/deckarep/golang-set"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 // Peer represents a whisper protocol peer connection.

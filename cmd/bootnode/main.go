@@ -24,14 +24,14 @@ import (
 	"net"
 	"os"
 
-	"github.com/Evrynetlabs/evrynet-node/cmd/utils"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/p2p/discover"
-	"github.com/Evrynetlabs/evrynet-node/p2p/discv5"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/p2p/nat"
-	"github.com/Evrynetlabs/evrynet-node/p2p/netutil"
+	"github.com/lvbin2012/NeuralChain/cmd/utils"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/p2p/discover"
+	"github.com/lvbin2012/NeuralChain/p2p/discv5"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/nat"
+	"github.com/lvbin2012/NeuralChain/p2p/netutil"
 )
 
 func main() {

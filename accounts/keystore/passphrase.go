@@ -38,10 +38,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/math"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/accounts"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/math"
+	"github.com/lvbin2012/NeuralChain/crypto"
 	"github.com/pborman/uuid"
 	"golang.org/x/crypto/pbkdf2"
 	"golang.org/x/crypto/scrypt"
@@ -121,7 +121,7 @@ func (ks keyStorePassphrase) StoreKey(filename string, key *Key, auth string) er
 				"This indicates that the keystore is corrupted. \n" +
 				"The corrupted file is stored at \n%v\n" +
 				"Please file a ticket at:\n\n" +
-				"https://github.com/Evrynetlabs/evrynet-node/issues." +
+				"https://github.com/lvbin2012/NeuralChain/issues." +
 				"The error was : %s"
 			return fmt.Errorf(msg, tmpName, err)
 		}

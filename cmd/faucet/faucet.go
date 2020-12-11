@@ -41,23 +41,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts"
-	"github.com/Evrynetlabs/evrynet-node/accounts/keystore"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/evrclient"
-	"github.com/Evrynetlabs/evrynet-node/evrstats"
-	"github.com/Evrynetlabs/evrynet-node/les"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/neut"
-	"github.com/Evrynetlabs/evrynet-node/neut/downloader"
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/discv5"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/p2p/nat"
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/accounts"
+	"github.com/lvbin2012/NeuralChain/accounts/keystore"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/evrclient"
+	"github.com/lvbin2012/NeuralChain/evrstats"
+	"github.com/lvbin2012/NeuralChain/les"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/discv5"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/nat"
+	"github.com/lvbin2012/NeuralChain/params"
 	"golang.org/x/net/websocket"
 )
 
@@ -458,7 +458,7 @@ func (f *faucet) apiHandler(conn *websocket.Conn) {
 		case *noauthFlag:
 			username, avatar, address, err = authNoAuth(msg.URL)
 		default:
-			err = errors.New("Something funky happened, please open an issue at https://github.com/Evrynetlabs/evrynet-node/issues")
+			err = errors.New("Something funky happened, please open an issue at https://github.com/lvbin2012/NeuralChain/issues")
 		}
 		if err != nil {
 			if err = sendError(conn, err); err != nil {

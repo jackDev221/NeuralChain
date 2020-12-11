@@ -20,8 +20,8 @@ import (
 	"context"
 	"net"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/p2p/netutil"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/p2p/netutil"
 )
 
 // ServeListener accepts connections on l, serving JSON-RPC on them.

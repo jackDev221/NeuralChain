@@ -20,14 +20,14 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 	"os"
 	"strings"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/internal/evrapi"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/log"
 	"golang.org/x/crypto/ssh/terminal"
 )
 

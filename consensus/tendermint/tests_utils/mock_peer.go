@@ -1,7 +1,7 @@
 package tests_utils
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // MockPeer implements consensus/protocol/Peers

@@ -24,8 +24,8 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
 var addr, _ = common.EvryAddressStringToAddressCheck("EekuDeGa6dnWfxVeq1GrEH8xMuab8oM8oD")

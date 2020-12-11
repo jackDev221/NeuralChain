@@ -21,9 +21,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/neut/downloader"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 // Tests that fast sync gets disabled as soon as a real block is successfully

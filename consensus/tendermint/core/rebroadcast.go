@@ -3,7 +3,7 @@ package core
 import (
 	"go.uber.org/zap"
 
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 func (c *core) reBroadcastMsg(msg message, logger *zap.SugaredLogger) {

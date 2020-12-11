@@ -4,8 +4,8 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/state/staking"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/state/staking"
 )
 
 type ProposerPolicy uint64

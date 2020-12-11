@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 func TestCommitChannels(t *testing.T) {

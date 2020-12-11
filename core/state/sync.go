@@ -19,10 +19,10 @@ package state
 import (
 	"bytes"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/neutdb"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
-	"github.com/Evrynetlabs/evrynet-node/trie"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/neutdb"
+	"github.com/lvbin2012/NeuralChain/rlp"
+	"github.com/lvbin2012/NeuralChain/trie"
 )
 
 // NewStateSync create a new state trie download scheduler.

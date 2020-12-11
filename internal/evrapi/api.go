@@ -30,25 +30,25 @@ import (
 	"github.com/tyler-smith/go-bip39"
 	"golang.org/x/crypto/sha3"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts"
-	"github.com/Evrynetlabs/evrynet-node/accounts/keystore"
-	"github.com/Evrynetlabs/evrynet-node/accounts/scwallet"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/common/math"
-	"github.com/Evrynetlabs/evrynet-node/consensus/clique"
-	"github.com/Evrynetlabs/evrynet-node/consensus/ethash"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint/utils"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/params"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/accounts"
+	"github.com/lvbin2012/NeuralChain/accounts/keystore"
+	"github.com/lvbin2012/NeuralChain/accounts/scwallet"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common/math"
+	"github.com/lvbin2012/NeuralChain/consensus/clique"
+	"github.com/lvbin2012/NeuralChain/consensus/ethash"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint/utils"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/core/vm"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/params"
+	"github.com/lvbin2012/NeuralChain/rlp"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 const (
@@ -460,7 +460,7 @@ func (s *PrivateAccountAPI) SignTransaction(ctx context.Context, args SendTxArgs
 //
 // The key used to calculate the signature is decrypted with the given password.
 //
-// https://github.com/Evrynetlabs/evrynet-node/wiki/Management-APIs#personal_sign
+// https://github.com/lvbin2012/NeuralChain/wiki/Management-APIs#personal_sign
 func (s *PrivateAccountAPI) Sign(ctx context.Context, data hexutil.Bytes, addr common.Address, passwd string) (hexutil.Bytes, error) {
 	// Look up the wallet containing the requested signer
 	account := accounts.Account{Address: addr}
@@ -488,7 +488,7 @@ func (s *PrivateAccountAPI) Sign(ctx context.Context, data hexutil.Bytes, addr c
 // Note, the signature must conform to the secp256k1 curve R, S and V values, where
 // the V value must be 27 or 28 for legacy reasons.
 //
-// https://github.com/Evrynetlabs/evrynet-node/wiki/Management-APIs#personal_ecRecover
+// https://github.com/lvbin2012/NeuralChain/wiki/Management-APIs#personal_ecRecover
 func (s *PrivateAccountAPI) EcRecover(ctx context.Context, data, sig hexutil.Bytes) (common.Address, error) {
 	if len(sig) != 65 {
 		return common.Address{}, fmt.Errorf("signature must be 65 bytes long")

@@ -23,10 +23,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/cmd/utils"
-	"github.com/Evrynetlabs/evrynet-node/consensus/ethash"
-	"github.com/Evrynetlabs/evrynet-node/neut"
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/cmd/utils"
+	"github.com/lvbin2012/NeuralChain/consensus/ethash"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/params"
 	"github.com/urfave/cli"
 )
 

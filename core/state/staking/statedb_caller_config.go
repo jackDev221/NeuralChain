@@ -3,7 +3,7 @@ package staking
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // LayOut represents the Offset and Slot order of a state variable

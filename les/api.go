@@ -23,11 +23,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
-	"github.com/Evrynetlabs/evrynet-node/les/csvlogger"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
+	"github.com/lvbin2012/NeuralChain/les/csvlogger"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 var (

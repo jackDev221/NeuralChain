@@ -19,8 +19,8 @@ package vm
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/math"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/math"
 )
 
 // calcMemSize64 calculates the required memory size, and returns

@@ -5,10 +5,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi/bind"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/state"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/state"
+	"github.com/lvbin2012/NeuralChain/crypto"
 )
 
 const (

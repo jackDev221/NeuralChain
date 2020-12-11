@@ -38,11 +38,11 @@ import (
 	"github.com/docker/docker/pkg/reexec"
 	"golang.org/x/net/websocket"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 func init() {

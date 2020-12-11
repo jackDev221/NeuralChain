@@ -4,8 +4,8 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 //getInitializedState init core with the last known roundState

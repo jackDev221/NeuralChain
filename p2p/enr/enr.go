@@ -40,7 +40,7 @@ import (
 	"io"
 	"sort"
 
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 const SizeLimit = 300 // maximum encoded size of a node record in bytes

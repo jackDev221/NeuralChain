@@ -30,8 +30,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/keystore"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/accounts/keystore"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 // Tests that the account management snippets work correctly.

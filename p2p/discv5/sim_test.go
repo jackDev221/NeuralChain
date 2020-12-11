@@ -28,7 +28,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // In this test, nodes try to randomly resolve each other.

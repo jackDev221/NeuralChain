@@ -21,7 +21,7 @@ package geth
 import (
 	"errors"
 
-	"github.com/Evrynetlabs/evrynet-node/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p"
 )
 
 // NodeInfo represents pi short summary of the information known about the host.

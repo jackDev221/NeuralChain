@@ -23,9 +23,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/math"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/common/math"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 // node represents a host on the network.

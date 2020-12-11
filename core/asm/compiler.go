@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/common/math"
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
+	"github.com/lvbin2012/NeuralChain/common/math"
+	"github.com/lvbin2012/NeuralChain/core/vm"
 )
 
 // Compiler contains information about the parsed source

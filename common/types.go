@@ -28,8 +28,8 @@ import (
 
 	"golang.org/x/crypto/sha3"
 
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/crypto/base58"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/crypto/base58"
 )
 
 // Lengths of hashes and addresses in bytes.

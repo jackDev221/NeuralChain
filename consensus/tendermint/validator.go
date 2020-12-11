@@ -4,7 +4,7 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 type Validator interface {

@@ -19,8 +19,8 @@ package trie
 import (
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // SecureTrie wraps a trie with key hashing. In a secure trie, all

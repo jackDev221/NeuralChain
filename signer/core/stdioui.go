@@ -21,9 +21,9 @@ import (
 	"context"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/internal/evrapi"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 type StdIOUI struct {

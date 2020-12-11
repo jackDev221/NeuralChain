@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 /*

@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/metrics"
+	"github.com/lvbin2012/NeuralChain/metrics"
 )
 
 // a regexp for extracting the unit from time.Duration.String

@@ -20,7 +20,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
 )
 
 // Simulation provides a framework for running actions in a simulated network

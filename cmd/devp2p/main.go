@@ -21,8 +21,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/Evrynetlabs/evrynet-node/internal/debug"
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/internal/debug"
+	"github.com/lvbin2012/NeuralChain/params"
 	"github.com/urfave/cli"
 )
 

@@ -35,10 +35,10 @@ import (
 
 	"io"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/params"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/params"
+	"github.com/lvbin2012/NeuralChain/rpc"
 	"github.com/mohae/deepcopy"
 	"golang.org/x/net/websocket"
 )

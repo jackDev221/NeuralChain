@@ -22,12 +22,12 @@ import (
 	"math"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	math2 "github.com/Evrynetlabs/evrynet-node/common/math"
-	"github.com/Evrynetlabs/evrynet-node/consensus/ethash"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	math2 "github.com/lvbin2012/NeuralChain/common/math"
+	"github.com/lvbin2012/NeuralChain/consensus/ethash"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 // alethGenesisSpec represents the genesis specification format used by the

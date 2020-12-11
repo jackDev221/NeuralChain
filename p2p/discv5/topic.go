@@ -23,8 +23,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 const (

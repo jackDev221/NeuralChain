@@ -23,10 +23,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
-	whisper "github.com/Evrynetlabs/evrynet-node/whisper/whisperv6"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/rlp"
+	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
 )
 
 // A Nonce is a 64-bit hash which proves (combined with the mix-hash) that

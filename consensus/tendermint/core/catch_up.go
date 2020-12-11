@@ -6,9 +6,9 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 func (c *core) enterCatchup(tiBlock *big.Int, tiRound int64, tiStep RoundStepType, tiRetry uint64) {

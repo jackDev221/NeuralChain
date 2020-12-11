@@ -22,9 +22,9 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
-	"github.com/Evrynetlabs/evrynet-node/common/prque"
-	"github.com/Evrynetlabs/evrynet-node/les/csvlogger"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
+	"github.com/lvbin2012/NeuralChain/common/prque"
+	"github.com/lvbin2012/NeuralChain/les/csvlogger"
 )
 
 // servingQueue allows running tasks in a limited number of threads and puts the

@@ -21,8 +21,8 @@ package geth
 import (
 	"errors"
 
-	evrynetNode "github.com/Evrynetlabs/evrynet-node"
-	"github.com/Evrynetlabs/evrynet-node/common"
+	evrynetNode "github.com/lvbin2012/NeuralChain"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // Subscription represents an event subscription where events are

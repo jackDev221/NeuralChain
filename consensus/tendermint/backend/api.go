@@ -3,8 +3,8 @@ package backend
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus"
 )
 
 // TendermintAPI is a user facing RPC API to dump tendermint state

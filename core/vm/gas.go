@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 // Gas costs

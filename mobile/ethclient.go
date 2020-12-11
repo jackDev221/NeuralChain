@@ -21,8 +21,8 @@ package geth
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/evrclient"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/evrclient"
 )
 
 // EvrynetClient provides access to the Evrynet APIs.

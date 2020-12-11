@@ -22,8 +22,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi"
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/accounts/abi"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // Tests that all the selectors contained in the 4byte database are valid.

@@ -19,8 +19,8 @@ package miner
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 // noopChainRetriever is an implementation of headerRetriever that always

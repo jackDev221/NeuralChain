@@ -1,5 +1,5 @@
 language: go
-go_import_path: github.com/Evrynetlabs/evrynet-node
+go_import_path: github.com/lvbin2012/NeuralChain
 sudo: false
 env:
   global:

@@ -22,9 +22,9 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
-	"github.com/Evrynetlabs/evrynet-node/core/state"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/core/state"
 )
 
 var dumper = spew.ConfigState{Indent: "    "}

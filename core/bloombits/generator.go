@@ -19,7 +19,7 @@ package bloombits
 import (
 	"errors"
 
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 var (

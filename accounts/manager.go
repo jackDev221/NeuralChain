@@ -21,7 +21,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/event"
+	"github.com/lvbin2012/NeuralChain/event"
 )
 
 // Config contains the settings of the global account manager.

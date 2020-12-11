@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/Evrynetlabs/evrynet-node/core/state/staking"
+	"github.com/lvbin2012/NeuralChain/core/state/staking"
 )
 
 // Constants represents the configuration name of all state variables.

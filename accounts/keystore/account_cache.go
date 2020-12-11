@@ -29,9 +29,9 @@ import (
 
 	mapset "github.com/deckarep/golang-set"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts"
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/accounts"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // Minimum amount of time between cache reloads. This limit applies if the platform does

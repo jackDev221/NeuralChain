@@ -19,14 +19,14 @@ package main
 import (
 	"crypto/ecdsa"
 	"fmt"
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/keystore"
-	"github.com/Evrynetlabs/evrynet-node/cmd/utils"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/accounts/keystore"
+	"github.com/lvbin2012/NeuralChain/cmd/utils"
+	"github.com/lvbin2012/NeuralChain/crypto"
 	"github.com/pborman/uuid"
 	"github.com/urfave/cli"
 )

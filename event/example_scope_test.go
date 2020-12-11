@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/event"
+	"github.com/lvbin2012/NeuralChain/event"
 )
 
 // This example demonstrates how SubscriptionScope can be used to control the lifetime of

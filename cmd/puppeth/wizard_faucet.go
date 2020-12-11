@@ -20,8 +20,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/keystore"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/accounts/keystore"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // deployFaucet queries the user for various input on deploying a faucet, after

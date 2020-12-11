@@ -17,8 +17,8 @@
 package les
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/metrics"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
+	"github.com/lvbin2012/NeuralChain/metrics"
+	"github.com/lvbin2012/NeuralChain/p2p"
 )
 
 var (

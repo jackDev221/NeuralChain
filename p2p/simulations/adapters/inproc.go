@@ -23,14 +23,14 @@ import (
 	"net"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/event"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/p2p/simulations/pipes"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
-	"github.com/Evrynetlabs/evrynet-node/tests_utils"
+	"github.com/lvbin2012/NeuralChain/event"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/simulations/pipes"
+	"github.com/lvbin2012/NeuralChain/rpc"
+	"github.com/lvbin2012/NeuralChain/tests_utils"
 )
 
 // SimAdapter is a NodeAdapter which creates in-memory simulation nodes and

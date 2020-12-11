@@ -23,8 +23,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enr"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/p2p/enr"
 )
 
 var parseNodeTests = []struct {

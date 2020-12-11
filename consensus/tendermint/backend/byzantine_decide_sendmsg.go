@@ -3,8 +3,8 @@ package backend
 import (
 	"math/rand"
 
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // checkAndSendMsg decided to send the message or not

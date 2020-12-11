@@ -20,9 +20,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/prque"
-	"github.com/Evrynetlabs/evrynet-node/neutdb"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/prque"
+	"github.com/lvbin2012/NeuralChain/neutdb"
 )
 
 // ErrNotRequested is returned by the trie sync when it's requested to process a

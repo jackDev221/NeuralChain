@@ -23,8 +23,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/olekukonko/tablewriter"
 )
 

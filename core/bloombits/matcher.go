@@ -26,8 +26,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/bitutil"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/common/bitutil"
+	"github.com/lvbin2012/NeuralChain/crypto"
 )
 
 // bloomIndexes represents the bit indexes inside the bloom filter that belong

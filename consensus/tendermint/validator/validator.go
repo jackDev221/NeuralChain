@@ -3,8 +3,8 @@ package validator
 import (
 	"reflect"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
 )
 
 // New will create new validator

@@ -19,9 +19,9 @@ package simulations
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/p2p/simulations/adapters"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/simulations/adapters"
 )
 
 func newTestNetwork(t *testing.T, nodeCount int) (*Network, []enode.ID) {

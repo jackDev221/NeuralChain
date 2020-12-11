@@ -41,7 +41,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/crypto"
 )
 
 var dumpEnc bool

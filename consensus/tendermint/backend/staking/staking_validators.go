@@ -3,12 +3,12 @@ package staking
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint/utils"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint/validator"
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint/utils"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint/validator"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // StakingValidator is implementation of ValidatorSetInfo

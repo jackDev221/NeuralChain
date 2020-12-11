@@ -107,7 +107,7 @@ Subscriptions are deleted when the user sends an unsubscribe request or when the
 connection which was used to create the subscription is closed. This can be initiated by
 the client and server. The server will close the connection for any write error.
 
-For more information about subscriptions, see https://github.com/Evrynetlabs/evrynet-node/wiki/RPC-PUB-SUB.
+For more information about subscriptions, see https://github.com/lvbin2012/NeuralChain/wiki/RPC-PUB-SUB.
 
 Reverse Calls
 

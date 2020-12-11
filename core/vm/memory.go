@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common/math"
+	"github.com/lvbin2012/NeuralChain/common/math"
 )
 
 // Memory implements a simple memory model for the evrynetNode virtual machine.

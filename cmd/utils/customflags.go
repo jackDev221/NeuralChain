@@ -27,7 +27,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/common/math"
+	"github.com/lvbin2012/NeuralChain/common/math"
 	"github.com/urfave/cli"
 )
 

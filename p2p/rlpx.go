@@ -35,10 +35,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/bitutil"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	"github.com/Evrynetlabs/evrynet-node/crypto/ecies"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common/bitutil"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	"github.com/lvbin2012/NeuralChain/crypto/ecies"
+	"github.com/lvbin2012/NeuralChain/rlp"
 	"github.com/golang/snappy"
 	"golang.org/x/crypto/sha3"
 )

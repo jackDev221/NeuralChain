@@ -21,7 +21,7 @@ package metrics
 import (
 	"syscall"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // getProcessCPUTime retrieves the process' CPU time since program startup.

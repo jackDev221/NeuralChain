@@ -23,8 +23,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
 )
 
 func TestFreeClientPoolL10C100(t *testing.T) {

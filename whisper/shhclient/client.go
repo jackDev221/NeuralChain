@@ -19,10 +19,10 @@ package shhclient
 import (
 	"context"
 
-	evrynetNode "github.com/Evrynetlabs/evrynet-node"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
-	whisper "github.com/Evrynetlabs/evrynet-node/whisper/whisperv6"
+	evrynetNode "github.com/lvbin2012/NeuralChain"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/rpc"
+	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
 )
 
 // Client defines typed wrappers for the Whisper v6 RPC API.

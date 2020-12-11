@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // deployWallet creates a new web wallet based on some user input.

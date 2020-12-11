@@ -42,7 +42,7 @@ import (
 	"fmt"
 	"hash"
 
-	ethcrypto "github.com/Evrynetlabs/evrynet-node/crypto"
+	ethcrypto "github.com/lvbin2012/NeuralChain/crypto"
 )
 
 var (

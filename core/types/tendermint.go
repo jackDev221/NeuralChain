@@ -19,8 +19,8 @@ import (
 	"errors"
 	"io"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 var (

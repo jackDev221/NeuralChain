@@ -19,7 +19,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
+	"github.com/lvbin2012/NeuralChain/core/vm"
 )
 
 func TestVM(t *testing.T) {

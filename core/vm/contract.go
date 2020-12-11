@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // ContractRef is a reference to the contract's backing object

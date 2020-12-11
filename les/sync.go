@@ -20,9 +20,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/core/rawdb"
-	"github.com/Evrynetlabs/evrynet-node/neut/downloader"
-	"github.com/Evrynetlabs/evrynet-node/light"
+	"github.com/lvbin2012/NeuralChain/core/rawdb"
+	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/light"
 )
 
 // syncer is responsible for periodically synchronising with the network, both

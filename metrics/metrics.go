@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // Enabled is checked by the constructor functions for all of the

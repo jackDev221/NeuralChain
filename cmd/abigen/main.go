@@ -24,8 +24,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/accounts/abi/bind"
-	"github.com/Evrynetlabs/evrynet-node/common/compiler"
+	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
+	"github.com/lvbin2012/NeuralChain/common/compiler"
 )
 
 var (

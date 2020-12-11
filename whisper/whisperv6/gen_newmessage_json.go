@@ -5,7 +5,7 @@ package whisperv6
 import (
 	"encoding/json"
 
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
 var _ = (*newMessageOverride)(nil)

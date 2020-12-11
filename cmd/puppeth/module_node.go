@@ -26,7 +26,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an Evrynet node.

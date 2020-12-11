@@ -16,7 +16,7 @@
 
 package core
 
-import "github.com/Evrynetlabs/evrynet-node/common"
+import "github.com/lvbin2012/NeuralChain/common"
 
 // BadHashes represent a set of manually tracked bad hashes (usually hard forks)
 var BadHashes = map[common.Hash]bool{

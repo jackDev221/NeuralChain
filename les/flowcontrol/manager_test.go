@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
 )
 
 type testNode struct {

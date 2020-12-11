@@ -3,10 +3,10 @@ package simulations
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enode"
-	"github.com/Evrynetlabs/evrynet-node/p2p/enr"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/p2p/enode"
+	"github.com/lvbin2012/NeuralChain/p2p/enr"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 // NoopService is the service that does not do anything

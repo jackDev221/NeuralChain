@@ -54,7 +54,7 @@ func TestBloom(t *testing.T) {
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/core/state"
+	"github.com/lvbin2012/NeuralChain/core/state"
 )
 
 func TestBloom9(t *testing.T) {

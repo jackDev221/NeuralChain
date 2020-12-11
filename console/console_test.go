@@ -26,13 +26,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/consensus/ethash"
-	"github.com/Evrynetlabs/evrynet-node/core"
-	"github.com/Evrynetlabs/evrynet-node/internal/jsre"
-	"github.com/Evrynetlabs/evrynet-node/miner"
-	"github.com/Evrynetlabs/evrynet-node/neut"
-	"github.com/Evrynetlabs/evrynet-node/node"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/consensus/ethash"
+	"github.com/lvbin2012/NeuralChain/core"
+	"github.com/lvbin2012/NeuralChain/internal/jsre"
+	"github.com/lvbin2012/NeuralChain/miner"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/node"
 )
 
 const (

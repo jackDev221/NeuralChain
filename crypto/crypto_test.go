@@ -26,8 +26,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
 var testAddrStr = "EWvcuLqPT8oMDtuA6uL2aFwiNrT5AhssPd"

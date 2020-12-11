@@ -26,7 +26,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/rlp"
+	"github.com/lvbin2012/NeuralChain/rlp"
 )
 
 var (

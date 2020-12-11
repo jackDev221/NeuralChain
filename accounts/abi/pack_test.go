@@ -24,7 +24,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 func TestPack(t *testing.T) {

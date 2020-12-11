@@ -21,7 +21,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/core/vm"
+	"github.com/lvbin2012/NeuralChain/core/vm"
 )
 
 // Iterator for disassembled EVM instructions

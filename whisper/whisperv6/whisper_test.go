@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 	"golang.org/x/crypto/pbkdf2"
 )
 

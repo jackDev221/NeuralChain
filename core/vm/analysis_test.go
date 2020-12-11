@@ -19,7 +19,7 @@ package vm
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/crypto"
 )
 
 func TestJumpDestAnalysis(t *testing.T) {

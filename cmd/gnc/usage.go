@@ -24,8 +24,8 @@ import (
 
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/cmd/utils"
-	"github.com/Evrynetlabs/evrynet-node/internal/debug"
+	"github.com/lvbin2012/NeuralChain/cmd/utils"
+	"github.com/lvbin2012/NeuralChain/internal/debug"
 	cli "github.com/urfave/cli"
 )
 

@@ -19,7 +19,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/Evrynetlabs/evrynet-node/params"
+	"github.com/lvbin2012/NeuralChain/params"
 )
 
 func TestTransaction(t *testing.T) {

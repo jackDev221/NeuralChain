@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/mclock"
+	"github.com/lvbin2012/NeuralChain/common/mclock"
 )
 
 // logger collects events in string format and discards events older than the

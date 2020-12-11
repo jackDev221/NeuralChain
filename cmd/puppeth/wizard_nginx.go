@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Evrynetlabs/evrynet-node/log"
+	"github.com/lvbin2012/NeuralChain/log"
 )
 
 // ensureVirtualHost checks whether a reverse-proxy is running on the specified

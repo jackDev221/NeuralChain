@@ -3,9 +3,9 @@ package tests_utils
 import (
 	"crypto/ecdsa"
 
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint/utils"
-	"github.com/Evrynetlabs/evrynet-node/core/types"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint/utils"
+	"github.com/lvbin2012/NeuralChain/core/types"
+	"github.com/lvbin2012/NeuralChain/crypto"
 )
 
 func AppendSealByPkKey(header *types.Header, pk *ecdsa.PrivateKey) {

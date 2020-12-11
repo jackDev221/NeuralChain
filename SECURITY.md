@@ -11,8 +11,8 @@ Audit reports are published in the `docs` folder: https://github.com/NeuralChain
 
 | Scope | Date | Report Link |
 | ------- | ------- | ----------- |
-| `gnc`  | 20170425 | [pdf](https://github.com/Evrynetlabs/evrynet-node/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
-| `clef` | 20180914 | [pdf](https://github.com/Evrynetlabs/evrynet-node/blob/master/docs/audits/2018-09-14_Clef-audit_NCC.pdf) |
+| `gnc`  | 20170425 | [pdf](https://github.com/lvbin2012/NeuralChain/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
+| `clef` | 20180914 | [pdf](https://github.com/lvbin2012/NeuralChain/blob/master/docs/audits/2018-09-14_Clef-audit_NCC.pdf) |
 
 
 

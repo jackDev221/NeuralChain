@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/crypto"
-	whisper "github.com/Evrynetlabs/evrynet-node/whisper/whisperv6"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/crypto"
+	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
 )
 
 const powRequirement = 0.00001

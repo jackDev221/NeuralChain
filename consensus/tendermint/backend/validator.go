@@ -3,8 +3,8 @@ package backend
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/consensus"
-	"github.com/Evrynetlabs/evrynet-node/consensus/tendermint"
+	"github.com/lvbin2012/NeuralChain/consensus"
+	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
 )
 
 //ValidatorSetInfo keep tracks of validator set in associate with blockNumber

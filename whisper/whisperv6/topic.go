@@ -19,8 +19,8 @@
 package whisperv6
 
 import (
-	"github.com/Evrynetlabs/evrynet-node/common"
-	"github.com/Evrynetlabs/evrynet-node/common/hexutil"
+	"github.com/lvbin2012/NeuralChain/common"
+	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
 // TopicType represents a cryptographically secure, probabilistic partial

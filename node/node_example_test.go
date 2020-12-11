@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
-	"github.com/Evrynetlabs/evrynet-node/rpc"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/p2p"
+	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
 // SampleService is a trivial network service that can be attached to a node for

@@ -19,7 +19,7 @@ package core
 import (
 	"runtime"
 
-	"github.com/Evrynetlabs/evrynet-node/core/types"
+	"github.com/lvbin2012/NeuralChain/core/types"
 )
 
 // senderCacher is a concurrent transaction sender recoverer and cacher.

@@ -22,11 +22,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Evrynetlabs/evrynet-node/internal/evrapi"
-	"github.com/Evrynetlabs/evrynet-node/log"
-	"github.com/Evrynetlabs/evrynet-node/signer/core"
-	"github.com/Evrynetlabs/evrynet-node/signer/rules/deps"
-	"github.com/Evrynetlabs/evrynet-node/signer/storage"
+	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/signer/core"
+	"github.com/lvbin2012/NeuralChain/signer/rules/deps"
+	"github.com/lvbin2012/NeuralChain/signer/storage"
 	"github.com/robertkrimen/otto"
 )
 

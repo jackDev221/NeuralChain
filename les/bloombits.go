@@ -19,8 +19,8 @@ package les
 import (
 	"time"
 
-	"github.com/Evrynetlabs/evrynet-node/common/bitutil"
-	"github.com/Evrynetlabs/evrynet-node/light"
+	"github.com/lvbin2012/NeuralChain/common/bitutil"
+	"github.com/lvbin2012/NeuralChain/light"
 )
 
 const (

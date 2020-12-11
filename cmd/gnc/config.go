@@ -26,13 +26,13 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/Evrynetlabs/evrynet-node/cmd/utils"
-	"github.com/Evrynetlabs/evrynet-node/dashboard"
-	"github.com/Evrynetlabs/evrynet-node/graphql"
-	"github.com/Evrynetlabs/evrynet-node/neut"
-	"github.com/Evrynetlabs/evrynet-node/node"
-	"github.com/Evrynetlabs/evrynet-node/params"
-	whisper "github.com/Evrynetlabs/evrynet-node/whisper/whisperv6"
+	"github.com/lvbin2012/NeuralChain/cmd/utils"
+	"github.com/lvbin2012/NeuralChain/dashboard"
+	"github.com/lvbin2012/NeuralChain/graphql"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/node"
+	"github.com/lvbin2012/NeuralChain/params"
+	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
 	"github.com/naoina/toml"
 )
 

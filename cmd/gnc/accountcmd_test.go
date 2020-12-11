@@ -183,7 +183,7 @@ Fatal: Failed to unlock account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB (could not de
 `)
 }
 
-// https://github.com/Evrynetlabs/evrynet-node/issues/1785
+// https://github.com/lvbin2012/NeuralChain/issues/1785
 func TestUnlockFlagMultiIndex(t *testing.T) {
 	datadir := tmpDatadirWithKeystore(t)
 	gev := runGev(t,

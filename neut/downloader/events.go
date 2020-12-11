@@ -16,7 +16,7 @@
 
 package downloader
 
-import "github.com/Evrynetlabs/evrynet-node/core/types"
+import "github.com/lvbin2012/NeuralChain/core/types"
 
 type DoneEvent struct {
 	Latest *types.Header

@@ -1,6 +1,6 @@
 package discv5
 
-import "github.com/Evrynetlabs/evrynet-node/metrics"
+import "github.com/lvbin2012/NeuralChain/metrics"
 
 var (
 	ingressTrafficMeter = metrics.NewRegisteredMeter("discv5/InboundTraffic", nil)

@@ -19,7 +19,7 @@ package state
 import (
 	"math/big"
 
-	"github.com/Evrynetlabs/evrynet-node/common"
+	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // journalEntry is a modification entry in the state change journal that can be

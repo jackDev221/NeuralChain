@@ -22,8 +22,8 @@ import (
 
 	"github.com/elastic/gosigar"
 
-	"github.com/Evrynetlabs/evrynet-node/metrics"
-	"github.com/Evrynetlabs/evrynet-node/p2p"
+	"github.com/lvbin2012/NeuralChain/metrics"
+	"github.com/lvbin2012/NeuralChain/p2p"
 )
 
 // meterCollector returns a function, which retrieves the count of a specific meter.
