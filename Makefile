@@ -2,20 +2,20 @@
 # with Go source code. If you know what GOPATH is then you probably
 # don't need to bother with make.
 
-.PHONY: gev android ios gev-cross evm all test clean
-.PHONY: gev-linux gev-linux-386 gev-linux-amd64 gev-linux-mips64 gev-linux-mips64le
-.PHONY: gev-linux-arm gev-linux-arm-5 gev-linux-arm-6 gev-linux-arm-7 gev-linux-arm64
-.PHONY: gev-darwin gev-darwin-386 gev-darwin-amd64
-.PHONY: gev-windows gev-windows-386 gev-windows-amd64
+.PHONY: gnc android ios gnc-cross evm all test clean
+.PHONY: gnc-linux gnc-linux-386 gnc-linux-amd64 gnc-linux-mips64 gnc-linux-mips64le
+.PHONY: gnc-linux-arm gnc-linux-arm-5 gnc-linux-arm-6 gnc-linux-arm-7 gnc-linux-arm64
+.PHONY: gnc-darwin gnc-darwin-386 gnc-darwin-amd64
+.PHONY: gnc-windows gnc-windows-386 gnc-windows-amd64
 
 GOBIN = $(shell pwd)/build/bin
 GO ?= latest
 GORUN = env GO111MODULE=on go run
 
-gev:
-	$(GORUN) build/ci.go install ./cmd/gev
+gnc:
+	$(GORUN) build/ci.go install ./cmd/gnc
 	@echo "Done building."
-	@echo "Run \"$(GOBIN)/gev\" to launch gev."
+	@echo "Run \"$(GOBIN)/gnc\" to launch gnc."
 
 all:
 	$(GORUN) build/ci.go install
@@ -55,92 +55,92 @@ devtools:
 
 # Cross Compilation Targets (xgo)
 
-gev-cross: gev-linux gev-darwin gev-windows gev-android gev-ios
+gnc-cross: gnc-linux gnc-darwin gnc-windows gnc-android gnc-ios
 	@echo "Full cross compilation done:"
-	@ls -ld $(GOBIN)/gev-*
+	@ls -ld $(GOBIN)/gnc-*
 
-gev-linux: gev-linux-386 gev-linux-amd64 gev-linux-arm gev-linux-mips64 gev-linux-mips64le
+gnc-linux: gnc-linux-386 gnc-linux-amd64 gnc-linux-arm gnc-linux-mips64 gnc-linux-mips64le
 	@echo "Linux cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-*
+	@ls -ld $(GOBIN)/gnc-linux-*
 
-gev-linux-386:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/386 -v ./cmd/gev
+gnc-linux-386:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/386 -v ./cmd/gnc
 	@echo "Linux 386 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep 386
+	@ls -ld $(GOBIN)/gnc-linux-* | grep 386
 
-gev-linux-amd64:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/amd64 -v ./cmd/gev
+gnc-linux-amd64:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/amd64 -v ./cmd/gnc
 	@echo "Linux amd64 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep amd64
+	@ls -ld $(GOBIN)/gnc-linux-* | grep amd64
 
-gev-linux-arm: gev-linux-arm-5 gev-linux-arm-6 gev-linux-arm-7 gev-linux-arm64
+gnc-linux-arm: gnc-linux-arm-5 gnc-linux-arm-6 gnc-linux-arm-7 gnc-linux-arm64
 	@echo "Linux ARM cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep arm
+	@ls -ld $(GOBIN)/gnc-linux-* | grep arm
 
-gev-linux-arm-5:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm-5 -v ./cmd/gev
+gnc-linux-arm-5:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm-5 -v ./cmd/gnc
 	@echo "Linux ARMv5 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep arm-5
+	@ls -ld $(GOBIN)/gnc-linux-* | grep arm-5
 
-gev-linux-arm-6:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm-6 -v ./cmd/gev
+gnc-linux-arm-6:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm-6 -v ./cmd/gnc
 	@echo "Linux ARMv6 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep arm-6
+	@ls -ld $(GOBIN)/gnc-linux-* | grep arm-6
 
-gev-linux-arm-7:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm-7 -v ./cmd/gev
+gnc-linux-arm-7:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm-7 -v ./cmd/gnc
 	@echo "Linux ARMv7 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep arm-7
+	@ls -ld $(GOBIN)/gnc-linux-* | grep arm-7
 
-gev-linux-arm64:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm64 -v ./cmd/gev
+gnc-linux-arm64:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/arm64 -v ./cmd/gnc
 	@echo "Linux ARM64 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep arm64
+	@ls -ld $(GOBIN)/gnc-linux-* | grep arm64
 
-gev-linux-mips:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mips --ldflags '-extldflags "-static"' -v ./cmd/gev
+gnc-linux-mips:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mips --ldflags '-extldflags "-static"' -v ./cmd/gnc
 	@echo "Linux MIPS cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep mips
+	@ls -ld $(GOBIN)/gnc-linux-* | grep mips
 
-gev-linux-mipsle:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mipsle --ldflags '-extldflags "-static"' -v ./cmd/gev
+gnc-linux-mipsle:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mipsle --ldflags '-extldflags "-static"' -v ./cmd/gnc
 	@echo "Linux MIPSle cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep mipsle
+	@ls -ld $(GOBIN)/gnc-linux-* | grep mipsle
 
-gev-linux-mips64:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mips64 --ldflags '-extldflags "-static"' -v ./cmd/gev
+gnc-linux-mips64:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mips64 --ldflags '-extldflags "-static"' -v ./cmd/gnc
 	@echo "Linux MIPS64 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep mips64
+	@ls -ld $(GOBIN)/gnc-linux-* | grep mips64
 
-gev-linux-mips64le:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mips64le --ldflags '-extldflags "-static"' -v ./cmd/gev
+gnc-linux-mips64le:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=linux/mips64le --ldflags '-extldflags "-static"' -v ./cmd/gnc
 	@echo "Linux MIPS64le cross compilation done:"
-	@ls -ld $(GOBIN)/gev-linux-* | grep mips64le
+	@ls -ld $(GOBIN)/gnc-linux-* | grep mips64le
 
-gev-darwin: gev-darwin-386 gev-darwin-amd64
+gnc-darwin: gnc-darwin-386 gnc-darwin-amd64
 	@echo "Darwin cross compilation done:"
-	@ls -ld $(GOBIN)/gev-darwin-*
+	@ls -ld $(GOBIN)/gnc-darwin-*
 
-gev-darwin-386:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=darwin/386 -v ./cmd/gev
+gnc-darwin-386:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=darwin/386 -v ./cmd/gnc
 	@echo "Darwin 386 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-darwin-* | grep 386
+	@ls -ld $(GOBIN)/gnc-darwin-* | grep 386
 
-gev-darwin-amd64:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=darwin/amd64 -v ./cmd/gev
+gnc-darwin-amd64:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=darwin/amd64 -v ./cmd/gnc
 	@echo "Darwin amd64 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-darwin-* | grep amd64
+	@ls -ld $(GOBIN)/gnc-darwin-* | grep amd64
 
-gev-windows: gev-windows-386 gev-windows-amd64
+gnc-windows: gnc-windows-386 gnc-windows-amd64
 	@echo "Windows cross compilation done:"
-	@ls -ld $(GOBIN)/gev-windows-*
+	@ls -ld $(GOBIN)/gnc-windows-*
 
-gev-windows-386:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=windows/386 -v ./cmd/gev
+gnc-windows-386:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=windows/386 -v ./cmd/gnc
 	@echo "Windows 386 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-windows-* | grep 386
+	@ls -ld $(GOBIN)/gnc-windows-* | grep 386
 
-gev-windows-amd64:
-	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=windows/amd64 -v ./cmd/gev
+gnc-windows-amd64:
+	$(GORUN) build/ci.go xgo -- --go=$(GO) --targets=windows/amd64 -v ./cmd/gnc
 	@echo "Windows amd64 cross compilation done:"
-	@ls -ld $(GOBIN)/gev-windows-* | grep amd64
+	@ls -ld $(GOBIN)/gnc-windows-* | grep amd64

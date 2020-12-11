@@ -45,7 +45,7 @@ type Backend interface {
 	EventMux() *event.TypeMux
 	AccountManager() *accounts.Manager
 	ExtRPCEnabled() bool
-	RPCGasCap() *big.Int // global gas cap for evr_call over rpc: DoS protection
+	RPCGasCap() *big.Int // global gas cap for neut_call over rpc: DoS protection
 
 	// BlockChain API
 	SetHead(number uint64)

@@ -1,5 +1,5 @@
 // Copyright 2018 The NeuralChain Authors
-// This file is part of evrynet-node.
+// This file is part of NeuralChain.
 //
 // NeuralChain is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -612,7 +612,7 @@ func dataMismatchError(encType string, encValue interface{}) error {
 func (api *SignerAPI) EcRecover(ctx context.Context, data hexutil.Bytes, sig hexutil.Bytes) (common.Address, error) {
 	// Returns the address for the Account that was used to create the signature.
 	//
-	// Note, this function is compatible with evr_sign and personal_sign. As such it recovers
+	// Note, this function is compatible with neut_sign and personal_sign. As such it recovers
 	// the address of:
 	// hash = keccak256("\x19${byteVersion}EvrynetNode Signed Message:\n${message length}${message}")
 	// addr = ecrecover(hash, signature)

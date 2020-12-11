@@ -1,5 +1,5 @@
 // Copyright 2017 The NeuralChain Authors 
-// This file is part of evrynet-node.
+// This file is part of NeuralChain.
 //
 // NeuralChain is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

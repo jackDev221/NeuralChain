@@ -20,7 +20,7 @@ func TestAllApis(t *testing.T) {
 	require.NoError(t, err)
 
 	var (
-		prefix  = "evr_"
+		prefix  = "neut_"
 		methods = []string{
 			"protocolVersion", "syncing", "coinbase", "mining", "hashrate", "gasPrice", "accounts",
 			"blockNumber", "getStorageAt", "getTransactionCount", "getBlockTransactionCountByHash",

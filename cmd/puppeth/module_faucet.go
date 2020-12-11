@@ -1,5 +1,5 @@
 // Copyright 2017 The NeuralChain Authors
-// This file is part of evrynet-node.
+// This file is part of NeuralChain.
 //
 // NeuralChain is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -63,8 +63,8 @@ services:
     volumes:
       - {{.Datadir}}:/root/.faucet
     environment:
-      - EVR_PORT={{.EvrPort}}
-      - EVR_NAME={{.EvrName}}
+      - NEUT_PORT={{.EvrPort}}
+      - NEUT_NAME={{.EvrName}}
       - FAUCET_AMOUNT={{.FaucetAmount}}
       - FAUCET_MINUTES={{.FaucetMinutes}}
       - FAUCET_TIERS={{.FaucetTiers}}
@@ -229,8 +229,8 @@ func checkFaucet(client *sshClient, network string) (*faucetInfos, error) {
 	return &faucetInfos{
 		node: &nodeInfos{
 			datadir:  infos.volumes["/root/.faucet"],
-			port:     infos.portmap[infos.envvars["EVR_PORT"]+"/tcp"],
-			evrstats: infos.envvars["EVR_NAME"],
+			port:     infos.portmap[infos.envvars["NEUT_PORT"]+"/tcp"],
+			evrstats: infos.envvars["NEUT_NAME"],
 			keyJSON:  keyJSON,
 			keyPass:  keyPass,
 		},
