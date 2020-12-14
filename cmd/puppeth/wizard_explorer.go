@@ -31,8 +31,8 @@ func (w *wizard) deployExplorer() {
 		log.Error("No genesis block configured")
 		return
 	}
-	if w.conf.evrstats == "" {
-		log.Error("No evrstats server configured")
+	if w.conf.neutstats == "" {
+		log.Error("No neutstats server configured")
 		return
 	}
 	if w.conf.Genesis.Config.Ethash == nil {
@@ -67,7 +67,7 @@ func (w *wizard) deployExplorer() {
 	fmt.Printf("Which port should the explorer listen on? (default = %d)\n", infos.webPort)
 	infos.webPort = w.readDefaultInt(infos.webPort)
 
-	// Figure which virtual-host to deploy evrstats on
+	// Figure which virtual-host to deploy neutstats on
 	if infos.webHost, err = w.ensureVirtualHost(client, infos.webPort, infos.webHost); err != nil {
 		log.Error("Failed to decide on explorer host", "err", err)
 		return
@@ -88,12 +88,12 @@ func (w *wizard) deployExplorer() {
 
 	// Set a proper name to report on the stats page
 	fmt.Println()
-	if infos.evrstats == "" {
+	if infos.neutstats == "" {
 		fmt.Printf("What should the explorer be called on the stats page?\n")
-		infos.evrstats = w.readString() + ":" + w.conf.evrstats
+		infos.neutstats = w.readString() + ":" + w.conf.neutstats
 	} else {
-		fmt.Printf("What should the explorer be called on the stats page? (default = %s)\n", infos.evrstats)
-		infos.evrstats = w.readDefaultString(infos.evrstats) + ":" + w.conf.evrstats
+		fmt.Printf("What should the explorer be called on the stats page? (default = %s)\n", infos.neutstats)
+		infos.neutstats = w.readDefaultString(infos.neutstats) + ":" + w.conf.neutstats
 	}
 	// Try to deploy the explorer on the host
 	nocache := false

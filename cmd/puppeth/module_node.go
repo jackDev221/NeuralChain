@@ -41,7 +41,7 @@ ADD genesis.json /genesis.json
 RUN \
   echo 'gnc --cache 512 init /genesis.json' > gnc.sh && \{{if .Unlock}}
 	echo 'mkdir -p /root/.ethereum/keystore/ && cp /signer.json /root/.ethereum/keystore/' >> gnc.sh && \{{end}}
-	echo $'exec gnc --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --nat extip:{{.IP}} --maxpeers {{.Peers}} {{.LightFlag}} --evrstats \'{{.Evrstats}}\' {{if .Bootnodes}}--bootnodes {{.Bootnodes}}{{end}} {{if .Etherbase}}--miner.etherbase {{.Etherbase}} --mine --miner.threads 1{{end}} {{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --miner.gastarget {{.GasTarget}} --miner.gaslimit {{.GasLimit}} --miner.gasprice {{.GasPrice}}' >> gnc.sh
+	echo $'exec gnc --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --nat extip:{{.IP}} --maxpeers {{.Peers}} {{.LightFlag}} --neutstats \'{{.Neutstats}}\' {{if .Bootnodes}}--bootnodes {{.Bootnodes}}{{end}} {{if .Etherbase}}--miner.etherbase {{.Etherbase}} --mine --miner.threads 1{{end}} {{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --miner.gastarget {{.GasTarget}} --miner.gaslimit {{.GasLimit}} --miner.gasprice {{.GasPrice}}' >> gnc.sh
 
 ENTRYPOINT ["/bin/sh", "gnc.sh"]
 `
@@ -65,7 +65,7 @@ services:
       - PORT={{.Port}}/tcp
       - TOTAL_PEERS={{.TotalPeers}}
       - LIGHT_PEERS={{.LightPeers}}
-      - STATS_NAME={{.Evrstats}}
+      - STATS_NAME={{.Neutstats}}
       - MINER_NAME={{.Etherbase}}
       - GAS_TARGET={{.GasTarget}}
       - GAS_LIMIT={{.GasLimit}}
@@ -103,7 +103,7 @@ func deployNode(client *sshClient, network string, bootnodes []string, config *n
 		"Peers":     config.peersTotal,
 		"LightFlag": lightFlag,
 		"Bootnodes": strings.Join(bootnodes, ","),
-		"Evrstats":  config.evrstats,
+		"Neutstats":  config.neutstats,
 		"Etherbase": config.etherbase,
 		"GasTarget": uint64(1000000 * config.gasTarget),
 		"GasLimit":  uint64(1000000 * config.gasLimit),
@@ -122,7 +122,7 @@ func deployNode(client *sshClient, network string, bootnodes []string, config *n
 		"TotalPeers": config.peersTotal,
 		"Light":      config.peersLight > 0,
 		"LightPeers": config.peersLight,
-		"Evrstats":   config.evrstats[:strings.Index(config.evrstats, ":")],
+		"Neutstats":   config.neutstats[:strings.Index(config.neutstats, ":")],
 		"Etherbase":  config.etherbase,
 		"GasTarget":  config.gasTarget,
 		"GasLimit":   config.gasLimit,
@@ -155,7 +155,7 @@ type nodeInfos struct {
 	network    int64
 	datadir    string
 	ethashdir  string
-	evrstats   string
+	neutstats   string
 	port       int
 	enode      string
 	peersTotal int
@@ -176,7 +176,7 @@ func (info *nodeInfos) Report() map[string]string {
 		"Listener port":            strconv.Itoa(info.port),
 		"Peer count (all total)":   strconv.Itoa(info.peersTotal),
 		"Peer count (light nodes)": strconv.Itoa(info.peersLight),
-		"Evrstats username":        info.evrstats,
+		"Neutstats username":        info.neutstats,
 	}
 	if info.gasTarget > 0 {
 		// Miner or signer node
@@ -258,7 +258,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 		port:       port,
 		peersTotal: totalPeers,
 		peersLight: lightPeers,
-		evrstats:   infos.envvars["STATS_NAME"],
+		neutstats:   infos.envvars["STATS_NAME"],
 		etherbase:  infos.envvars["MINER_NAME"],
 		keyJSON:    keyJSON,
 		keyPass:    keyPass,

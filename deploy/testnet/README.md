@@ -137,7 +137,7 @@ The bellow example explains how to deploy 3 nodes manually.
     | Welcome to puppeth, your NeuralChain private network manager |
     |                                                           |
     | This tool lets you create a new NeuralChain network down to  |
-    | the genesis block, bootnodes, miners and evrstats servers |
+    | the genesis block, bootnodes, miners and neutstats servers |
     | without the hassle that it would normally entail.         |
     |                                                           |
     | Puppeth uses SSH to dial in to remote servers, and builds |

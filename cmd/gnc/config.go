@@ -70,7 +70,7 @@ var tomlSettings = toml.Config{
 	},
 }
 
-type evrstatsConfig struct {
+type neutstatsConfig struct {
 	URL string `toml:",omitempty"`
 }
 
@@ -78,7 +78,7 @@ type gevConfig struct {
 	Evr       neut.Config
 	Shh       whisper.Config
 	Node      node.Config
-	Evrstats  evrstatsConfig
+	Neutstats  neutstatsConfig
 	Dashboard dashboard.Config
 }
 
@@ -132,7 +132,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gevConfig) {
 	}
 	utils.SetEvrConfig(ctx, stack, &cfg.Evr)
 	if ctx.GlobalIsSet(utils.EvrStatsURLFlag.Name) {
-		cfg.Evrstats.URL = ctx.GlobalString(utils.EvrStatsURLFlag.Name)
+		cfg.Neutstats.URL = ctx.GlobalString(utils.EvrStatsURLFlag.Name)
 	}
 
 	utils.SetShhConfig(ctx, stack, &cfg.Shh)
@@ -182,8 +182,8 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 	}
 
 	// Add the NeuralChain Stats daemon if requested.
-	if cfg.Evrstats.URL != "" {
-		utils.RegisterEvrStatsService(stack, cfg.Evrstats.URL)
+	if cfg.Neutstats.URL != "" {
+		utils.RegisterEvrStatsService(stack, cfg.Neutstats.URL)
 	}
 	return stack
 }

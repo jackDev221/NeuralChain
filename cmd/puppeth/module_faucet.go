@@ -41,7 +41,7 @@ ADD account.pass /account.pass
 EXPOSE 8080 30303 30303/udp
 
 ENTRYPOINT [ \
-	"faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--evrstats", "{{.Evrstats}}", "--ethport", "{{.EthPort}}",     \
+	"faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--neutstats", "{{.Neutstats}}", "--ethport", "{{.EthPort}}",     \
 	"--faucet.name", "{{.FaucetName}}", "--faucet.amount", "{{.FaucetAmount}}", "--faucet.minutes", "{{.FaucetMinutes}}", "--faucet.tiers", "{{.FaucetTiers}}",             \
 	"--account.json", "/account.json", "--account.pass", "/account.pass"                                                                                                    \
 	{{if .CaptchaToken}}, "--captcha.token", "{{.CaptchaToken}}", "--captcha.secret", "{{.CaptchaSecret}}"{{end}}{{if .NoAuth}}, "--noauth"{{end}}                          \
@@ -93,7 +93,7 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 	template.Must(template.New("").Parse(faucetDockerfile)).Execute(dockerfile, map[string]interface{}{
 		"NetworkID":     config.node.network,
 		"Bootnodes":     strings.Join(bootnodes, ","),
-		"Evrstats":      config.node.evrstats,
+		"Neutstats":      config.node.neutstats,
 		"EthPort":       config.node.port,
 		"CaptchaToken":  config.captchaToken,
 		"CaptchaSecret": config.captchaSecret,
@@ -112,7 +112,7 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 		"VHost":         config.host,
 		"ApiPort":       config.port,
 		"EthPort":       config.node.port,
-		"EvrName":       config.node.evrstats[:strings.Index(config.node.evrstats, ":")],
+		"EvrName":       config.node.neutstats[:strings.Index(config.node.neutstats, ":")],
 		"CaptchaToken":  config.captchaToken,
 		"CaptchaSecret": config.captchaSecret,
 		"FaucetAmount":  config.amount,
@@ -164,7 +164,7 @@ func (info *faucetInfos) Report() map[string]string {
 		"Funding cooldown (base tier)": fmt.Sprintf("%d mins", info.minutes),
 		"Funding tiers":                strconv.Itoa(info.tiers),
 		"Captha protection":            fmt.Sprintf("%v", info.captchaToken != ""),
-		"Evrstats username":            info.node.evrstats,
+		"Neutstats username":            info.node.neutstats,
 	}
 	if info.noauth {
 		report["Debug mode (no auth)"] = "enabled"
@@ -230,7 +230,7 @@ func checkFaucet(client *sshClient, network string) (*faucetInfos, error) {
 		node: &nodeInfos{
 			datadir:  infos.volumes["/root/.faucet"],
 			port:     infos.portmap[infos.envvars["NEUT_PORT"]+"/tcp"],
-			evrstats: infos.envvars["NEUT_NAME"],
+			neutstats: infos.envvars["NEUT_NAME"],
 			keyJSON:  keyJSON,
 			keyPass:  keyPass,
 		},

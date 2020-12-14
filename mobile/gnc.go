@@ -25,7 +25,7 @@ import (
 	"path/filepath"
 
 	"github.com/lvbin2012/NeuralChain/core"
-	"github.com/lvbin2012/NeuralChain/evrstats"
+	"github.com/lvbin2012/NeuralChain/neutstats"
 	"github.com/lvbin2012/NeuralChain/internal/debug"
 	"github.com/lvbin2012/NeuralChain/les"
 	"github.com/lvbin2012/NeuralChain/neut"
@@ -175,7 +175,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 				var lesServ *les.LightNeuralChain
 				ctx.Service(&lesServ)
 
-				return evrstats.New(config.NeuralChainNetStats, nil, lesServ)
+				return neutstats.New(config.NeuralChainNetStats, nil, lesServ)
 			}); err != nil {
 				return nil, fmt.Errorf("netstats init: %v", err)
 			}

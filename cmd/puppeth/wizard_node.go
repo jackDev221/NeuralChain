@@ -33,8 +33,8 @@ func (w *wizard) deployNode(boot bool) {
 		log.Error("No genesis block configured")
 		return
 	}
-	if w.conf.evrstats == "" {
-		log.Error("No evrstats server configured")
+	if w.conf.neutstats == "" {
+		log.Error("No neutstats server configured")
 		return
 	}
 	// Select the server to interact with
@@ -94,12 +94,12 @@ func (w *wizard) deployNode(boot bool) {
 
 	// Set a proper name to report on the stats page
 	fmt.Println()
-	if infos.evrstats == "" {
+	if infos.neutstats == "" {
 		fmt.Printf("What should the node be called on the stats page?\n")
-		infos.evrstats = w.readString() + ":" + w.conf.evrstats
+		infos.neutstats = w.readString() + ":" + w.conf.neutstats
 	} else {
-		fmt.Printf("What should the node be called on the stats page? (default = %s)\n", infos.evrstats)
-		infos.evrstats = w.readDefaultString(infos.evrstats) + ":" + w.conf.evrstats
+		fmt.Printf("What should the node be called on the stats page? (default = %s)\n", infos.neutstats)
+		infos.neutstats = w.readDefaultString(infos.neutstats) + ":" + w.conf.neutstats
 	}
 	// If the node is a miner/signer, load up needed credentials
 	if !boot {

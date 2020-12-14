@@ -46,7 +46,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/core"
 	"github.com/lvbin2012/NeuralChain/core/types"
-	"github.com/lvbin2012/NeuralChain/evrstats"
+	"github.com/lvbin2012/NeuralChain/neutstats"
 	"github.com/lvbin2012/NeuralChain/les"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/neut"
@@ -67,7 +67,7 @@ var (
 	ethPortFlag = flag.Int("ethport", 30303, "Listener port for the devp2p connection")
 	bootFlag    = flag.String("bootnodes", "", "Comma separated bootnode enode URLs to seed with")
 	netFlag     = flag.Uint64("network", 0, "Network ID to use for the NeuralChain protocol")
-	statsFlag   = flag.String("evrstats", "", "Evrstats network monitoring auth string")
+	statsFlag   = flag.String("neutstats", "", "Neutstats network monitoring auth string")
 
 	netnameFlag = flag.String("faucet.name", "", "Network name to assign to the faucet")
 	payoutFlag  = flag.Int("faucet.amount", 1, "Number of Ethers to pay out per user request")
@@ -245,12 +245,12 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}); err != nil {
 		return nil, err
 	}
-	// Assemble the evrstats monitoring and reporting service'
+	// Assemble the neutstats monitoring and reporting service'
 	if stats != "" {
 		if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 			var serv *les.LightNeuralChain
 			ctx.Service(&serv)
-			return evrstats.New(stats, nil, serv)
+			return neutstats.New(stats, nil, serv)
 		}); err != nil {
 			return nil, err
 		}

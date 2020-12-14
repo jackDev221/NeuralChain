@@ -31,6 +31,7 @@ import (
 
 	"github.com/urfave/cli"
 
+	pcsclite "github.com/gballet/go-libpcsclite"
 	"github.com/lvbin2012/NeuralChain/accounts"
 	"github.com/lvbin2012/NeuralChain/accounts/keystore"
 	"github.com/lvbin2012/NeuralChain/common"
@@ -44,7 +45,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/vm"
 	"github.com/lvbin2012/NeuralChain/crypto"
 	"github.com/lvbin2012/NeuralChain/dashboard"
-	"github.com/lvbin2012/NeuralChain/evrstats"
+	"github.com/lvbin2012/NeuralChain/neutstats"
 	"github.com/lvbin2012/NeuralChain/les"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/metrics"
@@ -62,7 +63,6 @@ import (
 	"github.com/lvbin2012/NeuralChain/p2p/netutil"
 	"github.com/lvbin2012/NeuralChain/params"
 	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
-	pcsclite "github.com/gballet/go-libpcsclite"
 )
 
 var (
@@ -451,8 +451,8 @@ var (
 	}
 	// Logging and debug settings
 	EvrStatsURLFlag = cli.StringFlag{
-		Name:  "evrstats",
-		Usage: "Reporting URL of a evrstats service (nodename:secret@host:port)",
+		Name:  "neutstats",
+		Usage: "Reporting URL of a neutstats service (nodename:secret@host:port)",
 	}
 	FakePoWFlag = cli.BoolFlag{
 		Name:  "fakepow",
@@ -1660,7 +1660,7 @@ func RegisterEvrStatsService(stack *node.Node, url string) {
 		var lesServ *les.LightNeuralChain
 		ctx.Service(&lesServ)
 
-		return evrstats.New(url, ethServ, lesServ)
+		return neutstats.New(url, ethServ, lesServ)
 	}); err != nil {
 		Fatalf("Failed to register the NeuralChain Stats service: %v", err)
 	}
