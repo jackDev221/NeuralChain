@@ -43,11 +43,11 @@ const (
 	MaxProvider = 16
 
 	// AddressPrefix is the version of NeuralChain address
-	AddressPrefix         byte = 53
-	EvrynodeAddressLength      = 34
+	AddressPrefix     byte = 53
+	NeutAddressLength      = 34
 
-	// EvryEmptyAddress is the address of 0
-	EvryEmptyAddress = "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf"
+	// NeutEmptyAddress is the address of 0
+	NeutEmptyAddress = "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf"
 )
 
 var (
@@ -56,7 +56,7 @@ var (
 	addressT = reflect.TypeOf(Address{})
 
 	ErrPrefixMismatch       = errors.New("addressPrefix mismatch")
-	ErrWrongLengthOfAddress = errors.New("the length of evrynode address should be 34")
+	ErrWrongLengthOfAddress = errors.New("the length of neut address should be 34")
 )
 
 // Hash represents the 32 byte Keccak256 hash of arbitrary data.
@@ -412,7 +412,7 @@ func (ma *MixedcaseAddress) Original() string {
 
 // NeuralChain address string changes to address(byte array which length is 20) with addressPrefix check
 func NeutAddressStringToAddressCheck(addressStr string) (addr Address, err error) {
-	if len(addressStr) != EvrynodeAddressLength {
+	if len(addressStr) != NeutAddressLength {
 		return addr, ErrWrongLengthOfAddress
 	}
 	result, version, err := base58.CheckDecode(addressStr)

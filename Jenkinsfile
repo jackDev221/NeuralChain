@@ -12,7 +12,7 @@ pipeline {
         appName="NeuralChain"
         githubUsername="NeuralChainLabs"
 
-        CONTAINER_IMAGE="registry.gitlab.com/evry/${appName}"
+        CONTAINER_IMAGE="registry.gitlab.com/neut/${appName}"
         status_failure="{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"${BUILD_URL}\"}"
         status_success="{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"${BUILD_URL}\"}"
     }
@@ -97,7 +97,7 @@ pipeline {
     }
     post {
         failure {
-            withCredentials([string(credentialsId: 'evry-github-token-pipeline-status', variable: 'githubToken')]) {
+            withCredentials([string(credentialsId: 'neut-github-token-pipeline-status', variable: 'githubToken')]) {
                 sh '''
                     curl \"https://api.github.com/repos/${githubUsername}/${appName}/statuses/${GIT_COMMIT}?access_token=${githubToken}\" \
                     -H \"Content-Type: application/json\" \
@@ -107,7 +107,7 @@ pipeline {
                 }
         }
         success {
-            withCredentials([string(credentialsId: 'evry-github-token-pipeline-status', variable: 'githubToken')]) {
+            withCredentials([string(credentialsId: 'neut-github-token-pipeline-status', variable: 'githubToken')]) {
                 sh '''
                     curl \"https://api.github.com/repos/${githubUsername}/${appName}/statuses/${GIT_COMMIT}?access_token=${githubToken}\" \
                     -H \"Content-Type: application/json\" \

@@ -26,21 +26,21 @@ import (
 	"github.com/lvbin2012/NeuralChain/internal/cmdtest"
 )
 
-type testEvrkey struct {
+type testNeutkey struct {
 	*cmdtest.TestCmd
 }
 
-// spawns evrkey with the given command line args.
-func runEvrkey(t *testing.T, args ...string) *testEvrkey {
-	tt := new(testEvrkey)
+// spawns neutkey with the given command line args.
+func runNeutkey(t *testing.T, args ...string) *testNeutkey {
+	tt := new(testNeutkey)
 	tt.TestCmd = cmdtest.NewTestCmd(t, tt)
-	tt.Run("evrkey-test", args...)
+	tt.Run("neutkey-test", args...)
 	return tt
 }
 
 func TestMain(m *testing.M) {
-	// Run the app if we've been exec'd as "evrkey-test" in runEvrkey.
-	reexec.Register("evrkey-test", func() {
+	// Run the app if we've been exec'd as "neutkey-test" in runNeutkey.
+	reexec.Register("neutkey-test", func() {
 		if err := app.Run(os.Args); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)

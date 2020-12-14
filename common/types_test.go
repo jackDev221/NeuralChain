@@ -409,9 +409,9 @@ func TestAddressToNeutAddressString(t *testing.T) {
 	}
 }
 
-func TestEvryAddressStringToAddress(t *testing.T) {
+func TestNeutAddress(t *testing.T) {
 	var tests = []struct {
-		EvryAddrssStr string
+		NeutAddrssStr string
 		Expect        *big.Int
 		WantFail      bool
 	}{
@@ -421,7 +421,7 @@ func TestEvryAddressStringToAddress(t *testing.T) {
 		{"EH9uVaqWRxHuzJbroqzX18yxmeWBLHhJUd",  new(big.Int).SetUint64(26), true},
 	}
 	for i, test := range tests {
-		addr, err := NeutAddressStringToAddressCheck(test.EvryAddrssStr)
+		addr, err := NeutAddressStringToAddressCheck(test.NeutAddrssStr)
 		if err != nil && !test.WantFail {
 			t.Errorf("test #%d: unexpected, error: %v", i, err)
 		}

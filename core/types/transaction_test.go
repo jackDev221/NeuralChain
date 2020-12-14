@@ -69,13 +69,13 @@ func TestTransactionCompatibility(t *testing.T) {
 	signedEthereHashString := "0x4aba6ccfa807932610b108dcb0f0c5491781bfb0d408e9909a967c6793a9c9ed"
 
 	to, _ := common.NeutAddressStringToAddressCheck("EJ1Sm7ZPs136zds7axDPJ2LCGQtSi8B2AN")
-	evrTx := NewTransaction(0, to, big.NewInt(1000), 0, big.NewInt(100), common.FromHex("123"))
+	neutTx := NewTransaction(0, to, big.NewInt(1000), 0, big.NewInt(100), common.FromHex("123"))
 	//unsigned version should be hashed to the same hash
-	assert.Equal(t, evrTx.Hash().String(), unsignedEtherHashString)
+	assert.Equal(t, neutTx.Hash().String(), unsignedEtherHashString)
 
-	evrSignedTx := signTx(t, evrTx)
+	neutSignedTx := signTx(t, neutTx)
 	//signed Tx should be hashed to the same hash
-	assert.Equal(t, evrSignedTx.Hash().String(), signedEthereHashString)
+	assert.Equal(t, neutSignedTx.Hash().String(), signedEthereHashString)
 }
 
 func TestTransactionSigHash(t *testing.T) {

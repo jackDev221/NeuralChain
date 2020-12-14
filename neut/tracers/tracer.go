@@ -332,7 +332,7 @@ func New(code string) (*Tracer, error) {
 		return 1
 	})
 
-	tracer.vm.PushGlobalGoFunction("toEvrAddr", func(ctx *duktape.Context) int {
+	tracer.vm.PushGlobalGoFunction("toNeutAddr", func(ctx *duktape.Context) int {
 		addr := common.BytesToAddress(popSlice(ctx))
 		ctx.PushString(common.AddressToNeutAddressString(addr))
 		return 1

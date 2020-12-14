@@ -45,7 +45,7 @@
 			// Assemble the internal call report and store for completion
 			var call = {
 				type:    op,
-				from:    toEvrAddr(log.contract.getAddress()),
+				from:    toNeutAddr(log.contract.getAddress()),
 				input:   toHex(log.memory.slice(inOff, inEnd)),
 				gasIn:   log.getGas(),
 				gasCost: log.getCost(),
@@ -79,8 +79,8 @@
 			// Assemble the internal call report and store for completion
 			var call = {
 				type:    op,
-				from:    toEvrAddr(log.contract.getAddress()),
-				to:      toEvrAddr(to),
+				from:    toNeutAddr(log.contract.getAddress()),
+				to:      toNeutAddr(to),
 				input:   toHex(log.memory.slice(inOff, inEnd)),
 				gasIn:   log.getGas(),
 				gasCost: log.getCost(),
@@ -192,8 +192,8 @@
 	result: function(ctx, db) {
 		var result = {
 			type:    ctx.type,
-			from:    toEvrAddr(ctx.from),
-			to:      toEvrAddr(ctx.to),
+			from:    toNeutAddr(ctx.from),
+			to:      toNeutAddr(ctx.to),
 			value:   '0x' + ctx.value.toString(16),
 			gas:     '0x' + bigInt(ctx.gas).toString(16),
 			gasUsed: '0x' + bigInt(ctx.gasUsed).toString(16),

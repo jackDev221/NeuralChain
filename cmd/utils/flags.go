@@ -45,7 +45,6 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/vm"
 	"github.com/lvbin2012/NeuralChain/crypto"
 	"github.com/lvbin2012/NeuralChain/dashboard"
-	"github.com/lvbin2012/NeuralChain/neutstats"
 	"github.com/lvbin2012/NeuralChain/les"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/metrics"
@@ -55,6 +54,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/neut/downloader"
 	"github.com/lvbin2012/NeuralChain/neut/gasprice"
 	"github.com/lvbin2012/NeuralChain/neutdb"
+	"github.com/lvbin2012/NeuralChain/neutstats"
 	"github.com/lvbin2012/NeuralChain/node"
 	"github.com/lvbin2012/NeuralChain/p2p"
 	"github.com/lvbin2012/NeuralChain/p2p/discv5"
@@ -450,7 +450,7 @@ var (
 		Usage: "Sets a cap on gas that can be used in Gevcall/estimateGas",
 	}
 	// Logging and debug settings
-	EvrStatsURLFlag = cli.StringFlag{
+	NeutStatsURLFlag = cli.StringFlag{
 		Name:  "neutstats",
 		Usage: "Reporting URL of a neutstats service (nodename:secret@host:port)",
 	}
@@ -1479,8 +1479,8 @@ func SetShhConfig(ctx *cli.Context, stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// SetEvrConfig applies neut-related command line flags to the config.
-func SetEvrConfig(ctx *cli.Context, stack *node.Node, cfg *neut.Config) {
+// SetNeutConfig applies neut-related command line flags to the config.
+func SetNeutConfig(ctx *cli.Context, stack *node.Node, cfg *neut.Config) {
 	// Avoid conflicting network flags
 	checkExclusive(ctx, DeveloperFlag, TestnetFlag, RinkebyFlag, GoerliFlag)
 	checkExclusive(ctx, LightServFlag, SyncModeFlag, "light")
@@ -1604,8 +1604,8 @@ func SetDashboardConfig(ctx *cli.Context, cfg *dashboard.Config) {
 	cfg.Refresh = ctx.GlobalDuration(DashboardRefreshFlag.Name)
 }
 
-// RegisterEvrService adds an NeuralChain client to the stack.
-func RegisterEvrService(stack *node.Node, cfg *neut.Config) {
+// RegisterNeutService adds an NeuralChain client to the stack.
+func RegisterNeutService(stack *node.Node, cfg *neut.Config) {
 	var err error
 	if cfg.SyncMode == downloader.LightSync {
 		err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
@@ -1649,9 +1649,9 @@ func RegisterShhService(stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// RegisterEvrStatsService configures the NeuralChain Stats daemon and adds it to
+// RegisterNeutStatsService configures the NeuralChain Stats daemon and adds it to
 // the given node.
-func RegisterEvrStatsService(stack *node.Node, url string) {
+func RegisterNeutStatsService(stack *node.Node, url string) {
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		// Retrieve both neut and les services
 		var ethServ *neut.NeuralChain

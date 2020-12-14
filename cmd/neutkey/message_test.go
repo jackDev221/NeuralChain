@@ -24,7 +24,7 @@ import (
 )
 
 func TestMessageSignVerify(t *testing.T) {
-	tmpdir, err := ioutil.TempDir("", "evrkey-test")
+	tmpdir, err := ioutil.TempDir("", "neutkey-test")
 	if err != nil {
 		t.Fatal("Can't create temporary directory:", err)
 	}
@@ -34,7 +34,7 @@ func TestMessageSignVerify(t *testing.T) {
 	message := "test message"
 
 	// Create the key.
-	generate := runEvrkey(t, "generate", keyfile)
+	generate := runNeutkey(t, "generate", keyfile)
 	generate.Expect(`
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
@@ -45,7 +45,7 @@ Repeat passphrase: {{.InputLine "foobar"}}
 	generate.ExpectExit()
 
 	// Sign a message.
-	sign := runEvrkey(t, "signmessage", keyfile, message)
+	sign := runNeutkey(t, "signmessage", keyfile, message)
 	sign.Expect(`
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
@@ -55,7 +55,7 @@ Passphrase: {{.InputLine "foobar"}}
 	sign.ExpectExit()
 
 	// Verify the message.
-	verify := runEvrkey(t, "verifymessage", address, signature, message)
+	verify := runNeutkey(t, "verifymessage", address, signature, message)
 	_, matches = verify.ExpectRegexp(`
 Signature verification successful!
 Recovered public key: [0-9a-f]+

@@ -75,10 +75,10 @@ type neutstatsConfig struct {
 }
 
 type gevConfig struct {
-	Evr       neut.Config
+	Neut      neut.Config
 	Shh       whisper.Config
 	Node      node.Config
-	Neutstats  neutstatsConfig
+	Neutstats neutstatsConfig
 	Dashboard dashboard.Config
 }
 
@@ -110,7 +110,7 @@ func defaultNodeConfig() node.Config {
 func makeConfigNode(ctx *cli.Context) (*node.Node, gevConfig) {
 	// Load defaults.
 	cfg := gevConfig{
-		Evr:       neut.DefaultConfig,
+		Neut:      neut.DefaultConfig,
 		Shh:       whisper.DefaultConfig,
 		Node:      defaultNodeConfig(),
 		Dashboard: dashboard.DefaultConfig,
@@ -124,15 +124,15 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gevConfig) {
 	}
 
 	// Apply flags.
-	utils.SetULC(ctx, &cfg.Evr)
+	utils.SetULC(ctx, &cfg.Neut)
 	utils.SetNodeConfig(ctx, &cfg.Node)
 	stack, err := node.New(&cfg.Node)
 	if err != nil {
 		utils.Fatalf("Failed to create the protocol stack: %v", err)
 	}
-	utils.SetEvrConfig(ctx, stack, &cfg.Evr)
-	if ctx.GlobalIsSet(utils.EvrStatsURLFlag.Name) {
-		cfg.Neutstats.URL = ctx.GlobalString(utils.EvrStatsURLFlag.Name)
+	utils.SetNeutConfig(ctx, stack, &cfg.Neut)
+	if ctx.GlobalIsSet(utils.NeutStatsURLFlag.Name) {
+		cfg.Neutstats.URL = ctx.GlobalString(utils.NeutStatsURLFlag.Name)
 	}
 
 	utils.SetShhConfig(ctx, stack, &cfg.Shh)
@@ -153,7 +153,7 @@ func enableWhisper(ctx *cli.Context) bool {
 
 func makeFullNode(ctx *cli.Context) *node.Node {
 	stack, cfg := makeConfigNode(ctx)
-	utils.RegisterEvrService(stack, &cfg.Evr)
+	utils.RegisterNeutService(stack, &cfg.Neut)
 
 	if ctx.GlobalBool(utils.DashboardEnabledFlag.Name) {
 		utils.RegisterDashboardService(stack, &cfg.Dashboard, gitCommit)
@@ -183,7 +183,7 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 
 	// Add the NeuralChain Stats daemon if requested.
 	if cfg.Neutstats.URL != "" {
-		utils.RegisterEvrStatsService(stack, cfg.Neutstats.URL)
+		utils.RegisterNeutStatsService(stack, cfg.Neutstats.URL)
 	}
 	return stack
 }
@@ -193,8 +193,8 @@ func dumpConfig(ctx *cli.Context) error {
 	_, cfg := makeConfigNode(ctx)
 	comment := ""
 
-	if cfg.Evr.Genesis != nil {
-		cfg.Evr.Genesis = nil
+	if cfg.Neut.Genesis != nil {
+		cfg.Neut.Genesis = nil
 		comment += "# Note: this config doesn't contain the genesis block.\n\n"
 	}
 

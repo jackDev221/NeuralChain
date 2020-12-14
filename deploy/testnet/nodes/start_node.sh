@@ -31,7 +31,7 @@ if [[ $HAS_METRIC ]]; then
   ./gev --datadir ./data --identity "$NODE_ID" --verbosity 4 --tendermint.blockperiod 1 --syncmode full --networkid 15 --mine \
     --rpc --rpcaddr 0.0.0.0 --rpcvhosts "*" --rpcport 8545 --port 30303 \
     --miner.gaslimit 94000000 \
-    --rpcapi admin,db,eth,evr,debug,miner,net,shh,txpool,personal,web3,tendermint \
+    --rpcapi admin,db,eth,neut,debug,miner,net,shh,txpool,personal,web3,tendermint \
     --bootnodes "enode://$BOOTNODE_ID@$BOOTNODE_IP:30300" \
     --allow-insecure-unlock \
     --pprof --pprofaddr 0.0.0.0 --pprofport 6060 \
@@ -49,7 +49,7 @@ else
     --allow-insecure-unlock \
     --pprof --pprofaddr 0.0.0.0 --pprofport 6060 \
     --nodekeyhex "$NODEKEYHEX"\
-    --rpcapi admin,db,eth,evr,debug,miner,net,shh,txpool,personal,web3,tendermint 2>>./log/node.log &
+    --rpcapi admin,db,eth,neut,debug,miner,net,shh,txpool,personal,web3,tendermint 2>>./log/node.log &
 
   gev_pid=$!
   echo "- PID of node NODE_ID is $gev_pid"

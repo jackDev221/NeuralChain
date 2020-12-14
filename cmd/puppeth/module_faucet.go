@@ -57,14 +57,14 @@ services:
     image: {{.Network}}/faucet
     container_name: {{.Network}}_faucet_1
     ports:
-      - "{{.EvrPort}}:{{.EvrPort}}"
-      - "{{.EvrPort}}:{{.EvrPort}}/udp"{{if not .VHost}}
+      - "{{.NeutPort}}:{{.NeutPort}}"
+      - "{{.NeutPort}}:{{.NeutPort}}/udp"{{if not .VHost}}
       - "{{.ApiPort}}:8080"{{end}}
     volumes:
       - {{.Datadir}}:/root/.faucet
     environment:
-      - NEUT_PORT={{.EvrPort}}
-      - NEUT_NAME={{.EvrName}}
+      - NEUT_PORT={{.NeutPort}}
+      - NEUT_NAME={{.NeutName}}
       - FAUCET_AMOUNT={{.FaucetAmount}}
       - FAUCET_MINUTES={{.FaucetMinutes}}
       - FAUCET_TIERS={{.FaucetTiers}}
@@ -112,7 +112,7 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 		"VHost":         config.host,
 		"ApiPort":       config.port,
 		"EthPort":       config.node.port,
-		"EvrName":       config.node.neutstats[:strings.Index(config.node.neutstats, ":")],
+		"NeutName":       config.node.neutstats[:strings.Index(config.node.neutstats, ":")],
 		"CaptchaToken":  config.captchaToken,
 		"CaptchaSecret": config.captchaSecret,
 		"FaucetAmount":  config.amount,

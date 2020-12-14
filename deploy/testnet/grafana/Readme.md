@@ -26,4 +26,4 @@ $ docker-compose up -d geth-grafana geth-influxdb
   - database: geb
   - user: test
   - password: test
-- create dashboard via import method (use EvryNet-dashboard.json)
+- create dashboard via import method (use NeuralChainNet-dashboard.json)

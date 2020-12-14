@@ -55,10 +55,10 @@ func main() {
 		for index, addrStr := range oldAddressArray {
 			fmt.Printf("[%d] old address string:\"%s\"\n", index, addrStr)
 			neutAddressStr := addressToNeutAddress(addrStr)
-			if neutAddressStr == common.EvryEmptyAddress {
+			if neutAddressStr == common.NeutEmptyAddress {
 				fmt.Println("\tInput address string convert into empty address")
 			}
-			fmt.Printf("\tConvert to EvryAddress:\"%s\"\n", neutAddressStr)
+			fmt.Printf("\tConvert to NeutAddress.:\"%s\"\n", neutAddressStr)
 		}
 	}
 
@@ -100,15 +100,15 @@ func main() {
 			utils.Fatalf("Failed to write keyfile to %s: %v", outkeyfilepath, err)
 		}
 		fmt.Printf("old keyfile path:\"%s\", old address:\"%s\"\n", *inkeyfilepath, preAddrStr)
-		if neutAddressStr == common.EvryEmptyAddress {
+		if neutAddressStr == common.NeutEmptyAddress {
 			fmt.Println("\told address convert into empty address")
 		}
-		fmt.Printf("\tConvert to EvryAddress:\"%s\"\n", neutAddressStr)
-		fmt.Printf("\tEvryAddress keypath:\"%s\"\n", *outkeyfilepath)
+		fmt.Printf("\tConvert to NeutAddress.:\"%s\"\n", neutAddressStr)
+		fmt.Printf("\tNeutAddress. keypath:\"%s\"\n", *outkeyfilepath)
 	}
 }
 
-// addressToNeutAddress: convert old address to evrynet addresss
+// addressToNeutAddress: convert old address to neut addresss
 func addressToNeutAddress(addr string) string {
 	address := common.HexToAddress(addr)
 	return common.AddressToNeutAddressString(address)
