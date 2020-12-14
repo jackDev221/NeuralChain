@@ -25,7 +25,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/core/rawdb"
 	"github.com/lvbin2012/NeuralChain/core/types"
@@ -252,7 +252,7 @@ func New(checkpoint uint64, stateDb neutdb.Database, stateBloom *trie.SyncBloom,
 // In addition, during the state download phase of fast synchronisation the number
 // of processed and the total number of known states are also returned. Otherwise
 // these are zero.
-func (d *Downloader) Progress() evrynetNode.SyncProgress {
+func (d *Downloader) Progress() neuralChain.SyncProgress {
 	// Lock the current stats and return the progress
 	d.syncStatsLock.RLock()
 	defer d.syncStatsLock.RUnlock()
@@ -268,7 +268,7 @@ func (d *Downloader) Progress() evrynetNode.SyncProgress {
 	default:
 		log.Error("Unknown downloader chain/mode combo", "light", d.lightchain != nil, "full", d.blockchain != nil, "mode", d.mode)
 	}
-	return evrynetNode.SyncProgress{
+	return neuralChain.SyncProgress{
 		StartingBlock: d.syncStatsChainOrigin,
 		CurrentBlock:  current,
 		HighestBlock:  d.syncStatsChainHeight,

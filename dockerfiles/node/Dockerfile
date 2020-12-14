@@ -12,8 +12,8 @@ RUN mkdir /user && \
 COPY dockerfiles/node/token /root/.netrc
 RUN chmod 600 /root/.netrc
 
-COPY . /evrynet-node
-WORKDIR "/evrynet-node"
+COPY . /NeuralChain
+WORKDIR "/NeuralChain"
 RUN go build ./cmd/gev
 RUN pwd
 RUN ls
@@ -23,7 +23,7 @@ RUN apk add --no-cache ca-certificates bash perl
 
 RUN echo "------ Node ------"
 
-COPY --from=builder /evrynet-node/gev /
+COPY --from=builder /NeuralChain/gev /
 COPY ./deploy/devnet/node/genesis.json /
 COPY ./dockerfiles/node/entrypoint.sh /
 

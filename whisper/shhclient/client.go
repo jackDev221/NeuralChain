@@ -19,7 +19,7 @@ package shhclient
 import (
 	"context"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/rpc"
 	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
@@ -167,7 +167,7 @@ func (sc *Client) Post(ctx context.Context, message whisper.NewMessage) (string,
 // SubscribeMessages subscribes to messages that match the given criteria. This method
 // is only supported on bi-directional connections such as websockets and IPC.
 // NewMessageFilter uses polling and is supported over HTTP.
-func (sc *Client) SubscribeMessages(ctx context.Context, criteria whisper.Criteria, ch chan<- *whisper.Message) (evrynetNode.Subscription, error) {
+func (sc *Client) SubscribeMessages(ctx context.Context, criteria whisper.Criteria, ch chan<- *whisper.Message) (neuralChain.Subscription, error) {
 	return sc.c.ShhSubscribe(ctx, ch, "messages", criteria)
 }
 

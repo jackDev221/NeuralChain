@@ -37,13 +37,13 @@ import (
 	"github.com/lvbin2012/NeuralChain/cmd/utils"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/console"
-	"github.com/lvbin2012/NeuralChain/evrclient"
 	"github.com/lvbin2012/NeuralChain/internal/debug"
 	"github.com/lvbin2012/NeuralChain/log"
 	zapLog "github.com/lvbin2012/NeuralChain/log/zap"
 	"github.com/lvbin2012/NeuralChain/metrics"
 	"github.com/lvbin2012/NeuralChain/neut"
 	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 	"github.com/lvbin2012/NeuralChain/node"
 )
 
@@ -56,7 +56,7 @@ var (
 	gitCommit = ""
 	gitDate   = ""
 	// The app that holds all commands and flags.
-	app = utils.NewApp(gitCommit, gitDate, "the evrynet-node command line interface")
+	app = utils.NewApp(gitCommit, gitDate, "the NeuralChain command line interface")
 	// flags that configure the node
 	nodeFlags = []cli.Flag{
 		utils.IdentityFlag,
@@ -354,7 +354,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 		if err != nil {
 			utils.Fatalf("Failed to attach to self: %v", err)
 		}
-		stateReader := evrclient.NewClient(rpcClient)
+		stateReader := neutclient.NewClient(rpcClient)
 
 		// Open any wallets already attached
 		for _, wallet := range stack.AccountManager().Wallets() {

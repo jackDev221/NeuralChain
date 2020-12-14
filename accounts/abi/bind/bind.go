@@ -16,7 +16,7 @@
 
 // Package bind generates Evrynet contract Go bindings.
 //
-// Detailed usage document and tutorial available on the evrynet-node Wiki page:
+// Detailed usage document and tutorial available on the NeuralChain Wiki page:
 // https://github.com/lvbin2012/NeuralChain/wiki/Native-DApps:-Go-bindings-to-Evrynet-contracts
 package bind
 

@@ -7,7 +7,7 @@ import (
 	"math/big"
 	"strings"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/accounts/abi"
 	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
 	"github.com/lvbin2012/NeuralChain/common"
@@ -19,7 +19,7 @@ import (
 var (
 	_ = big.NewInt
 	_ = strings.NewReader
-	_ = evrynetNode.NotFound
+	_ = neuralChain.NotFound
 	_ = abi.U256
 	_ = bind.Bind
 	_ = common.Big1
@@ -946,7 +946,7 @@ type StakingContractsRegisteredIterator struct {
 	event    string              // Event name to use for unpacking event data
 
 	logs chan types.Log        // Log channel receiving the found contract events
-	sub  evrynetNode.Subscription // Subscription for errors, completion and termination
+	sub  neuralChain.Subscription // Subscription for errors, completion and termination
 	done bool                  // Whether the subscription completed delivering logs
 	fail error                 // Occurred error to stop iteration
 }
@@ -1069,7 +1069,7 @@ type StakingContractsResignedIterator struct {
 	event    string              // Event name to use for unpacking event data
 
 	logs chan types.Log        // Log channel receiving the found contract events
-	sub  evrynetNode.Subscription // Subscription for errors, completion and termination
+	sub  neuralChain.Subscription // Subscription for errors, completion and termination
 	done bool                  // Whether the subscription completed delivering logs
 	fail error                 // Occurred error to stop iteration
 }
@@ -1192,7 +1192,7 @@ type StakingContractsUnvotedIterator struct {
 	event    string              // Event name to use for unpacking event data
 
 	logs chan types.Log        // Log channel receiving the found contract events
-	sub  evrynetNode.Subscription // Subscription for errors, completion and termination
+	sub  neuralChain.Subscription // Subscription for errors, completion and termination
 	done bool                  // Whether the subscription completed delivering logs
 	fail error                 // Occurred error to stop iteration
 }
@@ -1316,7 +1316,7 @@ type StakingContractsVotedIterator struct {
 	event    string              // Event name to use for unpacking event data
 
 	logs chan types.Log        // Log channel receiving the found contract events
-	sub  evrynetNode.Subscription // Subscription for errors, completion and termination
+	sub  neuralChain.Subscription // Subscription for errors, completion and termination
 	done bool                  // Whether the subscription completed delivering logs
 	fail error                 // Occurred error to stop iteration
 }
@@ -1440,7 +1440,7 @@ type StakingContractsWithdrawIterator struct {
 	event    string              // Event name to use for unpacking event data
 
 	logs chan types.Log        // Log channel receiving the found contract events
-	sub  evrynetNode.Subscription // Subscription for errors, completion and termination
+	sub  neuralChain.Subscription // Subscription for errors, completion and termination
 	done bool                  // Whether the subscription completed delivering logs
 	fail error                 // Occurred error to stop iteration
 }

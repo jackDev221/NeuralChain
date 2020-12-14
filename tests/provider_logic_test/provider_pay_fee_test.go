@@ -12,7 +12,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/crypto"
 
-	"github.com/lvbin2012/NeuralChain/evrclient"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 )
 
 /* These tests are done on a chain with already setup account/ contracts.
@@ -36,11 +36,11 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignatureFromAccountW
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	nonce, err := evrClient.PendingNonceAt(context.Background(), senderAddr)
+	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 
 	// data to interact with a function of this contract
@@ -50,9 +50,9 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignatureFromAccountW
 	assert.NoError(t, err)
 	transaction, err = types.ProviderSignTx(transaction, signer, ppk)
 	assert.NoError(t, err)
-	require.NoError(t, evrClient.SendTransaction(context.Background(), transaction))
+	require.NoError(t, neutClient.SendTransaction(context.Background(), transaction))
 	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
-	assertTransactionSuccess(t, evrClient, transaction.Hash(), false, providerAddr)
+	assertTransactionSuccess(t, neutClient, transaction.Hash(), false, providerAddr)
 }
 
 // Interact with a payable function and sending some native token along with transaction
@@ -70,11 +70,11 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	nonce, err := evrClient.PendingNonceAt(context.Background(), senderAddr)
+	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 
 	// data to interact with a function of this contract
@@ -85,7 +85,7 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	transaction, err = types.ProviderSignTx(transaction, signer, ppk)
 	assert.NoError(t, err)
 
-	require.Error(t, evrClient.SendTransaction(context.Background(), transaction))
+	require.Error(t, neutClient.SendTransaction(context.Background(), transaction))
 }
 
 // Interact with a payable function and sending some native token along with transaction
@@ -102,11 +102,11 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	nonce, err := evrClient.PendingNonceAt(context.Background(), senderAddr)
+	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 
 	// data to interact with a function of this contract
@@ -117,9 +117,9 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	transaction, err = types.ProviderSignTx(transaction, signer, ppk)
 	assert.NoError(t, err)
 
-	require.NoError(t, evrClient.SendTransaction(context.Background(), transaction))
+	require.NoError(t, neutClient.SendTransaction(context.Background(), transaction))
 	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
-	assertTransactionSuccess(t, evrClient, transaction.Hash(), false, providerAddr)
+	assertTransactionSuccess(t, neutClient, transaction.Hash(), false, providerAddr)
 }
 
 // Interact with enterprise contract where provider has zero gas
@@ -136,11 +136,11 @@ func TestInteractEnterpriseSmartContractWithValidProviderSignatureWithoutGas(t *
 	ppk, err := crypto.HexToECDSA(providerWithoutGasPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	nonce, err := evrClient.PendingNonceAt(context.Background(), senderAddr)
+	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 
 	// data to interact with a function of this contract
@@ -151,5 +151,5 @@ func TestInteractEnterpriseSmartContractWithValidProviderSignatureWithoutGas(t *
 	transaction, err = types.ProviderSignTx(transaction, signer, ppk)
 	assert.NoError(t, err)
 
-	require.Error(t, evrClient.SendTransaction(context.Background(), transaction))
+	require.Error(t, neutClient.SendTransaction(context.Background(), transaction))
 }

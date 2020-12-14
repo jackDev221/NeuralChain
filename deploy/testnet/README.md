@@ -18,7 +18,7 @@ $ deploy/testnet/build_images_for_bootnode_node_explorer.sh
 After building successfully, you can check the images by command `docker images`. The result should be like this:
 ```
 REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
-kybernetwork/evrynet-node       develop-testnet     96b4226f096f        6 hours ago         85.2MB
+kybernetwork/NeuralChain       develop-testnet     96b4226f096f        6 hours ago         85.2MB
 kybernetwork/evrynet-bootnode   develop-testnet     1f48c40245c7        6 hours ago         35.1MB
 kybernetwork/evrynet-builder    develop-testnet     b5b539596145        6 hours ago         1.08GB
 ...
@@ -32,7 +32,7 @@ Use `docker push <REPOSITORY>:<TAG>` to push the image to Docker Hub.
 
 Ex:
 ```
-docker push kybernetwork/evrynet-node:develop-testnet
+docker push kybernetwork/NeuralChain:develop-testnet
 docker push kybernetwork/evrynet-bootnode:develop-testnet
 docker push kybernetwork/evrynet-explorer:develop-testnet
 ```
@@ -53,7 +53,7 @@ Run this interactive shell `deploy/testnet/deploy_bootnode_nodes.sh`, it will re
 
 Ex:
 ```shell script
-ubuntu@dev-evrynet-testnet:~/evrynet-node$ deploy/testnet/deploy_bootnode_nodes.sh
+ubuntu@dev-evrynet-testnet:~/NeuralChain$ deploy/testnet/deploy_bootnode_nodes.sh
 - Path of Sharing Volume: /home/ubuntu/testnet/nodes
 - Path of Genesis File: /home/ubuntu/testnet/nodes/genesis.json
 - RPC Cors Domain: *
@@ -67,7 +67,7 @@ To deploy the explorer run this interactive shell `deploy/testnet/deploy_explore
 
 Ex:
 ```shell script
-ubuntu@dev-evrynet-testnet:~/evrynet-node$ deploy/testnet/deploy_explorer.sh
+ubuntu@dev-evrynet-testnet:~/NeuralChain$ deploy/testnet/deploy_explorer.sh
 - Tag Version/Branch Name you want to deploy: develop
 - Environment of Image: testnet
 ```
@@ -295,9 +295,9 @@ To deploy using pre-written scripts:
 
 This command can use on Testnet server:
 ```shell script
-ubuntu@dev-evrynet-testnet:~/evrynet-node$ deploy/testnet/deploy_bootnode_nodes.sh
-- Path of Sharing Volume: /home/ubuntu/evrynet-node/nodes
-- Path of Genesis File: /home/ubuntu/evrynet-node/nodes/genesis.json
+ubuntu@dev-evrynet-testnet:~/NeuralChain$ deploy/testnet/deploy_bootnode_nodes.sh
+- Path of Sharing Volume: /home/ubuntu/NeuralChain/nodes
+- Path of Genesis File: /home/ubuntu/NeuralChain/nodes/genesis.json
 - RPC Cors Domain: *
 - Tag Version/Branch Name you want to deploy: develop
 - Environment of Image: testnet

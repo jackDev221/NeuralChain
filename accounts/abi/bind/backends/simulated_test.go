@@ -21,7 +21,7 @@ import (
 	"math/big"
 	"testing"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/accounts/abi/bind"
 	"github.com/lvbin2012/NeuralChain/accounts/abi/bind/backends"
 	"github.com/lvbin2012/NeuralChain/common"
@@ -46,8 +46,8 @@ func TestSimulatedBackend(t *testing.T) {
 	if isPending {
 		t.Fatal("transaction should not be pending")
 	}
-	if err != evrynetNode.NotFound {
-		t.Fatalf("err should be `evrynetNode.NotFound` but received %v", err)
+	if err != neuralChain.NotFound {
+		t.Fatalf("err should be `neuralChain.NotFound` but received %v", err)
 	}
 
 	// generate a transaction and confirm you can retrieve it

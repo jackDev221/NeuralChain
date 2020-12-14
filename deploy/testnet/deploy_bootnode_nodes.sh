@@ -19,7 +19,7 @@ BASEDIR=$(dirname "$0")
 BOOTNODE_REPOSITORY="kybernetwork/evrynet-bootnode"
 BOOTNODE_TAG_ENV="$BOOTNODE_REPOSITORY:$newVersion-$env"
 
-NODE_REPOSITORY="kybernetwork/evrynet-node"
+NODE_REPOSITORY="kybernetwork/NeuralChain"
 NODE_TAG_ENV="$NODE_REPOSITORY:$newVersion-$env"
 
 echo -e "\n=> The image $BOOTNODE_TAG_ENV will be used to deploy Bootnode!"

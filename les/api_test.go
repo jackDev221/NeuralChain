@@ -512,15 +512,15 @@ func newLesServerService(ctx *adapters.ServiceContext) (node.Service, error) {
 	config.SyncMode = downloader.FullSync
 	config.LightServ = testServerCapacity
 	config.LightPeers = testMaxClients
-	evrynetNode, err := neut.New(ctx.NodeContext, &config)
+	neuralChain, err := neut.New(ctx.NodeContext, &config)
 	if err != nil {
 		return nil, err
 	}
 
-	server, err := NewLesServer(evrynetNode, &config)
+	server, err := NewLesServer(neuralChain, &config)
 	if err != nil {
 		return nil, err
 	}
-	evrynetNode.AddLesServer(server)
-	return evrynetNode, nil
+	neuralChain.AddLesServer(server)
+	return neuralChain, nil
 }

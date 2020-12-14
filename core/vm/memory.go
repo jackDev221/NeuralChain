@@ -23,7 +23,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common/math"
 )
 
-// Memory implements a simple memory model for the evrynetNode virtual machine.
+// Memory implements a simple memory model for the neuralChain virtual machine.
 type Memory struct {
 	store       []byte
 	lastGasCost uint64

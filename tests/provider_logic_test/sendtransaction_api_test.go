@@ -7,10 +7,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
-	"github.com/lvbin2012/NeuralChain/evrclient"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 )
 
 //TestSendTxCreateContractWithProviderAndOwner test send tx to create a contract with provider attached.
@@ -24,14 +24,14 @@ func TestSendTxCreateContractWithProviderAndOwner(t *testing.T) {
 	assert.NoError(t, err)
 	data := hexutil.Bytes(payLoadBytes)
 
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 	gPrice := hexutil.Big(*big.NewInt(gasPrice.Int64()))
 	value := hexutil.Big(*big.NewInt(0))
 	gas := hexutil.Uint64(testGasLimit)
-	args := evrynetNode.SendTxArgs{
+	args := neuralChain.SendTxArgs{
 		From:     sender,
 		To:       nil,
 		GasPrice: &gPrice,
@@ -44,15 +44,15 @@ func TestSendTxCreateContractWithProviderAndOwner(t *testing.T) {
 	}
 
 	emptyHash := common.Hash{}
-	hash, err := evrClient.SendTx(context.Background(), args)
+	hash, err := neutClient.SendTx(context.Background(), args)
 	assert.NoError(t, err)
 	assert.NotEqual(t, emptyHash, hash)
 	if hash != emptyHash {
-		tx, _, err := evrClient.TransactionByHash(context.Background(), hash)
+		tx, _, err := neutClient.TransactionByHash(context.Background(), hash)
 		assert.Equal(t, args.Provider, tx.Provider())
 		assert.Equal(t, args.Owner, tx.Owner())
 		assert.NoError(t, err)
-		assertTransactionSuccess(t, evrClient, hash, false, sender)
+		assertTransactionSuccess(t, neutClient, hash, false, sender)
 	}
 }
 
@@ -66,12 +66,12 @@ func TestSendTxCreateContractNormal(t *testing.T) {
 	assert.NoError(t, err)
 	data := hexutil.Bytes(payLoadBytes)
 
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
 	gPrice := hexutil.Big(*big.NewInt(testGasPrice))
 	gas := hexutil.Uint64(testGasLimit)
 	value := hexutil.Big(*big.NewInt(0))
-	args := evrynetNode.SendTxArgs{
+	args := neuralChain.SendTxArgs{
 		From: sender,
 		//To:       &sender,
 		GasPrice: &gPrice,
@@ -82,10 +82,10 @@ func TestSendTxCreateContractNormal(t *testing.T) {
 	}
 
 	emptyHash := common.Hash{}
-	hash, err := evrClient.SendTx(context.Background(), args)
+	hash, err := neutClient.SendTx(context.Background(), args)
 	assert.NoError(t, err)
 	assert.NotEqual(t, emptyHash, hash)
-	assertTransactionSuccess(t, evrClient, hash, true, sender)
+	assertTransactionSuccess(t, neutClient, hash, true, sender)
 }
 
 //TestSendTxNormal test send normal tx without a provider and not create a contract.
@@ -96,14 +96,14 @@ func TestSendTxNormal(t *testing.T) {
 	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
 	data := hexutil.Bytes(payload)
 
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 	gPrice := hexutil.Big(*big.NewInt(gasPrice.Int64()))
 	gas := hexutil.Uint64(1000000)
 	value := hexutil.Big(*big.NewInt(0))
-	args := evrynetNode.SendTxArgs{
+	args := neuralChain.SendTxArgs{
 		From:     sender,
 		To:       &sender,
 		GasPrice: &gPrice,
@@ -114,10 +114,10 @@ func TestSendTxNormal(t *testing.T) {
 	}
 
 	emptyHash := common.Hash{}
-	hash, err := evrClient.SendTx(context.Background(), args)
+	hash, err := neutClient.SendTx(context.Background(), args)
 	assert.NoError(t, err)
 	assert.NotEqual(t, emptyHash, hash)
 	if hash != emptyHash {
-		assertTransactionSuccess(t, evrClient, hash, false, sender)
+		assertTransactionSuccess(t, neutClient, hash, false, sender)
 	}
 }

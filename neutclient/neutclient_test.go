@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-package evrclient
+package neutclient
 
 import (
 	"context"
@@ -27,7 +27,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/consensus/ethash"
@@ -40,19 +40,19 @@ import (
 	"github.com/lvbin2012/NeuralChain/params"
 )
 
-// Verify that Client implements the evrynetNode interfaces.
+// Verify that Client implements the neuralChain interfaces.
 var (
-	_ = evrynetNode.ChainReader(&Client{})
-	_ = evrynetNode.TransactionReader(&Client{})
-	_ = evrynetNode.ChainStateReader(&Client{})
-	_ = evrynetNode.ChainSyncReader(&Client{})
-	_ = evrynetNode.ContractCaller(&Client{})
-	_ = evrynetNode.GasEstimator(&Client{})
-	_ = evrynetNode.GasPricer(&Client{})
-	_ = evrynetNode.LogFilterer(&Client{})
-	_ = evrynetNode.PendingStateReader(&Client{})
-	// _ = evrynetNode.PendingStateEventer(&Client{})
-	_ = evrynetNode.PendingContractCaller(&Client{})
+	_ = neuralChain.ChainReader(&Client{})
+	_ = neuralChain.TransactionReader(&Client{})
+	_ = neuralChain.ChainStateReader(&Client{})
+	_ = neuralChain.ChainSyncReader(&Client{})
+	_ = neuralChain.ContractCaller(&Client{})
+	_ = neuralChain.GasEstimator(&Client{})
+	_ = neuralChain.GasPricer(&Client{})
+	_ = neuralChain.LogFilterer(&Client{})
+	_ = neuralChain.PendingStateReader(&Client{})
+	// _ = neuralChain.PendingStateEventer(&Client{})
+	_ = neuralChain.PendingContractCaller(&Client{})
 )
 
 func TestToFilterArg(t *testing.T) {
@@ -68,13 +68,13 @@ func TestToFilterArg(t *testing.T) {
 
 	for _, testCase := range []struct {
 		name   string
-		input  evrynetNode.FilterQuery
+		input  neuralChain.FilterQuery
 		output interface{}
 		err    error
 	}{
 		{
 			"without BlockHash",
-			evrynetNode.FilterQuery{
+			neuralChain.FilterQuery{
 				Addresses: addresses,
 				FromBlock: big.NewInt(1),
 				ToBlock:   big.NewInt(2),
@@ -90,7 +90,7 @@ func TestToFilterArg(t *testing.T) {
 		},
 		{
 			"with nil fromBlock and nil toBlock",
-			evrynetNode.FilterQuery{
+			neuralChain.FilterQuery{
 				Addresses: addresses,
 				Topics:    [][]common.Hash{},
 			},
@@ -104,7 +104,7 @@ func TestToFilterArg(t *testing.T) {
 		},
 		{
 			"with blockhash",
-			evrynetNode.FilterQuery{
+			neuralChain.FilterQuery{
 				Addresses: addresses,
 				BlockHash: &blockHash,
 				Topics:    [][]common.Hash{},
@@ -118,7 +118,7 @@ func TestToFilterArg(t *testing.T) {
 		},
 		{
 			"with blockhash and from block",
-			evrynetNode.FilterQuery{
+			neuralChain.FilterQuery{
 				Addresses: addresses,
 				BlockHash: &blockHash,
 				FromBlock: big.NewInt(1),
@@ -129,7 +129,7 @@ func TestToFilterArg(t *testing.T) {
 		},
 		{
 			"with blockhash and to block",
-			evrynetNode.FilterQuery{
+			neuralChain.FilterQuery{
 				Addresses: addresses,
 				BlockHash: &blockHash,
 				ToBlock:   big.NewInt(1),
@@ -140,7 +140,7 @@ func TestToFilterArg(t *testing.T) {
 		},
 		{
 			"with blockhash and both from / to block",
-			evrynetNode.FilterQuery{
+			neuralChain.FilterQuery{
 				Addresses: addresses,
 				BlockHash: &blockHash,
 				FromBlock: big.NewInt(1),

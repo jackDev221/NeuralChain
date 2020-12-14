@@ -36,7 +36,7 @@ func camel(str string) string {
 	return strings.Join(pieces, "")
 }
 
-// init retrieves the JavaScript transaction tracers included in evrynet-node.
+// init retrieves the JavaScript transaction tracers included in NeuralChain.
 func init() {
 	for _, file := range tracers.AssetNames() {
 		name := camel(strings.TrimSuffix(file, ".js"))

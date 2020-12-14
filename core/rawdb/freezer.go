@@ -63,7 +63,7 @@ const (
 //
 // - The append only nature ensures that disk writes are minimized.
 // - The memory mapping ensures we can max out system memory for caching without
-//   reserving it for evrynet-node. This would also reduce the memory requirements
+//   reserving it for NeuralChain. This would also reduce the memory requirements
 //   of Gev, and thus also GC overhead.
 type freezer struct {
 	// WARNING: The `frozen` field is accessed atomically. On 32 bit platforms, only

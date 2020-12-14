@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package evrynetNode defines interfaces for interacting with Evrynet.
+// Package neuralChain defines interfaces for interacting with Evrynet.
 package evrynet
 
 import (

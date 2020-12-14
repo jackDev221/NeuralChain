@@ -46,12 +46,12 @@ import (
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/core"
 	"github.com/lvbin2012/NeuralChain/core/types"
-	"github.com/lvbin2012/NeuralChain/evrclient"
 	"github.com/lvbin2012/NeuralChain/evrstats"
 	"github.com/lvbin2012/NeuralChain/les"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/neut"
 	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 	"github.com/lvbin2012/NeuralChain/node"
 	"github.com/lvbin2012/NeuralChain/p2p"
 	"github.com/lvbin2012/NeuralChain/p2p/discv5"
@@ -199,7 +199,7 @@ type request struct {
 type faucet struct {
 	config *params.ChainConfig // Chain configurations for signing
 	stack  *node.Node          // Evrynet protocol stack
-	client *evrclient.Client   // Client connection to the Evrynet chain
+	client *neutclient.Client  // Client connection to the Evrynet chain
 	index  []byte              // Index page to serve up on the web
 
 	keystore *keystore.KeyStore // Keystore containing the single signer
@@ -271,7 +271,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 		stack.Stop()
 		return nil, err
 	}
-	client := evrclient.NewClient(api)
+	client := neutclient.NewClient(api)
 
 	return &faucet{
 		config:   genesis.Config,

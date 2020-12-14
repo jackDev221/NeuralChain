@@ -17,7 +17,7 @@ BUILDER_TAG_ENV="$BUILDER_REPOSITORY:$newVersion-$env"
 BOOTNODE_REPOSITORY="kybernetwork/evrynet-bootnode"
 BOOTNODE_TAG_ENV="$BOOTNODE_REPOSITORY:$newVersion-$env"
 
-NODE_REPOSITORY="kybernetwork/evrynet-node"
+NODE_REPOSITORY="kybernetwork/NeuralChain"
 NODE_TAG_ENV="$NODE_REPOSITORY:$newVersion-$env"
 
 EXPLORER_REPOSITORY="kybernetwork/evrynet-explorer"
@@ -27,11 +27,11 @@ git fetch --all --tags --prune
 rm -rf "$BASEDIR"/builder/project
 if [ "$version" == "develop" ];
 then
-  echo "--- Cloning evrynet-node from develop branch ..."
-  git clone --single-branch -b develop --single-branch git@github.com:Evrynetlabs/evrynet-node.git "$BASEDIR"/builder/project
+  echo "--- Cloning NeuralChain from develop branch ..."
+  git clone --single-branch -b develop --single-branch git@github.com:Evrynetlabs/NeuralChain.git "$BASEDIR"/builder/project
 else
-  echo "--- Cloning evrynet-node from tag $version ..."
-  git clone -b "$version" git@github.com:Evrynetlabs/evrynet-node.git "$BASEDIR"/builder/project
+  echo "--- Cloning NeuralChain from tag $version ..."
+  git clone -b "$version" git@github.com:Evrynetlabs/NeuralChain.git "$BASEDIR"/builder/project
 fi
 
 

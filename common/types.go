@@ -42,7 +42,7 @@ const (
 	// MaxProvider is the maximum of provider
 	MaxProvider = 16
 
-	// AddressPrefix is the version of evrynet-node address
+	// AddressPrefix is the version of NeuralChain address
 	AddressPrefix         byte = 53
 	EvrynodeAddressLength      = 34
 

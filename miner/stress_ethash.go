@@ -90,11 +90,11 @@ func main() {
 	time.Sleep(3 * time.Second)
 
 	for _, node := range nodes {
-		var evrynetNode *neut.Evrynet
-		if err := node.Service(&evrynetNode); err != nil {
+		var neuralChain *neut.Evrynet
+		if err := node.Service(&neuralChain); err != nil {
 			panic(err)
 		}
-		if err := evrynetNode.StartMining(1); err != nil {
+		if err := neuralChain.StartMining(1); err != nil {
 			panic(err)
 		}
 	}
@@ -106,8 +106,8 @@ func main() {
 		index := rand.Intn(len(faucets))
 
 		// Fetch the accessor for the relevant signer
-		var evrynetNode *neut.Evrynet
-		if err := nodes[index%len(nodes)].Service(&evrynetNode); err != nil {
+		var neuralChain *neut.Evrynet
+		if err := nodes[index%len(nodes)].Service(&neuralChain); err != nil {
 			panic(err)
 		}
 		// Create a self transaction and inject into the pool
@@ -115,13 +115,13 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		if err := evrynetNode.TxPool().AddLocal(tx); err != nil {
+		if err := neuralChain.TxPool().AddLocal(tx); err != nil {
 			panic(err)
 		}
 		nonces[index]++
 
 		// Wait if we're too saturated
-		if pend, _ := evrynetNode.TxPool().Stats(); pend > 2048 {
+		if pend, _ := neuralChain.TxPool().Stats(); pend > 2048 {
 			time.Sleep(100 * time.Millisecond)
 		}
 	}

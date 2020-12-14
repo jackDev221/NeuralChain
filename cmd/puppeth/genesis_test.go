@@ -29,7 +29,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/core"
 )
 
-// Tests the evrynet-node to Aleth chainspec conversion for the Stureby testnet.
+// Tests the NeuralChain to Aleth chainspec conversion for the Stureby testnet.
 func TestAlethSturebyConverter(t *testing.T) {
 	blob, err := ioutil.ReadFile("testdata/stureby_geth.json")
 	if err != nil {
@@ -68,7 +68,7 @@ func TestAlethSturebyConverter(t *testing.T) {
 	}
 }
 
-// Tests the evrynet-node to Parity chainspec conversion for the Stureby testnet.
+// Tests the NeuralChain to Parity chainspec conversion for the Stureby testnet.
 func TestParitySturebyConverter(t *testing.T) {
 	blob, err := ioutil.ReadFile("testdata/stureby_geth.json")
 	if err != nil {

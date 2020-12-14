@@ -39,11 +39,11 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/state/staking"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/crypto"
-	"github.com/lvbin2012/NeuralChain/neut"
-	"github.com/lvbin2012/NeuralChain/neut/downloader"
-	"github.com/lvbin2012/NeuralChain/evrclient"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/miner"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 	"github.com/lvbin2012/NeuralChain/node"
 	"github.com/lvbin2012/NeuralChain/p2p"
 	"github.com/lvbin2012/NeuralChain/p2p/enode"
@@ -92,15 +92,15 @@ func main() {
 	}()
 
 	var (
-		evrynetNode     *neut.Evrynet
+		neuralChain  *neut.Evrynet
 		contractAddr *common.Address
 	)
-	if err := testNode.Service(&evrynetNode); err != nil {
+	if err := testNode.Service(&neuralChain); err != nil {
 		panic(err)
 	}
 	// wait until testNode is synced
 	gasPrice := testNode.Server().ChainReader.Config().GasPrice
-	nonces := waitForSyncingAndStableNonces(evrynetNode, faucets, evrynetNode.BlockChain().CurrentHeader().Number.Uint64())
+	nonces := waitForSyncingAndStableNonces(neuralChain, faucets, neuralChain.BlockChain().CurrentHeader().Number.Uint64())
 	if TxMode(cfg.TxMode) == SmartContractMode {
 		if contractAddr, err = prepareNewContract(cfg.RPCEndpoint, faucets[0], nonces[0], gasPrice); err != nil {
 			panic(err)
@@ -108,7 +108,7 @@ func main() {
 		nonces[0]++
 	}
 
-	go reportLoop(evrynetNode.BlockChain(), cfg.TxMode)
+	go reportLoop(neuralChain.BlockChain(), cfg.TxMode)
 	// Start injecting transactions from the faucet like crazy
 	for {
 		var txs types.Transactions
@@ -123,7 +123,7 @@ func main() {
 			nonces[index]++
 			txs = append(txs, tx)
 		}
-		errs := evrynetNode.TxPool().AddLocals(txs)
+		errs := neuralChain.TxPool().AddLocals(txs)
 		for _, err := range errs {
 			if err != nil {
 				panic(err)
@@ -134,13 +134,13 @@ func main() {
 		rebroadcast := false
 	waitLoop:
 		for epoch := 0; ; epoch++ {
-			pend, _ := evrynetNode.TxPool().Stats()
+			pend, _ := neuralChain.TxPool().Stats()
 			switch {
 			case pend < maxTxPoolSize:
 				break waitLoop
 			default:
 				if !rebroadcast {
-					forceBroadcastPendingTxs(evrynetNode)
+					forceBroadcastPendingTxs(neuralChain)
 					rebroadcast = true
 				}
 				log.Info("tx pool is full, sleeping", "pending", pend)
@@ -151,15 +151,15 @@ func main() {
 }
 
 //forceBroadcastPendingTxs get pending from
-func forceBroadcastPendingTxs(evrynetNode *neut.Evrynet) {
+func forceBroadcastPendingTxs(neuralChain *neut.Evrynet) {
 	// force rebroadcast
 	var txs types.Transactions
-	pendings, err := evrynetNode.TxPool().Pending()
+	pendings, err := neuralChain.TxPool().Pending()
 	if err != nil {
 		panic(err)
 	}
 	for _, pendingTxs := range pendings {
-		evrynetNode.TxPool().State()
+		neuralChain.TxPool().State()
 		if len(pendingTxs) > txsBatchSize {
 			txs = append(txs, pendingTxs[:txsBatchSize]...)
 		} else {
@@ -167,7 +167,7 @@ func forceBroadcastPendingTxs(evrynetNode *neut.Evrynet) {
 		}
 	}
 	go func() {
-		evrynetNode.GetPm().ForceBroadcastTxs(txs)
+		neuralChain.GetPm().ForceBroadcastTxs(txs)
 	}()
 }
 
@@ -313,9 +313,9 @@ func makeNode(genesis *core.Genesis, enodes []*enode.Node) (*node.Node, error) {
 }
 
 // waitForSyncingAndStableNonces wait util the node is syncing and the nonces of given addresses are not change, also returns stable nonces
-func waitForSyncingAndStableNonces(evrynetNode *neut.Evrynet, faucets []*ecdsa.PrivateKey, initBlkNumber uint64) []uint64 {
-	bc := evrynetNode.BlockChain()
-	for !evrynetNode.Synced() || evrynetNode.BlockChain().CurrentHeader().Number.Uint64() == initBlkNumber {
+func waitForSyncingAndStableNonces(neuralChain *neut.Evrynet, faucets []*ecdsa.PrivateKey, initBlkNumber uint64) []uint64 {
+	bc := neuralChain.BlockChain()
+	for !neuralChain.Synced() || neuralChain.BlockChain().CurrentHeader().Number.Uint64() == initBlkNumber {
 		log.Warn("testNode is not synced, sleeping", "current_block", bc.CurrentHeader().Number)
 		time.Sleep(3 * time.Second)
 	}
@@ -326,13 +326,13 @@ func waitForSyncingAndStableNonces(evrynetNode *neut.Evrynet, faucets []*ecdsa.P
 		for i, faucet := range faucets {
 			addr := crypto.PubkeyToAddress(*(faucet.Public().(*ecdsa.PublicKey)))
 			log.Info("faucet addr", "addr", addr)
-			nonces[i] = evrynetNode.TxPool().State().GetNonce(addr)
+			nonces[i] = neuralChain.TxPool().State().GetNonce(addr)
 		}
 		time.Sleep(time.Second * 10)
 		var diff = false
 		for i, faucet := range faucets {
 			addr := crypto.PubkeyToAddress(*(faucet.Public().(*ecdsa.PublicKey)))
-			tmp := evrynetNode.TxPool().State().GetNonce(addr)
+			tmp := neuralChain.TxPool().State().GetNonce(addr)
 			if tmp != nonces[i] {
 				diff = true
 			}
@@ -347,7 +347,7 @@ func waitForSyncingAndStableNonces(evrynetNode *neut.Evrynet, faucets []*ecdsa.P
 func prepareNewContract(rpcEndpoint string, acc *ecdsa.PrivateKey, nonce uint64, gasPrice *big.Int) (*common.Address, error) {
 	log.Info("Creating Smart Contract ...")
 
-	evrClient, err := evrclient.Dial(rpcEndpoint)
+	neutClient, err := neutclient.Dial(rpcEndpoint)
 	if err != nil {
 		return nil, err
 	}
@@ -365,7 +365,7 @@ func prepareNewContract(rpcEndpoint string, acc *ecdsa.PrivateKey, nonce uint64,
 		Value: common.Big0,
 		Data:  payLoadBytes,
 	}
-	estGas, err := evrClient.EstimateGas(context.Background(), msg)
+	estGas, err := neutClient.EstimateGas(context.Background(), msg)
 	if err != nil {
 		return nil, err
 	}
@@ -376,14 +376,14 @@ func prepareNewContract(rpcEndpoint string, acc *ecdsa.PrivateKey, nonce uint64,
 		return nil, errors.Wrapf(err, "failed to sign Tx")
 	}
 
-	err = evrClient.SendTransaction(context.Background(), tx)
+	err = neutClient.SendTransaction(context.Background(), tx)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create SC from %s", accAddr.String())
 	}
 
 	// Wait to get SC address
 	for i := 0; i < 10; i++ {
-		receipt, err := evrClient.TransactionReceipt(context.Background(), tx.Hash())
+		receipt, err := neutClient.TransactionReceipt(context.Background(), tx.Hash())
 		if err == nil && receipt.Status == uint64(1) {
 			log.Info("Creating Smart Contract successfully!")
 			return &receipt.ContractAddress, nil

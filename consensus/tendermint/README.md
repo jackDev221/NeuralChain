@@ -1,4 +1,4 @@
-# Tendermint consensus for evrynet-node
+# Tendermint consensus for NeuralChain
 
 ## init
 -- TOBE written

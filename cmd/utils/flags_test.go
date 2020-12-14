@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with NeuralChain. If not, see <http://www.gnu.org/licenses/>.
 
-// Package utils contains internal helper functions for evrynet-node commands.
+// Package utils contains internal helper functions for NeuralChain commands.
 package utils
 
 import (

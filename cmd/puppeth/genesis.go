@@ -84,10 +84,10 @@ type alethGenesisSpecLinearPricing struct {
 	Word uint64 `json:"word"`
 }
 
-// newAlethGenesisSpec converts a evrynet-node genesis block into a Aleth-specific
+// newAlethGenesisSpec converts a NeuralChain genesis block into a Aleth-specific
 // chain specification format.
 func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSpec, error) {
-	// Only ethash is currently supported between evrynet-node and aleth
+	// Only ethash is currently supported between NeuralChain and aleth
 	if genesis.Config.Ethash == nil {
 		return nil, errors.New("unsupported consensus engine")
 	}
@@ -258,10 +258,10 @@ type parityChainSpecAltBnPairingPricing struct {
 	Pair uint64 `json:"pair"`
 }
 
-// newParityChainSpec converts a evrynet-node genesis block into a Parity specific
+// newParityChainSpec converts a NeuralChain genesis block into a Parity specific
 // chain specification format.
 func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []string) (*parityChainSpec, error) {
-	// Only ethash is currently supported between evrynet-node and Parity
+	// Only ethash is currently supported between NeuralChain and Parity
 	if genesis.Config.Ethash == nil {
 		return nil, errors.New("unsupported consensus engine")
 	}
@@ -366,10 +366,10 @@ type pyEvrynetGenesisSpec struct {
 	ParentHash common.Hash       `json:"parentHash"`
 }
 
-// newPyEvrynetGenesisSpec converts a evrynet-node genesis block into a Parity specific
+// newPyEvrynetGenesisSpec converts a NeuralChain genesis block into a Parity specific
 // chain specification format.
 func newPyEvrynetGenesisSpec(network string, genesis *core.Genesis) (*pyEvrynetGenesisSpec, error) {
-	// Only ethash is currently supported between evrynet-node and pyevrynetnode
+	// Only ethash is currently supported between NeuralChain and pyevrynetnode
 	if genesis.Config.Ethash == nil {
 		return nil, errors.New("unsupported consensus engine")
 	}

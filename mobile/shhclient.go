@@ -16,7 +16,7 @@
 
 // Contains a wrapper for the Whisper client.
 
-package geth
+package  gnc
 
 import (
 	"github.com/lvbin2012/NeuralChain/whisper/shhclient"

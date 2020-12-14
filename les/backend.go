@@ -207,7 +207,7 @@ func (s *LightDummyAPI) Mining() bool {
 	return false
 }
 
-// APIs returns the collection of RPC services the evrynetNode package offers.
+// APIs returns the collection of RPC services the neuralChain package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *LightEvrynet) APIs() []rpc.API {
 	return append(evrapi.GetAPIs(s.ApiBackend), []rpc.API{

@@ -166,7 +166,7 @@ Remove blockchain and state databases`,
 		Category: "BLOCKCHAIN COMMANDS",
 		Description: `
 The arguments are interpreted as block numbers or hashes.
-Use "evrynetNode dump 0" to dump the genesis block.`,
+Use "neuralChain dump 0" to dump the genesis block.`,
 	}
 	inspectCommand = cli.Command{
 		Action:    utils.MigrateFlags(inspect),

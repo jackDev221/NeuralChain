@@ -25,7 +25,7 @@ import (
 	"net/http"
 	"time"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/rawdb"
@@ -1103,7 +1103,7 @@ func (r *Resolver) ProtocolVersion(ctx context.Context) (int32, error) {
 
 // SyncState represents the synchronisation status returned from the `syncing` accessor.
 type SyncState struct {
-	progress evrynetNode.SyncProgress
+	progress neuralChain.SyncProgress
 }
 
 func (s *SyncState) StartingBlock() hexutil.Uint64 {
@@ -1224,10 +1224,10 @@ func NewService(backend *neut.EvrAPIBackend, endpoint string, cors, vhosts []str
 // RegisterGraphQLService is a utility function to construct a new service and register it against a node.
 func RegisterGraphQLService(stack *node.Node, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) error {
 	return stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		var evrynetNode *neut.Evrynet
-		if err := ctx.Service(&evrynetNode); err != nil {
+		var neuralChain *neut.Evrynet
+		if err := ctx.Service(&neuralChain); err != nil {
 			return nil, err
 		}
-		return NewService(evrynetNode.APIBackend, endpoint, cors, vhosts, timeouts)
+		return NewService(neuralChain.APIBackend, endpoint, cors, vhosts, timeouts)
 	})
 }

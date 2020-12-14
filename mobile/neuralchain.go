@@ -14,21 +14,21 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Contains all the wrappers from the evrynet-node root package.
+// Contains all the wrappers from the NeuralChain root package.
 
-package geth
+package  gnc
 
 import (
 	"errors"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 )
 
 // Subscription represents an event subscription where events are
 // delivered on a data channel.
 type Subscription struct {
-	sub evrynetNode.Subscription
+	sub neuralChain.Subscription
 }
 
 // Unsubscribe cancels the sending of events to the data channel
@@ -39,7 +39,7 @@ func (s *Subscription) Unsubscribe() {
 
 // CallMsg contains parameters for contract calls.
 type CallMsg struct {
-	msg evrynetNode.CallMsg
+	msg neuralChain.CallMsg
 }
 
 // NewCallMsg creates an empty contract call parameter list.
@@ -75,7 +75,7 @@ func (msg *CallMsg) SetTo(address *Address) {
 // SyncProgress gives progress indications when the node is synchronising with
 // the Evrynet network.
 type SyncProgress struct {
-	progress evrynetNode.SyncProgress
+	progress neuralChain.SyncProgress
 }
 
 func (p *SyncProgress) GetStartingBlock() int64 { return int64(p.progress.StartingBlock) }
@@ -128,7 +128,7 @@ func (t *Topics) Append(topics *Hashes) {
 
 // FilterQuery contains options for contract log filtering.
 type FilterQuery struct {
-	query evrynetNode.FilterQuery
+	query neuralChain.FilterQuery
 }
 
 // NewFilterQuery creates an empty filter query for contract log filtering.

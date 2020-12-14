@@ -9,7 +9,7 @@ pipeline {
         dockerImage="${env.CONTAINER_IMAGE}:${env.dockerTag}"
         dockerOnenodeImage="${env.CONTAINER_IMAGE}:${env.dockerTag}-onenode"
         dockerOnenodeContainer="evrynet-onenode"
-        appName="evrynet-node"
+        appName="NeuralChain"
         githubUsername="Evrynetlabs"
 
         CONTAINER_IMAGE="registry.gitlab.com/evry/${appName}"

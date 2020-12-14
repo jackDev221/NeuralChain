@@ -17,7 +17,7 @@
 // Package gnc contains the simplified mobile APIs to NeuralChain.
 //
 // The scope of this package is *not* to allow writing a custom Evrynet client
-// with pieces plucked from evrynet-node, rather to allow writing native dapps on
+// with pieces plucked from NeuralChain, rather to allow writing native dapps on
 // mobile platforms. Keep this in mind when using or extending this package!
 //
 // API limitations
@@ -33,13 +33,13 @@
 // writing custom library generators, but those are out of scope now.
 //
 // Content wise each file in this package corresponds to an entire Go package
-// from the evrynet-node repository. Please adhere to this scoping to prevent this
+// from the NeuralChain repository. Please adhere to this scoping to prevent this
 // package getting unmaintainable.
 //
 // Wrapping guidelines:
 //
 // Every type that is to be exposed should be wrapped into its own plain struct,
-// which internally contains a single field: the original evrynet-node version.
+// which internally contains a single field: the original NeuralChain version.
 // This is needed because gomobile cannot expose named types for now.
 //
 // Whenever a method argument or a return type is a custom struct, the pointer
@@ -58,4 +58,4 @@
 // Note, a panic *cannot* cross over language boundaries, instead will result in
 // an undebuggable SEGFAULT in the process. For error handling only ever use error
 // returns, which may be the only or the second return.
-package geth
+package  gnc

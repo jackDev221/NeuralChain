@@ -26,7 +26,7 @@ import (
 	"sync"
 	"time"
 
-	evrynetNode "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/types"
@@ -246,7 +246,7 @@ func (api *PublicFilterAPI) Logs(ctx context.Context, crit FilterCriteria) (*rpc
 		matchedLogs = make(chan []*types.Log)
 	)
 
-	logsSub, err := api.events.SubscribeLogs(evrynetNode.FilterQuery(crit), matchedLogs)
+	logsSub, err := api.events.SubscribeLogs(neuralChain.FilterQuery(crit), matchedLogs)
 	if err != nil {
 		return nil, err
 	}
@@ -273,8 +273,8 @@ func (api *PublicFilterAPI) Logs(ctx context.Context, crit FilterCriteria) (*rpc
 }
 
 // FilterCriteria represents a request to create a new filter.
-// Same as evrynetNode.FilterQuery but with UnmarshalJSON() method.
-type FilterCriteria evrynetNode.FilterQuery
+// Same as neuralChain.FilterQuery but with UnmarshalJSON() method.
+type FilterCriteria neuralChain.FilterQuery
 
 // NewFilter creates a new filter and returns the filter id. It can be
 // used to retrieve logs when the state changes. This method cannot be
@@ -291,7 +291,7 @@ type FilterCriteria evrynetNode.FilterQuery
 // https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_newfilter
 func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 	logs := make(chan []*types.Log)
-	logsSub, err := api.events.SubscribeLogs(evrynetNode.FilterQuery(crit), logs)
+	logsSub, err := api.events.SubscribeLogs(neuralChain.FilterQuery(crit), logs)
 	if err != nil {
 		return rpc.ID(""), err
 	}

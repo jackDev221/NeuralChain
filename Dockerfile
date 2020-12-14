@@ -3,7 +3,7 @@ FROM golang:1.12-alpine as builder
 
 RUN apk add --no-cache make gcc musl-dev linux-headers git curl
 
-WORKDIR /evrynet-node
+WORKDIR /NeuralChain
 ADD . .
 
 # Load all project dependencies
@@ -23,8 +23,8 @@ RUN go build ./cmd/bootnode
 FROM alpine:latest
 
 RUN apk add --no-cache ca-certificates
-COPY --from=builder /evrynet-node/gev /usr/local/bin/
-COPY --from=builder /evrynet-node/bootnode /usr/local/bin/
+COPY --from=builder /NeuralChain/gev /usr/local/bin/
+COPY --from=builder /NeuralChain/bootnode /usr/local/bin/
 
 #--rpcport 8545
 #--wsport 8546

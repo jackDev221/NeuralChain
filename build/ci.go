@@ -105,7 +105,7 @@ func doInstall(cmdline []string) {
 
 		if minor < 9 {
 			log.Println("You have Go version", runtime.Version())
-			log.Println("evrynet-node requires at least Go version 1.9 and cannot")
+			log.Println("NeuralChain requires at least Go version 1.9 and cannot")
 			log.Println("be compiled with an earlier version. Please upgrade your Go installation.")
 			os.Exit(1)
 		}
@@ -214,7 +214,7 @@ func doTest(cmdline []string) {
 	case *full:
 		packages = []string{
 			"./accounts/...", "./cmd/...", "./core/...", "./common/...", "./consensus/...", "./crypto/...",
-			"./dashboard/...", "./evrstats/...", "./event/...", "./neut/...", "./evrclient/...", "./neutdb/...",
+			"./dashboard/...", "./evrstats/...", "./event/...", "./neut/...", "./neutclient/...", "./neutdb/...",
 			"./graphql/...", "./internal/...", "./les/...", "./light/...", "./log/...",
 			"./metrics/...", "./miner/...", "./mobile/...", "./node/...", "./p2p/...", "./params/...",
 			"./rlp/...", "./rpc/...", "./signer/...", "./trie/...", "./whisper/...",
@@ -222,7 +222,7 @@ func doTest(cmdline []string) {
 	case *integration:
 		packages = []string{"./tests/provider_logic_test/..."}
 	default:
-		packages = []string{"./consensus/tendermint/...", "./cmd/...", "./internal/...", "./evrclient/...", "./miner/...", "./core/state/staking/..."}
+		packages = []string{"./consensus/tendermint/...", "./cmd/...", "./internal/...", "./neutclient/...", "./miner/...", "./core/state/staking/..."}
 	}
 	if len(flag.CommandLine.Args()) > 0 {
 		packages = flag.CommandLine.Args()

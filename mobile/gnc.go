@@ -17,7 +17,7 @@
 // Contains all the wrappers from the node package to support client side node
 // management on mobile platforms.
 
-package geth
+package  gnc
 
 import (
 	"encoding/json"
@@ -26,11 +26,11 @@ import (
 
 	"github.com/lvbin2012/NeuralChain/core"
 	"github.com/lvbin2012/NeuralChain/evrstats"
-	"github.com/lvbin2012/NeuralChain/neut"
-	"github.com/lvbin2012/NeuralChain/neut/downloader"
-	"github.com/lvbin2012/NeuralChain/evrclient"
 	"github.com/lvbin2012/NeuralChain/internal/debug"
 	"github.com/lvbin2012/NeuralChain/les"
+	"github.com/lvbin2012/NeuralChain/neut"
+	"github.com/lvbin2012/NeuralChain/neut/downloader"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 	"github.com/lvbin2012/NeuralChain/node"
 	"github.com/lvbin2012/NeuralChain/p2p"
 	"github.com/lvbin2012/NeuralChain/p2p/nat"
@@ -167,7 +167,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 		if err := rawStack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 			return les.New(ctx, &ethConf)
 		}); err != nil {
-			return nil, fmt.Errorf("evrynetNode init: %v", err)
+			return nil, fmt.Errorf("neuralChain init: %v", err)
 		}
 		// If netstats reporting is requested, do it
 		if config.EvrynetNetStats != "" {
@@ -210,12 +210,12 @@ func (n *Node) Stop() error {
 }
 
 // GetEvrynetClient retrieves a client to access the Evrynet subsystem.
-func (n *Node) GetEvrynetClient() (client *EvrynetClient, _ error) {
+func (n *Node) GetNeuralChainClient() (client *NeuralChainClient, _ error) {
 	rpc, err := n.node.Attach()
 	if err != nil {
 		return nil, err
 	}
-	return &EvrynetClient{evrclient.NewClient(rpc)}, nil
+	return &NeuralChainClient{neutclient.NewClient(rpc)}, nil
 }
 
 // GetNodeInfo gathers and returns a collection of metadata known about the host.

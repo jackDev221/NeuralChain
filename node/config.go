@@ -468,7 +468,7 @@ func makeAccountManager(conf *Config) (*accounts.Manager, string, error) {
 	var ephemeral string
 	if keydir == "" {
 		// There is no datadir.
-		keydir, err = ioutil.TempDir("", "evrynet-node-keystore")
+		keydir, err = ioutil.TempDir("", "NeuralChain-keystore")
 		ephemeral = keydir
 	}
 

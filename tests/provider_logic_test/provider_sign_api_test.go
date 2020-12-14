@@ -12,7 +12,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/crypto"
-	"github.com/lvbin2012/NeuralChain/evrclient"
+	"github.com/lvbin2012/NeuralChain/neutclient"
 )
 
 //TestProviderSignTransaction will sign a transaction with both sender's Key and Providers's Key
@@ -27,13 +27,13 @@ func TestProviderSignTransaction(t *testing.T) {
 	assert.NoError(t, err)
 	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
 	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	assert.NoError(t, err)
-	id, err := evrClient.ChainID(context.Background())
+	id, err := neutClient.ChainID(context.Background())
 	signer := types.NewOmahaSigner(id)
-	nonce, err := evrClient.PendingNonceAt(context.Background(), senderAddr)
+	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
-	gasPrice, err := evrClient.SuggestGasPrice(context.Background())
+	gasPrice, err := neutClient.SuggestGasPrice(context.Background())
 	assert.NoError(t, err)
 
 	tx := types.NewTransaction(nonce, *contractAddr, big.NewInt(1000000), testGasLimit, gasPrice, nil)
@@ -46,7 +46,7 @@ func TestProviderSignTransaction(t *testing.T) {
 	assert.NoError(t, err)
 
 	// Get Tx via RPC
-	pTxSigned, err := evrClient.ProviderSignTx(context.Background(), txSigned, &providerAddr)
+	pTxSigned, err := neutClient.ProviderSignTx(context.Background(), txSigned, &providerAddr)
 	assert.NoError(t, err)
 	assert.NotEqual(t, nil, pTxSigned)
 }
@@ -67,11 +67,11 @@ func prepareNewContract(hasProvider bool) *common.Address {
 	if err != nil {
 		return nil
 	}
-	evrClient, err := evrclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(evrRPCEndpoint)
 	if err != nil {
 		return nil
 	}
-	nonce, err := evrClient.PendingNonceAt(context.Background(), sender)
+	nonce, err := neutClient.PendingNonceAt(context.Background(), sender)
 	if err != nil {
 		return nil
 	}
@@ -90,13 +90,13 @@ func prepareNewContract(hasProvider bool) *common.Address {
 		return nil
 	}
 
-	err = evrClient.SendTransaction(context.Background(), tx)
+	err = neutClient.SendTransaction(context.Background(), tx)
 	if err != nil {
 		panic(err)
 	}
 	for i := 0; i < 10; i++ {
 		var receipt *types.Receipt
-		receipt, err = evrClient.TransactionReceipt(context.Background(), tx.Hash())
+		receipt, err = neutClient.TransactionReceipt(context.Background(), tx.Hash())
 		if err == nil && receipt.Status == uint64(1) {
 			return &receipt.ContractAddress
 		}
