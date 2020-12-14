@@ -37,7 +37,7 @@ type PrecompiledContract interface {
 	Run(input []byte) ([]byte, error) // Run runs the precompiled contract
 }
 
-// PrecompiledContractsOmaha contains the default set of pre-compiled Evrynet
+// PrecompiledContractsOmaha contains the default set of pre-compiled NeuralChain
 var PrecompiledContractsOmaha = map[common.Address]PrecompiledContract{
 	common.BytesToAddress([]byte{1}): &ecrecover{},
 	common.BytesToAddress([]byte{2}): &sha256hash{},

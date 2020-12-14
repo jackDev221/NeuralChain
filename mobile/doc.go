@@ -16,7 +16,7 @@
 
 // Package gnc contains the simplified mobile APIs to NeuralChain.
 //
-// The scope of this package is *not* to allow writing a custom Evrynet client
+// The scope of this package is *not* to allow writing a custom NeuralChain client
 // with pieces plucked from NeuralChain, rather to allow writing native dapps on
 // mobile platforms. Keep this in mind when using or extending this package!
 //

@@ -49,7 +49,7 @@ type TendermintExtra struct {
 	ValidatorAdds []byte
 }
 
-// EncodeRLP serializes ist into the Evrynet RLP format.
+// EncodeRLP serializes ist into the NeuralChain RLP format.
 func (te *TendermintExtra) EncodeRLP(w io.Writer) error {
 	return rlp.Encode(w, []interface{}{
 		te.Seal,

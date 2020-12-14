@@ -110,18 +110,18 @@ func (w *wizard) deployNode(boot bool) {
 				fmt.Printf("What address should the miner use?\n")
 				for {
 					if address := w.readAddress(); address != nil {
-						infos.etherbase = common.AddressToEvryAddressString(*address)
+						infos.etherbase = common.AddressToNeutAddressString(*address)
 						break
 					}
 				}
 			} else {
 				fmt.Printf("What address should the miner use? (default = %s)\n", infos.etherbase)
 
-				defaultAddress, err := common.EvryAddressStringToAddressCheck(infos.etherbase)
+				defaultAddress, err := common.NeutAddressStringToAddressCheck(infos.etherbase)
 				if err != nil {
 					fmt.Println("Info.etherbase is illegal, you should input new, err:", err)
 				}
-				infos.etherbase = common.AddressToEvryAddressString(w.readDefaultAddress(defaultAddress))
+				infos.etherbase = common.AddressToNeutAddressString(w.readDefaultAddress(defaultAddress))
 			}
 		} else if w.conf.Genesis.Config.Clique != nil || w.conf.Genesis.Config.Tendermint != nil {
 			// If a previous signer was already set, offer to reuse it
@@ -173,7 +173,7 @@ func (w *wizard) deployNode(boot bool) {
 		nocache = w.readDefaultYesNo(false)
 	}
 	if out, err := deployNode(client, w.network, w.conf.bootnodes, infos, nocache); err != nil {
-		log.Error("Failed to deploy Evrynet node container", "err", err)
+		log.Error("Failed to deploy NeuralChain node container", "err", err)
 		if len(out) > 0 {
 			fmt.Printf("%s\n", out)
 		}

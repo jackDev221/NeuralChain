@@ -58,7 +58,7 @@ var (
 func TestToFilterArg(t *testing.T) {
 	blockHashErr := fmt.Errorf("cannot specify both BlockHash and FromBlock/ToBlock")
 
-	address, _ := common.EvryAddressStringToAddressCheck("EcRhd3AvnF4cMN82WaPoytZrizvi77jquf")
+	address, _ := common.NeutAddressStringToAddressCheck("EcRhd3AvnF4cMN82WaPoytZrizvi77jquf")
 	addresses := []common.Address{
 		address,
 	}
@@ -181,8 +181,8 @@ func newTestBackend(t *testing.T, txs types.Transactions) (*node.Node, []*types.
 	// Generate test chain.
 	genesis, blocks := generateTestChain(txs)
 
-	// Start Evrynet service.
-	var ethservice *neut.Evrynet
+	// Start NeuralChain service.
+	var ethservice *neut.NeuralChain
 	n, err := node.New(&node.Config{})
 	n.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		config := &neut.Config{Genesis: genesis}
@@ -357,8 +357,8 @@ func TestGetTransactionByHash(t *testing.T) {
 		err     error
 		payload = "0x608060405260d0806100126000396000f30060806040526004361060525763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416633fb5c1cb811460545780638381f58a14605d578063f2c9ecd8146081575b005b60526004356093565b348015606857600080fd5b50606f6098565b60408051918252519081900360200190f35b348015608c57600080fd5b50606f609e565b600055565b60005481565b600054905600a165627a7a723058209573e4f95d10c1e123e905d720655593ca5220830db660f0641f3175c1cdb86e0029"
 	)
-	to1, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWdYvGRyE")
-	to2, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWdfucv31")
+	to1, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWdYvGRyE")
+	to2, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWdfucv31")
 	tx := types.NewTransaction(uint64(0), to1, big.NewInt(100), 21000, big.NewInt(params.GasPriceConfig), nil)
 	tx, err = types.SignTx(tx, types.NewOmahaSigner(chainID), testKey)
 	require.NoError(t, err)
@@ -374,8 +374,8 @@ func TestGetTransactionByHash(t *testing.T) {
 	creationContractTx, err = types.SignTx(creationContractTx, types.NewOmahaSigner(chainID), testKey)
 	require.NoError(t, err)
 
-	owner, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-	provider, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+	owner, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
+	provider, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
 
 	opts := types.CreateAccountOption{
 		OwnerAddress:    &owner,
@@ -430,7 +430,7 @@ func TestReplayAttackWithProviderAddress(t *testing.T) {
 		providerAddr = testAddr
 	)
 	//Create atx and sign it with senderKey
-	to, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWdfucv31")
+	to, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWdfucv31")
 	txWithProvider := types.NewTransaction(uint64(0), to, big.NewInt(1), 21000, big.NewInt(params.GasPriceConfig), nil)
 	txWithProvider, err = types.SignTx(txWithProvider, types.NewOmahaSigner(chainID), senderKey)
 	require.NoError(t, err)

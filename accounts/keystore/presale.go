@@ -71,7 +71,7 @@ func decryptPreSaleKey(fileContent []byte, password string) (key *Key, err error
 	iv := encSeedBytes[:16]
 	cipherText := encSeedBytes[16:]
 	/*
-		See https://github.com/Evrynetlabs/pyethsaletool
+		See https://github.com/NeuralChainLabs/pyethsaletool
 
 		pyethsaletool generates the encryption key from password by
 		2000 rounds of PBKDF2 with HMAC-SHA-256 using password as salt (:().
@@ -91,7 +91,7 @@ func decryptPreSaleKey(fileContent []byte, password string) (key *Key, err error
 		Address:    crypto.PubkeyToAddress(ecKey.PublicKey),
 		PrivateKey: ecKey,
 	}
-	derivedAddr := common.AddressToEvryAddressString(key.Address)
+	derivedAddr := common.AddressToNeutAddressString(key.Address)
 	expectedAddr := preSaleKeyStruct.EthAddr
 	if derivedAddr != expectedAddr {
 		err = fmt.Errorf("decrypted addr '%s' not equal to expected addr '%s'", derivedAddr, expectedAddr)

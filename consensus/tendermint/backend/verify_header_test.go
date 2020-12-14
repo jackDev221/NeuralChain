@@ -18,7 +18,7 @@ import (
 func TestBackend_VerifyHeader(t *testing.T) {
 	var (
 		nodePKString = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _  = common.EvryAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _  = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
 		validators   = []common.Address{
 			nodeAddr,
 		}

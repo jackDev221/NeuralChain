@@ -1,7 +1,7 @@
 evrkey
 ======
 
-evrkey is a simple command-line tool for working with Evrynet keyfiles.
+evrkey is a simple command-line tool for working with NeuralChain keyfiles.
 
 
 # Usage

@@ -60,7 +60,7 @@ type driver interface {
 	// is still online and healthy.
 	Heartbeat() error
 
-	// Derive sends a derivation request to the USB device and returns the Evrynet
+	// Derive sends a derivation request to the USB device and returns the NeuralChain
 	// address located on that path.
 	Derive(path accounts.DerivationPath) (common.Address, error)
 
@@ -350,7 +350,7 @@ func (w *wallet) selfDerive() {
 		)
 		for i := 0; i < len(nextAddrs); i++ {
 			for empty := false; !empty; {
-				// Retrieve the next derived Evrynet account
+				// Retrieve the next derived NeuralChain account
 				if nextAddrs[i] == (common.Address{}) {
 					if nextAddrs[i], err = w.driver.Derive(nextPaths[i]); err != nil {
 						w.log.Warn("USB wallet account derivation failed", "err", err)

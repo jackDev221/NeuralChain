@@ -19,7 +19,7 @@
 This key store behaves as KeyStorePlain with the difference that
 the private key is encrypted and on disk uses another JSON encoding.
 
-The crypto is documented at https://github.com/Evrynetlabs/wiki/wiki/Web3-Secret-Storage-Definition
+The crypto is documented at https://github.com/NeuralChainLabs/wiki/wiki/Web3-Secret-Storage-Definition
 
 */
 
@@ -189,7 +189,7 @@ func EncryptKey(key *Key, auth string, scryptN, scryptP int) ([]byte, error) {
 		return nil, err
 	}
 	encryptedKeyJSONV3 := encryptedKeyJSONV3{
-		common.AddressToEvryAddressString(key.Address),
+		common.AddressToNeutAddressString(key.Address),
 		cryptoStruct,
 		key.Id.String(),
 		version,

@@ -24,7 +24,7 @@ import (
 )
 
 const (
-	stakingSCName            = "EvrynetStaking"
+	stakingSCName            = "NeuralChainStaking"
 	simulatedGasLimit uint64 = 500000000
 	simulatedBalance         = simulatedGasLimit * params.GasPriceConfig
 )
@@ -41,9 +41,9 @@ func (w *wizard) configStakingSC(genesis *core.Genesis, validators []common.Addr
 	fmt.Println()
 	fmt.Println("Do you want to use precompiled Staking Smart Contract file? (default = yes)")
 	if usePrecompiledSC := w.readDefaultYesNo(true); usePrecompiledSC {
-		fmt.Println("Specify your Bytecode file path (default = ./consensus/staking_contracts/EvrynetStaking.bin/EvrynetStaking.bin)")
+		fmt.Println("Specify your Bytecode file path (default = ./consensus/staking_contracts/NeuralChainStaking.bin/NeuralChainStaking.bin)")
 		for {
-			if tempValue, err := readFile(w.readDefaultString("./consensus/staking_contracts/EvrynetStaking.bin/EvrynetStaking.bin")); err != nil {
+			if tempValue, err := readFile(w.readDefaultString("./consensus/staking_contracts/NeuralChainStaking.bin/NeuralChainStaking.bin")); err != nil {
 				log.Error("Failed to read Bytecode file", "error", err)
 			} else {
 				bytecodeString = tempValue
@@ -51,9 +51,9 @@ func (w *wizard) configStakingSC(genesis *core.Genesis, validators []common.Addr
 			}
 		}
 
-		fmt.Println("Specify your ABI path (default = ./consensus/staking_contracts/EvrynetStaking.bin/EvrynetStaking.abi)")
+		fmt.Println("Specify your ABI path (default = ./consensus/staking_contracts/NeuralChainStaking.bin/NeuralChainStaking.abi)")
 		for {
-			if tempValue, err := readFile(w.readDefaultString("./consensus/staking_contracts/EvrynetStaking.bin/EvrynetStaking.abi")); err != nil {
+			if tempValue, err := readFile(w.readDefaultString("./consensus/staking_contracts/NeuralChainStaking.bin/NeuralChainStaking.abi")); err != nil {
 				log.Error("Failed to read ABI file", "error", err)
 			} else {
 				if parsedABI, err := abi.JSON(strings.NewReader(tempValue)); err != nil {
@@ -66,9 +66,9 @@ func (w *wizard) configStakingSC(genesis *core.Genesis, validators []common.Addr
 		}
 	} else {
 		fmt.Println()
-		fmt.Println("Specify your staking smart contract path (default = ./consensus/staking_contracts/EvrynetStaking.sol). Please download the latest sc from https://github.com/Evrynetlabs/staking-contract")
+		fmt.Println("Specify your staking smart contract path (default = ./consensus/staking_contracts/NeuralChainStaking.sol). Please download the latest sc from https://github.com/NeuralChainLabs/staking-contract")
 		for {
-			if scPath = w.readDefaultString("./consensus/staking_contracts/EvrynetStaking.sol"); len(scPath) > 0 {
+			if scPath = w.readDefaultString("./consensus/staking_contracts/NeuralChainStaking.sol"); len(scPath) > 0 {
 				break
 			}
 		}
@@ -137,7 +137,7 @@ func compileSCFile(scPath string) (string, *abi.ABI, error) {
 		return "", nil, errors.Errorf("Failed to get Bytecode, ABI from contract: %v", err)
 	}
 	if len(bytecodeSC) == 0 || abiSC == nil {
-		return "", nil, errors.Errorf("Not found any EvrynetStaking contract when compile SC. Error: %+v", err)
+		return "", nil, errors.Errorf("Not found any NeuralChainStaking contract when compile SC. Error: %+v", err)
 	}
 	return bytecodeSC, abiSC, nil
 }

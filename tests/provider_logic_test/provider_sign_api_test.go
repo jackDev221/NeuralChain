@@ -25,9 +25,9 @@ func TestProviderSignTransaction(t *testing.T) {
 
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	id, err := neutClient.ChainID(context.Background())
 	signer := types.NewOmahaSigner(id)
@@ -54,9 +54,9 @@ func TestProviderSignTransaction(t *testing.T) {
 func prepareNewContract(hasProvider bool) *common.Address {
 	var (
 		tx              *types.Transaction
-		providerAddr, _ = common.EvryAddressStringToAddressCheck(providerAddrStr)
-		ownerAddr, _    = common.EvryAddressStringToAddressCheck(senderAddrStr)
-		sender, _       = common.EvryAddressStringToAddressCheck(senderAddrStr)
+		providerAddr, _ = common.NeutAddressStringToAddressCheck(providerAddrStr)
+		ownerAddr, _    = common.NeutAddressStringToAddressCheck(senderAddrStr)
+		sender, _       = common.NeutAddressStringToAddressCheck(senderAddrStr)
 	)
 
 	spk, err := crypto.HexToECDSA(senderPK)
@@ -67,7 +67,7 @@ func prepareNewContract(hasProvider bool) *common.Address {
 	if err != nil {
 		return nil
 	}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	if err != nil {
 		return nil
 	}

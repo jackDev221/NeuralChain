@@ -226,7 +226,7 @@ func TestPendingTxFilter(t *testing.T) {
 		backend    = &testBackend{mux, db, 0, txFeed, rmLogsFeed, logsFeed, chainFeed}
 		api        = NewPublicFilterAPI(backend, false)
 
-		to, _        = common.EvryAddressStringToAddressCheck("EZtbbeqsuU2vUaTm9r8jHNTqq1vhFcGfmz")
+		to, _        = common.NeutAddressStringToAddressCheck("EZtbbeqsuU2vUaTm9r8jHNTqq1vhFcGfmz")
 		transactions = []*types.Transaction{
 			types.NewTransaction(0, to, new(big.Int), 0, new(big.Int), nil),
 			types.NewTransaction(1, to, new(big.Int), 0, new(big.Int), nil),
@@ -393,10 +393,10 @@ func TestLogFilter(t *testing.T) {
 		backend    = &testBackend{mux, db, 0, txFeed, rmLogsFeed, logsFeed, chainFeed}
 		api        = NewPublicFilterAPI(backend, false)
 
-		firstAddr, _      = common.EvryAddressStringToAddressCheck("EJi9Rf88LxzNaQ9LD95fy9U5gM7ve2r8Er")
-		secondAddr, _     = common.EvryAddressStringToAddressCheck("ELGPMjQkFygqAVgocSApw9xCb3jiq1eVqP")
-		thirdAddress, _   = common.EvryAddressStringToAddressCheck("EMpdHohNAzPHkbEH1jFyuASKVkMX63Lm7v")
-		notUsedAddress, _ = common.EvryAddressStringToAddressCheck("EXA4tFR5f4a3HAV7RVnuhDM2wx4J8Rd94T")
+		firstAddr, _      = common.NeutAddressStringToAddressCheck("EJi9Rf88LxzNaQ9LD95fy9U5gM7ve2r8Er")
+		secondAddr, _     = common.NeutAddressStringToAddressCheck("ELGPMjQkFygqAVgocSApw9xCb3jiq1eVqP")
+		thirdAddress, _   = common.NeutAddressStringToAddressCheck("EMpdHohNAzPHkbEH1jFyuASKVkMX63Lm7v")
+		notUsedAddress, _ = common.NeutAddressStringToAddressCheck("EXA4tFR5f4a3HAV7RVnuhDM2wx4J8Rd94T")
 
 		firstTopic   = common.HexToHash("0x1111111111111111111111111111111111111111111111111111111111111111")
 		secondTopic  = common.HexToHash("0x2222222222222222222222222222222222222222222222222222222222222222")
@@ -513,10 +513,10 @@ func TestPendingLogsSubscription(t *testing.T) {
 		backend    = &testBackend{mux, db, 0, txFeed, rmLogsFeed, logsFeed, chainFeed}
 		api        = NewPublicFilterAPI(backend, false)
 
-		firstAddr, _      = common.EvryAddressStringToAddressCheck("EJi9Rf88LxzNaQ9LD95fy9U5gM7ve2r8Er")
-		secondAddr, _     = common.EvryAddressStringToAddressCheck("ELGPMjQkFygqAVgocSApw9xCb3jiq1eVqP")
-		thirdAddress, _   = common.EvryAddressStringToAddressCheck("EMpdHohNAzPHkbEH1jFyuASKVkMX63Lm7v")
-		notUsedAddress, _ = common.EvryAddressStringToAddressCheck("EXA4tFR5f4a3HAV7RVnuhDM2wx4J8Rd94T")
+		firstAddr, _      = common.NeutAddressStringToAddressCheck("EJi9Rf88LxzNaQ9LD95fy9U5gM7ve2r8Er")
+		secondAddr, _     = common.NeutAddressStringToAddressCheck("ELGPMjQkFygqAVgocSApw9xCb3jiq1eVqP")
+		thirdAddress, _   = common.NeutAddressStringToAddressCheck("EMpdHohNAzPHkbEH1jFyuASKVkMX63Lm7v")
+		notUsedAddress, _ = common.NeutAddressStringToAddressCheck("EXA4tFR5f4a3HAV7RVnuhDM2wx4J8Rd94T")
 
 		firstTopic   = common.HexToHash("0x1111111111111111111111111111111111111111111111111111111111111111")
 		secondTopic  = common.HexToHash("0x2222222222222222222222222222222222222222222222222222222222222222")

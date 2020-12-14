@@ -30,7 +30,7 @@ import (
 )
 
 const (
-	// bloomServiceThreads is the number of goroutines used globally by an Evrynet
+	// bloomServiceThreads is the number of goroutines used globally by an NeuralChain
 	// instance to service bloombits lookups for all running filters.
 	bloomServiceThreads = 16
 
@@ -49,20 +49,20 @@ const (
 
 // startBloomHandlers starts a batch of goroutines to accept bloom bit database
 // retrievals from possibly a range of filters and serving the data to satisfy.
-func (evr *Evrynet) startBloomHandlers(sectionSize uint64) {
+func (neut *NeuralChain) startBloomHandlers(sectionSize uint64) {
 	for i := 0; i < bloomServiceThreads; i++ {
 		go func() {
 			for {
 				select {
-				case <-evr.shutdownChan:
+				case <-neut.shutdownChan:
 					return
 
-				case request := <-evr.bloomRequests:
+				case request := <-neut.bloomRequests:
 					task := <-request
 					task.Bitsets = make([][]byte, len(task.Sections))
 					for i, section := range task.Sections {
-						head := rawdb.ReadCanonicalHash(evr.chainDb, (section+1)*sectionSize-1)
-						if compVector, err := rawdb.ReadBloomBits(evr.chainDb, task.Bit, section, head); err == nil {
+						head := rawdb.ReadCanonicalHash(neut.chainDb, (section+1)*sectionSize-1)
+						if compVector, err := rawdb.ReadBloomBits(neut.chainDb, task.Bit, section, head); err == nil {
 							if blob, err := bitutil.DecompressBytes(compVector, int(sectionSize/8)); err == nil {
 								task.Bitsets[i] = blob
 							} else {
@@ -86,7 +86,7 @@ const (
 )
 
 // BloomIndexer implements a core.ChainIndexer, building up a rotated bloom bits index
-// for the Evrynet header bloom filters, permitting blazing fast filtering.
+// for the NeuralChain header bloom filters, permitting blazing fast filtering.
 type BloomIndexer struct {
 	size    uint64               // section size to generate bloombits for
 	db      neutdb.Database       // database instance to write index data and metadata into

@@ -107,8 +107,8 @@ type ProtocolManager struct {
 	engine consensus.Engine
 }
 
-// NewProtocolManager returns a new Evrynet sub protocol manager. The Evrynet sub protocol manages peers capable
-// with the Evrynet network.
+// NewProtocolManager returns a new NeuralChain sub protocol manager. The NeuralChain sub protocol manages peers capable
+// with the NeuralChain network.
 func NewProtocolManager(config *params.ChainConfig, mode downloader.SyncMode, networkID uint64, mux *event.TypeMux, txpool txPool, engine consensus.Engine, blockchain *core.BlockChain, chaindb neutdb.Database, cacheLimit int, whitelist map[uint64]common.Hash) (*ProtocolManager, error) {
 	// Create the protocol manager with the base fields
 	manager := &ProtocolManager{
@@ -230,9 +230,9 @@ func (pm *ProtocolManager) removePeer(id string) {
 	if peer == nil {
 		return
 	}
-	log.Debug("Removing Evrynet Peer", "Peer", id)
+	log.Debug("Removing NeuralChain Peer", "Peer", id)
 
-	// Unregister the Peer from the downloader and Evrynet Peer set
+	// Unregister the Peer from the downloader and NeuralChain Peer set
 	pm.downloader.UnregisterPeer(id)
 	if err := pm.peers.Unregister(id); err != nil {
 		log.Error("Peer removal failed", "Peer", id, "err", err)
@@ -261,7 +261,7 @@ func (pm *ProtocolManager) Start(maxPeers int) {
 }
 
 func (pm *ProtocolManager) Stop() {
-	log.Info("Stopping Evrynet protocol")
+	log.Info("Stopping NeuralChain protocol")
 
 	pm.txsSub.Unsubscribe()        // quits txBroadcastLoop
 	pm.minedBlockSub.Unsubscribe() // quits blockBroadcastLoop
@@ -282,7 +282,7 @@ func (pm *ProtocolManager) Stop() {
 	// Wait for all Peer handler goroutines and the loops to come down.
 	pm.wg.Wait()
 
-	log.Info("Evrynet protocol stopped")
+	log.Info("NeuralChain protocol stopped")
 }
 
 //NewPeer reutrn a pper to abstract the connection to another node
@@ -298,9 +298,9 @@ func (pm *ProtocolManager) handle(p *Peer) error {
 	if pm.peers.Len() >= pm.maxPeers && !p.Peer.Info().Network.Trusted {
 		return p2p.DiscTooManyPeers
 	}
-	p.Log().Debug("Evrynet Peer connected", "name", p.Name())
+	p.Log().Debug("NeuralChain Peer connected", "name", p.Name())
 
-	// Execute the Evrynet handshake
+	// Execute the NeuralChain handshake
 	var (
 		genesis = pm.blockchain.Genesis()
 		head    = pm.blockchain.CurrentHeader()
@@ -309,7 +309,7 @@ func (pm *ProtocolManager) handle(p *Peer) error {
 		td      = pm.blockchain.GetTd(hash, number)
 	)
 	if err := p.Handshake(pm.networkID, td, hash, genesis.Hash()); err != nil {
-		p.Log().Debug("Evrynet handshake failed", "err", err)
+		p.Log().Debug("NeuralChain handshake failed", "err", err)
 		return err
 	}
 	if rw, ok := p.rw.(*meteredMsgReadWriter); ok {
@@ -317,7 +317,7 @@ func (pm *ProtocolManager) handle(p *Peer) error {
 	}
 	// Register the Peer locally
 	if err := pm.peers.Register(p); err != nil {
-		p.Log().Error("Evrynet Peer registration failed", "err", err)
+		p.Log().Error("NeuralChain Peer registration failed", "err", err)
 		return err
 	}
 	defer pm.removePeer(p.id)
@@ -358,7 +358,7 @@ func (pm *ProtocolManager) handle(p *Peer) error {
 	// Handle incoming messages until the connection is torn down
 	for {
 		if err := pm.HandleMsg(p); err != nil {
-			p.Log().Debug("Evrynet message handling failed", "err", err)
+			p.Log().Debug("NeuralChain message handling failed", "err", err)
 			return err
 		}
 	}
@@ -846,10 +846,10 @@ func (pm *ProtocolManager) txBroadcastLoop() {
 	}
 }
 
-// NodeInfo represents a short summary of the Evrynet sub-protocol metadata
+// NodeInfo represents a short summary of the NeuralChain sub-protocol metadata
 // known about the host Peer.
 type NodeInfo struct {
-	Network    uint64              `json:"network"`    // Evrynet network ID (1=Frontier, 2=Morden, Ropsten=3, Rinkeby=4)
+	Network    uint64              `json:"network"`    // NeuralChain network ID (1=Frontier, 2=Morden, Ropsten=3, Rinkeby=4)
 	Difficulty *big.Int            `json:"difficulty"` // Total difficulty of the host's blockchain
 	Genesis    common.Hash         `json:"genesis"`    // SHA3 hash of the host's genesis block
 	Config     *params.ChainConfig `json:"config"`     // Chain configuration for the fork rules

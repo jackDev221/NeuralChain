@@ -107,7 +107,7 @@ If you want to encrypt an existing private key, it can be specified by setting
 
 		// Output some information.
 		out := outputGenerate{
-			Address: common.AddressToEvryAddressString(key.Address),
+			Address: common.AddressToNeutAddressString(key.Address),
 		}
 		if ctx.Bool(jsonFlag.Name) {
 			mustPrintJSON(out)

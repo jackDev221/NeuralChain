@@ -28,7 +28,7 @@ type journalEntry interface {
 	// revert undoes the changes introduced by this journal entry.
 	revert(*StateDB)
 
-	// dirtied returns the Evrynet address modified by this journal entry.
+	// dirtied returns the NeuralChain address modified by this journal entry.
 	dirtied() *common.Address
 }
 
@@ -167,7 +167,7 @@ func (ch suicideChange) dirtied() *common.Address {
 	return ch.account
 }
 
-var ripemd, _ = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
+var ripemd, _ = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
 
 func (ch touchChange) revert(s *StateDB) {
 }

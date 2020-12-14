@@ -24,9 +24,9 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //*
 // Request: Ask device for public key corresponding to address_n path
 // @start
-// @next EvrynetPublicKey
+// @next NeuralChainPublicKey
 // @next Failure
-type EvrynetGetPublicKey struct {
+type NeuralChainGetPublicKey struct {
 	AddressN             []uint32 `protobuf:"varint,1,rep,name=address_n,json=addressN" json:"address_n,omitempty"`
 	ShowDisplay          *bool    `protobuf:"varint,2,opt,name=show_display,json=showDisplay" json:"show_display,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -34,39 +34,39 @@ type EvrynetGetPublicKey struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetGetPublicKey) Reset()         { *m = EvrynetGetPublicKey{} }
-func (m *EvrynetGetPublicKey) String() string { return proto.CompactTextString(m) }
-func (*EvrynetGetPublicKey) ProtoMessage()    {}
-func (*EvrynetGetPublicKey) Descriptor() ([]byte, []int) {
+func (m *NeuralChainGetPublicKey) Reset()         { *m = NeuralChainGetPublicKey{} }
+func (m *NeuralChainGetPublicKey) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainGetPublicKey) ProtoMessage()    {}
+func (*NeuralChainGetPublicKey) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{0}
 }
 
-func (m *EvrynetGetPublicKey) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetGetPublicKey.Unmarshal(m, b)
+func (m *NeuralChainGetPublicKey) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainGetPublicKey.Unmarshal(m, b)
 }
-func (m *EvrynetGetPublicKey) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetGetPublicKey.Marshal(b, m, deterministic)
+func (m *NeuralChainGetPublicKey) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainGetPublicKey.Marshal(b, m, deterministic)
 }
-func (m *EvrynetGetPublicKey) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetGetPublicKey.Merge(m, src)
+func (m *NeuralChainGetPublicKey) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainGetPublicKey.Merge(m, src)
 }
-func (m *EvrynetGetPublicKey) XXX_Size() int {
-	return xxx_messageInfo_EvrynetGetPublicKey.Size(m)
+func (m *NeuralChainGetPublicKey) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainGetPublicKey.Size(m)
 }
-func (m *EvrynetGetPublicKey) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetGetPublicKey.DiscardUnknown(m)
+func (m *NeuralChainGetPublicKey) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainGetPublicKey.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetGetPublicKey proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainGetPublicKey proto.InternalMessageInfo
 
-func (m *EvrynetGetPublicKey) GetAddressN() []uint32 {
+func (m *NeuralChainGetPublicKey) GetAddressN() []uint32 {
 	if m != nil {
 		return m.AddressN
 	}
 	return nil
 }
 
-func (m *EvrynetGetPublicKey) GetShowDisplay() bool {
+func (m *NeuralChainGetPublicKey) GetShowDisplay() bool {
 	if m != nil && m.ShowDisplay != nil {
 		return *m.ShowDisplay
 	}
@@ -76,7 +76,7 @@ func (m *EvrynetGetPublicKey) GetShowDisplay() bool {
 //*
 // Response: Contains public key derived from device private seed
 // @end
-type EvrynetPublicKey struct {
+type NeuralChainPublicKey struct {
 	Node                 *HDNodeType `protobuf:"bytes,1,opt,name=node" json:"node,omitempty"`
 	Xpub                 *string     `protobuf:"bytes,2,opt,name=xpub" json:"xpub,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
@@ -84,39 +84,39 @@ type EvrynetPublicKey struct {
 	XXX_sizecache        int32       `json:"-"`
 }
 
-func (m *EvrynetPublicKey) Reset()         { *m = EvrynetPublicKey{} }
-func (m *EvrynetPublicKey) String() string { return proto.CompactTextString(m) }
-func (*EvrynetPublicKey) ProtoMessage()    {}
-func (*EvrynetPublicKey) Descriptor() ([]byte, []int) {
+func (m *NeuralChainPublicKey) Reset()         { *m = NeuralChainPublicKey{} }
+func (m *NeuralChainPublicKey) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainPublicKey) ProtoMessage()    {}
+func (*NeuralChainPublicKey) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{1}
 }
 
-func (m *EvrynetPublicKey) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetPublicKey.Unmarshal(m, b)
+func (m *NeuralChainPublicKey) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainPublicKey.Unmarshal(m, b)
 }
-func (m *EvrynetPublicKey) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetPublicKey.Marshal(b, m, deterministic)
+func (m *NeuralChainPublicKey) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainPublicKey.Marshal(b, m, deterministic)
 }
-func (m *EvrynetPublicKey) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetPublicKey.Merge(m, src)
+func (m *NeuralChainPublicKey) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainPublicKey.Merge(m, src)
 }
-func (m *EvrynetPublicKey) XXX_Size() int {
-	return xxx_messageInfo_EvrynetPublicKey.Size(m)
+func (m *NeuralChainPublicKey) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainPublicKey.Size(m)
 }
-func (m *EvrynetPublicKey) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetPublicKey.DiscardUnknown(m)
+func (m *NeuralChainPublicKey) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainPublicKey.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetPublicKey proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainPublicKey proto.InternalMessageInfo
 
-func (m *EvrynetPublicKey) GetNode() *HDNodeType {
+func (m *NeuralChainPublicKey) GetNode() *HDNodeType {
 	if m != nil {
 		return m.Node
 	}
 	return nil
 }
 
-func (m *EvrynetPublicKey) GetXpub() string {
+func (m *NeuralChainPublicKey) GetXpub() string {
 	if m != nil && m.Xpub != nil {
 		return *m.Xpub
 	}
@@ -124,11 +124,11 @@ func (m *EvrynetPublicKey) GetXpub() string {
 }
 
 //*
-// Request: Ask device for Evrynet address corresponding to address_n path
+// Request: Ask device for NeuralChain address corresponding to address_n path
 // @start
-// @next EvrynetAddress
+// @next NeuralChainAddress
 // @next Failure
-type EvrynetGetAddress struct {
+type NeuralChainGetAddress struct {
 	AddressN             []uint32 `protobuf:"varint,1,rep,name=address_n,json=addressN" json:"address_n,omitempty"`
 	ShowDisplay          *bool    `protobuf:"varint,2,opt,name=show_display,json=showDisplay" json:"show_display,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -136,39 +136,39 @@ type EvrynetGetAddress struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetGetAddress) Reset()         { *m = EvrynetGetAddress{} }
-func (m *EvrynetGetAddress) String() string { return proto.CompactTextString(m) }
-func (*EvrynetGetAddress) ProtoMessage()    {}
-func (*EvrynetGetAddress) Descriptor() ([]byte, []int) {
+func (m *NeuralChainGetAddress) Reset()         { *m = NeuralChainGetAddress{} }
+func (m *NeuralChainGetAddress) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainGetAddress) ProtoMessage()    {}
+func (*NeuralChainGetAddress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{2}
 }
 
-func (m *EvrynetGetAddress) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetGetAddress.Unmarshal(m, b)
+func (m *NeuralChainGetAddress) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainGetAddress.Unmarshal(m, b)
 }
-func (m *EvrynetGetAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetGetAddress.Marshal(b, m, deterministic)
+func (m *NeuralChainGetAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainGetAddress.Marshal(b, m, deterministic)
 }
-func (m *EvrynetGetAddress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetGetAddress.Merge(m, src)
+func (m *NeuralChainGetAddress) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainGetAddress.Merge(m, src)
 }
-func (m *EvrynetGetAddress) XXX_Size() int {
-	return xxx_messageInfo_EvrynetGetAddress.Size(m)
+func (m *NeuralChainGetAddress) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainGetAddress.Size(m)
 }
-func (m *EvrynetGetAddress) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetGetAddress.DiscardUnknown(m)
+func (m *NeuralChainGetAddress) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainGetAddress.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetGetAddress proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainGetAddress proto.InternalMessageInfo
 
-func (m *EvrynetGetAddress) GetAddressN() []uint32 {
+func (m *NeuralChainGetAddress) GetAddressN() []uint32 {
 	if m != nil {
 		return m.AddressN
 	}
 	return nil
 }
 
-func (m *EvrynetGetAddress) GetShowDisplay() bool {
+func (m *NeuralChainGetAddress) GetShowDisplay() bool {
 	if m != nil && m.ShowDisplay != nil {
 		return *m.ShowDisplay
 	}
@@ -176,9 +176,9 @@ func (m *EvrynetGetAddress) GetShowDisplay() bool {
 }
 
 //*
-// Response: Contains an Evrynet address derived from device private seed
+// Response: Contains an NeuralChain address derived from device private seed
 // @end
-type EvrynetAddress struct {
+type NeuralChainAddress struct {
 	AddressBin           []byte   `protobuf:"bytes,1,opt,name=addressBin" json:"addressBin,omitempty"`
 	AddressHex           *string  `protobuf:"bytes,2,opt,name=addressHex" json:"addressHex,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -186,39 +186,39 @@ type EvrynetAddress struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetAddress) Reset()         { *m = EvrynetAddress{} }
-func (m *EvrynetAddress) String() string { return proto.CompactTextString(m) }
-func (*EvrynetAddress) ProtoMessage()    {}
-func (*EvrynetAddress) Descriptor() ([]byte, []int) {
+func (m *NeuralChainAddress) Reset()         { *m = NeuralChainAddress{} }
+func (m *NeuralChainAddress) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainAddress) ProtoMessage()    {}
+func (*NeuralChainAddress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{3}
 }
 
-func (m *EvrynetAddress) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetAddress.Unmarshal(m, b)
+func (m *NeuralChainAddress) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainAddress.Unmarshal(m, b)
 }
-func (m *EvrynetAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetAddress.Marshal(b, m, deterministic)
+func (m *NeuralChainAddress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainAddress.Marshal(b, m, deterministic)
 }
-func (m *EvrynetAddress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetAddress.Merge(m, src)
+func (m *NeuralChainAddress) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainAddress.Merge(m, src)
 }
-func (m *EvrynetAddress) XXX_Size() int {
-	return xxx_messageInfo_EvrynetAddress.Size(m)
+func (m *NeuralChainAddress) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainAddress.Size(m)
 }
-func (m *EvrynetAddress) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetAddress.DiscardUnknown(m)
+func (m *NeuralChainAddress) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainAddress.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetAddress proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainAddress proto.InternalMessageInfo
 
-func (m *EvrynetAddress) GetAddressBin() []byte {
+func (m *NeuralChainAddress) GetAddressBin() []byte {
 	if m != nil {
 		return m.AddressBin
 	}
 	return nil
 }
 
-func (m *EvrynetAddress) GetAddressHex() string {
+func (m *NeuralChainAddress) GetAddressHex() string {
 	if m != nil && m.AddressHex != nil {
 		return *m.AddressHex
 	}
@@ -230,9 +230,9 @@ func (m *EvrynetAddress) GetAddressHex() string {
 // All fields are optional from the protocol's point of view. Each field defaults to value `0` if missing.
 // Note: the first at most 1024 bytes of data MUST be transmitted as part of this message.
 // @start
-// @next EvrynetTxRequest
+// @next NeuralChainTxRequest
 // @next Failure
-type EvrynetSignTx struct {
+type NeuralChainSignTx struct {
 	AddressN             []uint32 `protobuf:"varint,1,rep,name=address_n,json=addressN" json:"address_n,omitempty"`
 	Nonce                []byte   `protobuf:"bytes,2,opt,name=nonce" json:"nonce,omitempty"`
 	GasPrice             []byte   `protobuf:"bytes,3,opt,name=gas_price,json=gasPrice" json:"gas_price,omitempty"`
@@ -249,102 +249,102 @@ type EvrynetSignTx struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetSignTx) Reset()         { *m = EvrynetSignTx{} }
-func (m *EvrynetSignTx) String() string { return proto.CompactTextString(m) }
-func (*EvrynetSignTx) ProtoMessage()    {}
-func (*EvrynetSignTx) Descriptor() ([]byte, []int) {
+func (m *NeuralChainSignTx) Reset()         { *m = NeuralChainSignTx{} }
+func (m *NeuralChainSignTx) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainSignTx) ProtoMessage()    {}
+func (*NeuralChainSignTx) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{4}
 }
 
-func (m *EvrynetSignTx) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetSignTx.Unmarshal(m, b)
+func (m *NeuralChainSignTx) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainSignTx.Unmarshal(m, b)
 }
-func (m *EvrynetSignTx) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetSignTx.Marshal(b, m, deterministic)
+func (m *NeuralChainSignTx) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainSignTx.Marshal(b, m, deterministic)
 }
-func (m *EvrynetSignTx) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetSignTx.Merge(m, src)
+func (m *NeuralChainSignTx) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainSignTx.Merge(m, src)
 }
-func (m *EvrynetSignTx) XXX_Size() int {
-	return xxx_messageInfo_EvrynetSignTx.Size(m)
+func (m *NeuralChainSignTx) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainSignTx.Size(m)
 }
-func (m *EvrynetSignTx) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetSignTx.DiscardUnknown(m)
+func (m *NeuralChainSignTx) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainSignTx.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetSignTx proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainSignTx proto.InternalMessageInfo
 
-func (m *EvrynetSignTx) GetAddressN() []uint32 {
+func (m *NeuralChainSignTx) GetAddressN() []uint32 {
 	if m != nil {
 		return m.AddressN
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetNonce() []byte {
+func (m *NeuralChainSignTx) GetNonce() []byte {
 	if m != nil {
 		return m.Nonce
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetGasPrice() []byte {
+func (m *NeuralChainSignTx) GetGasPrice() []byte {
 	if m != nil {
 		return m.GasPrice
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetGasLimit() []byte {
+func (m *NeuralChainSignTx) GetGasLimit() []byte {
 	if m != nil {
 		return m.GasLimit
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetToBin() []byte {
+func (m *NeuralChainSignTx) GetToBin() []byte {
 	if m != nil {
 		return m.ToBin
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetToHex() string {
+func (m *NeuralChainSignTx) GetToHex() string {
 	if m != nil && m.ToHex != nil {
 		return *m.ToHex
 	}
 	return ""
 }
 
-func (m *EvrynetSignTx) GetValue() []byte {
+func (m *NeuralChainSignTx) GetValue() []byte {
 	if m != nil {
 		return m.Value
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetDataInitialChunk() []byte {
+func (m *NeuralChainSignTx) GetDataInitialChunk() []byte {
 	if m != nil {
 		return m.DataInitialChunk
 	}
 	return nil
 }
 
-func (m *EvrynetSignTx) GetDataLength() uint32 {
+func (m *NeuralChainSignTx) GetDataLength() uint32 {
 	if m != nil && m.DataLength != nil {
 		return *m.DataLength
 	}
 	return 0
 }
 
-func (m *EvrynetSignTx) GetChainId() uint32 {
+func (m *NeuralChainSignTx) GetChainId() uint32 {
 	if m != nil && m.ChainId != nil {
 		return *m.ChainId
 	}
 	return 0
 }
 
-func (m *EvrynetSignTx) GetTxType() uint32 {
+func (m *NeuralChainSignTx) GetTxType() uint32 {
 	if m != nil && m.TxType != nil {
 		return *m.TxType
 	}
@@ -356,8 +356,8 @@ func (m *EvrynetSignTx) GetTxType() uint32 {
 // If data_length is set, device awaits that many more bytes of payload.
 // Otherwise, the signature_* fields contain the computed transaction signature. All three fields will be present.
 // @end
-// @next EvrynetTxAck
-type EvrynetTxRequest struct {
+// @next NeuralChainTxAck
+type NeuralChainTxRequest struct {
 	DataLength           *uint32  `protobuf:"varint,1,opt,name=data_length,json=dataLength" json:"data_length,omitempty"`
 	SignatureV           *uint32  `protobuf:"varint,2,opt,name=signature_v,json=signatureV" json:"signature_v,omitempty"`
 	SignatureR           []byte   `protobuf:"bytes,3,opt,name=signature_r,json=signatureR" json:"signature_r,omitempty"`
@@ -367,53 +367,53 @@ type EvrynetTxRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetTxRequest) Reset()         { *m = EvrynetTxRequest{} }
-func (m *EvrynetTxRequest) String() string { return proto.CompactTextString(m) }
-func (*EvrynetTxRequest) ProtoMessage()    {}
-func (*EvrynetTxRequest) Descriptor() ([]byte, []int) {
+func (m *NeuralChainTxRequest) Reset()         { *m = NeuralChainTxRequest{} }
+func (m *NeuralChainTxRequest) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainTxRequest) ProtoMessage()    {}
+func (*NeuralChainTxRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{5}
 }
 
-func (m *EvrynetTxRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetTxRequest.Unmarshal(m, b)
+func (m *NeuralChainTxRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainTxRequest.Unmarshal(m, b)
 }
-func (m *EvrynetTxRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetTxRequest.Marshal(b, m, deterministic)
+func (m *NeuralChainTxRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainTxRequest.Marshal(b, m, deterministic)
 }
-func (m *EvrynetTxRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetTxRequest.Merge(m, src)
+func (m *NeuralChainTxRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainTxRequest.Merge(m, src)
 }
-func (m *EvrynetTxRequest) XXX_Size() int {
-	return xxx_messageInfo_EvrynetTxRequest.Size(m)
+func (m *NeuralChainTxRequest) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainTxRequest.Size(m)
 }
-func (m *EvrynetTxRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetTxRequest.DiscardUnknown(m)
+func (m *NeuralChainTxRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainTxRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetTxRequest proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainTxRequest proto.InternalMessageInfo
 
-func (m *EvrynetTxRequest) GetDataLength() uint32 {
+func (m *NeuralChainTxRequest) GetDataLength() uint32 {
 	if m != nil && m.DataLength != nil {
 		return *m.DataLength
 	}
 	return 0
 }
 
-func (m *EvrynetTxRequest) GetSignatureV() uint32 {
+func (m *NeuralChainTxRequest) GetSignatureV() uint32 {
 	if m != nil && m.SignatureV != nil {
 		return *m.SignatureV
 	}
 	return 0
 }
 
-func (m *EvrynetTxRequest) GetSignatureR() []byte {
+func (m *NeuralChainTxRequest) GetSignatureR() []byte {
 	if m != nil {
 		return m.SignatureR
 	}
 	return nil
 }
 
-func (m *EvrynetTxRequest) GetSignatureS() []byte {
+func (m *NeuralChainTxRequest) GetSignatureS() []byte {
 	if m != nil {
 		return m.SignatureS
 	}
@@ -422,40 +422,40 @@ func (m *EvrynetTxRequest) GetSignatureS() []byte {
 
 //*
 // Request: Transaction payload data.
-// @next EvrynetTxRequest
-type EvrynetTxAck struct {
+// @next NeuralChainTxRequest
+type NeuralChainTxAck struct {
 	DataChunk            []byte   `protobuf:"bytes,1,opt,name=data_chunk,json=dataChunk" json:"data_chunk,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetTxAck) Reset()         { *m = EvrynetTxAck{} }
-func (m *EvrynetTxAck) String() string { return proto.CompactTextString(m) }
-func (*EvrynetTxAck) ProtoMessage()    {}
-func (*EvrynetTxAck) Descriptor() ([]byte, []int) {
+func (m *NeuralChainTxAck) Reset()         { *m = NeuralChainTxAck{} }
+func (m *NeuralChainTxAck) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainTxAck) ProtoMessage()    {}
+func (*NeuralChainTxAck) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{6}
 }
 
-func (m *EvrynetTxAck) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetTxAck.Unmarshal(m, b)
+func (m *NeuralChainTxAck) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainTxAck.Unmarshal(m, b)
 }
-func (m *EvrynetTxAck) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetTxAck.Marshal(b, m, deterministic)
+func (m *NeuralChainTxAck) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainTxAck.Marshal(b, m, deterministic)
 }
-func (m *EvrynetTxAck) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetTxAck.Merge(m, src)
+func (m *NeuralChainTxAck) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainTxAck.Merge(m, src)
 }
-func (m *EvrynetTxAck) XXX_Size() int {
-	return xxx_messageInfo_EvrynetTxAck.Size(m)
+func (m *NeuralChainTxAck) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainTxAck.Size(m)
 }
-func (m *EvrynetTxAck) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetTxAck.DiscardUnknown(m)
+func (m *NeuralChainTxAck) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainTxAck.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetTxAck proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainTxAck proto.InternalMessageInfo
 
-func (m *EvrynetTxAck) GetDataChunk() []byte {
+func (m *NeuralChainTxAck) GetDataChunk() []byte {
 	if m != nil {
 		return m.DataChunk
 	}
@@ -465,9 +465,9 @@ func (m *EvrynetTxAck) GetDataChunk() []byte {
 //*
 // Request: Ask device to sign message
 // @start
-// @next EvrynetMessageSignature
+// @next NeuralChainMessageSignature
 // @next Failure
-type EvrynetSignMessage struct {
+type NeuralChainSignMessage struct {
 	AddressN             []uint32 `protobuf:"varint,1,rep,name=address_n,json=addressN" json:"address_n,omitempty"`
 	Message              []byte   `protobuf:"bytes,2,opt,name=message" json:"message,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -475,39 +475,39 @@ type EvrynetSignMessage struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetSignMessage) Reset()         { *m = EvrynetSignMessage{} }
-func (m *EvrynetSignMessage) String() string { return proto.CompactTextString(m) }
-func (*EvrynetSignMessage) ProtoMessage()    {}
-func (*EvrynetSignMessage) Descriptor() ([]byte, []int) {
+func (m *NeuralChainSignMessage) Reset()         { *m = NeuralChainSignMessage{} }
+func (m *NeuralChainSignMessage) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainSignMessage) ProtoMessage()    {}
+func (*NeuralChainSignMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{7}
 }
 
-func (m *EvrynetSignMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetSignMessage.Unmarshal(m, b)
+func (m *NeuralChainSignMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainSignMessage.Unmarshal(m, b)
 }
-func (m *EvrynetSignMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetSignMessage.Marshal(b, m, deterministic)
+func (m *NeuralChainSignMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainSignMessage.Marshal(b, m, deterministic)
 }
-func (m *EvrynetSignMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetSignMessage.Merge(m, src)
+func (m *NeuralChainSignMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainSignMessage.Merge(m, src)
 }
-func (m *EvrynetSignMessage) XXX_Size() int {
-	return xxx_messageInfo_EvrynetSignMessage.Size(m)
+func (m *NeuralChainSignMessage) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainSignMessage.Size(m)
 }
-func (m *EvrynetSignMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetSignMessage.DiscardUnknown(m)
+func (m *NeuralChainSignMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainSignMessage.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetSignMessage proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainSignMessage proto.InternalMessageInfo
 
-func (m *EvrynetSignMessage) GetAddressN() []uint32 {
+func (m *NeuralChainSignMessage) GetAddressN() []uint32 {
 	if m != nil {
 		return m.AddressN
 	}
 	return nil
 }
 
-func (m *EvrynetSignMessage) GetMessage() []byte {
+func (m *NeuralChainSignMessage) GetMessage() []byte {
 	if m != nil {
 		return m.Message
 	}
@@ -517,7 +517,7 @@ func (m *EvrynetSignMessage) GetMessage() []byte {
 //*
 // Response: Signed message
 // @end
-type EvrynetMessageSignature struct {
+type NeuralChainMessageSignature struct {
 	AddressBin           []byte   `protobuf:"bytes,1,opt,name=addressBin" json:"addressBin,omitempty"`
 	Signature            []byte   `protobuf:"bytes,2,opt,name=signature" json:"signature,omitempty"`
 	AddressHex           *string  `protobuf:"bytes,3,opt,name=addressHex" json:"addressHex,omitempty"`
@@ -526,46 +526,46 @@ type EvrynetMessageSignature struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetMessageSignature) Reset()         { *m = EvrynetMessageSignature{} }
-func (m *EvrynetMessageSignature) String() string { return proto.CompactTextString(m) }
-func (*EvrynetMessageSignature) ProtoMessage()    {}
-func (*EvrynetMessageSignature) Descriptor() ([]byte, []int) {
+func (m *NeuralChainMessageSignature) Reset()         { *m = NeuralChainMessageSignature{} }
+func (m *NeuralChainMessageSignature) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainMessageSignature) ProtoMessage()    {}
+func (*NeuralChainMessageSignature) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{8}
 }
 
-func (m *EvrynetMessageSignature) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetMessageSignature.Unmarshal(m, b)
+func (m *NeuralChainMessageSignature) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainMessageSignature.Unmarshal(m, b)
 }
-func (m *EvrynetMessageSignature) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetMessageSignature.Marshal(b, m, deterministic)
+func (m *NeuralChainMessageSignature) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainMessageSignature.Marshal(b, m, deterministic)
 }
-func (m *EvrynetMessageSignature) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetMessageSignature.Merge(m, src)
+func (m *NeuralChainMessageSignature) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainMessageSignature.Merge(m, src)
 }
-func (m *EvrynetMessageSignature) XXX_Size() int {
-	return xxx_messageInfo_EvrynetMessageSignature.Size(m)
+func (m *NeuralChainMessageSignature) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainMessageSignature.Size(m)
 }
-func (m *EvrynetMessageSignature) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetMessageSignature.DiscardUnknown(m)
+func (m *NeuralChainMessageSignature) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainMessageSignature.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetMessageSignature proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainMessageSignature proto.InternalMessageInfo
 
-func (m *EvrynetMessageSignature) GetAddressBin() []byte {
+func (m *NeuralChainMessageSignature) GetAddressBin() []byte {
 	if m != nil {
 		return m.AddressBin
 	}
 	return nil
 }
 
-func (m *EvrynetMessageSignature) GetSignature() []byte {
+func (m *NeuralChainMessageSignature) GetSignature() []byte {
 	if m != nil {
 		return m.Signature
 	}
 	return nil
 }
 
-func (m *EvrynetMessageSignature) GetAddressHex() string {
+func (m *NeuralChainMessageSignature) GetAddressHex() string {
 	if m != nil && m.AddressHex != nil {
 		return *m.AddressHex
 	}
@@ -577,7 +577,7 @@ func (m *EvrynetMessageSignature) GetAddressHex() string {
 // @start
 // @next Success
 // @next Failure
-type EvrynetVerifyMessage struct {
+type NeuralChainVerifyMessage struct {
 	AddressBin           []byte   `protobuf:"bytes,1,opt,name=addressBin" json:"addressBin,omitempty"`
 	Signature            []byte   `protobuf:"bytes,2,opt,name=signature" json:"signature,omitempty"`
 	Message              []byte   `protobuf:"bytes,3,opt,name=message" json:"message,omitempty"`
@@ -587,53 +587,53 @@ type EvrynetVerifyMessage struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *EvrynetVerifyMessage) Reset()         { *m = EvrynetVerifyMessage{} }
-func (m *EvrynetVerifyMessage) String() string { return proto.CompactTextString(m) }
-func (*EvrynetVerifyMessage) ProtoMessage()    {}
-func (*EvrynetVerifyMessage) Descriptor() ([]byte, []int) {
+func (m *NeuralChainVerifyMessage) Reset()         { *m = NeuralChainVerifyMessage{} }
+func (m *NeuralChainVerifyMessage) String() string { return proto.CompactTextString(m) }
+func (*NeuralChainVerifyMessage) ProtoMessage()    {}
+func (*NeuralChainVerifyMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb33f46ba915f15c, []int{9}
 }
 
-func (m *EvrynetVerifyMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EvrynetVerifyMessage.Unmarshal(m, b)
+func (m *NeuralChainVerifyMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NeuralChainVerifyMessage.Unmarshal(m, b)
 }
-func (m *EvrynetVerifyMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EvrynetVerifyMessage.Marshal(b, m, deterministic)
+func (m *NeuralChainVerifyMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NeuralChainVerifyMessage.Marshal(b, m, deterministic)
 }
-func (m *EvrynetVerifyMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EvrynetVerifyMessage.Merge(m, src)
+func (m *NeuralChainVerifyMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NeuralChainVerifyMessage.Merge(m, src)
 }
-func (m *EvrynetVerifyMessage) XXX_Size() int {
-	return xxx_messageInfo_EvrynetVerifyMessage.Size(m)
+func (m *NeuralChainVerifyMessage) XXX_Size() int {
+	return xxx_messageInfo_NeuralChainVerifyMessage.Size(m)
 }
-func (m *EvrynetVerifyMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_EvrynetVerifyMessage.DiscardUnknown(m)
+func (m *NeuralChainVerifyMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_NeuralChainVerifyMessage.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EvrynetVerifyMessage proto.InternalMessageInfo
+var xxx_messageInfo_NeuralChainVerifyMessage proto.InternalMessageInfo
 
-func (m *EvrynetVerifyMessage) GetAddressBin() []byte {
+func (m *NeuralChainVerifyMessage) GetAddressBin() []byte {
 	if m != nil {
 		return m.AddressBin
 	}
 	return nil
 }
 
-func (m *EvrynetVerifyMessage) GetSignature() []byte {
+func (m *NeuralChainVerifyMessage) GetSignature() []byte {
 	if m != nil {
 		return m.Signature
 	}
 	return nil
 }
 
-func (m *EvrynetVerifyMessage) GetMessage() []byte {
+func (m *NeuralChainVerifyMessage) GetMessage() []byte {
 	if m != nil {
 		return m.Message
 	}
 	return nil
 }
 
-func (m *EvrynetVerifyMessage) GetAddressHex() string {
+func (m *NeuralChainVerifyMessage) GetAddressHex() string {
 	if m != nil && m.AddressHex != nil {
 		return *m.AddressHex
 	}
@@ -641,16 +641,16 @@ func (m *EvrynetVerifyMessage) GetAddressHex() string {
 }
 
 func init() {
-	proto.RegisterType((*EvrynetGetPublicKey)(nil), "hw.trezor.messages.ethereum.EvrynetGetPublicKey")
-	proto.RegisterType((*EvrynetPublicKey)(nil), "hw.trezor.messages.ethereum.EvrynetPublicKey")
-	proto.RegisterType((*EvrynetGetAddress)(nil), "hw.trezor.messages.ethereum.EvrynetGetAddress")
-	proto.RegisterType((*EvrynetAddress)(nil), "hw.trezor.messages.ethereum.EvrynetAddress")
-	proto.RegisterType((*EvrynetSignTx)(nil), "hw.trezor.messages.ethereum.EvrynetSignTx")
-	proto.RegisterType((*EvrynetTxRequest)(nil), "hw.trezor.messages.ethereum.EvrynetTxRequest")
-	proto.RegisterType((*EvrynetTxAck)(nil), "hw.trezor.messages.ethereum.EvrynetTxAck")
-	proto.RegisterType((*EvrynetSignMessage)(nil), "hw.trezor.messages.ethereum.EvrynetSignMessage")
-	proto.RegisterType((*EvrynetMessageSignature)(nil), "hw.trezor.messages.ethereum.EvrynetMessageSignature")
-	proto.RegisterType((*EvrynetVerifyMessage)(nil), "hw.trezor.messages.ethereum.EvrynetVerifyMessage")
+	proto.RegisterType((*NeuralChainGetPublicKey)(nil), "hw.trezor.messages.ethereum.NeuralChainGetPublicKey")
+	proto.RegisterType((*NeuralChainPublicKey)(nil), "hw.trezor.messages.ethereum.NeuralChainPublicKey")
+	proto.RegisterType((*NeuralChainGetAddress)(nil), "hw.trezor.messages.ethereum.NeuralChainGetAddress")
+	proto.RegisterType((*NeuralChainAddress)(nil), "hw.trezor.messages.ethereum.NeuralChainAddress")
+	proto.RegisterType((*NeuralChainSignTx)(nil), "hw.trezor.messages.ethereum.NeuralChainSignTx")
+	proto.RegisterType((*NeuralChainTxRequest)(nil), "hw.trezor.messages.ethereum.NeuralChainTxRequest")
+	proto.RegisterType((*NeuralChainTxAck)(nil), "hw.trezor.messages.ethereum.NeuralChainTxAck")
+	proto.RegisterType((*NeuralChainSignMessage)(nil), "hw.trezor.messages.ethereum.NeuralChainSignMessage")
+	proto.RegisterType((*NeuralChainMessageSignature)(nil), "hw.trezor.messages.ethereum.NeuralChainMessageSignature")
+	proto.RegisterType((*NeuralChainVerifyMessage)(nil), "hw.trezor.messages.ethereum.NeuralChainVerifyMessage")
 }
 
 func init() { proto.RegisterFile("messages-ethereum.proto", fileDescriptor_cb33f46ba915f15c) }

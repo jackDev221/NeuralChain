@@ -36,7 +36,7 @@ const schema string = `
         mutation: Mutation
     }
 
-    # Account is an Evrynet account at a particular block.
+    # Account is an NeuralChain account at a particular block.
     type Account {
         # Address is the address owning the account.
         address: Address!
@@ -54,7 +54,7 @@ const schema string = `
         storage(slot: Bytes32!): Bytes32!
     }
 
-    # Log is an Evrynet event log.
+    # Log is an NeuralChain event log.
     type Log {
         # Index is the index of this log in the block.
         index: Int!
@@ -69,7 +69,7 @@ const schema string = `
         transaction: Transaction!
     }
 
-    # Transaction is an Evrynet transaction.
+    # Transaction is an NeuralChain transaction.
     type Transaction {
         # Hash is the hash of this transaction.
         hash: Bytes32!
@@ -137,7 +137,7 @@ const schema string = `
         topics: [[Bytes32!]!]
     }
 
-    # Block is an Evrynet block.
+    # Block is an NeuralChain block.
     type Block {
         # Number is the number of this block, starting at 0 for the genesis block.
         number: Long!
@@ -199,7 +199,7 @@ const schema string = `
         transactionAt(index: Int!): Transaction
         # Logs returns a filtered set of logs from this block.
         logs(filter: BlockFilterCriteria!): [Log!]!
-        # Account fetches an Evrynet account at the current block's state.
+        # Account fetches an NeuralChain account at the current block's state.
         account(address: Address!): Account!
         # Call executes a local call operation at the current block's state.
         call(data: CallData!): CallResult
@@ -282,7 +282,7 @@ const schema string = `
       transactionCount: Int!
       # Transactions is a list of transactions in the current pending state.
       transactions: [Transaction!]
-      # Account fetches an Evrynet account for the pending state.
+      # Account fetches an NeuralChain account for the pending state.
       account(address: Address!): Account!
       # Call executes a local call operation for the pending state.
       call(data: CallData!): CallResult
@@ -292,7 +292,7 @@ const schema string = `
     }
 
     type Query {
-        # Block fetches an Evrynet block by number or by hash. If neither is
+        # Block fetches an NeuralChain block by number or by hash. If neither is
         # supplied, the most recent known block is returned.
         block(number: Long, hash: Bytes32): Block
         # Blocks returns all the blocks between two numbers, inclusive. If

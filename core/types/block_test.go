@@ -40,7 +40,7 @@ func signTx(t *testing.T, tx *Transaction) *Transaction {
 }
 
 // from bcValidBlockTest.json, "SimpleTx
-// the tx were re-signed for Evrynet Encoding test
+// the tx were re-signed for NeuralChain Encoding test
 func TestBlockEncoding(t *testing.T) {
 	blockEnc := common.FromHex("f90260f901f9a083cafc574e1f51ba9dc0568fc617a08ea2429fb384059c972f13b19fa1c8dd55a01dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347948888f1f195afa192cfee860698584c030f4c9db1a0ef1552a40b7165c3cd773806b9e0c165b75356e0314bf0706f279c729f51e017a05fe50b260da6308036625b850b5d6ced6d0a9f814c0688bc91ffb7b7a3a54b67a0bc37d79753ad738a6dac4921e57392f145d8887476de3f783dfa7edae9283e52b90100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008302000001832fefd8825208845506eb0780a0bd4472abb6659ebe3ee06ee4d7b72a00a9f4d001caca51342001075469aff49888a13a5a8c8f2bb1c4f861f85f800a82c35094095e7baea6a6c7c4c2dfeb977efac326af552d870a8025a0bd0b5ba5ed101f50a3e6dc3c96150e8a68cca53598e4d13eb2edb14216ac7cd9a045c2c711543f648541674650a8a89bdc65c4641580e6ef68d9436a12aedd1914c0")
 	var block Block
@@ -53,7 +53,7 @@ func TestBlockEncoding(t *testing.T) {
 			t.Errorf("%s mismatch: got %v, want %v", f, got, want)
 		}
 	}
-	coinbase, _ := common.EvryAddressStringToAddressCheck("EVbqSnUvbyzdvApBehFuT4Uqz1G5VUYuKW")
+	coinbase, _ := common.NeutAddressStringToAddressCheck("EVbqSnUvbyzdvApBehFuT4Uqz1G5VUYuKW")
 	check("Difficulty", block.Difficulty(), big.NewInt(131072))
 	check("GasLimit", block.GasLimit(), uint64(3141592))
 	check("GasUsed", block.GasUsed(), uint64(21000))
@@ -65,7 +65,7 @@ func TestBlockEncoding(t *testing.T) {
 	check("Time", block.Time(), uint64(1426516743))
 	check("Size", block.Size(), common.StorageSize(len(blockEnc)))
 
-	to, _ := common.EvryAddressStringToAddressCheck("EJ1Sm7ZPs136zds7axDPJ2LCGQtSi8B2AN")
+	to, _ := common.NeutAddressStringToAddressCheck("EJ1Sm7ZPs136zds7axDPJ2LCGQtSi8B2AN")
 	tx1 := NewTransaction(0, to, big.NewInt(10), 50000, big.NewInt(10), nil)
 	tx1 = signTx(t, tx1)
 	check("len(Transactions)", len(block.Transactions()), 1)

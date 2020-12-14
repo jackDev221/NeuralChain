@@ -5,9 +5,9 @@ This allows DApps not to depend on gev's account management. When a DApp wants t
 the signer, the signer will then provide the user with context and asks the user for permission to sign the data. If
 the users grants the signing request the signer will send the signature back to the DApp.
   
-This setup allows a DApp to connect to a remote Evrynet node and send transactions that are locally signed. This can
-help in situations when a DApp is connected to a remote node because a local Evrynet node is not available, not
-synchronised with the chain or a particular Evrynet node that has no built-in (or limited) account management.
+This setup allows a DApp to connect to a remote NeuralChain node and send transactions that are locally signed. This can
+help in situations when a DApp is connected to a remote node because a local NeuralChain node is not available, not
+synchronised with the chain or a particular NeuralChain node that has no built-in (or limited) account management.
   
 Clef can run as a daemon on the same machine, or off a usb-stick like [usb armory](https://inversepath.com/usbarmory),
 or a separate VM in a [QubesOS](https://www.qubes-os.org/) type os setup.
@@ -31,7 +31,7 @@ COMMANDS:
    
 GLOBAL OPTIONS:
    --loglevel value        log level to emit to the screen (default: 4)
-   --keystore value        Directory for the keystore (default: "$HOME/.evrynet/keystore")
+   --keystore value        Directory for the keystore (default: "$HOME/.neuralChain/keystore")
    --configdir value       Directory for Clef configuration (default: "$HOME/.clef")
    --chainid value         Chain id to use for signing (1=mainnet, 3=ropsten, 4=rinkeby, 5=Goerli) (default: 1)
    --lightkdf              Reduce key-derivation RAM & CPU usage at some expense of KDF strength
@@ -177,7 +177,7 @@ All hex encoded values must be prefixed with `0x`.
 
 #### Create new password protected account
 
-The signer will generate a new private key, encrypts it according to [web3 keystore spec](https://github.com/Evrynetlabs/wiki/wiki/Web3-Secret-Storage-Definition) and stores it in the keystore directory.
+The signer will generate a new private key, encrypts it according to [web3 keystore spec](https://github.com/NeuralChainLabs/wiki/wiki/Web3-Secret-Storage-Definition) and stores it in the keystore directory.
 The client is responsible for creating a backup of the keystore. If the keystore is lost there is no method of retrieving lost accounts.
 
 #### Arguments
@@ -536,7 +536,7 @@ Response
    format.
    
 #### Arguments
-  - account [object]: key in [web3 keystore format](https://github.com/Evrynetlabs/wiki/wiki/Web3-Secret-Storage-Definition) (retrieved with account_export)
+  - account [object]: key in [web3 keystore format](https://github.com/NeuralChainLabs/wiki/wiki/Web3-Secret-Storage-Definition) (retrieved with account_export)
 
 #### Result
   - imported key [object]:
@@ -599,7 +599,7 @@ Response
   - account [address]: export private key that is associated with this account
 
 #### Result
-  - exported key, see [web3 keystore format](https://github.com/Evrynetlabs/wiki/wiki/Web3-Secret-Storage-Definition) for
+  - exported key, see [web3 keystore format](https://github.com/NeuralChainLabs/wiki/wiki/Web3-Secret-Storage-Definition) for
   more information
   
 #### Sample call
@@ -813,12 +813,12 @@ Invoked when a request for account listing has been made.
       "accounts": [
         {
           "type": "Account",
-          "url": "keystore:///home/bazonk/.evrynet/keystore/UTC--2017-11-20T14-44-54.089682944Z--EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV",
+          "url": "keystore:///home/bazonk/.neuralChain/keystore/UTC--2017-11-20T14-44-54.089682944Z--EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV",
           "address": "EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV"
         },
         {
           "type": "Account",
-          "url": "keystore:///home/bazonk/.evrynet/keystore/UTC--2017-11-23T21-59-03.199240693Z--EbfF9FM2Nrd8Lntv4VHnGx3qgroQQV3rHN",
+          "url": "keystore:///home/bazonk/.neuralChain/keystore/UTC--2017-11-23T21-59-03.199240693Z--EbfF9FM2Nrd8Lntv4VHnGx3qgroQQV3rHN",
           "address": "EbfF9FM2Nrd8Lntv4VHnGx3qgroQQV3rHN"
         }
       ],
@@ -847,7 +847,7 @@ Invoked when a request for account listing has been made.
     {
       "address": "EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV",
       "raw_data": "0x01020304",
-      "message": "\u0019Evrynet Signed Message:\n4\u0001\u0002\u0003\u0004",
+      "message": "\u0019NeuralChain Signed Message:\n4\u0001\u0002\u0003\u0004",
       "hash": "0x7e3a4e7a9d1744bc5c675c25e1234ca8ed9162bd17f78b9085e48047c15ac310",
       "meta": {
         "remote": "signer binary",
@@ -941,7 +941,7 @@ A UI should conform to the following rules.
 * A UI MUST NOT load any external resources that were not embedded/part of the UI package.
   * For example, not load icons, stylesheets from the internet
   * Not load files from the filesystem, unless they reside in the same local directory (e.g. config files)
-* A Graphical UI MUST show the blocky-identicon for Evrynet addresses.
+* A Graphical UI MUST show the blocky-identicon for NeuralChain addresses.
 * A UI MUST warn display approproate warning if the destination-account is formatted with invalid checksum.
 * A UI MUST NOT open any ports or services
   * The signer opens the public port

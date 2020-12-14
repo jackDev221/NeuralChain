@@ -1,11 +1,11 @@
 {
     "language": "Solidity",
     "sources": {
-        "./EvrynetStaking.sol": {
-            "urls": ["./staking-contract/contracts/EvrynetStaking.sol"]
+        "./NeuralChainStaking.sol": {
+            "urls": ["./staking-contract/contracts/NeuralChainStaking.sol"]
         },
-        "./IEvrynetStaking.sol": {
-            "urls": ["./staking-contract/contracts/IEvrynetStaking.sol"]
+        "./INeuralChainStaking.sol": {
+            "urls": ["./staking-contract/contracts/INeuralChainStaking.sol"]
         },
         "@openzeppelin/contracts/math/SafeMath.sol": {
             "urls": ["./staking-contract/node_modules/@openzeppelin/contracts/math/SafeMath.sol"]

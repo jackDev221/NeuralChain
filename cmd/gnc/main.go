@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with NeuralChain. If not, see <http://www.gnu.org/licenses/>.
 
-// gnc is the official command-line client for Evrynet.
+// gnc is the official command-line client for NeuralChain.
 package main
 
 import (
@@ -415,23 +415,23 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 
 	// Start auxiliary services if enabled
 	if ctx.GlobalBool(utils.MiningEnabledFlag.Name) || ctx.GlobalBool(utils.DeveloperFlag.Name) {
-		// Mining only makes sense if a full Evrynet node is running
+		// Mining only makes sense if a full NeuralChain node is running
 		if ctx.GlobalString(utils.SyncModeFlag.Name) == "light" {
 			utils.Fatalf("Light clients do not support mining")
 		}
-		var evrynet *neut.Evrynet
-		if err := stack.Service(&evrynet); err != nil {
-			utils.Fatalf("Evrynet service not running: %v", err)
+		var neuralChain *neut.NeuralChain
+		if err := stack.Service(&neuralChain); err != nil {
+			utils.Fatalf("NeuralChain service not running: %v", err)
 		}
 		// Set the gas price to the limits from the CLI and start mining
-		gasPrice := new(big.Int).Set(evrynet.BlockChain().Config().GasPrice)
-		evrynet.TxPool().SetGasPrice(gasPrice)
+		gasPrice := new(big.Int).Set(neuralChain.BlockChain().Config().GasPrice)
+		neuralChain.TxPool().SetGasPrice(gasPrice)
 
 		threads := ctx.GlobalInt(utils.MinerLegacyThreadsFlag.Name)
 		if ctx.GlobalIsSet(utils.MinerThreadsFlag.Name) {
 			threads = ctx.GlobalInt(utils.MinerThreadsFlag.Name)
 		}
-		if err := evrynet.StartMining(threads); err != nil {
+		if err := neuralChain.StartMining(threads); err != nil {
 			utils.Fatalf("Failed to start mining: %v", err)
 		}
 	}
@@ -464,7 +464,7 @@ func unlockAccounts(ctx *cli.Context, stack *node.Node) {
 	if stack.Config().P2P.PrivateKey == nil && ctx.GlobalBool(utils.NodeKeyFromKeystoreFlag.Name) {
 		hasUnlockedKey := false
 		for _, account := range unlocks {
-			address, err := common.EvryAddressStringToAddressCheck(account)
+			address, err := common.NeutAddressStringToAddressCheck(account)
 			if err != nil {
 				log.Warn("unlock account failed", "account", account, "error", err)
 				continue

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package miner implements Evrynet block creation and mining.
+// Package miner implements NeuralChain block creation and mining.
 package miner
 
 import (

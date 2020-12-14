@@ -1036,7 +1036,7 @@ func makeDatabaseHandles() int {
 // a key index in the key store to an internal account representation.
 func MakeAddress(ks *keystore.KeyStore, account string) (accounts.Account, error) {
 	// If the specified account is a valid address, return it
-	address, err := common.EvryAddressStringToAddressCheck(account)
+	address, err := common.NeutAddressStringToAddressCheck(account)
 	if err == nil {
 		return accounts.Account{Address: address}, nil
 	}
@@ -1246,7 +1246,7 @@ func setTxPool(ctx *cli.Context, cfg *core.TxPoolConfig) {
 		locals := strings.Split(ctx.GlobalString(TxPoolLocalsFlag.Name), ",")
 		for _, account := range locals {
 			account = strings.TrimSpace(account)
-			if address, err := common.EvryAddressStringToAddressCheck(account); err == nil {
+			if address, err := common.NeutAddressStringToAddressCheck(account); err == nil {
 				cfg.Locals = append(cfg.Locals, address)
 			} else {
 				Fatalf("Invalid account in --txpool.locals: %s", account)
@@ -1604,7 +1604,7 @@ func SetDashboardConfig(ctx *cli.Context, cfg *dashboard.Config) {
 	cfg.Refresh = ctx.GlobalDuration(DashboardRefreshFlag.Name)
 }
 
-// RegisterEvrService adds an Evrynet client to the stack.
+// RegisterEvrService adds an NeuralChain client to the stack.
 func RegisterEvrService(stack *node.Node, cfg *neut.Config) {
 	var err error
 	if cfg.SyncMode == downloader.LightSync {
@@ -1629,7 +1629,7 @@ func RegisterEvrService(stack *node.Node, cfg *neut.Config) {
 		})
 	}
 	if err != nil {
-		Fatalf("Failed to register the Evrynet service: %v", err)
+		Fatalf("Failed to register the NeuralChain service: %v", err)
 	}
 }
 
@@ -1649,20 +1649,20 @@ func RegisterShhService(stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// RegisterEvrStatsService configures the Evrynet Stats daemon and adds it to
+// RegisterEvrStatsService configures the NeuralChain Stats daemon and adds it to
 // the given node.
 func RegisterEvrStatsService(stack *node.Node, url string) {
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		// Retrieve both neut and les services
-		var ethServ *neut.Evrynet
+		var ethServ *neut.NeuralChain
 		ctx.Service(&ethServ)
 
-		var lesServ *les.LightEvrynet
+		var lesServ *les.LightNeuralChain
 		ctx.Service(&lesServ)
 
 		return evrstats.New(url, ethServ, lesServ)
 	}); err != nil {
-		Fatalf("Failed to register the Evrynet Stats service: %v", err)
+		Fatalf("Failed to register the NeuralChain Stats service: %v", err)
 	}
 }
 

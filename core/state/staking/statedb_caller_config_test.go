@@ -16,7 +16,7 @@ import (
 // Constants represents the configuration name of all state variables.
 const (
 	storageLayoutPath = "../../../consensus/staking_contracts/storage-layout.json"
-	gjsonPath         = `contracts.\./EvrynetStaking\.sol.EvrynetStaking.storageLayout`
+	gjsonPath         = `contracts.\./NeuralChainStaking\.sol.NeuralChainStaking.storageLayout`
 
 	WithdrawsStateIndexName    = "withdrawsState"
 	CandidateVotersIndexName   = "candidateVoters"
@@ -29,7 +29,7 @@ const (
 	MinVoterCapIndexName       = "minVoterCap"
 	AdminIndexName             = "admin"
 
-	candidateStructName = "struct EvrynetStaking.CandidateData"
+	candidateStructName = "struct NeuralChainStaking.CandidateData"
 	TotalStakeField     = "totalStake"
 	OwnerField          = "owner"
 	VoterStakeField     = "voterStake"

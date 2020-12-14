@@ -140,7 +140,7 @@ var (
 // backing account.
 type SignerFn func(accounts.Account, string, []byte) ([]byte, error)
 
-// ecrecover extracts the Evrynet account address from a signed header.
+// ecrecover extracts the NeuralChain account address from a signed header.
 func ecrecover(header *types.Header, sigcache *lru.ARCCache) (common.Address, error) {
 	// If the signature's already cached, return that
 	hash := header.Hash()
@@ -153,7 +153,7 @@ func ecrecover(header *types.Header, sigcache *lru.ARCCache) (common.Address, er
 	}
 	signature := header.Extra[len(header.Extra)-extraSeal:]
 
-	// Recover the public key and the Evrynet address
+	// Recover the public key and the NeuralChain address
 	pubkey, err := crypto.Ecrecover(SealHash(header).Bytes(), signature)
 	if err != nil {
 		return common.Address{}, err
@@ -166,7 +166,7 @@ func ecrecover(header *types.Header, sigcache *lru.ARCCache) (common.Address, er
 }
 
 // Clique is the proof-of-authority consensus engine proposed to support the
-// Evrynet testnet following the Ropsten attacks.
+// NeuralChain testnet following the Ropsten attacks.
 type Clique struct {
 	config *params.CliqueConfig // Consensus engine configuration parameters
 	db     neutdb.Database       // Database to store and retrieve snapshot checkpoints
@@ -176,7 +176,7 @@ type Clique struct {
 
 	proposals map[common.Address]bool // Current list of proposals we are pushing
 
-	signer common.Address // Evrynet address of the signing key
+	signer common.Address // NeuralChain address of the signing key
 	signFn SignerFn       // Signer function to authorize hashes with
 	lock   sync.RWMutex   // Protects the signer fields
 
@@ -205,7 +205,7 @@ func New(config *params.CliqueConfig, db neutdb.Database) *Clique {
 	}
 }
 
-// Author implements consensus.Engine, returning the Evrynet address recovered
+// Author implements consensus.Engine, returning the NeuralChain address recovered
 // from the signature in the header's extra-data section.
 func (c *Clique) Author(header *types.Header) (common.Address, error) {
 	return ecrecover(header, c.signatures)

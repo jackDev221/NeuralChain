@@ -22,7 +22,7 @@ gev.eth/consensus/tendermint/proposalwait.timer
 gev.eth/consensus/tendermint/rounds.meter
 ```
 
-The other metrics (tx/blocks per second etc...) are available in normal Evrynet metrics
+The other metrics (tx/blocks per second etc...) are available in normal NeuralChain metrics
 
 
 

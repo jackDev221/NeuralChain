@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "------ Buiding Gev-Node docker image ------"
 BASEDIR=$(dirname "$0")
-git clone --single-branch -b develop --single-branch git@github.com:Evrynetlabs/NeuralChain.git "$BASEDIR"/project
+git clone --single-branch -b develop --single-branch git@github.com:NeuralChainLabs/NeuralChain.git "$BASEDIR"/project
 
 cp "$BASEDIR"/genesis.json "$BASEDIR"/project/deploy/devnet/node/genesis.json
 cp ./dockerfiles/node/token "$BASEDIR"/project/dockerfiles/node/token

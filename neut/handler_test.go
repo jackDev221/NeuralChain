@@ -702,7 +702,7 @@ func TestFindPeers(t *testing.T) {
 
 	targets := map[common.Address]bool{}
 	address1 := testBank                                                                        // this address is in Peer list
-	address2, _ := common.EvryAddressStringToAddressCheck("ENiEvZB2NpjRGHL3gCVFQGAvHAqvQQx5wc") // a random address that should not be in Peers list
+	address2, _ := common.NeutAddressStringToAddressCheck("ENiEvZB2NpjRGHL3gCVFQGAvHAqvQQx5wc") // a random address that should not be in Peers list
 	targets[address1] = true
 	targets[address2] = true
 

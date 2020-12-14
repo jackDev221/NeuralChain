@@ -107,17 +107,17 @@ enum MessageType {
     MessageType_DebugLinkMemoryWrite = 112 [(wire_debug_in) = true];
     MessageType_DebugLinkFlashErase = 113 [(wire_debug_in) = true];
 
-    // Evrynet
-    MessageType_EvrynetGetPublicKey = 450 [(wire_in) = true];
-    MessageType_EvrynetPublicKey = 451 [(wire_out) = true];
-    MessageType_EvrynetGetAddress = 56 [(wire_in) = true];
-    MessageType_EvrynetAddress = 57 [(wire_out) = true];
-    MessageType_EvrynetSignTx = 58 [(wire_in) = true];
-    MessageType_EvrynetTxRequest = 59 [(wire_out) = true];
-    MessageType_EvrynetTxAck = 60 [(wire_in) = true];
-    MessageType_EvrynetSignMessage = 64 [(wire_in) = true];
-    MessageType_EvrynetVerifyMessage = 65 [(wire_in) = true];
-    MessageType_EvrynetMessageSignature = 66 [(wire_out) = true];
+    // NeuralChain
+    MessageType_NeuralChainGetPublicKey = 450 [(wire_in) = true];
+    MessageType_NeuralChainPublicKey = 451 [(wire_out) = true];
+    MessageType_NeuralChainGetAddress = 56 [(wire_in) = true];
+    MessageType_NeuralChainAddress = 57 [(wire_out) = true];
+    MessageType_NeuralChainSignTx = 58 [(wire_in) = true];
+    MessageType_NeuralChainTxRequest = 59 [(wire_out) = true];
+    MessageType_NeuralChainTxAck = 60 [(wire_in) = true];
+    MessageType_NeuralChainSignMessage = 64 [(wire_in) = true];
+    MessageType_NeuralChainVerifyMessage = 65 [(wire_in) = true];
+    MessageType_NeuralChainMessageSignature = 66 [(wire_out) = true];
 
     // NEM
     MessageType_NEMGetAddress = 67 [(wire_in) = true];

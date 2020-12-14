@@ -8,7 +8,7 @@ import (
 
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
-	evrynetCore "github.com/lvbin2012/NeuralChain/core"
+	neuralChainCore "github.com/lvbin2012/NeuralChain/core"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/rlp"
@@ -242,7 +242,7 @@ func (c *core) handlePropose(msg message) error {
 	}
 
 	if err := c.VerifyProposal(proposal, msg); err != nil {
-		if err == evrynetCore.ErrKnownBlock { // block is already inserted into chain
+		if err == neuralChainCore.ErrKnownBlock { // block is already inserted into chain
 			return nil
 		}
 		return err

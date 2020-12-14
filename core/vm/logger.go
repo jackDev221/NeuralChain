@@ -244,7 +244,7 @@ func WriteTrace(writer io.Writer, logs []StructLog) {
 // WriteLogs writes vm logs in a readable format to the given writer
 func WriteLogs(writer io.Writer, logs []*types.Log) {
 	for _, log := range logs {
-		fmt.Fprintf(writer, "LOG%d: %s bn=%d txi=%x\n", len(log.Topics), common.AddressToEvryAddressString(log.Address),
+		fmt.Fprintf(writer, "LOG%d: %s bn=%d txi=%x\n", len(log.Topics), common.AddressToNeutAddressString(log.Address),
 			log.BlockNumber, log.TxIndex)
 
 		for i, topic := range log.Topics {

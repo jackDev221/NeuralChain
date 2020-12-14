@@ -43,7 +43,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/console"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/crypto"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/node"
 	"github.com/lvbin2012/NeuralChain/params"
@@ -186,7 +186,7 @@ The gendoc generates example structures of the json-rpc communication types.
 
 func init() {
 	app.Name = "Clef"
-	app.Usage = "Manage Evrynet account operations"
+	app.Usage = "Manage NeuralChain account operations"
 	app.Flags = []cli.Flag{
 		logLevelFlag,
 		keystoreFlag,
@@ -312,7 +312,7 @@ func setCredential(ctx *cli.Context) error {
 	}
 
 	addressStr := ctx.Args().First()
-	if _, err := common.EvryAddressStringToAddressCheck(addressStr); err != nil {
+	if _, err := common.NeutAddressStringToAddressCheck(addressStr); err != nil {
 		utils.Fatalf(err.Error())
 	}
 
@@ -644,7 +644,7 @@ func testExternalUI(api *core.SignerAPI) {
 	ctx = context.WithValue(ctx, "local", "main")
 	errs := make([]string, 0)
 
-	a, _ := common.EvryAddressStringToAddressCheck("EdTKeF2ugJwiN4su8qeq2VbDU1zMthLSMr")
+	a, _ := common.NeutAddressStringToAddressCheck("EdTKeF2ugJwiN4su8qeq2VbDU1zMthLSMr")
 
 	addErr := func(errStr string) {
 		log.Info("Test error", "error", errStr)
@@ -844,10 +844,10 @@ func decryptSeed(keyjson []byte, auth string) ([]byte, error) {
 func GenDoc(ctx *cli.Context) {
 
 	var (
-		a, _ = common.EvryAddressStringToAddressCheck("EdTKeF2ugJwiN4su8qeq2VbDU1zMthLSMr")
-		b, _ = common.EvryAddressStringToAddressCheck("EJi9Rf8N8pFfEEM4ZXBMvmK9q8RA3FGtLk")
-		c, _ = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-		d, _ = common.EvryAddressStringToAddressCheck("EgVWUh8o98knojjwqGKqVGFkQ9m55ikaHX")
+		a, _ = common.NeutAddressStringToAddressCheck("EdTKeF2ugJwiN4su8qeq2VbDU1zMthLSMr")
+		b, _ = common.NeutAddressStringToAddressCheck("EJi9Rf8N8pFfEEM4ZXBMvmK9q8RA3FGtLk")
+		c, _ = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+		d, _ = common.NeutAddressStringToAddressCheck("EgVWUh8o98knojjwqGKqVGFkQ9m55ikaHX")
 
 		meta = core.Metadata{
 			Scheme:    "http",
@@ -954,7 +954,7 @@ func GenDoc(ctx *cli.Context) {
 		rlpdata := common.FromHex("0xf85d640101948a8eafb1cf62bfbeb1741769dae1a9dd47996192018026a0716bd90515acb1e68e5ac5867aa11a1e65399c3349d479f5fb698554ebc6f293a04e8a4ebfff434e971e0ef12c5bf3a881b06fd04fc3f8b8a7291fb67a26a1d4ed")
 		var tx types.Transaction
 		rlp.DecodeBytes(rlpdata, &tx)
-		add("OnApproved - SignTransactionResult", desc, &evrapi.SignTransactionResult{Raw: rlpdata, Tx: &tx})
+		add("OnApproved - SignTransactionResult", desc, &neutapi.SignTransactionResult{Raw: rlpdata, Tx: &tx})
 
 	}
 	{ // User input

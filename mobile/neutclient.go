@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Contains a wrapper for the Evrynet client.
+// Contains a wrapper for the NeuralChain client.
 
 package  gnc
 
@@ -25,12 +25,12 @@ import (
 	"github.com/lvbin2012/NeuralChain/neutclient"
 )
 
-// EvrynetClient provides access to the Evrynet APIs.
+// NeuralChainClient provides access to the NeuralChain APIs.
 type NeuralChainClient struct {
 	client *neutclient.Client
 }
 
-// NewEvrynetClient connects a client to the given URL.
+// NewNeuralChainClient connects a client to the given URL.
 func NewNeuralChainClient(rawurl string) (client *NeuralChainClient, _ error) {
 	rawClient, err := neutclient.Dial(rawurl)
 	return &NeuralChainClient{rawClient}, err

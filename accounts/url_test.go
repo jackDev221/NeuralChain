@@ -21,56 +21,56 @@ import (
 )
 
 func TestURLParsing(t *testing.T) {
-	url, err := parseURL("https://Evrynetlabs.org")
+	url, err := parseURL("https://NeuralChainLabs.org")
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}
 	if url.Scheme != "https" {
 		t.Errorf("expected: %v, got: %v", "https", url.Scheme)
 	}
-	if url.Path != "Evrynetlabs.org" {
-		t.Errorf("expected: %v, got: %v", "Evrynetlabs.org", url.Path)
+	if url.Path != "NeuralChainLabs.org" {
+		t.Errorf("expected: %v, got: %v", "NeuralChainLabs.org", url.Path)
 	}
 
-	_, err = parseURL("Evrynetlabs.org")
+	_, err = parseURL("NeuralChainLabs.org")
 	if err == nil {
 		t.Error("expected err, got: nil")
 	}
 }
 
 func TestURLString(t *testing.T) {
-	url := URL{Scheme: "https", Path: "Evrynetlabs.org"}
-	if url.String() != "https://Evrynetlabs.org" {
-		t.Errorf("expected: %v, got: %v", "https://Evrynetlabs.org", url.String())
+	url := URL{Scheme: "https", Path: "NeuralChainLabs.org"}
+	if url.String() != "https://NeuralChainLabs.org" {
+		t.Errorf("expected: %v, got: %v", "https://NeuralChainLabs.org", url.String())
 	}
 
-	url = URL{Scheme: "", Path: "Evrynetlabs.org"}
-	if url.String() != "Evrynetlabs.org" {
-		t.Errorf("expected: %v, got: %v", "Evrynetlabs.org", url.String())
+	url = URL{Scheme: "", Path: "NeuralChainLabs.org"}
+	if url.String() != "NeuralChainLabs.org" {
+		t.Errorf("expected: %v, got: %v", "NeuralChainLabs.org", url.String())
 	}
 }
 
 func TestURLMarshalJSON(t *testing.T) {
-	url := URL{Scheme: "https", Path: "Evrynetlabs.org"}
+	url := URL{Scheme: "https", Path: "NeuralChainLabs.org"}
 	json, err := url.MarshalJSON()
 	if err != nil {
 		t.Errorf("unexpcted error: %v", err)
 	}
-	if string(json) != "\"https://Evrynetlabs.org\"" {
-		t.Errorf("expected: %v, got: %v", "\"https://Evrynetlabs.org\"", string(json))
+	if string(json) != "\"https://NeuralChainLabs.org\"" {
+		t.Errorf("expected: %v, got: %v", "\"https://NeuralChainLabs.org\"", string(json))
 	}
 }
 
 func TestURLUnmarshalJSON(t *testing.T) {
 	url := &URL{}
-	err := url.UnmarshalJSON([]byte("\"https://Evrynetlabs.org\""))
+	err := url.UnmarshalJSON([]byte("\"https://NeuralChainLabs.org\""))
 	if err != nil {
 		t.Errorf("unexpcted error: %v", err)
 	}
 	if url.Scheme != "https" {
 		t.Errorf("expected: %v, got: %v", "https", url.Scheme)
 	}
-	if url.Path != "Evrynetlabs.org" {
+	if url.Path != "NeuralChainLabs.org" {
 		t.Errorf("expected: %v, got: %v", "https", url.Path)
 	}
 }
@@ -81,10 +81,10 @@ func TestURLComparison(t *testing.T) {
 		urlB   URL
 		expect int
 	}{
-		{URL{"https", "Evrynetlabs.org"}, URL{"https", "Evrynetlabs.org"}, 0},
-		{URL{"http", "Evrynetlabs.org"}, URL{"https", "Evrynetlabs.org"}, -1},
-		{URL{"https", "Evrynetlabs.org/a"}, URL{"https", "Evrynetlabs.org"}, 1},
-		{URL{"https", "abc.org"}, URL{"https", "Evrynetlabs.org"}, 1},
+		{URL{"https", "NeuralChainLabs.org"}, URL{"https", "NeuralChainLabs.org"}, 0},
+		{URL{"http", "NeuralChainLabs.org"}, URL{"https", "NeuralChainLabs.org"}, -1},
+		{URL{"https", "NeuralChainLabs.org/a"}, URL{"https", "NeuralChainLabs.org"}, 1},
+		{URL{"https", "abc.org"}, URL{"https", "NeuralChainLabs.org"}, 1},
 	}
 
 	for i, tt := range tests {

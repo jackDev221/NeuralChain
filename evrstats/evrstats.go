@@ -66,13 +66,13 @@ type blockChain interface {
 	SubscribeChainHeadEvent(ch chan<- core.ChainHeadEvent) event.Subscription
 }
 
-// Service implements an Evrynet netstats reporting daemon that pushes local
+// Service implements an NeuralChain netstats reporting daemon that pushes local
 // chain statistics up to a monitoring server.
 type Service struct {
-	server *p2p.Server       // Peer-to-peer server to retrieve networking infos
-	evr    *neut.Evrynet     // Full Evrynet service if monitoring a full node
-	les    *les.LightEvrynet // Light Evrynet service if monitoring a light node
-	engine consensus.Engine  // Consensus engine to retrieve variadic block fields
+	server *p2p.Server           // Peer-to-peer server to retrieve networking infos
+	neut   *neut.NeuralChain     // Full NeuralChain service if monitoring a full node
+	les    *les.LightNeuralChain // Light NeuralChain service if monitoring a light node
+	engine consensus.Engine      // Consensus engine to retrieve variadic block fields
 
 	node string // Name of the node to display on the monitoring page
 	pass string // Password to authorize access to the monitoring page
@@ -83,7 +83,7 @@ type Service struct {
 }
 
 // New returns a monitoring service ready for stats reporting.
-func New(url string, ethServ *neut.Evrynet, lesServ *les.LightEvrynet) (*Service, error) {
+func New(url string, ethServ *neut.NeuralChain, lesServ *les.LightNeuralChain) (*Service, error) {
 	// Parse the netstats connection url
 	re := regexp.MustCompile("([^:@]*)(:([^@]*))?@(.+)")
 	parts := re.FindStringSubmatch(url)
@@ -98,7 +98,7 @@ func New(url string, ethServ *neut.Evrynet, lesServ *les.LightEvrynet) (*Service
 		engine = lesServ.Engine()
 	}
 	return &Service{
-		evr:    ethServ,
+		neut:   ethServ,
 		les:    lesServ,
 		engine: engine,
 		node:   parts[1],
@@ -138,9 +138,9 @@ func (s *Service) loop() {
 	// Subscribe to chain events to execute updates on
 	var blockchain blockChain
 	var txpool txPool
-	if s.evr != nil {
-		blockchain = s.evr.BlockChain()
-		txpool = s.evr.TxPool()
+	if s.neut != nil {
+		blockchain = s.neut.BlockChain()
+		txpool = s.neut.TxPool()
 	} else {
 		blockchain = s.les.BlockChain()
 		txpool = s.les.TxPool()
@@ -527,13 +527,13 @@ func (s *Service) assembleBlockStats(block *types.Block) *blockStats {
 		txs    []txStats
 		uncles []*types.Header
 	)
-	if s.evr != nil {
+	if s.neut != nil {
 		// Full nodes have all needed information available
 		if block == nil {
-			block = s.evr.BlockChain().CurrentBlock()
+			block = s.neut.BlockChain().CurrentBlock()
 		}
 		header = block.Header()
-		td = s.evr.BlockChain().GetTd(header.Hash(), header.Number.Uint64())
+		td = s.neut.BlockChain().GetTd(header.Hash(), header.Number.Uint64())
 
 		txs = make([]txStats, len(block.Transactions()))
 		for i, tx := range block.Transactions() {
@@ -581,8 +581,8 @@ func (s *Service) reportHistory(conn *websocket.Conn, list []uint64) error {
 	} else {
 		// No indexes requested, send back the top ones
 		var head int64
-		if s.evr != nil {
-			head = s.evr.BlockChain().CurrentHeader().Number.Int64()
+		if s.neut != nil {
+			head = s.neut.BlockChain().CurrentHeader().Number.Int64()
 		} else {
 			head = s.les.BlockChain().CurrentHeader().Number.Int64()
 		}
@@ -599,8 +599,8 @@ func (s *Service) reportHistory(conn *websocket.Conn, list []uint64) error {
 	for i, number := range indexes {
 		// Retrieve the next block if it's known to us
 		var block *types.Block
-		if s.evr != nil {
-			block = s.evr.BlockChain().GetBlockByNumber(number)
+		if s.neut != nil {
+			block = s.neut.BlockChain().GetBlockByNumber(number)
 		} else {
 			if header := s.les.BlockChain().GetHeaderByNumber(number); header != nil {
 				block = types.NewBlockWithHeader(header)
@@ -641,8 +641,8 @@ type pendStats struct {
 func (s *Service) reportPending(conn *websocket.Conn) error {
 	// Retrieve the pending count from the local blockchain
 	var pending int
-	if s.evr != nil {
-		pending, _ = s.evr.TxPool().Stats()
+	if s.neut != nil {
+		pending, _ = s.neut.TxPool().Stats()
 	} else {
 		pending = s.les.TxPool().Stats()
 	}
@@ -682,14 +682,14 @@ func (s *Service) reportStats(conn *websocket.Conn) error {
 		syncing  bool
 		gasprice int
 	)
-	if s.evr != nil {
-		mining = s.evr.Miner().Mining()
-		hashrate = int(s.evr.Miner().HashRate())
+	if s.neut != nil {
+		mining = s.neut.Miner().Mining()
+		hashrate = int(s.neut.Miner().HashRate())
 
-		sync := s.evr.Downloader().Progress()
-		syncing = s.evr.BlockChain().CurrentHeader().Number.Uint64() >= sync.HighestBlock
+		sync := s.neut.Downloader().Progress()
+		syncing = s.neut.BlockChain().CurrentHeader().Number.Uint64() >= sync.HighestBlock
 
-		price, _ := s.evr.APIBackend.SuggestPrice(context.Background())
+		price, _ := s.neut.APIBackend.SuggestPrice(context.Background())
 		gasprice = int(price.Uint64())
 	} else {
 		sync := s.les.Downloader().Progress()

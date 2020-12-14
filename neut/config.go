@@ -33,7 +33,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/miner"
 )
 
-// DefaultConfig contains default settings for use on the Evrynet main net.
+// DefaultConfig contains default settings for use on the NeuralChain main net.
 var DefaultConfig = Config{
 	SyncMode: downloader.FullSync,
 	Ethash: ethash.Config{
@@ -88,7 +88,7 @@ func init() {
 
 type Config struct {
 	// The genesis block, which is inserted if the database is empty.
-	// If nil, the Evrynet main net block is used.
+	// If nil, the NeuralChain main net block is used.
 	Genesis *core.Genesis `toml:",omitempty"`
 
 	// Protocol options

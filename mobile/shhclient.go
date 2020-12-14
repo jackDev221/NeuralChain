@@ -23,7 +23,7 @@ import (
 	whisper "github.com/lvbin2012/NeuralChain/whisper/whisperv6"
 )
 
-// WhisperClient provides access to the Evrynet APIs.
+// WhisperClient provides access to the NeuralChain APIs.
 type WhisperClient struct {
 	client *shhclient.Client
 }

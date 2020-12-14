@@ -317,7 +317,7 @@ func GenesisBlockForTesting(db neutdb.Database, addr common.Address, balance *bi
 	return g.MustCommit(db)
 }
 
-// DefaultGenesisBlock returns the Evrynet main net genesis block.
+// DefaultGenesisBlock returns the NeuralChain main net genesis block.
 func DefaultGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.MainnetChainConfig,

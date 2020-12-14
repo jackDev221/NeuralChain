@@ -185,7 +185,7 @@ func (h UnprefixedHash) MarshalText() ([]byte, error) {
 	return []byte(hex.EncodeToString(h[:])), nil
 }
 
-// Address represents the 20 byte address of an Evrynet account.
+// Address represents the 20 byte address of an NeuralChain account.
 type Address [AddressLength]byte
 
 // BytesToAddress returns Address with value b.
@@ -205,7 +205,7 @@ func BigToAddress(b *big.Int) Address { return BytesToAddress(b.Bytes()) }
 func HexToAddress(s string) Address { return BytesToAddress(FromHex(s)) }
 
 // IsHexAddress verifies whether a string can represent a valid hex-encoded
-// Evrynet address or not.
+// NeuralChain address or not.
 func IsHexAddress(s string) bool {
 	if hasHexPrefix(s) {
 		s = s[2:]
@@ -243,7 +243,7 @@ func (a Address) Hex() string {
 
 // String implements fmt.Stringer.
 func (a Address) String() string {
-	return AddressToEvryAddressString(a)
+	return AddressToNeutAddressString(a)
 }
 
 // Format implements fmt.Formatter, forcing the byte slice to be formatted as is,
@@ -263,12 +263,12 @@ func (a *Address) SetBytes(b []byte) {
 
 // MarshalText returns the hex representation of a.
 func (a Address) MarshalText() ([]byte, error) {
-	return []byte(AddressToEvryAddressString(a)), nil
+	return []byte(AddressToNeutAddressString(a)), nil
 }
 
 // UnmarshalText parses a hash in hex syntax.
 func (a *Address) UnmarshalText(input []byte) error {
-	res, err := EvryAddressStringToAddressCheck(string(input))
+	res, err := NeutAddressStringToAddressCheck(string(input))
 	a.SetBytes(res.Bytes())
 	return err
 }
@@ -308,7 +308,7 @@ func (a *Address) UnmarshalGraphQL(input interface{}) error {
 	var err error
 	switch input := input.(type) {
 	case string:
-		res, err := EvryAddressStringToAddressCheck(string(input))
+		res, err := NeutAddressStringToAddressCheck(string(input))
 		if err == nil {
 			a.SetBytes(res.Bytes())
 		}
@@ -334,14 +334,14 @@ type UnprefixedAddress Address
 // UnmarshalText decodes the address from hex. The 0x prefix is optional.
 func (a *UnprefixedAddress) UnmarshalText(input []byte) error {
 	// pare json file does not need to checkPrefix
-	res, err := EvryAddressStringToAddressCheck(string(input))
+	res, err := NeutAddressStringToAddressCheck(string(input))
 	copy(a[:], res[:])
 	return err
 }
 
 // MarshalText encodes the address as hex.
 func (a UnprefixedAddress) MarshalText() ([]byte, error) {
-	return []byte(AddressToEvryAddressString(Address(a))), nil
+	return []byte(AddressToNeutAddressString(Address(a))), nil
 }
 
 // MixedcaseAddress retains the original string, which may or may not be
@@ -353,12 +353,12 @@ type MixedcaseAddress struct {
 
 // NewMixedcaseAddress constructor (mainly for testing)
 func NewMixedcaseAddress(addr Address) MixedcaseAddress {
-	return MixedcaseAddress{addr: addr, original: AddressToEvryAddressString(addr)}
+	return MixedcaseAddress{addr: addr, original: AddressToNeutAddressString(addr)}
 }
 
 // NewMixedcaseAddressFromString is mainly meant for unit-testing
 func NewMixedcaseAddressFromString(addrStr string) (*MixedcaseAddress, error) {
-	addr, err := EvryAddressStringToAddressCheck(addrStr)
+	addr, err := NeutAddressStringToAddressCheck(addrStr)
 	if err != nil {
 		return nil, err
 	}
@@ -374,7 +374,7 @@ func (ma *MixedcaseAddress) UnmarshalJSON(input []byte) error {
 	if isString {
 		input = input[1 : len(input)-1]
 	}
-	res, err := EvryAddressStringToAddressCheck(string(input))
+	res, err := NeutAddressStringToAddressCheck(string(input))
 	copy(ma.addr[:], res[:])
 	if err != nil {
 		return err
@@ -402,35 +402,13 @@ func (ma *MixedcaseAddress) String() string {
 
 // ValidChecksum returns true if the address has valid checksum
 func (ma *MixedcaseAddress) ValidChecksum() bool {
-	return ma.original == AddressToEvryAddressString(ma.addr)
+	return ma.original == AddressToNeutAddressString(ma.addr)
 }
 
 // Original returns the mixed-case input string
 func (ma *MixedcaseAddress) Original() string {
 	return ma.original
 }
-
-// Evrynet-node address string changes to address(byte array which length is 20) with addressPrefix check
-func EvryAddressStringToAddressCheck(addressStr string) (addr Address, err error) {
-	if len(addressStr) != EvrynodeAddressLength {
-		return addr, ErrWrongLengthOfAddress
-	}
-	result, version, err := base58.CheckDecode(addressStr)
-	if err != nil {
-		return addr, err
-	}
-	if version != AddressPrefix {
-		return addr, ErrPrefixMismatch
-	}
-	addr.SetBytes(result[:])
-	return addr, err
-}
-
-//  Address(byte array which length is 20) changes to Evrynet-node address string
-func AddressToEvryAddressString(address Address) string {
-	return base58.CheckEncode(address.Bytes(), AddressPrefix)
-}
-
 
 // NeuralChain address string changes to address(byte array which length is 20) with addressPrefix check
 func NeutAddressStringToAddressCheck(addressStr string) (addr Address, err error) {
@@ -452,4 +430,3 @@ func NeutAddressStringToAddressCheck(addressStr string) (addr Address, err error
 func AddressToNeutAddressString(address Address) string {
 	return base58.CheckEncode(address.Bytes(), AddressPrefix)
 }
-

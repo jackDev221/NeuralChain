@@ -70,7 +70,7 @@ make sure to use this feature with great caution!`,
 		// Output all relevant information we can retrieve.
 		showPrivate := ctx.Bool("private")
 		out := outputInspect{
-			Address: common.AddressToEvryAddressString(key.Address),
+			Address: common.AddressToNeutAddressString(key.Address),
 			PublicKey: hex.EncodeToString(
 				crypto.FromECDSAPub(&key.PrivateKey.PublicKey)),
 		}

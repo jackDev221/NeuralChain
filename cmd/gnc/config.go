@@ -177,11 +177,11 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 	// Configure GraphQL if required
 	if ctx.GlobalIsSet(utils.GraphQLEnabledFlag.Name) {
 		if err := graphql.RegisterGraphQLService(stack, cfg.Node.GraphQLEndpoint(), cfg.Node.GraphQLCors, cfg.Node.GraphQLVirtualHosts, cfg.Node.HTTPTimeouts); err != nil {
-			utils.Fatalf("Failed to register the Evrynet service: %v", err)
+			utils.Fatalf("Failed to register the NeuralChain service: %v", err)
 		}
 	}
 
-	// Add the Evrynet Stats daemon if requested.
+	// Add the NeuralChain Stats daemon if requested.
 	if cfg.Evrstats.URL != "" {
 		utils.RegisterEvrStatsService(stack, cfg.Evrstats.URL)
 	}

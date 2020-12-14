@@ -16,7 +16,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/consensus/tendermint"
 	"github.com/lvbin2012/NeuralChain/consensus/tendermint/tests_utils"
 	"github.com/lvbin2012/NeuralChain/consensus/tendermint/validator"
-	evrynetCore "github.com/lvbin2012/NeuralChain/core"
+	neuralChainCore "github.com/lvbin2012/NeuralChain/core"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/crypto"
 	"github.com/lvbin2012/NeuralChain/event"
@@ -87,7 +87,7 @@ func mustCreateAndStartNewBackend(t *testing.T, nodePrivateKey *ecdsa.PrivateKey
 		trigger = false
 		statedb = tests_utils.MustCreateStateDB(t)
 
-		testTxPoolConfig evrynetCore.TxPoolConfig
+		testTxPoolConfig neuralChainCore.TxPoolConfig
 		blockchain       = &tests_utils.MockChainReader{
 			GenesisHeader: genesisHeader,
 			MockBlockChain: &tests_utils.MockBlockChain{
@@ -98,7 +98,7 @@ func mustCreateAndStartNewBackend(t *testing.T, nodePrivateKey *ecdsa.PrivateKey
 			Address: address,
 			Trigger: &trigger,
 		}
-		pool   = evrynetCore.NewTxPool(testTxPoolConfig, params.TendermintTestChainConfig, blockchain)
+		pool   = neuralChainCore.NewTxPool(testTxPoolConfig, params.TendermintTestChainConfig, blockchain)
 		config = tendermint.DefaultConfig
 	)
 
@@ -161,9 +161,9 @@ func TestBackend_Gossip(t *testing.T) {
 		}
 		genesisHeader = tests_utils.MakeGenesisHeader(validators)
 		be            = mustCreateAndStartNewBackend(t, nodePrivateKey, genesisHeader, validators)
-		a, _          = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-		b, _          = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
-		c, _          = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
+		a, _          = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
+		b, _          = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+		c, _          = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
 		nodeAddrs     = []common.Address{
 			a,
 			b,
@@ -269,8 +269,8 @@ func TestBackend_Multicast(t *testing.T) {
 		//	nodeAddr,
 		//}
 
-		a, _      = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-		b, _      = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+		a, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
+		b, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
 		sentAddrs = map[common.Address]bool{
 			a: true,
 			b: true,

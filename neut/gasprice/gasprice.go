@@ -24,7 +24,7 @@ import (
 
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/core/types"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/params"
 	"github.com/lvbin2012/NeuralChain/rpc"
 )
@@ -39,7 +39,7 @@ type Config struct {
 // Oracle recommends gas prices based on the content of recent
 // blocks. Suitable for both light and full clients.
 type Oracle struct {
-	backend       evrapi.Backend
+	backend       neutapi.Backend
 	fixedGasPrice *big.Int
 	lastHead      common.Hash
 	fetchLock     sync.Mutex
@@ -49,7 +49,7 @@ type Oracle struct {
 }
 
 // NewOracle returns a new oracle.
-func NewOracle(backend evrapi.Backend, params Config) *Oracle {
+func NewOracle(backend neutapi.Backend, params Config) *Oracle {
 	blocks := params.Blocks
 	if blocks < 1 {
 		blocks = 1

@@ -36,9 +36,9 @@ func TestStateDBStakingCaller_GetValidators(t *testing.T) {
 
 func testGetValidators(t *testing.T, indexCfg *staking.IndexConfigs) {
 	var (
-		a, _       = common.EvryAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		b, _       = common.EvryAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		c, _       = common.EvryAddressStringToAddressCheck("ENDA7pzFPhjW1FKiXSKXkGrUPxvPTxBBCQ")
+		a, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
+		b, _       = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		c, _       = common.NeutAddressStringToAddressCheck("ENDA7pzFPhjW1FKiXSKXkGrUPxvPTxBBCQ")
 		candidates = []common.Address{
 			a,
 			b,
@@ -118,7 +118,7 @@ func testGetValidators(t *testing.T, indexCfg *staking.IndexConfigs) {
 	require.NoError(t, err)
 	require.Equal(t, 3, len(validators))
 	for _, val := range validators {
-		fmt.Println(common.AddressToEvryAddressString(val))
+		fmt.Println(common.AddressToNeutAddressString(val))
 	}
 }
 
@@ -132,9 +132,9 @@ func TestStateDBStakingCaller_GetValidatorsData(t *testing.T) {
 
 func testGetValidatorsData(t *testing.T, indexCfg *staking.IndexConfigs) {
 	var (
-		a, _       = common.EvryAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		b, _       = common.EvryAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		c, _       = common.EvryAddressStringToAddressCheck("ENDA7pzFPhjW1FKiXSKXkGrUPxvPTxBBCQ")
+		a, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
+		b, _       = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		c, _       = common.NeutAddressStringToAddressCheck("ENDA7pzFPhjW1FKiXSKXkGrUPxvPTxBBCQ")
 		candidates = []common.Address{
 			a,
 			b,

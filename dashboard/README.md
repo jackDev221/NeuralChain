@@ -1,6 +1,6 @@
-## Go Evrynet Dashboard
+## Go NeuralChain Dashboard
 
-The dashboard is a data visualizer integrated into gev, intended to collect and visualize useful information of an Evrynet node. It consists of two parts:
+The dashboard is a data visualizer integrated into gev, intended to collect and visualize useful information of an NeuralChain node. It consists of two parts:
 
 * The client visualizes the collected data.
 * The server collects the data, and updates the clients.

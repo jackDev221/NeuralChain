@@ -209,7 +209,7 @@ func (sb *Backend) Stop() error {
 	return nil
 }
 
-// Author retrieves the Evrynet address of the account that minted the given
+// Author retrieves the NeuralChain address of the account that minted the given
 // block, which may be different from the header's coinbase if a consensus
 // engine is based on signatures.
 func (sb *Backend) Author(header *types.Header) (common.Address, error) {
@@ -587,7 +587,7 @@ func (sb *Backend) verifyCommittedSeals(header *types.Header, valSet tendermint.
 	return nil
 }
 
-// blockProposer extracts the Evrynet account address from a signed header.
+// blockProposer extracts the NeuralChain account address from a signed header.
 func (sb *Backend) blockProposer(header *types.Header) (common.Address, error) {
 	if value, known := sb.blockProposerCache.Get(header.Hash()); known {
 		if proposer, ok := value.(common.Address); ok {

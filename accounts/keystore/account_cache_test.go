@@ -36,9 +36,9 @@ import (
 
 var (
 	cachetestDir, _   = filepath.Abs(filepath.Join("testdata", "keystore"))
-	a, _              = common.EvryAddressStringToAddressCheck("EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG")
-	b, _              = common.EvryAddressStringToAddressCheck("EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
-	c, _              = common.EvryAddressStringToAddressCheck("ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp")
+	a, _              = common.NeutAddressStringToAddressCheck("EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG")
+	b, _              = common.NeutAddressStringToAddressCheck("EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
+	c, _              = common.NeutAddressStringToAddressCheck("ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp")
 	cachetestAccounts = []accounts.Account{
 		{
 			Address: a,
@@ -183,7 +183,7 @@ func TestCacheAddDeleteOrder(t *testing.T) {
 	}
 	accs := make([]accounts.Account, len(accinfos))
 	for index, a := range accinfos {
-		addr, _ := common.EvryAddressStringToAddressCheck(a.Address)
+		addr, _ := common.NeutAddressStringToAddressCheck(a.Address)
 		accs[index] = accounts.Account{addr, a.URL}
 	}
 	for _, a := range accs {
@@ -207,7 +207,7 @@ func TestCacheAddDeleteOrder(t *testing.T) {
 		}
 	}
 
-	addressTem, _ := common.EvryAddressStringToAddressCheck("EgGs84QsSHPpnZhECxqXZwvqg2G8Z1B5xx")
+	addressTem, _ := common.NeutAddressStringToAddressCheck("EgGs84QsSHPpnZhECxqXZwvqg2G8Z1B5xx")
 
 	if cache.hasAddress(addressTem) {
 		t.Errorf("expected EgGs84QsSHPpnZhECxqXZwvqg2G8Z1B5xx to return false")
@@ -267,7 +267,7 @@ func TestCacheFind(t *testing.T) {
 
 	accs := make([]accounts.Account, len(accinfos))
 	for index, a := range accinfos {
-		addr, _ := common.EvryAddressStringToAddressCheck(a.Address)
+		addr, _ := common.NeutAddressStringToAddressCheck(a.Address)
 		accs[index] = accounts.Account{addr, a.URL}
 	}
 
@@ -275,7 +275,7 @@ func TestCacheFind(t *testing.T) {
 		cache.add(a)
 	}
 
-	addrTem, _ := common.EvryAddressStringToAddressCheck("EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
+	addrTem, _ := common.NeutAddressStringToAddressCheck("EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
 	nomatchAccount := accounts.Account{
 		Address: addrTem,
 		URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(dir, "something")},

@@ -10,11 +10,11 @@ yarn install
 popd
 docker run -v $(pwd):/staking_contracts ethereum/solc:0.5.13 \
     @openzeppelin/=/staking_contracts/staking-contract/node_modules/@openzeppelin/ \
-    --overwrite -o /staking_contracts/EvrynetStaking.bin --optimize --optimize-runs 20000 \
-    --abi --bin /staking_contracts/staking-contract/contracts/EvrynetStaking.sol
+    --overwrite -o /staking_contracts/NeuralChainStaking.bin --optimize --optimize-runs 20000 \
+    --abi --bin /staking_contracts/staking-contract/contracts/NeuralChainStaking.sol
 # Generate go file
 echo "Generate go file"
-abigen --bin=./EvrynetStaking.bin/EvrynetStaking.bin --abi=./EvrynetStaking.bin/EvrynetStaking.abi --out ./EvrynetStaking.go --pkg=staking_contracts
+abigen --bin=./NeuralChainStaking.bin/NeuralChainStaking.bin --abi=./NeuralChainStaking.bin/NeuralChainStaking.abi --out ./NeuralChainStaking.go --pkg=staking_contracts
 # Generate storage layout file
 echo "Generate storage layout file"
 cat solc-input.json | docker run -i  -v $(pwd):/staking_contracts -w /staking_contracts ethereum/solc:0.5.13 --standard-json --allow-paths *, > storage-layout.json

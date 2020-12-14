@@ -248,7 +248,7 @@ func ExampleJSON() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	addr, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
+	addr, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
 	out, err := abi.Pack("isBar", addr)
 	if err != nil {
 		log.Fatalln(err)
@@ -712,7 +712,7 @@ func TestUnpackEventIntoMap(t *testing.T) {
 	}
 
 	receivedMap := map[string]interface{}{}
-	sender, _ := common.EvryAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	sender, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
 	expectedReceivedMap := map[string]interface{}{
 		"sender": sender,
 		"amount": big.NewInt(1),
@@ -860,7 +860,7 @@ func TestUnpackIntoMapNamingConflict(t *testing.T) {
 	if len(data)%32 == 0 {
 		t.Errorf("len(data) is %d, want a non-multiple of 32", len(data))
 	}
-	sender, _ := common.EvryAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	sender, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
 	expectedReceivedMap := map[string]interface{}{
 		"sender": sender,
 		"amount": big.NewInt(1),

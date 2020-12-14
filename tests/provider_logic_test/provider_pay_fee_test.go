@@ -26,7 +26,7 @@ To run these test, please deploy your own account/ contract and extract privatek
 // assure the correctness of the program.
 func TestInteractToEnterpriseSmartContractWithValidProviderSignatureFromAccountWithoutGas(t *testing.T) {
 	var (
-		senderAddr, _ = common.EvryAddressStringToAddressCheck(senderWithoutGasAddrStr)
+		senderAddr, _ = common.NeutAddressStringToAddressCheck(senderWithoutGasAddrStr)
 		contractAddr  = prepareNewContract(true)
 	)
 
@@ -36,7 +36,7 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignatureFromAccountW
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -51,7 +51,7 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignatureFromAccountW
 	transaction, err = types.ProviderSignTx(transaction, signer, ppk)
 	assert.NoError(t, err)
 	require.NoError(t, neutClient.SendTransaction(context.Background(), transaction))
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	assertTransactionSuccess(t, neutClient, transaction.Hash(), false, providerAddr)
 }
 
@@ -59,7 +59,7 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignatureFromAccountW
 // Please make sure the sender does not have any funds
 // expected to get revert as sender's balance is not enough for transaction amount
 func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFromAccountWithoutGas(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderWithoutGasAddrStr)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderWithoutGasAddrStr)
 
 	contractAddr := prepareNewContract(false)
 	assert.NotNil(t, contractAddr)
@@ -70,7 +70,7 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -92,7 +92,7 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 // Please make sure sender has enough balance to cover transaction amount
 // expected to get passed as sender's balance is enough for transaction amount
 func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFromAccountWithEnoughBalance(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	contractAddr := prepareNewContract(true)
 	assert.NotNil(t, contractAddr)
 
@@ -102,7 +102,7 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -118,7 +118,7 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 	assert.NoError(t, err)
 
 	require.NoError(t, neutClient.SendTransaction(context.Background(), transaction))
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	assertTransactionSuccess(t, neutClient, transaction.Hash(), false, providerAddr)
 }
 
@@ -127,8 +127,8 @@ func TestInteractWithAmountToEnterpriseSmartContractWithValidProviderSignatureFr
 // Expected to get failure as provider's balance is not enough for transaction fee
 // Please check error message
 func TestInteractEnterpriseSmartContractWithValidProviderSignatureWithoutGas(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck(contractProviderWithoutGas)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	contractAddr, _ := common.NeutAddressStringToAddressCheck(contractProviderWithoutGas)
 
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
@@ -136,7 +136,7 @@ func TestInteractEnterpriseSmartContractWithValidProviderSignatureWithoutGas(t *
 	ppk, err := crypto.HexToECDSA(providerWithoutGasPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)

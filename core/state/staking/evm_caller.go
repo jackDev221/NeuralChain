@@ -8,7 +8,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	evrynet "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/math"
 	"github.com/lvbin2012/NeuralChain/consensus"
@@ -143,9 +143,9 @@ func (caller *evmStakingCaller) CodeAt(ctx context.Context, contract common.Addr
 	return caller.stateDB.GetCode(contract), nil
 }
 
-// ContractCall executes an Evrynet contract call with the specified data as the
+// ContractCall executes an NeuralChain contract call with the specified data as the
 // input.
-func (caller *evmStakingCaller) CallContract(ctx context.Context, call evrynet.CallMsg, blockNumber *big.Int) ([]byte, error) {
+func (caller *evmStakingCaller) CallContract(ctx context.Context, call neuralChain.CallMsg, blockNumber *big.Int) ([]byte, error) {
 	clonedStateDB := caller.stateDB.Copy()
 	if blockNumber != nil && blockNumber.Cmp(caller.blockNumber) != 0 {
 		return nil, errors.New("blockNumber is not supported")
@@ -175,7 +175,7 @@ func (caller *evmStakingCaller) CallContract(ctx context.Context, call evrynet.C
 
 // callmsg implements core.Message to allow passing it as a transaction simulator.
 type callmsg struct {
-	evrynet.CallMsg
+	neuralChain.CallMsg
 }
 
 func (m callmsg) GasPayer() common.Address      { return m.CallMsg.From }

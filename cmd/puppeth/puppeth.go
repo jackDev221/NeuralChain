@@ -31,7 +31,7 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Name = "puppeth"
-	app.Usage = "assemble and maintain private Evrynet networks"
+	app.Usage = "assemble and maintain private NeuralChain networks"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "network",

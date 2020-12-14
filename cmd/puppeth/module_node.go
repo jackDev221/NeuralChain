@@ -29,7 +29,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/log"
 )
 
-// nodeDockerfile is the Dockerfile required to run an Evrynet node.
+// nodeDockerfile is the Dockerfile required to run an NeuralChain node.
 var nodeDockerfile = `
 FROM ethereum/client-go:latest
 
@@ -47,7 +47,7 @@ ENTRYPOINT ["/bin/sh", "gnc.sh"]
 `
 
 // nodeComposefile is the docker-compose.yml file required to deploy and maintain
-// an Evrynet node (bootnode or miner for now).
+// an NeuralChain node (bootnode or miner for now).
 var nodeComposefile = `
 version: '2'
 services:
@@ -78,7 +78,7 @@ services:
     restart: always
 `
 
-// deployNode deploys a new Evrynet node container to a remote machine via SSH,
+// deployNode deploys a new NeuralChain node container to a remote machine via SSH,
 // docker and docker-compose. If an instance with the specified network name
 // already exists there, it will be overwritten!
 func deployNode(client *sshClient, network string, bootnodes []string, config *nodeInfos, nocache bool) ([]byte, error) {
@@ -253,7 +253,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 	// Assemble and return the useful infos
 	stats := &nodeInfos{
 		genesis:    genesis,
-		datadir:    infos.volumes["/root/.Evrynet"],
+		datadir:    infos.volumes["/root/.NeuralChain"],
 		ethashdir:  infos.volumes["/root/.ethash"],
 		port:       port,
 		peersTotal: totalPeers,

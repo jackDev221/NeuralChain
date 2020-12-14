@@ -29,8 +29,8 @@ func TestUnmarshalJSONNewFilterArgs(t *testing.T) {
 	var (
 		fromBlock   rpc.BlockNumber = 0x123435
 		toBlock     rpc.BlockNumber = 0xabcdef
-		address0, _                 = common.EvryAddressStringToAddressCheck("ETSFMGNMoburCfNduBa9V1xXr9HteYjBcy")
-		address1, _                 = common.EvryAddressStringToAddressCheck("EXJ8y1bG7rr2j4r2Nvg39U571TzSymj3h6")
+		address0, _                 = common.NeutAddressStringToAddressCheck("ETSFMGNMoburCfNduBa9V1xXr9HteYjBcy")
+		address1, _                 = common.NeutAddressStringToAddressCheck("EXJ8y1bG7rr2j4r2Nvg39U571TzSymj3h6")
 		topic0                      = common.HexToHash("3ac225168df54212a25c1c01fd35bebfea408fdac2e31ddd6f80a4bbf9a5f1ca")
 		topic1                      = common.HexToHash("9084a792d2f8b16a62b882fd56f7860c07bf5fa91dd8a2ae7e809e5180fef0b3")
 		topic2                      = common.HexToHash("6ccae1c4af4152f460ff510e573399795dfab5dcf1fa60d1f33ac8fdc1e480ce")

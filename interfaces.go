@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package neuralChain defines interfaces for interacting with Evrynet.
-package evrynet
+// Package neuralChain defines interfaces for interacting with NeuralChain.
+package neuralChain
 
 import (
 	"context"
@@ -108,7 +108,7 @@ type P2PChainReader interface {
 }
 
 // SyncProgress gives progress indications when the node is synchronising with
-// the Evrynet network.
+// the NeuralChain network.
 type SyncProgress struct {
 	StartingBlock uint64 // Block number where sync began
 	CurrentBlock  uint64 // Current block number where sync is at

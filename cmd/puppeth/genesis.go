@@ -31,7 +31,7 @@ import (
 )
 
 // alethGenesisSpec represents the genesis specification format used by the
-// C++ Evrynet implementation.
+// C++ NeuralChain implementation.
 type alethGenesisSpec struct {
 	SealEngine string `json:"sealEngine"`
 	Params     struct {
@@ -203,10 +203,10 @@ type parityChainSpec struct {
 
 	Genesis struct {
 		Seal struct {
-			Evrynet struct {
+			NeuralChain struct {
 				Nonce   hexutil.Bytes `json:"nonce"`
 				MixHash hexutil.Bytes `json:"mixHash"`
-			} `json:"evrynet"`
+			} `json:"neuralChain"`
 		} `json:"seal"`
 
 		Difficulty *hexutil.Big   `json:"difficulty"`
@@ -292,10 +292,10 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	// Disable this one
 	spec.Params.EIP98Transition = math.MaxInt64
 
-	spec.Genesis.Seal.Evrynet.Nonce = (hexutil.Bytes)(make([]byte, 8))
-	binary.LittleEndian.PutUint64(spec.Genesis.Seal.Evrynet.Nonce[:], genesis.Nonce)
+	spec.Genesis.Seal.NeuralChain.Nonce = (hexutil.Bytes)(make([]byte, 8))
+	binary.LittleEndian.PutUint64(spec.Genesis.Seal.NeuralChain.Nonce[:], genesis.Nonce)
 
-	spec.Genesis.Seal.Evrynet.MixHash = (hexutil.Bytes)(genesis.Mixhash[:])
+	spec.Genesis.Seal.NeuralChain.MixHash = (hexutil.Bytes)(genesis.Mixhash[:])
 	spec.Genesis.Difficulty = (*hexutil.Big)(genesis.Difficulty)
 	spec.Genesis.Author = genesis.Coinbase
 	spec.Genesis.Timestamp = (hexutil.Uint64)(genesis.Timestamp)
@@ -352,9 +352,9 @@ func (spec *parityChainSpec) setPrecompile(address byte, data *parityChainSpecBu
 }
 
 
-// pyEvrynetGenesisSpec represents the genesis specification format used by the
-// Python Evrynet implementation.
-type pyEvrynetGenesisSpec struct {
+// pyNeuralChainGenesisSpec represents the genesis specification format used by the
+// Python NeuralChain implementation.
+type pyNeuralChainGenesisSpec struct {
 	Nonce      hexutil.Bytes     `json:"nonce"`
 	Timestamp  hexutil.Uint64    `json:"timestamp"`
 	ExtraData  hexutil.Bytes     `json:"extraData"`
@@ -366,14 +366,14 @@ type pyEvrynetGenesisSpec struct {
 	ParentHash common.Hash       `json:"parentHash"`
 }
 
-// newPyEvrynetGenesisSpec converts a NeuralChain genesis block into a Parity specific
+// newPyNeuralChainGenesisSpec converts a NeuralChain genesis block into a Parity specific
 // chain specification format.
-func newPyEvrynetGenesisSpec(network string, genesis *core.Genesis) (*pyEvrynetGenesisSpec, error) {
-	// Only ethash is currently supported between NeuralChain and pyevrynetnode
+func newPyNeuralChainGenesisSpec(network string, genesis *core.Genesis) (*pyNeuralChainGenesisSpec, error) {
+	// Only ethash is currently supported between NeuralChain and pyneuralChainnode
 	if genesis.Config.Ethash == nil {
 		return nil, errors.New("unsupported consensus engine")
 	}
-	spec := &pyEvrynetGenesisSpec{
+	spec := &pyNeuralChainGenesisSpec{
 		Timestamp:  (hexutil.Uint64)(genesis.Timestamp),
 		ExtraData:  genesis.ExtraData,
 		GasLimit:   (hexutil.Uint64)(genesis.GasLimit),

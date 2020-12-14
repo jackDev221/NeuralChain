@@ -56,7 +56,7 @@ func TestVerifyProposal(t *testing.T) {
 
 	// --------CASE 2--------
 	// Pass all validation
-	to, _ := common.EvryAddressStringToAddressCheck("EYXe2YrqoxNYHW7tMLw63xtyZ7JB7tZf3Z")
+	to, _ := common.NeutAddressStringToAddressCheck("EYXe2YrqoxNYHW7tMLw63xtyZ7JB7tZf3Z")
 	tx1 := types.NewTransaction(0, to, big.NewInt(10), 800000, big.NewInt(params.GasPriceConfig), nil)
 	tx1, err = types.SignTx(tx1, types.BaseSigner{}, nodePrivateKey)
 	assert.NoError(t, err)

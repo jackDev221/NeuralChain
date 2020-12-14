@@ -15,7 +15,7 @@ RUN chmod 600 /root/.netrc
 
 RUN cat /root/.netrc
 
-WORKDIR "/evrynet"
+WORKDIR "/neuralChain"
 COPY ./project ./project
 RUN cd ./project && \
     go build ./cmd/gev && \

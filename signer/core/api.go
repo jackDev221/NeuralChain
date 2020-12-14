@@ -32,7 +32,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/types"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/rlp"
 	"github.com/lvbin2012/NeuralChain/signer/storage"
@@ -55,9 +55,9 @@ type ExternalAPI interface {
 	// New request to create a new account
 	New(ctx context.Context) (common.Address, error)
 	// SignTransaction request to sign the specified transaction
-	SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*evrapi.SignTransactionResult, error)
+	SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*neutapi.SignTransactionResult, error)
 	// ProviderSignTransaction request to sign the specified transaction from provider
-	ProviderSignTransaction(ctx context.Context, tx *types.Transaction, providerAddr common.Address, methodSelector *string) (*evrapi.SignTransactionResult, error)
+	ProviderSignTransaction(ctx context.Context, tx *types.Transaction, providerAddr common.Address, methodSelector *string) (*neutapi.SignTransactionResult, error)
 	// SignData - request to sign the given data (plus prefix)
 	SignData(ctx context.Context, contentType string, addr common.MixedcaseAddress, data interface{}) (hexutil.Bytes, error)
 	// SignTypedData - request to sign the given structured data (plus prefix)
@@ -86,7 +86,7 @@ type UIClientAPI interface {
 	ShowInfo(message string)
 	// OnApprovedTx notifies the UI about a transaction having been successfully signed.
 	// This method can be used by a UI to keep track of e.g. how much has been sent to a particular recipient.
-	OnApprovedTx(tx evrapi.SignTransactionResult)
+	OnApprovedTx(tx neutapi.SignTransactionResult)
 	// OnSignerStartup is invoked when the signer boots, and tells the UI info about external API location and version
 	// information
 	OnSignerStartup(info StartupInfo)
@@ -361,7 +361,7 @@ func (api *SignerAPI) startUSBListener() {
 						log.Warn("account derivation failed", "error", err)
 					} else {
 						log.Info("derived account", "address",
-							common.AddressToEvryAddressString(acc.Address))
+							common.AddressToNeutAddressString(acc.Address))
 					}
 					nextPath[len(nextPath)-1]++
 				}
@@ -425,7 +425,7 @@ func (api *SignerAPI) New(ctx context.Context) (common.Address, error) {
 		} else {
 			// No error
 			acc, err := be[0].(*keystore.KeyStore).NewAccount(resp.Text)
-			log.Info("Your new key was generated", "address", common.AddressToEvryAddressString(acc.Address))
+			log.Info("Your new key was generated", "address", common.AddressToNeutAddressString(acc.Address))
 			log.Warn("Please backup your key file!", "path", acc.URL.Path)
 			log.Warn("Please remember your password!")
 			return acc.Address, err
@@ -482,7 +482,7 @@ func logDiff(original *SignTxRequest, new *SignTxResponse) bool {
 }
 
 func (api *SignerAPI) lookupPassword(address common.Address) string {
-	return api.credentials.Get(common.AddressToEvryAddressString(address))
+	return api.credentials.Get(common.AddressToNeutAddressString(address))
 }
 func (api *SignerAPI) lookupOrQueryPassword(address common.Address, title, prompt string) (string, error) {
 	if pw := api.lookupPassword(address); pw != "" {
@@ -500,7 +500,7 @@ func (api *SignerAPI) lookupOrQueryPassword(address common.Address, title, promp
 }
 
 // SignTransaction signs the given Transaction and returns it both as json and rlp-encoded form
-func (api *SignerAPI) SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*evrapi.SignTransactionResult, error) {
+func (api *SignerAPI) SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*neutapi.SignTransactionResult, error) {
 	var (
 		err    error
 		result SignTxResponse
@@ -543,7 +543,7 @@ func (api *SignerAPI) SignTransaction(ctx context.Context, args SendTxArgs, meth
 	var unsignedTx = result.Transaction.toTransaction()
 	// Get the password for the transaction
 	pw, err := api.lookupOrQueryPassword(acc.Address, "Account password",
-		fmt.Sprintf("Please enter the password for account %s", common.AddressToEvryAddressString(acc.Address)))
+		fmt.Sprintf("Please enter the password for account %s", common.AddressToNeutAddressString(acc.Address)))
 	if err != nil {
 		return nil, err
 	}
@@ -555,7 +555,7 @@ func (api *SignerAPI) SignTransaction(ctx context.Context, args SendTxArgs, meth
 	}
 
 	rlpdata, err := rlp.EncodeToBytes(signedTx)
-	response := evrapi.SignTransactionResult{Raw: rlpdata, Tx: signedTx}
+	response := neutapi.SignTransactionResult{Raw: rlpdata, Tx: signedTx}
 
 	// Finally, send the signed tx to the UI
 	api.UI.OnApprovedTx(response)
@@ -565,7 +565,7 @@ func (api *SignerAPI) SignTransaction(ctx context.Context, args SendTxArgs, meth
 }
 
 // ProviderSignTransaction signs the given Transaction and returns it both as json and rlp-encoded form
-func (api *SignerAPI) ProviderSignTransaction(ctx context.Context, tx *types.Transaction, providerAddr common.Address, methodSelector *string) (*evrapi.SignTransactionResult, error) {
+func (api *SignerAPI) ProviderSignTransaction(ctx context.Context, tx *types.Transaction, providerAddr common.Address, methodSelector *string) (*neutapi.SignTransactionResult, error) {
 	var (
 		err    error
 		acc    accounts.Account
@@ -579,7 +579,7 @@ func (api *SignerAPI) ProviderSignTransaction(ctx context.Context, tx *types.Tra
 	// Get the password for the transaction
 	pw, err := api.lookupOrQueryPassword(acc.Address, "Providers account password",
 		fmt.Sprintf("Please enter the password for provider account %s",
-			common.AddressToEvryAddressString(acc.Address)))
+			common.AddressToNeutAddressString(acc.Address)))
 	if err != nil {
 		return nil, err
 	}
@@ -590,7 +590,7 @@ func (api *SignerAPI) ProviderSignTransaction(ctx context.Context, tx *types.Tra
 		return nil, err
 	}
 	rlpdata, err := rlp.EncodeToBytes(signedTx)
-	response := evrapi.SignTransactionResult{Raw: rlpdata, Tx: signedTx}
+	response := neutapi.SignTransactionResult{Raw: rlpdata, Tx: signedTx}
 
 	// Finally, send the signed tx to the UI
 	api.UI.OnApprovedTx(response)

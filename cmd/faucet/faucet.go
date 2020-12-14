@@ -66,7 +66,7 @@ var (
 	apiPortFlag = flag.Int("apiport", 8080, "Listener port for the HTTP API connection")
 	ethPortFlag = flag.Int("ethport", 30303, "Listener port for the devp2p connection")
 	bootFlag    = flag.String("bootnodes", "", "Comma separated bootnode enode URLs to seed with")
-	netFlag     = flag.Uint64("network", 0, "Network ID to use for the Evrynet protocol")
+	netFlag     = flag.Uint64("network", 0, "Network ID to use for the NeuralChain protocol")
 	statsFlag   = flag.String("evrstats", "", "Evrstats network monitoring auth string")
 
 	netnameFlag = flag.String("faucet.name", "", "Network name to assign to the faucet")
@@ -81,7 +81,7 @@ var (
 	captchaSecret = flag.String("captcha.secret", "", "Recaptcha secret key to authenticate server side")
 
 	noauthFlag = flag.Bool("noauth", false, "Enables funding requests without authentication")
-	logFlag    = flag.Int("loglevel", 3, "Log level to use for Evrynet and the faucet")
+	logFlag    = flag.Int("loglevel", 3, "Log level to use for NeuralChain and the faucet")
 )
 
 var (
@@ -190,16 +190,16 @@ func main() {
 // request represents an accepted funding request.
 type request struct {
 	Avatar  string             `json:"avatar"`  // Avatar URL to make the UI nicer
-	Account common.Address     `json:"account"` // Evrynet address being funded
+	Account common.Address     `json:"account"` // NeuralChain address being funded
 	Time    time.Time          `json:"time"`    // Timestamp when the request was accepted
 	Tx      *types.Transaction `json:"tx"`      // Transaction funding the account
 }
 
-// faucet represents a crypto faucet backed by an Evrynet light client.
+// faucet represents a crypto faucet backed by an NeuralChain light client.
 type faucet struct {
 	config *params.ChainConfig // Chain configurations for signing
-	stack  *node.Node          // Evrynet protocol stack
-	client *neutclient.Client  // Client connection to the Evrynet chain
+	stack  *node.Node          // NeuralChain protocol stack
+	client *neutclient.Client  // Client connection to the NeuralChain chain
 	index  []byte              // Index page to serve up on the web
 
 	keystore *keystore.KeyStore // Keystore containing the single signer
@@ -235,7 +235,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	if err != nil {
 		return nil, err
 	}
-	// Assemble the Evrynet light client protocol
+	// Assemble the NeuralChain light client protocol
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		cfg := neut.DefaultConfig
 		cfg.SyncMode = downloader.LightSync
@@ -248,7 +248,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	// Assemble the evrstats monitoring and reporting service'
 	if stats != "" {
 		if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-			var serv *les.LightEvrynet
+			var serv *les.LightNeuralChain
 			ctx.Service(&serv)
 			return evrstats.New(stats, nil, serv)
 		}); err != nil {
@@ -285,7 +285,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}, nil
 }
 
-// close terminates the Evrynet connection and tears down the faucet.
+// close terminates the NeuralChain connection and tears down the faucet.
 func (f *faucet) close() error {
 	return f.stack.Close()
 }
@@ -432,7 +432,7 @@ func (f *faucet) apiHandler(conn *websocket.Conn) {
 				continue
 			}
 		}
-		// Retrieve the Evrynet address to fund, the requesting user and a profile picture
+		// Retrieve the NeuralChain address to fund, the requesting user and a profile picture
 		var (
 			username string
 			avatar   string
@@ -670,7 +670,7 @@ func sendSuccess(conn *websocket.Conn, msg string) error {
 }
 
 // authTwitter tries to authenticate a faucet request using Twitter posts, returning
-// the username, avatar URL and Evrynet address to fund on success.
+// the username, avatar URL and NeuralChain address to fund on success.
 func authTwitter(url string) (string, string, common.Address, error) {
 	// Ensure the user specified a meaningful URL, no fancy nonsense
 	parts := strings.Split(url, "/")
@@ -679,7 +679,7 @@ func authTwitter(url string) (string, string, common.Address, error) {
 	}
 	// Twitter's API isn't really friendly with direct links. Still, we don't
 	// want to do ask read permissions from users, so just load the public posts and
-	// scrape it for the Evrynet address and profile URL.
+	// scrape it for the NeuralChain address and profile URL.
 	res, err := http.Get(url)
 	if err != nil {
 		return "", "", common.Address{}, err
@@ -698,9 +698,9 @@ func authTwitter(url string) (string, string, common.Address, error) {
 		return "", "", common.Address{}, err
 	}
 
-	address, err := common.EvryAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
+	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
 	if address == (common.Address{}) || err != nil {
-		return "", "", common.Address{}, errors.New("No Evrynet address found to fund")
+		return "", "", common.Address{}, errors.New("No NeuralChain address found to fund")
 	}
 	var avatar string
 	if parts = regexp.MustCompile("src=\"([^\"]+twimg.com/profile_images[^\"]+)\"").FindStringSubmatch(string(body)); len(parts) == 2 {
@@ -710,7 +710,7 @@ func authTwitter(url string) (string, string, common.Address, error) {
 }
 
 // authFacebook tries to authenticate a faucet request using Facebook posts,
-// returning the username, avatar URL and Evrynet address to fund on success.
+// returning the username, avatar URL and NeuralChain address to fund on success.
 func authFacebook(url string) (string, string, common.Address, error) {
 	// Ensure the user specified a meaningful URL, no fancy nonsense
 	parts := strings.Split(url, "/")
@@ -721,7 +721,7 @@ func authFacebook(url string) (string, string, common.Address, error) {
 
 	// Facebook's Graph API isn't really friendly with direct links. Still, we don't
 	// want to do ask read permissions from users, so just load the public posts and
-	// scrape it for the Evrynet address and profile URL.
+	// scrape it for the NeuralChain address and profile URL.
 	res, err := http.Get(url)
 	if err != nil {
 		return "", "", common.Address{}, err
@@ -732,9 +732,9 @@ func authFacebook(url string) (string, string, common.Address, error) {
 	if err != nil {
 		return "", "", common.Address{}, err
 	}
-	address, err := common.EvryAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
+	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
 	if address == (common.Address{}) || err != nil {
-		return "", "", common.Address{}, errors.New("No Evrynet address found to fund")
+		return "", "", common.Address{}, errors.New("No NeuralChain address found to fund")
 	}
 	var avatar string
 	if parts = regexp.MustCompile("src=\"([^\"]+fbcdn.net[^\"]+)\"").FindStringSubmatch(string(body)); len(parts) == 2 {
@@ -743,13 +743,13 @@ func authFacebook(url string) (string, string, common.Address, error) {
 	return username + "@facebook", avatar, address, nil
 }
 
-// authNoAuth tries to interpret a faucet request as a plain Evrynet address,
+// authNoAuth tries to interpret a faucet request as a plain NeuralChain address,
 // without actually performing any remote authentication. This mode is prone to
 // Byzantine attack, so only ever use for truly private networks.
 func authNoAuth(url string) (string, string, common.Address, error) {
-	address, err := common.EvryAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").FindString(url)))
+	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").FindString(url)))
 	if address == (common.Address{}) || err != nil {
-		return "", "", common.Address{}, errors.New("No Evrynet address found to fund")
+		return "", "", common.Address{}, errors.New("No NeuralChain address found to fund")
 	}
 	return address.String() + "@noauth", "", address, nil
 }

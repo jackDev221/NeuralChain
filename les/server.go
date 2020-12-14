@@ -72,7 +72,7 @@ type LesServer struct {
 	priorityClientPool         *priorityClientPool
 }
 
-func NewLesServer(neut *neut.Evrynet, config *neut.Config) (*LesServer, error) {
+func NewLesServer(neut *neut.NeuralChain, config *neut.Config) (*LesServer, error) {
 	var csvLogger *csvlogger.Logger
 	if logFileName != "" {
 		csvLogger = csvlogger.NewLogger(logFileName, time.Second*10, "event, peerId")

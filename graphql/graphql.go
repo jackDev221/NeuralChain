@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package graphql provides a GraphQL interface to Evrynet node data.
+// Package graphql provides a GraphQL interface to NeuralChain node data.
 package graphql
 
 import (
@@ -32,7 +32,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/state"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/core/vm"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/neut"
 	"github.com/lvbin2012/NeuralChain/neut/filters"
@@ -47,9 +47,9 @@ import (
 var OnlyOnMainChainError = errors.New("This operation is only available for blocks on the canonical chain.")
 var BlockInvariantError = errors.New("Block objects must be instantiated with at least one of num or hash.")
 
-// Account represents an Evrynet account at a particular block.
+// Account represents an NeuralChain account at a particular block.
 type Account struct {
-	backend     *neut.EvrAPIBackend
+	backend     *neut.NeutAPIBackend
 	address     common.Address
 	blockNumber rpc.BlockNumber
 }
@@ -102,7 +102,7 @@ func (a *Account) Storage(ctx context.Context, args struct{ Slot common.Hash }) 
 
 // Log represents an individual log message. All arguments are mandatory.
 type Log struct {
-	backend     *neut.EvrAPIBackend
+	backend     *neut.NeutAPIBackend
 	transaction *Transaction
 	log         *types.Log
 }
@@ -131,10 +131,10 @@ func (l *Log) Data(ctx context.Context) hexutil.Bytes {
 	return hexutil.Bytes(l.log.Data)
 }
 
-// Transaction represents an Evrynet transaction.
+// Transaction represents an NeuralChain transaction.
 // backend and hash are mandatory; all others will be fetched when required.
 type Transaction struct {
-	backend *neut.EvrAPIBackend
+	backend *neut.NeutAPIBackend
 	hash    common.Hash
 	tx      *types.Transaction
 	block   *Block
@@ -345,11 +345,11 @@ const (
 	notCanonical
 )
 
-// Block represents an Evrynet block.
+// Block represents an NeuralChain block.
 // backend, and either num or hash are mandatory. All other fields are lazily fetched
 // when required.
 type Block struct {
-	backend   *neut.EvrAPIBackend
+	backend   *neut.NeutAPIBackend
 	num       *rpc.BlockNumber
 	hash      common.Hash
 	header    *types.Header
@@ -745,7 +745,7 @@ type BlockFilterCriteria struct {
 
 // runFilter accepts a filter and executes it, returning all its results as
 // `Log` objects.
-func runFilter(ctx context.Context, be *neut.EvrAPIBackend, filter *filters.Filter) ([]*Log, error) {
+func runFilter(ctx context.Context, be *neut.NeutAPIBackend, filter *filters.Filter) ([]*Log, error) {
 	logs, err := filter.Logs(ctx)
 	if err != nil || logs == nil {
 		return nil, err
@@ -814,8 +814,8 @@ func (b *Block) Account(ctx context.Context, args struct {
 // CallData encapsulates arguments to `call` or `estimateGas`.
 // All arguments are optional.
 type CallData struct {
-	From     *common.Address // The Evrynet address the call is from.
-	To       *common.Address // The Evrynet address the call is to.
+	From     *common.Address // The NeuralChain address the call is from.
+	To       *common.Address // The NeuralChain address the call is to.
 	Gas      *hexutil.Uint64 // The amount of gas provided for the call.
 	GasPrice *hexutil.Big    // The price of each unit of gas, in wei.
 	Value    *hexutil.Big    // The value sent along with the call.
@@ -842,7 +842,7 @@ func (c *CallResult) Status() hexutil.Uint64 {
 }
 
 func (b *Block) Call(ctx context.Context, args struct {
-	Data evrapi.CallArgs
+	Data neutapi.CallArgs
 }) (*CallResult, error) {
 	err := b.onMainChain(ctx)
 	if err != nil {
@@ -856,7 +856,7 @@ func (b *Block) Call(ctx context.Context, args struct {
 		}
 	}
 
-	result, gas, failed, err := evrapi.DoCall(ctx, b.backend, args.Data, *b.num, vm.Config{}, 5*time.Second, b.backend.RPCGasCap())
+	result, gas, failed, err := neutapi.DoCall(ctx, b.backend, args.Data, *b.num, vm.Config{}, 5*time.Second, b.backend.RPCGasCap())
 	status := hexutil.Uint64(1)
 	if failed {
 		status = 0
@@ -869,7 +869,7 @@ func (b *Block) Call(ctx context.Context, args struct {
 }
 
 func (b *Block) EstimateGas(ctx context.Context, args struct {
-	Data evrapi.CallArgs
+	Data neutapi.CallArgs
 }) (hexutil.Uint64, error) {
 	err := b.onMainChain(ctx)
 	if err != nil {
@@ -883,12 +883,12 @@ func (b *Block) EstimateGas(ctx context.Context, args struct {
 		}
 	}
 
-	gas, err := evrapi.DoEstimateGas(ctx, b.backend, args.Data, *b.num, b.backend.RPCGasCap())
+	gas, err := neutapi.DoEstimateGas(ctx, b.backend, args.Data, *b.num, b.backend.RPCGasCap())
 	return gas, err
 }
 
 type Pending struct {
-	backend *neut.EvrAPIBackend
+	backend *neut.NeutAPIBackend
 }
 
 func (p *Pending) TransactionCount(ctx context.Context) (int32, error) {
@@ -925,9 +925,9 @@ func (p *Pending) Account(ctx context.Context, args struct {
 }
 
 func (p *Pending) Call(ctx context.Context, args struct {
-	Data evrapi.CallArgs
+	Data neutapi.CallArgs
 }) (*CallResult, error) {
-	result, gas, failed, err := evrapi.DoCall(ctx, p.backend, args.Data, rpc.PendingBlockNumber, vm.Config{}, 5*time.Second, p.backend.RPCGasCap())
+	result, gas, failed, err := neutapi.DoCall(ctx, p.backend, args.Data, rpc.PendingBlockNumber, vm.Config{}, 5*time.Second, p.backend.RPCGasCap())
 	status := hexutil.Uint64(1)
 	if failed {
 		status = 0
@@ -940,14 +940,14 @@ func (p *Pending) Call(ctx context.Context, args struct {
 }
 
 func (p *Pending) EstimateGas(ctx context.Context, args struct {
-	Data evrapi.CallArgs
+	Data neutapi.CallArgs
 }) (hexutil.Uint64, error) {
-	return evrapi.DoEstimateGas(ctx, p.backend, args.Data, rpc.PendingBlockNumber, p.backend.RPCGasCap())
+	return neutapi.DoEstimateGas(ctx, p.backend, args.Data, rpc.PendingBlockNumber, p.backend.RPCGasCap())
 }
 
 // Resolver is the top-level object in the GraphQL hierarchy.
 type Resolver struct {
-	backend *neut.EvrAPIBackend
+	backend *neut.NeutAPIBackend
 }
 
 func (r *Resolver) Block(ctx context.Context, args struct {
@@ -1041,7 +1041,7 @@ func (r *Resolver) SendRawTransaction(ctx context.Context, args struct{ Data hex
 	if err := rlp.DecodeBytes(args.Data, tx); err != nil {
 		return common.Hash{}, err
 	}
-	hash, err := evrapi.SubmitTransaction(ctx, r.backend, tx)
+	hash, err := neutapi.SubmitTransaction(ctx, r.backend, tx)
 	return hash, err
 }
 
@@ -1148,7 +1148,7 @@ func (r *Resolver) Syncing() (*SyncState, error) {
 
 // NewHandler returns a new `http.Handler` that will answer GraphQL queries.
 // It additionally exports an interactive query browser on the / endpoint.
-func NewHandler(be *neut.EvrAPIBackend) (http.Handler, error) {
+func NewHandler(be *neut.NeutAPIBackend) (http.Handler, error) {
 	q := Resolver{be}
 
 	s, err := graphqlgo.ParseSchema(schema, &q)
@@ -1170,7 +1170,7 @@ type Service struct {
 	cors     []string            // Allowed CORS domains
 	vhosts   []string            // Recognised vhosts
 	timeouts rpc.HTTPTimeouts    // Timeout settings for HTTP requests.
-	backend  *neut.EvrAPIBackend // The backend that queries will operate onn.
+	backend  *neut.NeutAPIBackend // The backend that queries will operate onn.
 	handler  http.Handler        // The `http.Handler` used to answer queries.
 	listener net.Listener        // The listening socket.
 }
@@ -1211,7 +1211,7 @@ func (s *Service) Stop() error {
 }
 
 // NewService constructs a new service instance.
-func NewService(backend *neut.EvrAPIBackend, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) (*Service, error) {
+func NewService(backend *neut.NeutAPIBackend, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) (*Service, error) {
 	return &Service{
 		endpoint: endpoint,
 		cors:     cors,
@@ -1224,7 +1224,7 @@ func NewService(backend *neut.EvrAPIBackend, endpoint string, cors, vhosts []str
 // RegisterGraphQLService is a utility function to construct a new service and register it against a node.
 func RegisterGraphQLService(stack *node.Node, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) error {
 	return stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		var neuralChain *neut.Evrynet
+		var neuralChain *neut.NeuralChain
 		if err := ctx.Service(&neuralChain); err != nil {
 			return nil, err
 		}

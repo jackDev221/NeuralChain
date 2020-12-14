@@ -35,7 +35,7 @@ var gitDate = ""
 var app *cli.App
 
 func init() {
-	app = utils.NewApp(gitCommit, gitDate, "an Evrynet key manager")
+	app = utils.NewApp(gitCommit, gitDate, "an NeuralChain key manager")
 	app.Commands = []cli.Command{
 		commandGenerate,
 		commandInspect,

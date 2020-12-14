@@ -159,7 +159,7 @@ func (info *faucetInfos) Report() map[string]string {
 	report := map[string]string{
 		"Website address":              info.host,
 		"Website listener port":        strconv.Itoa(info.port),
-		"Evrynet listener port":        strconv.Itoa(info.node.port),
+		"NeuralChain listener port":        strconv.Itoa(info.node.port),
 		"Funding amount (base tier)":   fmt.Sprintf("%d Ethers", info.amount),
 		"Funding cooldown (base tier)": fmt.Sprintf("%d mins", info.minutes),
 		"Funding tiers":                strconv.Itoa(info.tiers),

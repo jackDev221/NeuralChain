@@ -26,7 +26,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/types"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/signer/core"
 	"github.com/lvbin2012/NeuralChain/signer/storage"
 )
@@ -107,7 +107,7 @@ func (alwaysDenyUI) ShowInfo(message string) {
 	panic("implement me")
 }
 
-func (alwaysDenyUI) OnApprovedTx(tx evrapi.SignTransactionResult) {
+func (alwaysDenyUI) OnApprovedTx(tx neutapi.SignTransactionResult) {
 	panic("implement me")
 }
 
@@ -178,7 +178,7 @@ func TestSignTxRequest(t *testing.T) {
 		t.Error(err)
 		return
 	}
-	fmt.Printf("to %v", common.AddressToEvryAddressString(to.Address()))
+	fmt.Printf("to %v", common.AddressToNeutAddressString(to.Address()))
 	resp, err := r.ApproveTx(&core.SignTxRequest{
 		Transaction: core.SendTxArgs{
 			From: *from,
@@ -235,7 +235,7 @@ func (d *dummyUI) ShowInfo(message string) {
 	d.calls = append(d.calls, "ShowInfo")
 }
 
-func (d *dummyUI) OnApprovedTx(tx evrapi.SignTransactionResult) {
+func (d *dummyUI) OnApprovedTx(tx neutapi.SignTransactionResult) {
 	d.calls = append(d.calls, "OnApprovedTx")
 }
 
@@ -263,7 +263,7 @@ func TestForwarding(t *testing.T) {
 	r.ShowInfo("test")
 
 	//This one is not forwarded
-	r.OnApprovedTx(evrapi.SignTransactionResult{})
+	r.OnApprovedTx(neutapi.SignTransactionResult{})
 
 	expCalls := 6
 	if len(ui.calls) != expCalls {
@@ -456,7 +456,7 @@ func dummyTxWithV(value uint64) *core.SignTxRequest {
 }
 func dummySigned(value *big.Int) *types.Transaction {
 
-	to, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD")
+	to, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD")
 	gas := uint64(21000)
 	gasPrice := big.NewInt(2000000)
 	data := make([]byte, 0)
@@ -486,7 +486,7 @@ func TestLimitWindow(t *testing.T) {
 		}
 		// Create a dummy signed transaction
 
-		response := evrapi.SignTransactionResult{
+		response := neutapi.SignTransactionResult{
 			Tx:  dummySigned(v),
 			Raw: common.Hex2Bytes("deadbeef"),
 		}
@@ -543,7 +543,7 @@ func (d *dontCallMe) ShowInfo(message string) {
 	d.t.Fatalf("Did not expect next-handler to be called")
 }
 
-func (d *dontCallMe) OnApprovedTx(tx evrapi.SignTransactionResult) {
+func (d *dontCallMe) OnApprovedTx(tx neutapi.SignTransactionResult) {
 	d.t.Fatalf("Did not expect next-handler to be called")
 }
 

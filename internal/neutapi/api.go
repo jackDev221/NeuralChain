@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-package evrapi
+package neutapi
 
 import (
 	"bytes"
@@ -55,25 +55,25 @@ const (
 	defaultGasPrice = params.GWei
 )
 
-// PublicEvrynetAPI provides an API to access Evrynet related information.
+// PublicNeuralChainAPI provides an API to access NeuralChain related information.
 // It offers only methods that operate on public data that is freely available to anyone.
-type PublicEvrynetAPI struct {
+type PublicNeuralChainAPI struct {
 	b Backend
 }
 
-// NewPublicEvrynetAPI creates a new Evrynet protocol API.
-func NewPublicEvrynetAPI(b Backend) *PublicEvrynetAPI {
-	return &PublicEvrynetAPI{b}
+// NewPublicNeuralChainAPI creates a new NeuralChain protocol API.
+func NewPublicNeuralChainAPI(b Backend) *PublicNeuralChainAPI {
+	return &PublicNeuralChainAPI{b}
 }
 
 // GasPrice returns a suggestion for a gas price.
-func (s *PublicEvrynetAPI) GasPrice(ctx context.Context) (*hexutil.Big, error) {
+func (s *PublicNeuralChainAPI) GasPrice(ctx context.Context) (*hexutil.Big, error) {
 	price, err := s.b.SuggestPrice(ctx)
 	return (*hexutil.Big)(price), err
 }
 
-// ProtocolVersion returns the current Evrynet protocol version this node supports
-func (s *PublicEvrynetAPI) ProtocolVersion() hexutil.Uint {
+// ProtocolVersion returns the current NeuralChain protocol version this node supports
+func (s *PublicNeuralChainAPI) ProtocolVersion() hexutil.Uint {
 	return hexutil.Uint(s.b.ProtocolVersion())
 }
 
@@ -84,7 +84,7 @@ func (s *PublicEvrynetAPI) ProtocolVersion() hexutil.Uint {
 // - highestBlock:  block number of the highest block header this node has received from peers
 // - pulledStates:  number of state entries processed until now
 // - knownStates:   number of known state entries that still need to be pulled
-func (s *PublicEvrynetAPI) Syncing() (interface{}, error) {
+func (s *PublicNeuralChainAPI) Syncing() (interface{}, error) {
 	progress := s.b.Downloader().Progress()
 
 	// Return not syncing if the synchronisation already completed
@@ -299,7 +299,7 @@ func (s *PrivateAccountAPI) NewAccount(password string) (common.Address, error) 
 	acc, err := fetchKeystore(s.am).NewAccount(password)
 	if err == nil {
 		log.Info("Your new key was generated", "address",
-			common.AddressToEvryAddressString(acc.Address))
+			common.AddressToNeutAddressString(acc.Address))
 		log.Warn("Please backup your key file!", "path", acc.URL.Path)
 		log.Warn("Please remember your password!")
 		return acc.Address, nil
@@ -452,8 +452,8 @@ func (s *PrivateAccountAPI) SignTransaction(ctx context.Context, args SendTxArgs
 	return &SignTransactionResult{Raw: data, Tx: signed}, nil
 }
 
-// Sign calculates an Evrynet ECDSA signature for:
-// keccack256("\x19Evrynet Signed Message:\n" + len(message) + message))
+// Sign calculates an NeuralChain ECDSA signature for:
+// keccack256("\x19NeuralChain Signed Message:\n" + len(message) + message))
 //
 // Note, the produced signature conforms to the secp256k1 curve R, S and V values,
 // where the V value will be 27 or 28 for legacy reasons.
@@ -482,7 +482,7 @@ func (s *PrivateAccountAPI) Sign(ctx context.Context, data hexutil.Bytes, addr c
 // EcRecover returns the address for the account that was used to create the signature.
 // Note, this function is compatible with neut_sign and personal_sign. As such it recovers
 // the address of:
-// hash = keccak256("\x19EvrynetNode Signed Message:\n"${message length}${message})
+// hash = keccak256("\x19NeuralChainNode Signed Message:\n"${message length}${message})
 // addr = ecrecover(hash, signature)
 //
 // Note, the signature must conform to the secp256k1 curve R, S and V values, where
@@ -494,7 +494,7 @@ func (s *PrivateAccountAPI) EcRecover(ctx context.Context, data, sig hexutil.Byt
 		return common.Address{}, fmt.Errorf("signature must be 65 bytes long")
 	}
 	if sig[64] != 27 && sig[64] != 28 {
-		return common.Address{}, fmt.Errorf("invalid Evrynet signature (V is not 27 or 28)")
+		return common.Address{}, fmt.Errorf("invalid NeuralChain signature (V is not 27 or 28)")
 	}
 	sig[64] -= 27 // Transform yellow paper V from 27/28 to 0/1
 
@@ -553,13 +553,13 @@ func (s *PrivateAccountAPI) Unpair(ctx context.Context, url string, pin string) 
 	}
 }
 
-// PublicBlockChainAPI provides an API to access the Evrynet blockchain.
+// PublicBlockChainAPI provides an API to access the NeuralChain blockchain.
 // It offers only methods that operate on public data that is freely available to anyone.
 type PublicBlockChainAPI struct {
 	b Backend
 }
 
-// NewPublicBlockChainAPI creates a new Evrynet blockchain API.
+// NewPublicBlockChainAPI creates a new NeuralChain blockchain API.
 func NewPublicBlockChainAPI(b Backend) *PublicBlockChainAPI {
 	return &PublicBlockChainAPI{b}
 }
@@ -1575,7 +1575,7 @@ func (s *PublicTransactionPoolAPI) SendRawTransaction(ctx context.Context, encod
 }
 
 // Sign calculates an ECDSA signature for:
-// keccack256("\x19Evrynet Signed Message:\n" + len(message) + message).
+// keccack256("\x19NeuralChain Signed Message:\n" + len(message) + message).
 //
 // Note, the produced signature conforms to the secp256k1 curve R, S and V values,
 // where the V value will be 27 or 28 for legacy reasons.
@@ -1718,14 +1718,14 @@ func (s *PublicTransactionPoolAPI) Resend(ctx context.Context, sendArgs SendTxAr
 	return common.Hash{}, fmt.Errorf("Transaction %#x not found", matchTx.Hash())
 }
 
-// PublicDebugAPI is the collection of Evrynet APIs exposed over the public
+// PublicDebugAPI is the collection of NeuralChain APIs exposed over the public
 // debugging endpoint.
 type PublicDebugAPI struct {
 	b Backend
 }
 
 // NewPublicDebugAPI creates a new API definition for the public debug methods
-// of the Evrynet service.
+// of the NeuralChain service.
 func NewPublicDebugAPI(b Backend) *PublicDebugAPI {
 	return &PublicDebugAPI{b: b}
 }
@@ -1800,14 +1800,14 @@ func (api *PublicDebugAPI) SeedHash(ctx context.Context, number uint64) (string,
 	return fmt.Sprintf("0x%x", ethash.SeedHash(number)), nil
 }
 
-// PrivateDebugAPI is the collection of Evrynet APIs exposed over the private
+// PrivateDebugAPI is the collection of NeuralChain APIs exposed over the private
 // debugging endpoint.
 type PrivateDebugAPI struct {
 	b Backend
 }
 
 // NewPrivateDebugAPI creates a new API definition for the private debug methods
-// of the Evrynet service.
+// of the NeuralChain service.
 func NewPrivateDebugAPI(b Backend) *PrivateDebugAPI {
 	return &PrivateDebugAPI{b: b}
 }

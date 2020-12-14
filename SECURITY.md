@@ -20,7 +20,7 @@ Audit reports are published in the `docs` folder: https://github.com/NeuralChain
 
 **Please do not file a public ticket** mentioning the vulnerability.
 
-To find out how to disclose a vulnerability in Evrynet visit [https://bounty.Evrynetlabs.org](https://bounty.Evrynetlabs.org) or email bounty@Evrynetlabs.org.
+To find out how to disclose a vulnerability in NeuralChain visit [https://bounty.NeuralChainLabs.org](https://bounty.NeuralChainLabs.org) or email bounty@NeuralChainLabs.org.
 
 The following key may be used to communicate sensitive information to developers.
 

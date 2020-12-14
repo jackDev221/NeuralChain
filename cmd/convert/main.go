@@ -49,20 +49,20 @@ func main() {
 	glogger.Vmodule(*vmodule)
 	log.Root().SetHandler(glogger)
 
-	// Convert old address to evrynet address
+	// Convert old address to neuralChain address
 	if *oldAddress != "" {
 		oldAddressArray := strings.Split(*oldAddress, ",")
 		for index, addrStr := range oldAddressArray {
 			fmt.Printf("[%d] old address string:\"%s\"\n", index, addrStr)
-			evryAddressStr := addressToEvryAddress(addrStr)
-			if evryAddressStr == common.EvryEmptyAddress {
+			neutAddressStr := addressToNeutAddress(addrStr)
+			if neutAddressStr == common.EvryEmptyAddress {
 				fmt.Println("\tInput address string convert into empty address")
 			}
-			fmt.Printf("\tConvert to EvryAddress:\"%s\"\n", evryAddressStr)
+			fmt.Printf("\tConvert to EvryAddress:\"%s\"\n", neutAddressStr)
 		}
 	}
 
-	// Convert old keyfile to evrynet keyfile
+	// Convert old keyfile to neuralChain keyfile
 	if *inkeyfilepath != "" {
 		if *outkeyfilepath == "" {
 			*outkeyfilepath = defaultKeyfileName
@@ -86,8 +86,8 @@ func main() {
 		if !ok {
 			utils.Fatalf("Failed convert interface{} to string")
 		}
-		evryAddressStr := addressToEvryAddress(preAddrStr)
-		jsonContent["address"] = evryAddressStr
+		neutAddressStr := addressToNeutAddress(preAddrStr)
+		jsonContent["address"] = neutAddressStr
 		content, err = json.Marshal(jsonContent)
 		if err != nil {
 			utils.Fatalf("Failed to marshal object: %v", err)
@@ -100,16 +100,16 @@ func main() {
 			utils.Fatalf("Failed to write keyfile to %s: %v", outkeyfilepath, err)
 		}
 		fmt.Printf("old keyfile path:\"%s\", old address:\"%s\"\n", *inkeyfilepath, preAddrStr)
-		if evryAddressStr == common.EvryEmptyAddress {
+		if neutAddressStr == common.EvryEmptyAddress {
 			fmt.Println("\told address convert into empty address")
 		}
-		fmt.Printf("\tConvert to EvryAddress:\"%s\"\n", evryAddressStr)
+		fmt.Printf("\tConvert to EvryAddress:\"%s\"\n", neutAddressStr)
 		fmt.Printf("\tEvryAddress keypath:\"%s\"\n", *outkeyfilepath)
 	}
 }
 
-// addressToEvryAddress: convert old address to evrynet addresss
-func addressToEvryAddress(addr string) string {
+// addressToNeutAddress: convert old address to evrynet addresss
+func addressToNeutAddress(addr string) string {
 	address := common.HexToAddress(addr)
-	return common.AddressToEvryAddressString(address)
+	return common.AddressToNeutAddressString(address)
 }

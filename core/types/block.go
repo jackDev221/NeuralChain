@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package types contains data types related to Evrynet consensus.
+// Package types contains data types related to NeuralChain consensus.
 package types
 
 import (
@@ -67,7 +67,7 @@ func (n *BlockNonce) UnmarshalText(input []byte) error {
 
 //go:generate gencodec -type Header -field-override headerMarshaling -out gen_header_json.go
 
-// Header represents a block header in the Evrynet blockchain.
+// Header represents a block header in the NeuralChain blockchain.
 type Header struct {
 	ParentHash  common.Hash    `json:"parentHash"       gencodec:"required"`
 	UncleHash   common.Hash    `json:"sha3Uncles"       gencodec:"required"`
@@ -131,7 +131,7 @@ type Body struct {
 	Uncles       []*Header
 }
 
-// Block represents an entire block in the Evrynet blockchain.
+// Block represents an entire block in the NeuralChain blockchain.
 type Block struct {
 	header       *Header
 	uncles       []*Header
@@ -243,7 +243,7 @@ func CopyHeader(h *Header) *Header {
 	return &cpy
 }
 
-// DecodeRLP decodes the Evrynet
+// DecodeRLP decodes the NeuralChain
 func (b *Block) DecodeRLP(s *rlp.Stream) error {
 	var eb extblock
 	_, size, _ := s.Kind()
@@ -255,7 +255,7 @@ func (b *Block) DecodeRLP(s *rlp.Stream) error {
 	return nil
 }
 
-// EncodeRLP serializes b into the Evrynet RLP block format.
+// EncodeRLP serializes b into the NeuralChain RLP block format.
 func (b *Block) EncodeRLP(w io.Writer) error {
 	return rlp.Encode(w, extblock{
 		Header: b.header,

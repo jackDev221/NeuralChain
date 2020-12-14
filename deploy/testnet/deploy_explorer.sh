@@ -13,7 +13,7 @@ until [[ $rpcPort ]]; do read -rp "- Input RPC Port to connect: " rpcPort; done
 newVersion=${version//\//-}
 
 BASEDIR=$(dirname "$0")
-EXPLORER_REPOSITORY="kybernetwork/evrynet-explorer"
+EXPLORER_REPOSITORY="kybernetwork/neuralChain-explorer"
 EXPLORER_TAG_ENV="$EXPLORER_REPOSITORY:$version-$env"
 
 rm -rf "$BASEDIR"/explorer/web
@@ -25,7 +25,7 @@ if [[ "$(sudo docker images -q "$EXPLORER_TAG_ENV" 2>/dev/null)" != "" ]]; then
 
   if [[ "$rebuild" == "y" ]]; then
     echo "--- Cloning explorer from master branch ..."
-    git clone -b "$version" git@github.com:Evrynetlabs/explorer.git "$BASEDIR"/explorer/web
+    git clone -b "$version" git@github.com:NeuralChainLabs/explorer.git "$BASEDIR"/explorer/web
 
     echo "--- Removing docker container & image for $EXPLORER_TAG_ENV ..."
     sudo docker rmi -f $EXPLORER_TAG_ENV
@@ -36,7 +36,7 @@ if [[ "$(sudo docker images -q "$EXPLORER_TAG_ENV" 2>/dev/null)" != "" ]]; then
   fi
 else
   echo "--- Cloning explorer from master branch ..."
-  git clone -b "$version" git@github.com:Evrynetlabs/explorer.git "$BASEDIR"/explorer/web
+  git clone -b "$version" git@github.com:NeuralChainLabs/explorer.git "$BASEDIR"/explorer/web
 
   echo "--- Removing docker container & image for $EXPLORER_TAG_ENV ..."
   sudo docker rmi -f $EXPLORER_TAG_ENV

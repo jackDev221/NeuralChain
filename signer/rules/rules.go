@@ -22,7 +22,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/signer/core"
 	"github.com/lvbin2012/NeuralChain/signer/rules/deps"
@@ -216,7 +216,7 @@ func (r *rulesetUI) OnSignerStartup(info core.StartupInfo) {
 	}
 }
 
-func (r *rulesetUI) OnApprovedTx(tx evrapi.SignTransactionResult) {
+func (r *rulesetUI) OnApprovedTx(tx neutapi.SignTransactionResult) {
 	jsonTx, err := json.Marshal(tx)
 	if err != nil {
 		log.Warn("failed marshalling transaction", "tx", tx)

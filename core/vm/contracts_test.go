@@ -337,10 +337,10 @@ var bn256PairingTests = []precompiledTest{
 }
 
 func testPrecompiled(addrStr string, test precompiledTest, t *testing.T) {
-	addr, _ := common.EvryAddressStringToAddressCheck(addrStr)
+	addr, _ := common.NeutAddressStringToAddressCheck(addrStr)
 	p := PrecompiledContractsOmaha[addr]
 	in := common.Hex2Bytes(test.input)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmefphuFF6s")
+	contractAddr, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmefphuFF6s")
 	contract := NewContract(AccountRef(contractAddr),
 		nil, new(big.Int), p.RequiredGas(in))
 	t.Run(fmt.Sprintf("%s-Gas=%d", test.name, contract.Gas), func(t *testing.T) {
@@ -356,11 +356,11 @@ func benchmarkPrecompiled(addrStr string, test precompiledTest, bench *testing.B
 	if test.noBenchmark {
 		return
 	}
-	addr, _ := common.EvryAddressStringToAddressCheck(addrStr)
+	addr, _ := common.NeutAddressStringToAddressCheck(addrStr)
 	p := PrecompiledContractsOmaha[addr]
 	in := common.Hex2Bytes(test.input)
 	reqGas := p.RequiredGas(in)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmefphuFF6s")
+	contractAddr, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmefphuFF6s")
 	contract := NewContract(AccountRef(contractAddr),
 		nil, new(big.Int), reqGas)
 

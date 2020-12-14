@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package core implements the Evrynet consensus protocol.
+// Package core implements the NeuralChain consensus protocol.
 package core
 
 import (
@@ -175,7 +175,7 @@ type BlockChain struct {
 }
 
 // NewBlockChain returns a fully initialised block chain using information
-// available in the database. It initialises the default Evrynet Validator and
+// available in the database. It initialises the default NeuralChain Validator and
 // Processor.
 func NewBlockChain(db neutdb.Database, cacheConfig *CacheConfig, chainConfig *params.ChainConfig, engine consensus.Engine, vmConfig vm.Config, shouldPreserve func(block *types.Block) bool) (*BlockChain, error) {
 	if cacheConfig == nil {

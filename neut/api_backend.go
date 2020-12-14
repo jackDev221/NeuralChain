@@ -38,61 +38,61 @@ import (
 	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
-// EvrAPIBackend implements evrapi.Backend for full nodes
-type EvrAPIBackend struct {
+// NeutAPIBackend implements neutapi.Backend for full nodes
+type NeutAPIBackend struct {
 	extRPCEnabled bool
-	evr           *Evrynet
+	neut          *NeuralChain
 	gpo           *gasprice.Oracle
 }
 
 // ChainConfig returns the active chain configuration.
-func (b *EvrAPIBackend) ChainConfig() *params.ChainConfig {
-	return b.evr.blockchain.Config()
+func (b *NeutAPIBackend) ChainConfig() *params.ChainConfig {
+	return b.neut.blockchain.Config()
 }
 
-func (b *EvrAPIBackend) CurrentBlock() *types.Block {
-	return b.evr.blockchain.CurrentBlock()
+func (b *NeutAPIBackend) CurrentBlock() *types.Block {
+	return b.neut.blockchain.CurrentBlock()
 }
 
-func (b *EvrAPIBackend) SetHead(number uint64) {
-	b.evr.protocolManager.downloader.Cancel()
-	b.evr.blockchain.SetHead(number)
+func (b *NeutAPIBackend) SetHead(number uint64) {
+	b.neut.protocolManager.downloader.Cancel()
+	b.neut.blockchain.SetHead(number)
 }
 
-func (b *EvrAPIBackend) HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error) {
+func (b *NeutAPIBackend) HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error) {
 	// Pending block is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
-		block := b.evr.miner.PendingBlock()
+		block := b.neut.miner.PendingBlock()
 		return block.Header(), nil
 	}
 	// Otherwise resolve and return the block
 	if blockNr == rpc.LatestBlockNumber {
-		return b.evr.blockchain.CurrentBlock().Header(), nil
+		return b.neut.blockchain.CurrentBlock().Header(), nil
 	}
-	return b.evr.blockchain.GetHeaderByNumber(uint64(blockNr)), nil
+	return b.neut.blockchain.GetHeaderByNumber(uint64(blockNr)), nil
 }
 
-func (b *EvrAPIBackend) HeaderByHash(ctx context.Context, hash common.Hash) (*types.Header, error) {
-	return b.evr.blockchain.GetHeaderByHash(hash), nil
+func (b *NeutAPIBackend) HeaderByHash(ctx context.Context, hash common.Hash) (*types.Header, error) {
+	return b.neut.blockchain.GetHeaderByHash(hash), nil
 }
 
-func (b *EvrAPIBackend) BlockByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Block, error) {
+func (b *NeutAPIBackend) BlockByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Block, error) {
 	// Pending block is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
-		block := b.evr.miner.PendingBlock()
+		block := b.neut.miner.PendingBlock()
 		return block, nil
 	}
 	// Otherwise resolve and return the block
 	if blockNr == rpc.LatestBlockNumber {
-		return b.evr.blockchain.CurrentBlock(), nil
+		return b.neut.blockchain.CurrentBlock(), nil
 	}
-	return b.evr.blockchain.GetBlockByNumber(uint64(blockNr)), nil
+	return b.neut.blockchain.GetBlockByNumber(uint64(blockNr)), nil
 }
 
-func (b *EvrAPIBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*state.StateDB, *types.Header, error) {
+func (b *NeutAPIBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*state.StateDB, *types.Header, error) {
 	// Pending state is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
-		block, state := b.evr.miner.Pending()
+		block, state := b.neut.miner.Pending()
 		return state, block.Header(), nil
 	}
 	// Otherwise resolve the block number and return its state
@@ -103,20 +103,20 @@ func (b *EvrAPIBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.
 	if header == nil {
 		return nil, nil, errors.New("header not found")
 	}
-	stateDb, err := b.evr.BlockChain().StateAt(header.Root)
+	stateDb, err := b.neut.BlockChain().StateAt(header.Root)
 	return stateDb, header, err
 }
 
-func (b *EvrAPIBackend) GetBlock(ctx context.Context, hash common.Hash) (*types.Block, error) {
-	return b.evr.blockchain.GetBlockByHash(hash), nil
+func (b *NeutAPIBackend) GetBlock(ctx context.Context, hash common.Hash) (*types.Block, error) {
+	return b.neut.blockchain.GetBlockByHash(hash), nil
 }
 
-func (b *EvrAPIBackend) GetReceipts(ctx context.Context, hash common.Hash) (types.Receipts, error) {
-	return b.evr.blockchain.GetReceiptsByHash(hash), nil
+func (b *NeutAPIBackend) GetReceipts(ctx context.Context, hash common.Hash) (types.Receipts, error) {
+	return b.neut.blockchain.GetReceiptsByHash(hash), nil
 }
 
-func (b *EvrAPIBackend) GetLogs(ctx context.Context, hash common.Hash) ([][]*types.Log, error) {
-	receipts := b.evr.blockchain.GetReceiptsByHash(hash)
+func (b *NeutAPIBackend) GetLogs(ctx context.Context, hash common.Hash) ([][]*types.Log, error) {
+	receipts := b.neut.blockchain.GetReceiptsByHash(hash)
 	if receipts == nil {
 		return nil, nil
 	}
@@ -127,44 +127,44 @@ func (b *EvrAPIBackend) GetLogs(ctx context.Context, hash common.Hash) ([][]*typ
 	return logs, nil
 }
 
-func (b *EvrAPIBackend) GetTd(blockHash common.Hash) *big.Int {
-	return b.evr.blockchain.GetTdByHash(blockHash)
+func (b *NeutAPIBackend) GetTd(blockHash common.Hash) *big.Int {
+	return b.neut.blockchain.GetTdByHash(blockHash)
 }
 
-func (b *EvrAPIBackend) GetEVM(ctx context.Context, msg core.Message, state *state.StateDB, header *types.Header) (*vm.EVM, func() error, error) {
+func (b *NeutAPIBackend) GetEVM(ctx context.Context, msg core.Message, state *state.StateDB, header *types.Header) (*vm.EVM, func() error, error) {
 	state.SetBalance(msg.From(), math.MaxBig256)
 	vmError := func() error { return nil }
 
-	context := core.NewEVMContext(msg, header, b.evr.BlockChain(), nil)
-	return vm.NewEVM(context, state, b.evr.blockchain.Config(), *b.evr.blockchain.GetVMConfig()), vmError, nil
+	context := core.NewEVMContext(msg, header, b.neut.BlockChain(), nil)
+	return vm.NewEVM(context, state, b.neut.blockchain.Config(), *b.neut.blockchain.GetVMConfig()), vmError, nil
 }
 
-func (b *EvrAPIBackend) SubscribeRemovedLogsEvent(ch chan<- core.RemovedLogsEvent) event.Subscription {
-	return b.evr.BlockChain().SubscribeRemovedLogsEvent(ch)
+func (b *NeutAPIBackend) SubscribeRemovedLogsEvent(ch chan<- core.RemovedLogsEvent) event.Subscription {
+	return b.neut.BlockChain().SubscribeRemovedLogsEvent(ch)
 }
 
-func (b *EvrAPIBackend) SubscribeChainEvent(ch chan<- core.ChainEvent) event.Subscription {
-	return b.evr.BlockChain().SubscribeChainEvent(ch)
+func (b *NeutAPIBackend) SubscribeChainEvent(ch chan<- core.ChainEvent) event.Subscription {
+	return b.neut.BlockChain().SubscribeChainEvent(ch)
 }
 
-func (b *EvrAPIBackend) SubscribeChainHeadEvent(ch chan<- core.ChainHeadEvent) event.Subscription {
-	return b.evr.BlockChain().SubscribeChainHeadEvent(ch)
+func (b *NeutAPIBackend) SubscribeChainHeadEvent(ch chan<- core.ChainHeadEvent) event.Subscription {
+	return b.neut.BlockChain().SubscribeChainHeadEvent(ch)
 }
 
-func (b *EvrAPIBackend) SubscribeChainSideEvent(ch chan<- core.ChainSideEvent) event.Subscription {
-	return b.evr.BlockChain().SubscribeChainSideEvent(ch)
+func (b *NeutAPIBackend) SubscribeChainSideEvent(ch chan<- core.ChainSideEvent) event.Subscription {
+	return b.neut.BlockChain().SubscribeChainSideEvent(ch)
 }
 
-func (b *EvrAPIBackend) SubscribeLogsEvent(ch chan<- []*types.Log) event.Subscription {
-	return b.evr.BlockChain().SubscribeLogsEvent(ch)
+func (b *NeutAPIBackend) SubscribeLogsEvent(ch chan<- []*types.Log) event.Subscription {
+	return b.neut.BlockChain().SubscribeLogsEvent(ch)
 }
 
-func (b *EvrAPIBackend) SendTx(ctx context.Context, signedTx *types.Transaction) error {
-	return b.evr.txPool.AddLocal(signedTx)
+func (b *NeutAPIBackend) SendTx(ctx context.Context, signedTx *types.Transaction) error {
+	return b.neut.txPool.AddLocal(signedTx)
 }
 
-func (b *EvrAPIBackend) GetPoolTransactions() (types.Transactions, error) {
-	pending, err := b.evr.txPool.Pending()
+func (b *NeutAPIBackend) GetPoolTransactions() (types.Transactions, error) {
+	pending, err := b.neut.txPool.Pending()
 	if err != nil {
 		return nil, err
 	}
@@ -175,70 +175,70 @@ func (b *EvrAPIBackend) GetPoolTransactions() (types.Transactions, error) {
 	return txs, nil
 }
 
-func (b *EvrAPIBackend) GetPoolTransaction(hash common.Hash) *types.Transaction {
-	return b.evr.txPool.Get(hash)
+func (b *NeutAPIBackend) GetPoolTransaction(hash common.Hash) *types.Transaction {
+	return b.neut.txPool.Get(hash)
 }
 
-func (b *EvrAPIBackend) GetTransaction(ctx context.Context, txHash common.Hash) (*types.Transaction, common.Hash, uint64, uint64, error) {
-	tx, blockHash, blockNumber, index := rawdb.ReadTransaction(b.evr.ChainDb(), txHash)
+func (b *NeutAPIBackend) GetTransaction(ctx context.Context, txHash common.Hash) (*types.Transaction, common.Hash, uint64, uint64, error) {
+	tx, blockHash, blockNumber, index := rawdb.ReadTransaction(b.neut.ChainDb(), txHash)
 	return tx, blockHash, blockNumber, index, nil
 }
 
-func (b *EvrAPIBackend) GetPoolNonce(ctx context.Context, addr common.Address) (uint64, error) {
-	return b.evr.txPool.State().GetNonce(addr), nil
+func (b *NeutAPIBackend) GetPoolNonce(ctx context.Context, addr common.Address) (uint64, error) {
+	return b.neut.txPool.State().GetNonce(addr), nil
 }
 
-func (b *EvrAPIBackend) Stats() (pending int, queued int) {
-	return b.evr.txPool.Stats()
+func (b *NeutAPIBackend) Stats() (pending int, queued int) {
+	return b.neut.txPool.Stats()
 }
 
-func (b *EvrAPIBackend) TxPoolContent() (map[common.Address]types.Transactions, map[common.Address]types.Transactions) {
-	return b.evr.TxPool().Content()
+func (b *NeutAPIBackend) TxPoolContent() (map[common.Address]types.Transactions, map[common.Address]types.Transactions) {
+	return b.neut.TxPool().Content()
 }
 
-func (b *EvrAPIBackend) SubscribeNewTxsEvent(ch chan<- core.NewTxsEvent) event.Subscription {
-	return b.evr.TxPool().SubscribeNewTxsEvent(ch)
+func (b *NeutAPIBackend) SubscribeNewTxsEvent(ch chan<- core.NewTxsEvent) event.Subscription {
+	return b.neut.TxPool().SubscribeNewTxsEvent(ch)
 }
 
-func (b *EvrAPIBackend) Downloader() *downloader.Downloader {
-	return b.evr.Downloader()
+func (b *NeutAPIBackend) Downloader() *downloader.Downloader {
+	return b.neut.Downloader()
 }
 
-func (b *EvrAPIBackend) ProtocolVersion() int {
-	return b.evr.EthVersion()
+func (b *NeutAPIBackend) ProtocolVersion() int {
+	return b.neut.EthVersion()
 }
 
-func (b *EvrAPIBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
+func (b *NeutAPIBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
 	return b.gpo.SuggestPrice(ctx)
 }
 
-func (b *EvrAPIBackend) ChainDb() neutdb.Database {
-	return b.evr.ChainDb()
+func (b *NeutAPIBackend) ChainDb() neutdb.Database {
+	return b.neut.ChainDb()
 }
 
-func (b *EvrAPIBackend) EventMux() *event.TypeMux {
-	return b.evr.EventMux()
+func (b *NeutAPIBackend) EventMux() *event.TypeMux {
+	return b.neut.EventMux()
 }
 
-func (b *EvrAPIBackend) AccountManager() *accounts.Manager {
-	return b.evr.AccountManager()
+func (b *NeutAPIBackend) AccountManager() *accounts.Manager {
+	return b.neut.AccountManager()
 }
 
-func (b *EvrAPIBackend) ExtRPCEnabled() bool {
+func (b *NeutAPIBackend) ExtRPCEnabled() bool {
 	return b.extRPCEnabled
 }
 
-func (b *EvrAPIBackend) RPCGasCap() *big.Int {
-	return b.evr.config.RPCGasCap
+func (b *NeutAPIBackend) RPCGasCap() *big.Int {
+	return b.neut.config.RPCGasCap
 }
 
-func (b *EvrAPIBackend) BloomStatus() (uint64, uint64) {
-	sections, _, _ := b.evr.bloomIndexer.Sections()
+func (b *NeutAPIBackend) BloomStatus() (uint64, uint64) {
+	sections, _, _ := b.neut.bloomIndexer.Sections()
 	return params.BloomBitsBlocks, sections
 }
 
-func (b *EvrAPIBackend) ServiceFilter(ctx context.Context, session *bloombits.MatcherSession) {
+func (b *NeutAPIBackend) ServiceFilter(ctx context.Context, session *bloombits.MatcherSession) {
 	for i := 0; i < bloomFilterThreads; i++ {
-		go session.Multiplex(bloomRetrievalBatch, bloomRetrievalWait, b.evr.bloomRequests)
+		go session.Multiplex(bloomRetrievalBatch, bloomRetrievalWait, b.neut.bloomRequests)
 	}
 }

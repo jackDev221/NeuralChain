@@ -129,7 +129,7 @@ type ProtocolManager struct {
 	synced func() bool
 }
 
-// NewProtocolManager returns a new neuralChain sub protocol manager. The Evrynet sub protocol manages peers capable
+// NewProtocolManager returns a new neuralChain sub protocol manager. The NeuralChain sub protocol manages peers capable
 // with the neuralChain network.
 func NewProtocolManager(
 	chainConfig *params.ChainConfig,
@@ -213,7 +213,7 @@ func (pm *ProtocolManager) Start(maxPeers int) {
 func (pm *ProtocolManager) Stop() {
 	// Showing a log message. During download / process this could actually
 	// take between 5 to 10 seconds and therefor feedback is required.
-	log.Info("Stopping light Evrynet protocol")
+	log.Info("Stopping light NeuralChain protocol")
 
 	// Quit the sync loop.
 	// After this send has completed, no new peers will be accepted.
@@ -234,7 +234,7 @@ func (pm *ProtocolManager) Stop() {
 	// Wait for any process action
 	pm.wg.Wait()
 
-	log.Info("Light Evrynet protocol stopped")
+	log.Info("Light NeuralChain protocol stopped")
 }
 
 // runPeer is the p2p protocol run function for the given version.
@@ -283,7 +283,7 @@ func (pm *ProtocolManager) handle(p *peer) error {
 	if !pm.client && !pm.synced() {
 		return p2p.DiscRequested
 	}
-	p.Log().Debug("Light Evrynet peer connected", "name", p.Name())
+	p.Log().Debug("Light NeuralChain peer connected", "name", p.Name())
 
 	// Execute the LES handshake
 	var (
@@ -294,7 +294,7 @@ func (pm *ProtocolManager) handle(p *peer) error {
 		td      = pm.blockchain.GetTd(hash, number)
 	)
 	if err := p.Handshake(td, hash, number, genesis.Hash(), pm.server); err != nil {
-		p.Log().Debug("Light Evrynet handshake failed", "err", err)
+		p.Log().Debug("Light NeuralChain handshake failed", "err", err)
 		pm.logger.Event("Handshake error: " + err.Error() + ", " + p.id)
 		return err
 	}
@@ -308,7 +308,7 @@ func (pm *ProtocolManager) handle(p *peer) error {
 
 	// Register the peer locally
 	if err := pm.peers.Register(p); err != nil {
-		p.Log().Error("Light Evrynet peer registration failed", "err", err)
+		p.Log().Error("Light NeuralChain peer registration failed", "err", err)
 		pm.logger.Event("Peer registration error: " + err.Error() + ", " + p.id)
 		return err
 	}
@@ -336,7 +336,7 @@ func (pm *ProtocolManager) handle(p *peer) error {
 	for {
 		if err := pm.handleMsg(p); err != nil {
 			pm.logger.Event("Message handling error: " + err.Error() + ", " + p.id)
-			p.Log().Debug("Light Evrynet message handling failed", "err", err)
+			p.Log().Debug("Light NeuralChain message handling failed", "err", err)
 			if p.fcServer != nil {
 				p.fcServer.DumpLogs()
 			}
@@ -358,7 +358,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 	if err != nil {
 		return err
 	}
-	p.Log().Trace("Light Evrynet message arrived", "code", msg.Code, "bytes", msg.Size)
+	p.Log().Trace("Light NeuralChain message arrived", "code", msg.Code, "bytes", msg.Size)
 
 	p.responseCount++
 	responseCount := p.responseCount

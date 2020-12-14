@@ -106,7 +106,7 @@ public class AndroidTest extends InstrumentationTestCase {
 			info.getProtocols();
 
 			// Retrieve some data via the APIs (we don't really care about the results)
-			EvrynetClient ec = node.getEvrynetClient();
+			NeuralChainClient ec = node.getNeuralChainClient();
 			ec.getBlockByNumber(ctx, -1).getNumber();
 
 			NewHeadHandler handler = new NewHeadHandler() {

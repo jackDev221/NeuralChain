@@ -153,11 +153,11 @@ func TestAddressHexChecksum(t *testing.T) {
 		{"EH9uVaqWRxHuzJbroqzX18yxmeW9cqfaTq", "EH9uVaqWRxHuzJbroqzX18yxmeW9cqfaTq"},
 	}
 	for i, test := range tests {
-		addr, err := EvryAddressStringToAddressCheck(test.Input)
+		addr, err := NeutAddressStringToAddressCheck(test.Input)
 		if err != nil {
 			t.Errorf("test #%d: failed to decode %v", i, err)
 		}
-		output := AddressToEvryAddressString(addr)
+		output := AddressToNeutAddressString(addr)
 		if output != test.Output {
 			t.Errorf("test #%d: failed to match when it should (%s != %s)", i, output, test.Output)
 		}
@@ -165,7 +165,7 @@ func TestAddressHexChecksum(t *testing.T) {
 }
 
 func BenchmarkAddressHex(b *testing.B) {
-	testAddr, _ := EvryAddressStringToAddressCheck("ERRPbyyv9bu3jxbvjuKM7T9c8dQTUYZs6b")
+	testAddr, _ := NeutAddressStringToAddressCheck("ERRPbyyv9bu3jxbvjuKM7T9c8dQTUYZs6b")
 	for n := 0; n < b.N; n++ {
 		testAddr.Hex()
 	}
@@ -389,7 +389,7 @@ func TestAddress_Value(t *testing.T) {
 	}
 }
 
-func TestAddressToEvryAddressString(t *testing.T) {
+func TestAddressToNeutAddressString(t *testing.T) {
 	var tests = []struct {
 		Input    string
 		Expect   string
@@ -400,10 +400,10 @@ func TestAddressToEvryAddressString(t *testing.T) {
 	}
 	for i, test := range tests {
 		address := HexToAddress(test.Input)
-		evryAddressString := AddressToEvryAddressString(address)
-		isEqual := strings.Compare(evryAddressString, test.Expect) == 0
+		neutAddressString := AddressToNeutAddressString(address)
+		isEqual := strings.Compare(neutAddressString, test.Expect) == 0
 		if isEqual == test.WantFail {
-			t.Errorf("test #%d: unexpected, output: %s, expected: %s", i, evryAddressString, test.Expect)
+			t.Errorf("test #%d: unexpected, output: %s, expected: %s", i, neutAddressString, test.Expect)
 		}
 
 	}
@@ -421,7 +421,7 @@ func TestEvryAddressStringToAddress(t *testing.T) {
 		{"EH9uVaqWRxHuzJbroqzX18yxmeWBLHhJUd",  new(big.Int).SetUint64(26), true},
 	}
 	for i, test := range tests {
-		addr, err := EvryAddressStringToAddressCheck(test.EvryAddrssStr)
+		addr, err := NeutAddressStringToAddressCheck(test.EvryAddrssStr)
 		if err != nil && !test.WantFail {
 			t.Errorf("test #%d: unexpected, error: %v", i, err)
 		}

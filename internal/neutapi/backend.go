@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package ethapi implements the general Evrynet API functions.
-package evrapi
+// Package ethapi implements the general NeuralChain API functions.
+package neutapi
 
 import (
 	"context"
@@ -37,7 +37,7 @@ import (
 // Backend interface provides the common API services (that are provided by
 // both full and light clients) with access to necessary functions.
 type Backend interface {
-	// General Evrynet API
+	// General NeuralChain API
 	Downloader() *downloader.Downloader
 	ProtocolVersion() int
 	SuggestPrice(ctx context.Context) (*big.Int, error)
@@ -80,7 +80,7 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 		{
 			Namespace: "neut",
 			Version:   "1.0",
-			Service:   NewPublicEvrynetAPI(apiBackend),
+			Service:   NewPublicNeuralChainAPI(apiBackend),
 			Public:    true,
 		}, {
 			Namespace: "neut",

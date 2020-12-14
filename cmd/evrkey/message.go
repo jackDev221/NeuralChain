@@ -104,7 +104,7 @@ It is possible to refer to a file containing the message.`,
 		signatureHex := ctx.Args().Get(1)
 		message := getMessage(ctx, 2)
 
-		address, err := common.EvryAddressStringToAddressCheck(addressStr)
+		address, err := common.NeutAddressStringToAddressCheck(addressStr)
 
 		if err != nil {
 			utils.Fatalf("Invalid address: %s", addressStr)
@@ -125,7 +125,7 @@ It is possible to refer to a file containing the message.`,
 		out := outputVerify{
 			Success:            success,
 			RecoveredPublicKey: hex.EncodeToString(recoveredPubkeyBytes),
-			RecoveredAddress:   common.AddressToEvryAddressString(recoveredAddress),
+			RecoveredAddress:   common.AddressToNeutAddressString(recoveredAddress),
 		}
 		if ctx.Bool(jsonFlag.Name) {
 			mustPrintJSON(out)

@@ -16,7 +16,7 @@
 
 package params
 
-// GasTable organizes gas prices for different EvrynetNode phases.
+// GasTable organizes gas prices for different NeuralChainNode phases.
 type GasTable struct {
 	ExtcodeSize uint64
 	ExtcodeCopy uint64
@@ -36,7 +36,7 @@ type GasTable struct {
 	CreateBySuicide uint64
 }
 
-// Variables containing gas prices for different EvrynetNode phases.
+// Variables containing gas prices for different NeuralChainNode phases.
 var (
 	// GasTableOmaha contain the gas re-prices for
 	// the omaha phase.

@@ -31,8 +31,8 @@ func TestSendNormalTxWithFixedFee(t *testing.T) {
 	)
 
 	var (
-		senderAddr, _ = common.EvryAddressStringToAddressCheck(senderAddrStr)
-		normalAddr, _ = common.EvryAddressStringToAddressCheck(normalAddress)
+		senderAddr, _ = common.NeutAddressStringToAddressCheck(senderAddrStr)
+		normalAddr, _ = common.NeutAddressStringToAddressCheck(normalAddress)
 		fixedGasPrice = big.NewInt(1000000000)
 	)
 

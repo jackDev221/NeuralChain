@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package les implements the Light Evrynet Subprotocol.
+// Package les implements the Light NeuralChain Subprotocol.
 package les
 
 import (
@@ -32,7 +32,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/rawdb"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/event"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/light"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/neut"
@@ -46,7 +46,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
-type LightEvrynet struct {
+type LightNeuralChain struct {
 	lesCommons
 
 	odr         *LesOdr
@@ -73,12 +73,12 @@ type LightEvrynet struct {
 	accountManager *accounts.Manager
 
 	networkId     uint64
-	netRPCService *evrapi.PublicNetAPI
+	netRPCService *neutapi.PublicNetAPI
 
 	wg sync.WaitGroup
 }
 
-func New(ctx *node.ServiceContext, config *neut.Config) (*LightEvrynet, error) {
+func New(ctx *node.ServiceContext, config *neut.Config) (*LightNeuralChain, error) {
 	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "neut/db/chaindata/")
 	if err != nil {
 		return nil, err
@@ -92,7 +92,7 @@ func New(ctx *node.ServiceContext, config *neut.Config) (*LightEvrynet, error) {
 	peers := newPeerSet()
 	quitSync := make(chan struct{})
 
-	leth := &LightEvrynet{
+	leth := &LightNeuralChain{
 		lesCommons: lesCommons{
 			chainDb: chainDb,
 			config:  config,
@@ -209,8 +209,8 @@ func (s *LightDummyAPI) Mining() bool {
 
 // APIs returns the collection of RPC services the neuralChain package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
-func (s *LightEvrynet) APIs() []rpc.API {
-	return append(evrapi.GetAPIs(s.ApiBackend), []rpc.API{
+func (s *LightNeuralChain) APIs() []rpc.API {
+	return append(neutapi.GetAPIs(s.ApiBackend), []rpc.API{
 		{
 			Namespace: "neut",
 			Version:   "1.0",
@@ -235,29 +235,29 @@ func (s *LightEvrynet) APIs() []rpc.API {
 	}...)
 }
 
-func (s *LightEvrynet) ResetWithGenesisBlock(gb *types.Block) {
+func (s *LightNeuralChain) ResetWithGenesisBlock(gb *types.Block) {
 	s.blockchain.ResetWithGenesisBlock(gb)
 }
 
-func (s *LightEvrynet) BlockChain() *light.LightChain      { return s.blockchain }
-func (s *LightEvrynet) TxPool() *light.TxPool              { return s.txPool }
-func (s *LightEvrynet) Engine() consensus.Engine           { return s.engine }
-func (s *LightEvrynet) LesVersion() int                    { return int(ClientProtocolVersions[0]) }
-func (s *LightEvrynet) Downloader() *downloader.Downloader { return s.protocolManager.downloader }
-func (s *LightEvrynet) EventMux() *event.TypeMux           { return s.eventMux }
+func (s *LightNeuralChain) BlockChain() *light.LightChain      { return s.blockchain }
+func (s *LightNeuralChain) TxPool() *light.TxPool              { return s.txPool }
+func (s *LightNeuralChain) Engine() consensus.Engine           { return s.engine }
+func (s *LightNeuralChain) LesVersion() int                    { return int(ClientProtocolVersions[0]) }
+func (s *LightNeuralChain) Downloader() *downloader.Downloader { return s.protocolManager.downloader }
+func (s *LightNeuralChain) EventMux() *event.TypeMux           { return s.eventMux }
 
 // Protocols implements node.Service, returning all the currently configured
 // network protocols to start.
-func (s *LightEvrynet) Protocols() []p2p.Protocol {
+func (s *LightNeuralChain) Protocols() []p2p.Protocol {
 	return s.makeProtocols(ClientProtocolVersions)
 }
 
 // Start implements node.Service, starting all internal goroutines needed by the
-// Evrynet protocol implementation.
-func (s *LightEvrynet) Start(srvr *p2p.Server) error {
+// NeuralChain protocol implementation.
+func (s *LightNeuralChain) Start(srvr *p2p.Server) error {
 	log.Warn("Light client mode is an experimental feature")
 	s.startBloomHandlers(params.BloomBitsBlocksClient)
-	s.netRPCService = evrapi.NewPublicNetAPI(srvr, s.networkId)
+	s.netRPCService = neutapi.NewPublicNetAPI(srvr, s.networkId)
 	// clients are searching for the first advertised protocol in the list
 	protocolVersion := AdvertiseProtocolVersions[0]
 	s.serverPool.start(srvr, lesTopic(s.blockchain.Genesis().Hash(), protocolVersion))
@@ -266,8 +266,8 @@ func (s *LightEvrynet) Start(srvr *p2p.Server) error {
 }
 
 // Stop implements node.Service, terminating all internal goroutines used by the
-// Evrynet protocol.
-func (s *LightEvrynet) Stop() error {
+// NeuralChain protocol.
+func (s *LightNeuralChain) Stop() error {
 	s.odr.Stop()
 	s.relay.Stop()
 	s.bloomIndexer.Close()

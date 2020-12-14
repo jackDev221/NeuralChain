@@ -53,7 +53,7 @@ Changed the namespace format to adhere to the legacy neuralChain format: `name_m
 
 ```golang
 type Account struct {
-	Address common.Address `json:"address"` // Evrynet account address derived from the key
+	Address common.Address `json:"address"` // NeuralChain account address derived from the key
 	URL     URL            `json:"url"`     // Optional resource locator within a backend
 }
 ```

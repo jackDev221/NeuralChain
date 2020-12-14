@@ -8,9 +8,9 @@ pipeline {
         dockerTag="${env.branchName}-${env.BUILD_NUMBER}"
         dockerImage="${env.CONTAINER_IMAGE}:${env.dockerTag}"
         dockerOnenodeImage="${env.CONTAINER_IMAGE}:${env.dockerTag}-onenode"
-        dockerOnenodeContainer="evrynet-onenode"
+        dockerOnenodeContainer="neuralChain-onenode"
         appName="NeuralChain"
-        githubUsername="Evrynetlabs"
+        githubUsername="NeuralChainLabs"
 
         CONTAINER_IMAGE="registry.gitlab.com/evry/${appName}"
         status_failure="{\"state\": \"failure\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"${BUILD_URL}\"}"

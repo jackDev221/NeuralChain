@@ -28,10 +28,10 @@ func TestValidatorSet(t *testing.T) {
 
 func TestDefaultSet_GetNeighbor(t *testing.T) {
 	var (
-		a, _      = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-		b, _      = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-		c, _      = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
-		d, _      = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
+		a, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+		b, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
+		c, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+		d, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
 		addresses = []common.Address{
 			a,
 			b,
@@ -105,8 +105,8 @@ func testNewValidatorSet(t *testing.T) {
 }
 
 func testNormalValSet(t *testing.T) {
-	addr1, _ := common.EvryAddressStringToAddressCheck(testAddress)
-	addr2, _ := common.EvryAddressStringToAddressCheck(testAddress2)
+	addr1, _ := common.NeutAddressStringToAddressCheck(testAddress)
+	addr2, _ := common.NeutAddressStringToAddressCheck(testAddress2)
 	val1 := New(addr1)
 	val2 := New(addr2)
 
@@ -130,7 +130,7 @@ func testNormalValSet(t *testing.T) {
 		t.Errorf("validator mismatch: have %v, want %v", val, val2)
 	}
 	// test get by invalid address
-	invalidAddr, _ := common.EvryAddressStringToAddressCheck("EWkrWEDFaq1H5YgDWg6WWjW8JVBfZstza6")
+	invalidAddr, _ := common.NeutAddressStringToAddressCheck("EWkrWEDFaq1H5YgDWg6WWjW8JVBfZstza6")
 	if _, val := valSet.GetByAddress(invalidAddr); val != nil {
 		t.Errorf("validator mismatch: have %v, want nil", val)
 	}

@@ -1,6 +1,6 @@
 # Swarm
 
-https://swarm.Evrynetlabs.org
+https://swarm.NeuralChainLabs.org
 
 Swarm is a distributed storage platform and content distribution service, a native base layer service of the NeuralChain web3 stack. The primary objective of Swarm is to provide a decentralized and redundant store for dapp code and data as well as block chain and state data. Swarm is also set out to provide various base layer services for web3, including node-to-node messaging, media streaming, decentralised database services and scalable state-channel infrastructure for decentralised service economies.
 

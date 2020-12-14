@@ -121,7 +121,7 @@ type callTracerTest struct {
 }
 
 func TestPrestateTracerCreate2(t *testing.T) {
-	addr, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
+	addr, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
 	unsignedTx := types.NewTransaction(1, addr, new(big.Int), 5000000, big.NewInt(1), []byte{})
 
 	privateKeyECDSA, err := ecdsa.GenerateKey(crypto.S256(), rand.Reader)

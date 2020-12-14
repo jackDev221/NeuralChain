@@ -11,7 +11,7 @@ import (
 
 // Backend provides application specific functions for Tendermint core
 type Backend interface {
-	// Address returns the Evrynet address of the node running this backend
+	// Address returns the NeuralChain address of the node running this backend
 	Address() common.Address
 
 	// EventMux returns the event mux used for Core to subscribe/ send events back to Backend.

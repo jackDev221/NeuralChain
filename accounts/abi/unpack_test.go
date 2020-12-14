@@ -615,8 +615,8 @@ func TestMultiReturnWithStringArray(t *testing.T) {
 	temp, _ := big.NewInt(0).SetString("30000000000000000000", 10)
 	ret1, ret1Exp := new([3]*big.Int), [3]*big.Int{big.NewInt(1545304298), big.NewInt(6), temp}
 	ret2 := new(common.Address)
-	ret2Exp, _ := common.EvryAddressStringToAddressCheck("EYkT1kREXj7Fd1gNq4v5aXGdBn9r2LMhBB")
-	ret3, ret3Exp := new([2]string), [2]string{"EvrynetNode", "Hello, EvrynetNode!"}
+	ret2Exp, _ := common.NeutAddressStringToAddressCheck("EYkT1kREXj7Fd1gNq4v5aXGdBn9r2LMhBB")
+	ret3, ret3Exp := new([2]string), [2]string{"NeuralChainNode", "Hello, NeuralChainNode!"}
 	ret4, ret4Exp := new(bool), false
 	if err := abi.Unpack(&[]interface{}{ret1, ret2, ret3, ret4}, "multi", buff.Bytes()); err != nil {
 		t.Fatal(err)
@@ -654,7 +654,7 @@ func TestMultiReturnWithStringSlice(t *testing.T) {
 	buff.Write(common.Hex2Bytes("0000000000000000000000000000000000000000000000000000000000000002")) // output[1] length
 	buff.Write(common.Hex2Bytes("0000000000000000000000000000000000000000000000000000000000000064")) // output[1][0] value
 	buff.Write(common.Hex2Bytes("0000000000000000000000000000000000000000000000000000000000000065")) // output[1][1] value
-	ret1, ret1Exp := new([]string), []string{"evrynetlabs", "NeuralChain"}
+	ret1, ret1Exp := new([]string), []string{"NeuralChainLabs", "NeuralChain"}
 	ret2, ret2Exp := new([]*big.Int), []*big.Int{big.NewInt(100), big.NewInt(101)}
 	if err := abi.Unpack(&[]interface{}{ret1, ret2}, "multi", buff.Bytes()); err != nil {
 		t.Fatal(err)

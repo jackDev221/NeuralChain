@@ -26,7 +26,7 @@ import (
 	"sync"
 
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/log"
 	"golang.org/x/crypto/ssh/terminal"
 )
@@ -196,7 +196,7 @@ func (ui *CommandlineUI) ApproveListing(request *ListRequest) (ListResponse, err
 	fmt.Printf("A request has been made to list all accounts. \n")
 	fmt.Printf("You can select which accounts the caller can see\n")
 	for _, account := range request.Accounts {
-		fmt.Printf("  [s] %s\n", common.AddressToEvryAddressString(account.Address))
+		fmt.Printf("  [s] %s\n", common.AddressToNeutAddressString(account.Address))
 		fmt.Printf("    URL: %v\n", account.URL)
 	}
 	fmt.Printf("-------------------------------------------\n")
@@ -235,7 +235,7 @@ func (ui *CommandlineUI) ShowInfo(message string) {
 	fmt.Printf("## Info \n%s\n", message)
 }
 
-func (ui *CommandlineUI) OnApprovedTx(tx evrapi.SignTransactionResult) {
+func (ui *CommandlineUI) OnApprovedTx(tx neutapi.SignTransactionResult) {
 	fmt.Printf("Transaction signed:\n ")
 	if jsn, err := json.MarshalIndent(tx.Tx, "  ", "  "); err != nil {
 		fmt.Printf("WARN: marshalling error %v\n", err)

@@ -8,7 +8,7 @@
 echo "***********************************************"
 echo "***********************************************"
 echo "    INIT YOUR NODE MUST ENTER SOME INFOR BELOW"
-datadir=~/evrynet
+datadir=~/neuralChain
 listAcc=$(./gev --datadir "$datadir" account list)
 hasAccount=0
 address=''

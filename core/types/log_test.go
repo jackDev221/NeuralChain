@@ -28,7 +28,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
-var addr, _ = common.EvryAddressStringToAddressCheck("EekuDeGa6dnWfxVeq1GrEH8xMuab8oM8oD")
+var addr, _ = common.NeutAddressStringToAddressCheck("EekuDeGa6dnWfxVeq1GrEH8xMuab8oM8oD")
 
 var unmarshalLogTests = map[string]struct {
 	input     string

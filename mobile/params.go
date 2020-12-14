@@ -26,13 +26,13 @@ import (
 	"github.com/lvbin2012/NeuralChain/params"
 )
 
-// MainnetGenesis returns the JSON spec to use for the main Evrynet network. It
+// MainnetGenesis returns the JSON spec to use for the main NeuralChain network. It
 // is actually empty since that defaults to the hard coded binary genesis block.
 func MainnetGenesis() string {
 	return ""
 }
 
-// TestnetGenesis returns the JSON spec to use for the Evrynet test network.
+// TestnetGenesis returns the JSON spec to use for the NeuralChain test network.
 func TestnetGenesis() string {
 	enc, err := json.Marshal(core.DefaultTestnetGenesisBlock())
 	if err != nil {

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package neut implements the Evrynet protocol.
+// Package neut implements the NeuralChain protocol.
 package neut
 
 import (
@@ -39,13 +39,13 @@ import (
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/core/vm"
 	"github.com/lvbin2012/NeuralChain/event"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
+	"github.com/lvbin2012/NeuralChain/log"
+	"github.com/lvbin2012/NeuralChain/miner"
 	"github.com/lvbin2012/NeuralChain/neut/downloader"
 	"github.com/lvbin2012/NeuralChain/neut/filters"
 	"github.com/lvbin2012/NeuralChain/neut/gasprice"
 	"github.com/lvbin2012/NeuralChain/neutdb"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
-	"github.com/lvbin2012/NeuralChain/log"
-	"github.com/lvbin2012/NeuralChain/miner"
 	"github.com/lvbin2012/NeuralChain/node"
 	"github.com/lvbin2012/NeuralChain/p2p"
 	"github.com/lvbin2012/NeuralChain/params"
@@ -61,12 +61,12 @@ type LesServer interface {
 	SetBloomBitsIndexer(bbIndexer *core.ChainIndexer)
 }
 
-// Evrynet implements the Evrynet full node service.
-type Evrynet struct {
+// NeuralChain implements the NeuralChain full node service.
+type NeuralChain struct {
 	config *Config
 
 	// Channel for shutting down the service
-	shutdownChan chan bool // Channel for shutting down the Evrynet
+	shutdownChan chan bool // Channel for shutting down the NeuralChain
 
 	// Handlers
 	txPool          *core.TxPool
@@ -84,29 +84,29 @@ type Evrynet struct {
 	bloomRequests chan chan *bloombits.Retrieval // Channel receiving bloom data retrieval requests
 	bloomIndexer  *core.ChainIndexer             // Bloom indexer operating during block imports
 
-	APIBackend *EvrAPIBackend
+	APIBackend *NeutAPIBackend
 
 	miner     *miner.Miner
 	gasPrice  *big.Int
 	etherbase common.Address
 
 	networkID     uint64
-	netRPCService *evrapi.PublicNetAPI
+	netRPCService *neutapi.PublicNetAPI
 
 	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and etherbase)
 }
 
-func (s *Evrynet) AddLesServer(ls LesServer) {
+func (s *NeuralChain) AddLesServer(ls LesServer) {
 	s.lesServer = ls
 	ls.SetBloomBitsIndexer(s.bloomIndexer)
 }
 
-// New creates a new Evrynet object (including the
-// initialisation of the common Evrynet object)
-func New(ctx *node.ServiceContext, config *Config) (*Evrynet, error) {
+// New creates a new NeuralChain object (including the
+// initialisation of the common NeuralChain object)
+func New(ctx *node.ServiceContext, config *Config) (*NeuralChain, error) {
 	// Ensure configuration values are compatible and sane
 	if config.SyncMode == downloader.LightSync {
-		return nil, errors.New("can't run neut.Evrynet in light sync mode, use les.LightEvrynet")
+		return nil, errors.New("can't run neut.NeuralChain in light sync mode, use les.LightNeuralChain")
 	}
 	if !config.SyncMode.IsValid() {
 		return nil, fmt.Errorf("invalid sync mode %d", config.SyncMode)
@@ -117,7 +117,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Evrynet, error) {
 	}
 	log.Info("Allocated trie memory caches", "clean", common.StorageSize(config.TrieCleanCache)*1024*1024, "dirty", common.StorageSize(config.TrieDirtyCache)*1024*1024)
 
-	// Assemble the Evrynet object
+	// Assemble the NeuralChain object
 	chainDb, err := ctx.OpenDatabaseWithFreezer("chaindata", config.DatabaseCache, config.DatabaseHandles, config.DatabaseFreezer, "neut/db/chaindata/")
 	if err != nil {
 		return nil, err
@@ -128,7 +128,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Evrynet, error) {
 	}
 	log.Info("Initialised chain configuration", "config", chainConfig)
 
-	evr := &Evrynet{
+	neut := &NeuralChain{
 		config:         config,
 		chainDb:        chainDb,
 		eventMux:       ctx.EventMux,
@@ -147,7 +147,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Evrynet, error) {
 	if bcVersion != nil {
 		dbVer = fmt.Sprintf("%d", *bcVersion)
 	}
-	log.Info("Initialising Evrynet protocol", "versions", ProtocolVersions, "network", config.NetworkId, "dbversion", dbVer)
+	log.Info("Initialising NeuralChain protocol", "versions", ProtocolVersions, "network", config.NetworkId, "dbversion", dbVer)
 
 	if !config.SkipBcVersionCheck {
 		if bcVersion != nil && *bcVersion > core.BlockChainVersion {
@@ -171,36 +171,36 @@ func New(ctx *node.ServiceContext, config *Config) (*Evrynet, error) {
 			TrieTimeLimit:       config.TrieTimeout,
 		}
 	)
-	evr.blockchain, err = core.NewBlockChain(chainDb, cacheConfig, chainConfig, evr.engine, vmConfig, evr.shouldPreserve)
+	neut.blockchain, err = core.NewBlockChain(chainDb, cacheConfig, chainConfig, neut.engine, vmConfig, neut.shouldPreserve)
 	if err != nil {
 		return nil, err
 	}
 	// Rewind the chain in case of an incompatible config upgrade.
 	if compat, ok := genesisErr.(*params.ConfigCompatError); ok {
 		log.Warn("Rewinding chain to upgrade configuration", "err", compat)
-		evr.blockchain.SetHead(compat.RewindTo)
+		neut.blockchain.SetHead(compat.RewindTo)
 		rawdb.WriteChainConfig(chainDb, genesisHash, chainConfig)
 	}
-	evr.bloomIndexer.Start(evr.blockchain)
+	neut.bloomIndexer.Start(neut.blockchain)
 
 	if config.TxPool.Journal != "" {
 		config.TxPool.Journal = ctx.ResolvePath(config.TxPool.Journal)
 	}
-	evr.txPool = core.NewTxPool(config.TxPool, chainConfig, evr.blockchain)
+	neut.txPool = core.NewTxPool(config.TxPool, chainConfig, neut.blockchain)
 
 	// Permit the downloader to use the trie cache allowance during fast sync
 	cacheLimit := cacheConfig.TrieCleanLimit + cacheConfig.TrieDirtyLimit
-	if evr.protocolManager, err = NewProtocolManager(chainConfig, config.SyncMode, config.NetworkId, evr.eventMux, evr.txPool, evr.engine, evr.blockchain, chainDb, cacheLimit, config.Whitelist); err != nil {
+	if neut.protocolManager, err = NewProtocolManager(chainConfig, config.SyncMode, config.NetworkId, neut.eventMux, neut.txPool, neut.engine, neut.blockchain, chainDb, cacheLimit, config.Whitelist); err != nil {
 		return nil, err
 	}
-	evr.miner = miner.New(evr, &config.Miner, chainConfig, evr.EventMux(), evr.engine, evr.isLocalBlock)
-	evr.miner.SetExtra(makeExtraData(config.Miner.ExtraData))
+	neut.miner = miner.New(neut, &config.Miner, chainConfig, neut.EventMux(), neut.engine, neut.isLocalBlock)
+	neut.miner.SetExtra(makeExtraData(config.Miner.ExtraData))
 
-	evr.APIBackend = &EvrAPIBackend{ctx.ExtRPCEnabled(), evr, nil}
+	neut.APIBackend = &NeutAPIBackend{ctx.ExtRPCEnabled(), neut, nil}
 	gpoParams := config.GPO
-	evr.APIBackend.gpo = gasprice.NewOracle(evr.APIBackend, gpoParams)
+	neut.APIBackend.gpo = gasprice.NewOracle(neut.APIBackend, gpoParams)
 
-	return evr, nil
+	return neut, nil
 }
 
 func makeExtraData(extra []byte) []byte {
@@ -220,7 +220,7 @@ func makeExtraData(extra []byte) []byte {
 	return extra
 }
 
-// CreateConsensusEngine creates the required type of consensus engine instance for an Evrynet service
+// CreateConsensusEngine creates the required type of consensus engine instance for an NeuralChain service
 func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainConfig, config *Config, notify []string, noverify bool, db neutdb.Database) consensus.Engine {
 	// If proof-of-authority is requested, set it up
 	if chainConfig.Clique != nil {
@@ -264,8 +264,8 @@ func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainCo
 
 // APIs return the collection of RPC services the neuralChain package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
-func (s *Evrynet) APIs() []rpc.API {
-	apis := evrapi.GetAPIs(s.APIBackend)
+func (s *NeuralChain) APIs() []rpc.API {
+	apis := neutapi.GetAPIs(s.APIBackend)
 
 	// Append any APIs exposed explicitly by the les server
 	if s.lesServer != nil {
@@ -279,7 +279,7 @@ func (s *Evrynet) APIs() []rpc.API {
 		{
 			Namespace: "neut",
 			Version:   "1.0",
-			Service:   NewPublicEvrynetAPI(s),
+			Service:   NewPublicNeuralChainAPI(s),
 			Public:    true,
 		},
 		{
@@ -327,11 +327,11 @@ func (s *Evrynet) APIs() []rpc.API {
 	}...)
 }
 
-func (s *Evrynet) ResetWithGenesisBlock(gb *types.Block) {
+func (s *NeuralChain) ResetWithGenesisBlock(gb *types.Block) {
 	s.blockchain.ResetWithGenesisBlock(gb)
 }
 
-func (s *Evrynet) Etherbase() (eb common.Address, err error) {
+func (s *NeuralChain) Etherbase() (eb common.Address, err error) {
 	s.lock.RLock()
 	etherbase := s.etherbase
 	s.lock.RUnlock()
@@ -367,7 +367,7 @@ func (s *Evrynet) Etherbase() (eb common.Address, err error) {
 //
 // We regard two types of accounts as local miner account: etherbase
 // and accounts specified via `txpool.locals` flag.
-func (s *Evrynet) isLocalBlock(block *types.Block) bool {
+func (s *NeuralChain) isLocalBlock(block *types.Block) bool {
 	author, err := s.engine.Author(block.Header())
 	if err != nil {
 		log.Warn("Failed to retrieve block author", "number", block.NumberU64(), "hash", block.Hash(), "err", err)
@@ -393,7 +393,7 @@ func (s *Evrynet) isLocalBlock(block *types.Block) bool {
 // shouldPreserve checks whether we should preserve the given block
 // during the chain reorg depending on whether the author of block
 // is a local account.
-func (s *Evrynet) shouldPreserve(block *types.Block) bool {
+func (s *NeuralChain) shouldPreserve(block *types.Block) bool {
 	// The reason we need to disable the self-reorg preserving for clique
 	// is it can be probable to introduce a deadlock.
 	//
@@ -417,7 +417,7 @@ func (s *Evrynet) shouldPreserve(block *types.Block) bool {
 }
 
 // SetEtherbase sets the mining reward address.
-func (s *Evrynet) SetEtherbase(etherbase common.Address) {
+func (s *NeuralChain) SetEtherbase(etherbase common.Address) {
 	s.lock.Lock()
 	s.etherbase = etherbase
 	s.lock.Unlock()
@@ -428,7 +428,7 @@ func (s *Evrynet) SetEtherbase(etherbase common.Address) {
 // StartMining starts the miner with the given number of CPU threads. If mining
 // is already running, this method adjust the number of threads allowed to use
 // and updates the minimum price required by the transaction pool.
-func (s *Evrynet) StartMining(threads int) error {
+func (s *NeuralChain) StartMining(threads int) error {
 	// Update the thread count within the consensus engine
 	type threaded interface {
 		SetThreads(threads int)
@@ -473,7 +473,7 @@ func (s *Evrynet) StartMining(threads int) error {
 
 // StopMining terminates the miner, both at the consensus engine level as well as
 // at the block creation level.
-func (s *Evrynet) StopMining() {
+func (s *NeuralChain) StopMining() {
 	// Update the thread count within the consensus engine
 	type threaded interface {
 		SetThreads(threads int)
@@ -485,26 +485,26 @@ func (s *Evrynet) StopMining() {
 	s.miner.Stop()
 }
 
-func (s *Evrynet) IsMining() bool      { return s.miner.Mining() }
-func (s *Evrynet) Miner() *miner.Miner { return s.miner }
+func (s *NeuralChain) IsMining() bool      { return s.miner.Mining() }
+func (s *NeuralChain) Miner() *miner.Miner { return s.miner }
 
-func (s *Evrynet) AccountManager() *accounts.Manager  { return s.accountManager }
-func (s *Evrynet) BlockChain() *core.BlockChain       { return s.blockchain }
-func (s *Evrynet) TxPool() *core.TxPool               { return s.txPool }
-func (s *Evrynet) EventMux() *event.TypeMux           { return s.eventMux }
-func (s *Evrynet) Engine() consensus.Engine           { return s.engine }
-func (s *Evrynet) ChainDb() neutdb.Database            { return s.chainDb }
-func (s *Evrynet) IsListening() bool                  { return true } // Always listening
-func (s *Evrynet) EthVersion() int                    { return int(s.protocolManager.SubProtocols[0].Version) }
-func (s *Evrynet) NetVersion() uint64                 { return s.networkID }
-func (s *Evrynet) GasPrice() *big.Int                 { return s.gasPrice }
-func (s *Evrynet) Downloader() *downloader.Downloader { return s.protocolManager.downloader }
-func (s *Evrynet) Synced() bool                       { return atomic.LoadUint32(&s.protocolManager.acceptTxs) == 1 }
-func (s *Evrynet) ArchiveMode() bool                  { return s.config.NoPruning }
+func (s *NeuralChain) AccountManager() *accounts.Manager  { return s.accountManager }
+func (s *NeuralChain) BlockChain() *core.BlockChain       { return s.blockchain }
+func (s *NeuralChain) TxPool() *core.TxPool               { return s.txPool }
+func (s *NeuralChain) EventMux() *event.TypeMux           { return s.eventMux }
+func (s *NeuralChain) Engine() consensus.Engine           { return s.engine }
+func (s *NeuralChain) ChainDb() neutdb.Database           { return s.chainDb }
+func (s *NeuralChain) IsListening() bool                  { return true } // Always listening
+func (s *NeuralChain) EthVersion() int                    { return int(s.protocolManager.SubProtocols[0].Version) }
+func (s *NeuralChain) NetVersion() uint64                 { return s.networkID }
+func (s *NeuralChain) GasPrice() *big.Int                 { return s.gasPrice }
+func (s *NeuralChain) Downloader() *downloader.Downloader { return s.protocolManager.downloader }
+func (s *NeuralChain) Synced() bool                       { return atomic.LoadUint32(&s.protocolManager.acceptTxs) == 1 }
+func (s *NeuralChain) ArchiveMode() bool                  { return s.config.NoPruning }
 
 // Protocols implements node.Service, returning all the currently configured
 // network protocols to start.
-func (s *Evrynet) Protocols() []p2p.Protocol {
+func (s *NeuralChain) Protocols() []p2p.Protocol {
 	if s.lesServer == nil {
 		return s.protocolManager.SubProtocols
 	}
@@ -512,13 +512,13 @@ func (s *Evrynet) Protocols() []p2p.Protocol {
 }
 
 // Start implements node.Service, starting all internal goroutines needed by the
-// Evrynet protocol implementation.
-func (s *Evrynet) Start(srvr *p2p.Server) error {
+// NeuralChain protocol implementation.
+func (s *NeuralChain) Start(srvr *p2p.Server) error {
 	// Start the bloom bits servicing goroutines
 	s.startBloomHandlers(params.BloomBitsBlocks)
 
 	// Start the RPC service
-	s.netRPCService = evrapi.NewPublicNetAPI(srvr, s.NetVersion())
+	s.netRPCService = neutapi.NewPublicNetAPI(srvr, s.NetVersion())
 
 	// Figure out a max peers count based on the server limits
 	maxPeers := srvr.MaxPeers
@@ -536,13 +536,13 @@ func (s *Evrynet) Start(srvr *p2p.Server) error {
 	return nil
 }
 
-func (s *Evrynet) GetPm() *ProtocolManager {
+func (s *NeuralChain) GetPm() *ProtocolManager {
 	return s.protocolManager
 }
 
 // Stop implements node.Service, terminating all internal goroutines used by the
-// Evrynet protocol.
-func (s *Evrynet) Stop() error {
+// NeuralChain protocol.
+func (s *NeuralChain) Stop() error {
 	s.bloomIndexer.Close()
 	s.blockchain.Stop()
 	s.engine.Close()

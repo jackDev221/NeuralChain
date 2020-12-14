@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package consensus implements different Evrynet consensus engines.
+// Package consensus implements different NeuralChain consensus engines.
 package consensus
 
 import (

@@ -1980,7 +1980,7 @@ func benchmarkLargeNumberOfValueToNonexisting(b *testing.B, numTxs, numBlocks in
 		testBankKey, _  = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
 		testBankAddress = crypto.PubkeyToAddress(testBankKey.PublicKey)
 		bankFunds       = big.NewInt(100000000000000000)
-		addr, _         = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmgAAw1oBRK")
+		addr, _         = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmgAAw1oBRK")
 		gspec           = Genesis{
 			Config: params.TestChainConfig,
 			Alloc: GenesisAlloc{

@@ -92,7 +92,7 @@ func main() {
 	}()
 
 	var (
-		neuralChain  *neut.Evrynet
+		neuralChain  *neut.NeuralChain
 		contractAddr *common.Address
 	)
 	if err := testNode.Service(&neuralChain); err != nil {
@@ -151,7 +151,7 @@ func main() {
 }
 
 //forceBroadcastPendingTxs get pending from
-func forceBroadcastPendingTxs(neuralChain *neut.Evrynet) {
+func forceBroadcastPendingTxs(neuralChain *neut.NeuralChain) {
 	// force rebroadcast
 	var txs types.Transactions
 	pendings, err := neuralChain.TxPool().Pending()
@@ -225,7 +225,7 @@ func parseGenesis(fileName string) (*core.Genesis, error) {
 
 // makeNode creates a node from genesis config
 func makeNode(genesis *core.Genesis, enodes []*enode.Node) (*node.Node, error) {
-	// Define the basic configurations for the Evrynet node
+	// Define the basic configurations for the NeuralChain node
 	config := &node.Config{
 		Name:    "gnc",
 		Version: params.Version,
@@ -242,7 +242,7 @@ func makeNode(genesis *core.Genesis, enodes []*enode.Node) (*node.Node, error) {
 		HTTPModules: []string{"admin", "db", "neut", "debug", "miner", "net", "shh", "txpool",
 			"personal", "web3", "tendermint"},
 	}
-	// Start the node and configure a full Evrynet node on it
+	// Start the node and configure a full NeuralChain node on it
 	stack, err := node.New(config)
 	if err != nil {
 		return nil, err
@@ -313,7 +313,7 @@ func makeNode(genesis *core.Genesis, enodes []*enode.Node) (*node.Node, error) {
 }
 
 // waitForSyncingAndStableNonces wait util the node is syncing and the nonces of given addresses are not change, also returns stable nonces
-func waitForSyncingAndStableNonces(neuralChain *neut.Evrynet, faucets []*ecdsa.PrivateKey, initBlkNumber uint64) []uint64 {
+func waitForSyncingAndStableNonces(neuralChain *neut.NeuralChain, faucets []*ecdsa.PrivateKey, initBlkNumber uint64) []uint64 {
 	bc := neuralChain.BlockChain()
 	for !neuralChain.Synced() || neuralChain.BlockChain().CurrentHeader().Number.Uint64() == initBlkNumber {
 		log.Warn("testNode is not synced, sleeping", "current_block", bc.CurrentHeader().Number)
@@ -360,7 +360,7 @@ func prepareNewContract(rpcEndpoint string, acc *ecdsa.PrivateKey, nonce uint64,
 	}
 
 	accAddr := crypto.PubkeyToAddress(acc.PublicKey)
-	msg := evrynet.CallMsg{
+	msg := neuralChain.CallMsg{
 		From:  accAddr,
 		Value: common.Big0,
 		Data:  payLoadBytes,

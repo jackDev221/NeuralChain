@@ -27,7 +27,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/types"
 	"github.com/lvbin2012/NeuralChain/event"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/log"
 	"github.com/lvbin2012/NeuralChain/rlp"
 	"github.com/lvbin2012/NeuralChain/rpc"
@@ -182,7 +182,7 @@ func (api *ExternalSigner) SignText(account accounts.Account, text []byte) ([]by
 }
 
 func (api *ExternalSigner) SignTx(account accounts.Account, tx *types.Transaction, chainID *big.Int) (*types.Transaction, error) {
-	res := evrapi.SignTransactionResult{}
+	res := neutapi.SignTransactionResult{}
 	to := common.NewMixedcaseAddress(*tx.To())
 	data := hexutil.Bytes(tx.Data())
 	args := &core.SendTxArgs{
@@ -207,7 +207,7 @@ func (api *ExternalSigner) ProviderSignTx(account accounts.Account, tx *types.Tr
 	if err != nil {
 		return nil, err
 	}
-	res := evrapi.SignTransactionResult{}
+	res := neutapi.SignTransactionResult{}
 	if err := api.client.Call(&res, "account_providerSignTransaction", common.ToHex(data), account.Address.Hex()); err != nil {
 		return nil, err
 	}

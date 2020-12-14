@@ -36,7 +36,7 @@ type message struct {
 	Signature []byte
 }
 
-// EncodeRLP serializes m into the Evrynet RLP format.
+// EncodeRLP serializes m into the NeuralChain RLP format.
 func (m *message) EncodeRLP(w io.Writer) error {
 	return rlp.Encode(w, []interface{}{m.Code, m.Msg, m.Address, m.Signature})
 }

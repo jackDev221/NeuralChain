@@ -32,7 +32,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 	"github.com/lvbin2012/NeuralChain/core/types"
-	"github.com/lvbin2012/NeuralChain/internal/evrapi"
+	"github.com/lvbin2012/NeuralChain/internal/neutapi"
 	"github.com/lvbin2012/NeuralChain/rlp"
 	"github.com/lvbin2012/NeuralChain/signer/core"
 	"github.com/lvbin2012/NeuralChain/signer/fourbyte"
@@ -51,8 +51,8 @@ func (ui *headlessUi) OnInputRequired(info core.UserInputRequest) (core.UserInpu
 }
 
 func (ui *headlessUi) OnSignerStartup(info core.StartupInfo)        {}
-func (ui *headlessUi) RegisterUIServer(api *core.UIServerAPI)       {}
-func (ui *headlessUi) OnApprovedTx(tx evrapi.SignTransactionResult) {}
+func (ui *headlessUi) RegisterUIServer(api *core.UIServerAPI)        {}
+func (ui *headlessUi) OnApprovedTx(tx neutapi.SignTransactionResult) {}
 
 func (ui *headlessUi) ApproveTx(request *core.SignTxRequest) (core.SignTxResponse, error) {
 
@@ -224,7 +224,7 @@ func TestNewAcc(t *testing.T) {
 }
 
 func mkTestTx(from common.MixedcaseAddress) core.SendTxArgs {
-	addr, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmefhTGd9V2")
+	addr, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmefhTGd9V2")
 	to := common.NewMixedcaseAddress(addr)
 	gas := hexutil.Uint64(21000)
 	gasPrice := (hexutil.Big)(*big.NewInt(2000000000))
@@ -245,7 +245,7 @@ func mkTestTx(from common.MixedcaseAddress) core.SendTxArgs {
 func TestSignTx(t *testing.T) {
 	var (
 		list      []common.Address
-		res, res2 *evrapi.SignTransactionResult
+		res, res2 *neutapi.SignTransactionResult
 		err       error
 	)
 
@@ -328,7 +328,7 @@ func TestSignTx(t *testing.T) {
 func TestProviderSignTx(t *testing.T) {
 	var (
 		list      []common.Address
-		res, res2 *evrapi.SignTransactionResult
+		res, res2 *neutapi.SignTransactionResult
 		err       error
 	)
 

@@ -24,13 +24,13 @@ Adjust these params to match deployment on local machine:
 		- No provider signature is required
 */
 func TestSendToNormalAddress(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	normalAddr, _ := common.EvryAddressStringToAddressCheck(normalAddress)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	normalAddr, _ := common.NeutAddressStringToAddressCheck(normalAddress)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -48,15 +48,15 @@ func TestSendToNormalAddress(t *testing.T) {
 		- Expect to get error with redundant provider's signature
 */
 func TestSendToNormalAddressWithProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	normalAddr, _ := common.EvryAddressStringToAddressCheck(normalAddress)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	normalAddr, _ := common.NeutAddressStringToAddressCheck(normalAddress)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -76,13 +76,13 @@ func TestSendToNormalAddressWithProviderSignature(t *testing.T) {
 		- Provider's signature is not required
 */
 func TestSendToNonEnterpriseSmartContractWithoutProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck(contractAddrStrWithoutProvider)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	contractAddr, _ := common.NeutAddressStringToAddressCheck(contractAddrStrWithoutProvider)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -101,15 +101,15 @@ func TestSendToNonEnterpriseSmartContractWithoutProviderSignature(t *testing.T) 
 		- Expect to get error as provider's signature is redundant
 */
 func TestSendToNonEnterpriseSmartContractWithProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck(contractAddrStrWithoutProvider)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	contractAddr, _ := common.NeutAddressStringToAddressCheck(contractAddrStrWithoutProvider)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -131,13 +131,13 @@ func TestSendToNonEnterpriseSmartContractWithProviderSignature(t *testing.T) {
 */
 func TestInteractWithNonEnterpriseSmartContractWithoutProviderSignature(t *testing.T) {
 	//This should be a contract with provider address
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck(contractAddrStrWithoutProvider)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	contractAddr, _ := common.NeutAddressStringToAddressCheck(contractAddrStrWithoutProvider)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -156,8 +156,8 @@ func TestInteractWithNonEnterpriseSmartContractWithoutProviderSignature(t *testi
 	Test Send ETH to an Enterprise Smart Contract with invalid provider's signature
 */
 func TestSendToEnterPriseSmartContractWithInvalidProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	contractAddr, _ := common.EvryAddressStringToAddressCheck(contractAddrStrWithProvider)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	contractAddr, _ := common.NeutAddressStringToAddressCheck(contractAddrStrWithProvider)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 
@@ -165,7 +165,7 @@ func TestSendToEnterPriseSmartContractWithInvalidProviderSignature(t *testing.T)
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -185,7 +185,7 @@ func TestSendToEnterPriseSmartContractWithInvalidProviderSignature(t *testing.T)
 	Test Send ETH to an enterprise Smart Contract with valid provider's signature
 */
 func TestSendToEnterPriseSmartContractWithValidProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	contractAddr := prepareNewContract(true)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
@@ -194,7 +194,7 @@ func TestSendToEnterPriseSmartContractWithValidProviderSignature(t *testing.T) {
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -208,7 +208,7 @@ func TestSendToEnterPriseSmartContractWithValidProviderSignature(t *testing.T) {
 	assert.NoError(t, err)
 
 	require.NoError(t, neutClient.SendTransaction(context.Background(), transaction))
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	assertTransactionSuccess(t, neutClient, transaction.Hash(), false, providerAddr)
 }
 
@@ -218,7 +218,7 @@ func TestSendToEnterPriseSmartContractWithValidProviderSignature(t *testing.T) {
 	Note: Please change data to your own function data
 */
 func TestInteractToEnterpriseSmartContractWithInvalidProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	contractAddr := prepareNewContract(true)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestInteractToEnterpriseSmartContractWithInvalidProviderSignature(t *testin
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -251,13 +251,13 @@ func TestInteractToEnterpriseSmartContractWithInvalidProviderSignature(t *testin
 	Note: Please change data to your own function data
 */
 func TestInteractToEnterpriseSmartContractWithoutProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	contractAddr := prepareNewContract(true)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -279,7 +279,7 @@ func TestInteractToEnterpriseSmartContractWithoutProviderSignature(t *testing.T)
 	Note: Please change data to your own function data
 */
 func TestInteractToEnterpriseSmartContractWithValidProviderSignature(t *testing.T) {
-	senderAddr, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	senderAddr, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	contractAddr := prepareNewContract(true)
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
@@ -288,7 +288,7 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignature(t *testing.
 	assert.NoError(t, err)
 
 	signer := types.BaseSigner{}
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), senderAddr)
 	assert.NoError(t, err)
@@ -304,6 +304,6 @@ func TestInteractToEnterpriseSmartContractWithValidProviderSignature(t *testing.
 	assert.NoError(t, err)
 
 	require.NoError(t, neutClient.SendTransaction(context.Background(), transaction))
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	assertTransactionSuccess(t, neutClient, transaction.Hash(), false, providerAddr)
 }

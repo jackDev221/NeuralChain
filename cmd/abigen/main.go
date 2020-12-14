@@ -29,15 +29,15 @@ import (
 )
 
 var (
-	abiFlag = flag.String("abi", "", "Path to the Evrynet contract ABI json to bind, - for STDIN")
-	binFlag = flag.String("bin", "", "Path to the Evrynet contract bytecode (generate deploy method)")
+	abiFlag = flag.String("abi", "", "Path to the NeuralChain contract ABI json to bind, - for STDIN")
+	binFlag = flag.String("bin", "", "Path to the NeuralChain contract bytecode (generate deploy method)")
 	typFlag = flag.String("type", "", "Struct name for the binding (default = package name)")
 
-	solFlag  = flag.String("sol", "", "Path to the Evrynet contract Solidity source to build and bind")
+	solFlag  = flag.String("sol", "", "Path to the NeuralChain contract Solidity source to build and bind")
 	solcFlag = flag.String("solc", "solc", "Solidity compiler to use if source builds are requested")
 	excFlag  = flag.String("exc", "", "Comma separated types to exclude from binding")
 
-	vyFlag    = flag.String("vy", "", "Path to the Evrynet contract Vyper source to build and bind")
+	vyFlag    = flag.String("vy", "", "Path to the NeuralChain contract Vyper source to build and bind")
 	vyperFlag = flag.String("vyper", "vyper", "Vyper compiler to use if source builds are requested")
 
 	pkgFlag  = flag.String("pkg", "", "Package name to generate the binding into")

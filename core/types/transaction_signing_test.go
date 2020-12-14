@@ -108,7 +108,7 @@ func TestOmahaSigningVitalik(t *testing.T) {
 			continue
 		}
 
-		addr, _ := common.EvryAddressStringToAddressCheck(test.addr)
+		addr, _ := common.NeutAddressStringToAddressCheck(test.addr)
 		if from != addr {
 			t.Errorf("%d: expected %x got %x", i, addr, from)
 		}
@@ -139,13 +139,13 @@ func TestChainId(t *testing.T) {
 }
 
 func TestOmahaSigningCompatible(t *testing.T) {
-	var ( // this value is got from signing by evrynet source code
+	var ( // this value is got from signing by neuralChain source code
 		expectedV, _ = new(big.Int).SetString("71", 10)
 		expectedR, _ = new(big.Int).SetString("62873707122857357665543871915925550568730555762217611648458340453155819239571", 10)
 		expectedS, _ = new(big.Int).SetString("39748707077210856456616806995773321404126510975285671090303555280372005595386", 10)
 	)
 	signer := NewOmahaSigner(big.NewInt(18))
-	to, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+	to, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
 	tx, err := SignTx(NewTransaction(0, to, big.NewInt(20), 0, new(big.Int), nil), signer, testKey)
 	require.NoError(t, err)
 

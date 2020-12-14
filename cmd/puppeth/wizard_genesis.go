@@ -183,7 +183,7 @@ func (w *wizard) makeGenesis() {
 		for _, acc := range accs {
 			if _, ok := genesis.Alloc[acc.Address]; ok {
 				fmt.Printf("- Address %s already existed => Ignore\n",
-					common.AddressToEvryAddressString(acc.Address))
+					common.AddressToNeutAddressString(acc.Address))
 				continue
 			}
 			genesis.Alloc[acc.Address] = core.GenesisAccount{
@@ -330,7 +330,7 @@ func (w *wizard) manageGenesis() {
 		}
 		log.Info("Saved native genesis chain spec", "path", gethJson)
 
-		// Export the genesis spec used by Aleth (formerly C++ Evrynet)
+		// Export the genesis spec used by Aleth (formerly C++ NeuralChain)
 		if spec, err := newAlethGenesisSpec(w.network, w.conf.Genesis); err != nil {
 			log.Error("Failed to create Aleth chain spec", "err", err)
 		} else {
@@ -342,7 +342,7 @@ func (w *wizard) manageGenesis() {
 		} else {
 			saveGenesis(folder, w.network, "parity", spec)
 		}
-		// Export the genesis spec used by Harmony (formerly EvrynetJ
+		// Export the genesis spec used by Harmony (formerly NeuralChainJ
 		saveGenesis(folder, w.network, "harmony", w.conf.Genesis)
 
 	case "3":

@@ -30,7 +30,7 @@ Adjust these params to match deployment on local machine:
 */
 
 func TestMain(m *testing.M) {
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	if err != nil {
 		panic(err)
 	}
@@ -50,14 +50,14 @@ func TestMain(m *testing.M) {
 func TestCreateContractWithProviderAddress(t *testing.T) {
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 	var option types.CreateAccountOption
 	option.ProviderAddress = &providerAddr
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.NonceAt(context.Background(), sender, nil)
 	assert.NoError(t, err)
@@ -71,15 +71,15 @@ func TestCreateContractWithProviderAddress(t *testing.T) {
 func TestCreateContractWithProviderAndOwner(t *testing.T) {
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 	var option types.CreateAccountOption
 	option.OwnerAddress = &sender
 	option.ProviderAddress = &providerAddr
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.NonceAt(context.Background(), sender, nil)
 	assert.NoError(t, err)
@@ -93,11 +93,11 @@ func TestCreateContractWithProviderAndOwner(t *testing.T) {
 func TestCreateContractWithoutProviderAddress(t *testing.T) {
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), sender)
 	assert.NoError(t, err)
@@ -114,11 +114,11 @@ func TestCreateContractWithProviderSignature(t *testing.T) {
 	assert.NoError(t, err)
 	ppk, err := crypto.HexToECDSA(providerPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), sender)
 	assert.NoError(t, err)
@@ -133,15 +133,15 @@ func TestCreateContractWithProviderSignature(t *testing.T) {
 func TestCreateContractWithProviderAddressWithoutGas(t *testing.T) {
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerWithoutGasAddr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerWithoutGasAddr)
 	var option types.CreateAccountOption
 	option.ProviderAddress = &providerAddr
 	option.OwnerAddress = &sender
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), sender)
 	assert.NoError(t, err)
@@ -155,33 +155,33 @@ func TestCreateContractWithProviderAddressWithoutGas(t *testing.T) {
 func TestCreateContractWithProviderAddressMustHaveOwnerAddress(t *testing.T) {
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
-	providerAddr, _ := common.EvryAddressStringToAddressCheck(providerAddrStr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
+	providerAddr, _ := common.NeutAddressStringToAddressCheck(providerAddrStr)
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 	var option types.CreateAccountOption
 	option.ProviderAddress = &providerAddr
 	option.OwnerAddress = &sender
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), sender)
 	assert.NoError(t, err)
 	tx := types.NewContractCreation(nonce, big.NewInt(0), testGasLimit, big.NewInt(testGasPrice), payLoadBytes, option)
 	tx, err = types.SignTx(tx, types.BaseSigner{}, spk)
 	assert.NoError(t, err)
-	assert.Equal(t, senderAddrStr, common.AddressToEvryAddressString(*tx.Owner()))
-	assert.Equal(t, providerAddrStr, common.AddressToEvryAddressString(*tx.Provider()))
+	assert.Equal(t, senderAddrStr, common.AddressToNeutAddressString(*tx.Owner()))
+	assert.Equal(t, providerAddrStr, common.AddressToNeutAddressString(*tx.Provider()))
 }
 
 func TestCreateNormalContractMustHaveNoOwnerAndProviderAddress(t *testing.T) {
 	spk, err := crypto.HexToECDSA(senderPK)
 	assert.NoError(t, err)
-	sender, _ := common.EvryAddressStringToAddressCheck(senderAddrStr)
+	sender, _ := common.NeutAddressStringToAddressCheck(senderAddrStr)
 	payLoadBytes, err := hexutil.Decode(payload)
 	assert.NoError(t, err)
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	assert.NoError(t, err)
 	nonce, err := neutClient.PendingNonceAt(context.Background(), sender)
 	assert.NoError(t, err)

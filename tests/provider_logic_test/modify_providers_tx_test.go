@@ -16,9 +16,9 @@ import (
 
 func TestModifyProviders(t *testing.T) {
 	var (
-		senderAddr, _   = common.EvryAddressStringToAddressCheck(senderAddrStr)
-		ownerAddr, _    = common.EvryAddressStringToAddressCheck(ownerAddrStr)
-		providerAddr, _ = common.EvryAddressStringToAddressCheck(providerAddrStr)
+		senderAddr, _   = common.NeutAddressStringToAddressCheck(senderAddrStr)
+		ownerAddr, _    = common.NeutAddressStringToAddressCheck(ownerAddrStr)
+		providerAddr, _ = common.NeutAddressStringToAddressCheck(providerAddrStr)
 		ownerKey, _     = crypto.HexToECDSA(ownerPK)
 		senderKey, _    = crypto.HexToECDSA(senderPK)
 		providerKey, _  = crypto.HexToECDSA(providerPK)
@@ -28,7 +28,7 @@ func TestModifyProviders(t *testing.T) {
 	contractAddr := prepareNewContract(true)
 	require.NotNil(t, contractAddr)
 
-	neutClient, err := neutclient.Dial(evrRPCEndpoint)
+	neutClient, err := neutclient.Dial(neutRPCEndpoint)
 	require.NoError(t, err)
 
 	nonce, err := neutClient.PendingNonceAt(context.Background(), ownerAddr)

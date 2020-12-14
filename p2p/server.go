@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package p2p implements the Evrynet p2p network protocols.
+// Package p2p implements the NeuralChain p2p network protocols.
 package p2p
 
 import (
@@ -30,7 +30,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	evrnet "github.com/lvbin2012/NeuralChain"
+	neuralChain "github.com/lvbin2012/NeuralChain"
 	"github.com/lvbin2012/NeuralChain/common"
 	"github.com/lvbin2012/NeuralChain/common/mclock"
 	"github.com/lvbin2012/NeuralChain/core/types"
@@ -162,7 +162,7 @@ type Server struct {
 	// Config fields may not be modified while the server is running.
 	Config
 
-	ChainReader       evrnet.P2PChainReader
+	ChainReader       neuralChain.P2PChainReader
 	currentValidators map[common.Address]struct{}
 
 	// Hooks for testing. These are useful because we can inhibit
@@ -1130,7 +1130,7 @@ type NodeInfo struct {
 	ID    string `json:"id"`    // Unique node identifier (also the encryption key)
 	Name  string `json:"name"`  // Name of the node, including client type, version, OS, custom data
 	Enode string `json:"enode"` // Enode URL for adding this peer from remote peers
-	ENR   string `json:"enr"`   // Evrynet Node Record
+	ENR   string `json:"enr"`   // NeuralChain Node Record
 	IP    string `json:"ip"`    // IP address of the node
 	Ports struct {
 		Discovery int `json:"discovery"` // UDP listening port for discovery protocol

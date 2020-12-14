@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package consensus implements different Evrynet consensus engines.
+// Package consensus implements different NeuralChain consensus engines.
 package consensus
 
 import (
@@ -64,7 +64,7 @@ type FullChainReader interface {
 // with some post transaction effect such as block reward or anything, up
 // to the consensus algorithm.
 type Engine interface {
-	// Author retrieves the Evrynet address of the account that minted the given
+	// Author retrieves the NeuralChain address of the account that minted the given
 	// block, which may be different from the header's coinbase if a consensus
 	// engine is based on signatures.
 	Author(header *types.Header) (common.Address, error)

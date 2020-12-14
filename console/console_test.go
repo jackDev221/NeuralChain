@@ -76,7 +76,7 @@ func (p *hookedPrompter) SetWordCompleter(completer WordCompleter) {}
 type tester struct {
 	workspace   string
 	stack       *node.Node
-	neuralChain *neut.Evrynet
+	neuralChain *neut.NeuralChain
 	console     *Console
 	input       *hookedPrompter
 	output      *bytes.Buffer
@@ -91,12 +91,12 @@ func newTester(t *testing.T, confOverride func(*neut.Config)) *tester {
 		t.Fatalf("failed to create temporary keystore: %v", err)
 	}
 
-	// Create a networkless protocol stack and start an Evrynet service within
+	// Create a networkless protocol stack and start an NeuralChain service within
 	stack, err := node.New(&node.Config{DataDir: workspace, UseLightweightKDF: true, Name: testInstance})
 	if err != nil {
 		t.Fatalf("failed to create node: %v", err)
 	}
-	etherBase, _ := common.EvryAddressStringToAddressCheck(testAddress)
+	etherBase, _ := common.NeutAddressStringToAddressCheck(testAddress)
 	ethConf := &neut.Config{
 		Genesis: core.DeveloperGenesisBlock(15, common.Address{}),
 		Miner: miner.Config{
@@ -110,7 +110,7 @@ func newTester(t *testing.T, confOverride func(*neut.Config)) *tester {
 		confOverride(ethConf)
 	}
 	if err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) { return neut.New(ctx, ethConf) }); err != nil {
-		t.Fatalf("failed to register Evrynet protocol: %v", err)
+		t.Fatalf("failed to register NeuralChain protocol: %v", err)
 	}
 	// Add p2pServerInitDone
 	go func() {
@@ -139,7 +139,7 @@ func newTester(t *testing.T, confOverride func(*neut.Config)) *tester {
 		t.Fatalf("failed to create JavaScript console: %v", err)
 	}
 	// Create the final tester and return
-	var neuralChain *neut.Evrynet
+	var neuralChain *neut.NeuralChain
 	stack.Service(&neuralChain)
 
 	return &tester{

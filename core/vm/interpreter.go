@@ -39,7 +39,7 @@ type Config struct {
 	EVMInterpreter   string // External EVM interpreter options
 }
 
-// Interpreter is used to run Evrynet based contracts and will utilise the
+// Interpreter is used to run NeuralChain based contracts and will utilise the
 // passed environment to query external sources for state information.
 // The Interpreter will run the byte code VM based on the passed
 // configuration.

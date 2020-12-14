@@ -33,7 +33,7 @@ import (
 var (
 	walletCommand = cli.Command{
 		Name:      "wallet",
-		Usage:     "Manage Evrynet presale wallets",
+		Usage:     "Manage NeuralChain presale wallets",
 		ArgsUsage: "",
 		Category:  "ACCOUNT COMMANDS",
 		Description: `
@@ -46,7 +46,7 @@ passwordfile as argument containing the wallet password in plaintext.`,
 			{
 
 				Name:      "import",
-				Usage:     "Import Evrynet presale wallet",
+				Usage:     "Import NeuralChain presale wallet",
 				ArgsUsage: "<keyFile>",
 				Action:    utils.MigrateFlags(importWallet),
 				Category:  "ACCOUNT COMMANDS",
@@ -87,7 +87,7 @@ Note that exporting your key in unencrypted format is NOT supported.
 
 Keys are stored under <DATADIR>/keystore.
 It is safe to transfer the entire directory or the individual keys therein
-between EvrynetNode nodes by simply copying.
+between NeuralChainNode nodes by simply copying.
 
 Make sure you backup your keys regularly.`,
 		Subcommands: []cli.Command{
@@ -184,7 +184,7 @@ For non-interactive use the passphrase can be specified with the -password flag:
     gnc account import [options] <keyfile>
 
 Note:
-As you can directly copy your encrypted accounts to another EvrynetNode instance,
+As you can directly copy your encrypted accounts to another NeuralChainNode instance,
 this import mechanism is not needed when you transfer an account between
 nodes.
 `,
@@ -198,7 +198,7 @@ func accountList(ctx *cli.Context) error {
 	var index int
 	for _, wallet := range stack.AccountManager().Wallets() {
 		for _, account := range wallet.Accounts() {
-			fmt.Printf("Account #%d: {%s} %s\n", index, common.AddressToEvryAddressString(account.Address), &account.URL)
+			fmt.Printf("Account #%d: {%s} %s\n", index, common.AddressToNeutAddressString(account.Address), &account.URL)
 			index++
 		}
 	}
@@ -265,7 +265,7 @@ func getPassPhrase(prompt string, confirmation bool, i int, passwords []string) 
 }
 
 func ambiguousAddrRecovery(ks *keystore.KeyStore, err *keystore.AmbiguousAddrError, auth string) accounts.Account {
-	fmt.Printf("Multiple key files exist for address %s:\n", common.AddressToEvryAddressString(err.Addr))
+	fmt.Printf("Multiple key files exist for address %s:\n", common.AddressToNeutAddressString(err.Addr))
 	for _, a := range err.Matches {
 		fmt.Println("  ", a.URL)
 	}
@@ -314,7 +314,7 @@ func accountCreate(ctx *cli.Context) error {
 		utils.Fatalf("Failed to create account: %v", err)
 	}
 	fmt.Printf("\nYour new key was generated\n\n")
-	fmt.Printf("Public address of the key:   %s\n", common.AddressToEvryAddressString(account.Address))
+	fmt.Printf("Public address of the key:   %s\n", common.AddressToNeutAddressString(account.Address))
 	fmt.Printf("Path of the secret key file: %s\n\n", account.URL.Path)
 	fmt.Printf("- You can share your public address with anyone. Others need it to interact with you.\n")
 	fmt.Printf("- You must NEVER share the secret key with anyone! The key controls access to your funds!\n")
@@ -360,7 +360,7 @@ func importWallet(ctx *cli.Context) error {
 	if err != nil {
 		utils.Fatalf("%v", err)
 	}
-	fmt.Printf("Address: {%s}\n", common.AddressToEvryAddressString(acct.Address))
+	fmt.Printf("Address: {%s}\n", common.AddressToNeutAddressString(acct.Address))
 	return nil
 }
 
@@ -381,6 +381,6 @@ func accountImport(ctx *cli.Context) error {
 	if err != nil {
 		utils.Fatalf("Could not create the account: %v", err)
 	}
-	fmt.Printf("Address: {%s}\n", common.AddressToEvryAddressString(acct.Address))
+	fmt.Printf("Address: {%s}\n", common.AddressToNeutAddressString(acct.Address))
 	return nil
 }

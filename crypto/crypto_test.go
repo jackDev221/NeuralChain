@@ -87,7 +87,7 @@ func TestUnmarshalPubkey(t *testing.T) {
 
 func TestSign(t *testing.T) {
 	key, _ := HexToECDSA(testPrivHex)
-	addr, _ := common.EvryAddressStringToAddressCheck(testAddrStr)
+	addr, _ := common.NeutAddressStringToAddressCheck(testAddrStr)
 
 	msg := Keccak256([]byte("foo"))
 	sig, err := Sign(msg, key)
@@ -126,7 +126,7 @@ func TestInvalidSign(t *testing.T) {
 
 func TestNewContractAddress(t *testing.T) {
 	key, _ := HexToECDSA(testPrivHex)
-	addr, _ := common.EvryAddressStringToAddressCheck(testAddrStr)
+	addr, _ := common.NeutAddressStringToAddressCheck(testAddrStr)
 	genAddr := PubkeyToAddress(key.PublicKey)
 	// sanity check before using addr to create contract address
 	checkAddr(t, genAddr, addr)
@@ -134,9 +134,9 @@ func TestNewContractAddress(t *testing.T) {
 	caddr0 := CreateAddress(addr, 0)
 	caddr1 := CreateAddress(addr, 1)
 	caddr2 := CreateAddress(addr, 2)
-	addr0, _ := common.EvryAddressStringToAddressCheck("EMpp56kzt1gBkpCCcd2MJufcNKNXYE9XdC")
-	addr1, _ := common.EvryAddressStringToAddressCheck("EVuP8n4NsUrCU834G4sPZhrK8956kWdy4E")
-	addr2, _ := common.EvryAddressStringToAddressCheck("EbZHB5HiBdXNaWT3G1uisTMweezw52NVxk")
+	addr0, _ := common.NeutAddressStringToAddressCheck("EMpp56kzt1gBkpCCcd2MJufcNKNXYE9XdC")
+	addr1, _ := common.NeutAddressStringToAddressCheck("EVuP8n4NsUrCU834G4sPZhrK8956kWdy4E")
+	addr2, _ := common.NeutAddressStringToAddressCheck("EbZHB5HiBdXNaWT3G1uisTMweezw52NVxk")
 	checkAddr(t, addr0, caddr0)
 	checkAddr(t, addr1, caddr1)
 	checkAddr(t, addr2, caddr2)
@@ -147,7 +147,7 @@ func TestLoadECDSAFile(t *testing.T) {
 	fileName0 := "test_key0"
 	fileName1 := "test_key1"
 	checkKey := func(k *ecdsa.PrivateKey) {
-		addr, _ := common.EvryAddressStringToAddressCheck(testAddrStr)
+		addr, _ := common.NeutAddressStringToAddressCheck(testAddrStr)
 		checkAddr(t, PubkeyToAddress(k.PublicKey), addr)
 		loadedKeyBytes := FromECDSA(k)
 		if !bytes.Equal(loadedKeyBytes, keyBytes) {

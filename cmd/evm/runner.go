@@ -108,7 +108,7 @@ func runCmd(ctx *cli.Context) error {
 		genesisConfig = new(core.Genesis)
 	}
 	if ctx.GlobalString(SenderFlag.Name) != "" {
-		if addr, err := common.EvryAddressStringToAddressCheck(ctx.GlobalString(SenderFlag.Name));
+		if addr, err := common.NeutAddressStringToAddressCheck(ctx.GlobalString(SenderFlag.Name));
 			err == nil {
 			sender = addr
 		}
@@ -116,7 +116,7 @@ func runCmd(ctx *cli.Context) error {
 	statedb.CreateAccount(sender)
 
 	if ctx.GlobalString(ReceiverFlag.Name) != "" {
-		if addr, err := common.EvryAddressStringToAddressCheck(ctx.GlobalString(ReceiverFlag.Name));
+		if addr, err := common.NeutAddressStringToAddressCheck(ctx.GlobalString(ReceiverFlag.Name));
 			err == nil {
 			receiver = addr
 		}

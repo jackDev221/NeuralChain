@@ -54,7 +54,7 @@ var (
 	bloomBitsPrefix = []byte("B") // bloomBitsPrefix + bit (uint16 big endian) + section (uint64 big endian) + hash -> bloom bits
 
 	preimagePrefix = []byte("secure-key-")      // preimagePrefix + hash -> preimage
-	configPrefix   = []byte("evrynet-config-") // config prefix for the db
+	configPrefix   = []byte("neuralChain-config-") // config prefix for the db
 
 	tendermintPrefix = []byte("tendermint-snapshot-")
 

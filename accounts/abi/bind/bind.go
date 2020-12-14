@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package bind generates Evrynet contract Go bindings.
+// Package bind generates NeuralChain contract Go bindings.
 //
 // Detailed usage document and tutorial available on the NeuralChain Wiki page:
-// https://github.com/lvbin2012/NeuralChain/wiki/Native-DApps:-Go-bindings-to-Evrynet-contracts
+// https://github.com/lvbin2012/NeuralChain/wiki/Native-DApps:-Go-bindings-to-NeuralChain-contracts
 package bind
 
 import (

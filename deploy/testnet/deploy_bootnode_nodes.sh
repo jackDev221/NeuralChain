@@ -16,7 +16,7 @@ until [[ $env ]]; do read -rp "- Environment of Image: " env; done
 newVersion=${version//\//-}
 
 BASEDIR=$(dirname "$0")
-BOOTNODE_REPOSITORY="kybernetwork/evrynet-bootnode"
+BOOTNODE_REPOSITORY="kybernetwork/neuralChain-bootnode"
 BOOTNODE_TAG_ENV="$BOOTNODE_REPOSITORY:$newVersion-$env"
 
 NODE_REPOSITORY="kybernetwork/NeuralChain"

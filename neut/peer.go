@@ -60,10 +60,10 @@ const (
 	handshakeTimeout = 5 * time.Second
 )
 
-// PeerInfo represents a short summary of the Evrynet sub-protocol metadata known
+// PeerInfo represents a short summary of the NeuralChain sub-protocol metadata known
 // about a connected Peer.
 type PeerInfo struct {
-	Version    int      `json:"version"`    // Evrynet protocol version negotiated
+	Version    int      `json:"version"`    // NeuralChain protocol version negotiated
 	Difficulty *big.Int `json:"difficulty"` // Total difficulty of the Peer's blockchain
 	Head       string   `json:"head"`       // SHA3 hash of the Peer's best owned block
 }
@@ -428,7 +428,7 @@ func (p *Peer) String() string {
 	)
 }
 
-// Address return Evrynet Address of a Peer
+// Address return NeuralChain Address of a Peer
 func (p *Peer) Address() common.Address {
 	pubKey := p.Node().Pubkey()
 	if pubKey != nil {
@@ -438,7 +438,7 @@ func (p *Peer) Address() common.Address {
 }
 
 // peerSet represents the collection of active peers currently participating in
-// the Evrynet sub-protocol.
+// the NeuralChain sub-protocol.
 type peerSet struct {
 	peers  map[string]*Peer
 	lock   sync.RWMutex

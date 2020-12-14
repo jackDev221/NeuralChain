@@ -213,7 +213,7 @@ func TestEventTupleUnpack(t *testing.T) {
 	bigintExpected := big.NewInt(1000000)
 	bigintExpected2 := big.NewInt(2218516807680)
 	bigintExpected3 := big.NewInt(1000001)
-	addr, _ := common.EvryAddressStringToAddressCheck("EHEALKRyF9tQ9MgGnv7gNSJLagEZo5wfZV")
+	addr, _ := common.NeutAddressStringToAddressCheck("EHEALKRyF9tQ9MgGnv7gNSJLagEZo5wfZV")
 	var testCases = []struct {
 		data     string
 		dest     interface{}

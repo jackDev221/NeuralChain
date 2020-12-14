@@ -113,7 +113,7 @@ func TestImportPreSaleKey(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	addrExpec, _ := common.EvryAddressStringToAddressCheck("EcWgX4DxhvAcNwzzo7jQ6SweutC7B4wiAc")
+	addrExpec, _ := common.NeutAddressStringToAddressCheck("EcWgX4DxhvAcNwzzo7jQ6SweutC7B4wiAc")
 	if account.Address != addrExpec {
 		t.Errorf("imported account has wrong address %x", account.Address)
 	}
@@ -122,7 +122,7 @@ func TestImportPreSaleKey(t *testing.T) {
 	}
 }
 
-// Test and utils for the key store tests in the Evrynet JSON tests;
+// Test and utils for the key store tests in the NeuralChain JSON tests;
 // testdataKeyStoreTests/basic_tests.json
 type KeyStoreTestV3 struct {
 	Json     encryptedKeyJSONV3
@@ -193,7 +193,7 @@ func TestV1_1(t *testing.T) {
 func TestV1_2(t *testing.T) {
 	t.Parallel()
 	ks := &keyStorePassphrase{"testdata/v1", LightScryptN, LightScryptP, true}
-	addr, _ := common.EvryAddressStringToAddressCheck("EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg")
+	addr, _ := common.NeutAddressStringToAddressCheck("EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg")
 	file := "testdata/v1/EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg/EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg"
 	k, err := ks.GetKey(addr, file, "g")
 	if err != nil {

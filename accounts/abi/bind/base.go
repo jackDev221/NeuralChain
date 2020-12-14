@@ -43,9 +43,9 @@ type CallOpts struct {
 }
 
 // TransactOpts is the collection of authorization data required to create a
-// valid Evrynet transaction.
+// valid NeuralChain transaction.
 type TransactOpts struct {
-	From   common.Address // Evrynet account to send the transaction from
+	From   common.Address // NeuralChain account to send the transaction from
 	Nonce  *big.Int       // Nonce to use for the transaction execution (nil = use pending state)
 	Signer SignerFn       // Method to use for signing the transaction (mandatory)
 
@@ -53,7 +53,7 @@ type TransactOpts struct {
 	GasPrice *big.Int // Gas price to use for the transaction execution (nil = gas price oracle)
 	GasLimit uint64   // Gas limit to set for the transaction execution (0 = estimate)
 
-	Enterprise *types.CreateAccountOption // Evrynet account option for enterprise contract feature (optional)
+	Enterprise *types.CreateAccountOption // NeuralChain account option for enterprise contract feature (optional)
 
 	Context context.Context // Network context to support cancellation and timeouts (nil = no timeout)
 }
@@ -75,11 +75,11 @@ type WatchOpts struct {
 }
 
 // BoundContract is the base wrapper object that reflects a contract on the
-// Evrynet network. It contains a collection of methods that are used by the
+// NeuralChain network. It contains a collection of methods that are used by the
 // higher level contract bindings to operate.
 type BoundContract struct {
-	address    common.Address     // Deployment address of the contract on the Evrynet blockchain
-	abi        abi.ABI            // Reflect based ABI to access the correct Evrynet methods
+	address    common.Address     // Deployment address of the contract on the NeuralChain blockchain
+	abi        abi.ABI            // Reflect based ABI to access the correct NeuralChain methods
 	caller     ContractCaller     // Read interface to interact with the blockchain
 	transactor ContractTransactor // Write interface to interact with the blockchain
 	filterer   ContractFilterer   // Event filtering to interact with the blockchain
@@ -97,7 +97,7 @@ func NewBoundContract(address common.Address, abi abi.ABI, caller ContractCaller
 	}
 }
 
-// DeployContract deploys a contract onto the Evrynet blockchain and binds the
+// DeployContract deploys a contract onto the NeuralChain blockchain and binds the
 // deployment address with a Go wrapper.
 func DeployContract(opts *TransactOpts, abi abi.ABI, bytecode []byte, backend ContractBackend, params ...interface{}) (common.Address, *types.Transaction, *BoundContract, error) {
 	// Otherwise try to deploy the contract

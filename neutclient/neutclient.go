@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package neutclient provides a client for the Evrynet RPC API.
+// Package neutclient provides a client for the NeuralChain RPC API.
 package neutclient
 
 import (
@@ -32,7 +32,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/rpc"
 )
 
-// Client defines typed wrappers for the Evrynet RPC API.
+// Client defines typed wrappers for the NeuralChain RPC API.
 type Client struct {
 	c *rpc.Client
 }
@@ -413,7 +413,7 @@ func (ec *Client) NonceAt(ctx context.Context, account common.Address, blockNumb
 	return uint64(result), err
 }
 
-//TODO: add an api for enterprise contract (Evrynet)
+//TODO: add an api for enterprise contract (NeuralChain)
 
 // Filters
 

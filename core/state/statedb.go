@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the NeuralChain library . If not, see <http://www.gnu.org/licenses/>.
 
-// Package state provides a caching layer atop the Evrynet state trie.
+// Package state provides a caching layer atop the NeuralChain state trie.
 package state
 
 import (
@@ -57,7 +57,7 @@ func (n *proofList) Delete(key []byte) error {
 	panic("not supported")
 }
 
-// StateDBs within the evrynet protocol are used to store anything
+// StateDBs within the neuralChain protocol are used to store anything
 // within the merkle trie. StateDBs take care of caching and storing
 // nested states. It's the general query interface to retrieve:
 // * Contracts

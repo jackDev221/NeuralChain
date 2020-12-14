@@ -441,7 +441,7 @@ func (s *StateSuite) TestTouchDelete(c *check.C) {
 // See https://github.com/lvbin2012/NeuralChain/pull/15225#issuecomment-380191512
 func TestCopyOfCopy(t *testing.T) {
 	sdb, _ := New(common.Hash{}, NewDatabase(rawdb.NewMemoryDatabase()))
-	addr, _ := common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmfy7efdWvK")
+	addr, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmfy7efdWvK")
 	sdb.SetBalance(addr, big.NewInt(42))
 
 	if got := sdb.Copy().GetBalance(addr).Uint64(); got != 42 {
@@ -454,11 +454,11 @@ func TestCopyOfCopy(t *testing.T) {
 
 func TestStateDB_AddProvider(t *testing.T) {
 	var (
-		contractAddr, _    = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
-		ownerAddr, _       = common.EvryAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		providerAddr, _    = common.EvryAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		newProviderAddr, _ = common.EvryAddressStringToAddressCheck("ENgapvtxruaDvhhygA4jeqSQkgufFnHoAH")
-		addr, _            = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT")
+		contractAddr, _    = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
+		ownerAddr, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
+		providerAddr, _    = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		newProviderAddr, _ = common.NeutAddressStringToAddressCheck("ENgapvtxruaDvhhygA4jeqSQkgufFnHoAH")
+		addr, _            = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT")
 	)
 
 	db := NewDatabase(rawdb.NewMemoryDatabase())
@@ -479,10 +479,10 @@ func TestStateDB_AddProvider(t *testing.T) {
 
 func TestEVM_RemoveProvider(t *testing.T) {
 	var (
-		contractAddr, _ = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
-		ownerAddr, _    = common.EvryAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		providerAddr, _ = common.EvryAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		addr, _         = common.EvryAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT")
+		contractAddr, _ = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
+		ownerAddr, _    = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
+		providerAddr, _ = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		addr, _         = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT")
 	)
 
 	db := NewDatabase(rawdb.NewMemoryDatabase())

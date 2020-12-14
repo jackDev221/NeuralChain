@@ -51,7 +51,7 @@ type filter struct {
 }
 
 // PublicFilterAPI offers support to create and manage filters. This will allow external clients to retrieve various
-// information related to the Evrynet protocol such als blocks, transactions and logs.
+// information related to the NeuralChain protocol such als blocks, transactions and logs.
 type PublicFilterAPI struct {
 	backend   Backend
 	mux       *event.TypeMux
@@ -102,7 +102,7 @@ func (api *PublicFilterAPI) timeoutLoop() {
 // It is part of the filter package because this filter can be used through the
 // `neut_getFilterChanges` polling method that is also used for log filters.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_newpendingtransactionfilter
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_newpendingtransactionfilter
 func (api *PublicFilterAPI) NewPendingTransactionFilter() rpc.ID {
 	var (
 		pendingTxs   = make(chan []common.Hash)
@@ -172,7 +172,7 @@ func (api *PublicFilterAPI) NewPendingTransactions(ctx context.Context) (*rpc.Su
 // NewBlockFilter creates a filter that fetches blocks that are imported into the chain.
 // It is part of the filter package since polling goes with neut_getFilterChanges.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_newblockfilter
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_newblockfilter
 func (api *PublicFilterAPI) NewBlockFilter() rpc.ID {
 	var (
 		headers   = make(chan *types.Header)
@@ -288,7 +288,7 @@ type FilterCriteria neuralChain.FilterQuery
 //
 // In case "fromBlock" > "toBlock" an error is returned.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_newfilter
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_newfilter
 func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 	logs := make(chan []*types.Log)
 	logsSub, err := api.events.SubscribeLogs(neuralChain.FilterQuery(crit), logs)
@@ -323,7 +323,7 @@ func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 
 // GetLogs returns logs matching the given argument that are stored within the state.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_getlogs
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_getlogs
 func (api *PublicFilterAPI) GetLogs(ctx context.Context, crit FilterCriteria) ([]*types.Log, error) {
 	var filter *Filter
 	if crit.BlockHash != nil {
@@ -352,7 +352,7 @@ func (api *PublicFilterAPI) GetLogs(ctx context.Context, crit FilterCriteria) ([
 
 // UninstallFilter removes the filter with the given filter id.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_uninstallfilter
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_uninstallfilter
 func (api *PublicFilterAPI) UninstallFilter(id rpc.ID) bool {
 	api.filtersMu.Lock()
 	f, found := api.filters[id]
@@ -370,7 +370,7 @@ func (api *PublicFilterAPI) UninstallFilter(id rpc.ID) bool {
 // GetFilterLogs returns the logs for the filter with the given id.
 // If the filter could not be found an empty array of logs is returned.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_getfilterlogs
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_getfilterlogs
 func (api *PublicFilterAPI) GetFilterLogs(ctx context.Context, id rpc.ID) ([]*types.Log, error) {
 	api.filtersMu.Lock()
 	f, found := api.filters[id]
@@ -411,7 +411,7 @@ func (api *PublicFilterAPI) GetFilterLogs(ctx context.Context, id rpc.ID) ([]*ty
 // For pending transaction and block filters the result is []common.Hash.
 // (pending)Log filters return []Log.
 //
-// https://github.com/Evrynetlabs/wiki/wiki/JSON-RPC#neut_getfilterchanges
+// https://github.com/NeuralChainLabs/wiki/wiki/JSON-RPC#neut_getfilterchanges
 func (api *PublicFilterAPI) GetFilterChanges(id rpc.ID) (interface{}, error) {
 	api.filtersMu.Lock()
 	defer api.filtersMu.Unlock()
@@ -562,7 +562,7 @@ func (args *FilterCriteria) UnmarshalJSON(data []byte) error {
 
 func decodeAddress(s string) (common.Address, error) {
 	s = strings.Trim(s, "\"")
-	return common.EvryAddressStringToAddressCheck(s)
+	return common.NeutAddressStringToAddressCheck(s)
 }
 
 func decodeTopic(s string) (common.Hash, error) {
