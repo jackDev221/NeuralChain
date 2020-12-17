@@ -27,9 +27,9 @@ func TestFinalizeBlock(t *testing.T) {
 	var (
 		nodePrivateKey, _ = crypto.HexToECDSA("ce900e4057ef7253ce737dccf3979ec4e74a19d595e8cc30c6c5ea92dfdd37f1")
 		nodeAddr          = crypto.PubkeyToAddress(nodePrivateKey.PublicKey)
-		a, _              = common.NeutAddressStringToAddressCheck("EPXt4N4aPgV4BEKLtYJgz2NdiAHfa7c2ao")
-		b, _              = common.NeutAddressStringToAddressCheck("ERXpWm2MrviVU2KjGMgq1xUQYLie2zUfkK")
-		c, _              = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		a, _              = common.NeutAddressStringToAddressCheck("NSHwkY2LbHkaXu75Nvy4gXpNJFSXmyBzTU")
+		b, _              = common.NeutAddressStringToAddressCheck("NUHtCvz84Xz1ph7TkkMCiTv98RsWFF1B2U")
+		c, _              = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
 		validators        = []common.Address{
 			a,
 			nodeAddr,

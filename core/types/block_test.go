@@ -65,7 +65,7 @@ func TestBlockEncoding(t *testing.T) {
 	check("Time", block.Time(), uint64(1426516743))
 	check("Size", block.Size(), common.StorageSize(len(blockEnc)))
 
-	to, _ := common.NeutAddressStringToAddressCheck("EJ1Sm7ZPs136zds7axDPJ2LCGQtSi8B2AN")
+	to, _ := common.NeutAddressStringToAddressCheck("NLmWTHXA4cJdMJer5LskzXmvrW3Jra3uiB")
 	tx1 := NewTransaction(0, to, big.NewInt(10), 50000, big.NewInt(10), nil)
 	tx1 = signTx(t, tx1)
 	check("len(Transactions)", len(block.Transactions()), 1)

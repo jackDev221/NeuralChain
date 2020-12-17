@@ -374,8 +374,8 @@ func TestGetTransactionByHash(t *testing.T) {
 	creationContractTx, err = types.SignTx(creationContractTx, types.NewOmahaSigner(chainID), testKey)
 	require.NoError(t, err)
 
-	owner, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-	provider, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+	owner, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezqzTxcW")
+	provider, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh")
 
 	opts := types.CreateAccountOption{
 		OwnerAddress:    &owner,

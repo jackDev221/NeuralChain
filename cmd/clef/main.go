@@ -644,7 +644,7 @@ func testExternalUI(api *core.SignerAPI) {
 	ctx = context.WithValue(ctx, "local", "main")
 	errs := make([]string, 0)
 
-	a, _ := common.NeutAddressStringToAddressCheck("EdTKeF2ugJwiN4su8qeq2VbDU1zMthLSMr")
+	a, _ := common.NeutAddressStringToAddressCheck("NgDPLQzfsvDEijfddEKCj12x479E7uJFqz")
 
 	addErr := func(errStr string) {
 		log.Info("Test error", "error", errStr)
@@ -719,7 +719,7 @@ func testExternalUI(api *core.SignerAPI) {
 		api.UI.ShowInfo("Please approve the next request for signing EIP-712 typed data")
 		time.Sleep(delay)
 		addr, _ := common.NewMixedcaseAddressFromString("EHAG23hA6q1vYjdB9Q88pnfYLchdKAiNeU")
-		data := `{"types":{"EIP712Domain":[{"name":"name","type":"string"},{"name":"version","type":"string"},{"name":"chainId","type":"uint256"},{"name":"verifyingContract","type":"address"}],"Person":[{"name":"name","type":"string"},{"name":"test","type":"uint8"},{"name":"wallet","type":"address"}],"Mail":[{"name":"from","type":"Person"},{"name":"to","type":"Person"},{"name":"contents","type":"string"}]},"primaryType":"Mail","domain":{"name":"Ether Mail","version":"1","chainId":"1","verifyingContract":"EbpngUGwQ6fR3T7XdP4NbEoPg3ugbofgeN"},"message":{"from":{"name":"Cow","test":"3","wallet":"Ebricr1hUkgTx8n4a3zNQBrbRnmzVHdaGf"},"to":{"name":"Bob","wallet":"EaGYkPzKV5xxTMa4E5yDdEKGmMHtQVHX5f","test":"2"},"contents":"Hello, Bob!"}}`
+		data := `{"types":{"EIP712Domain":[{"name":"name","type":"string"},{"name":"version","type":"string"},{"name":"chainId","type":"uint256"},{"name":"verifyingContract","type":"address"}],"Person":[{"name":"name","type":"string"},{"name":"test","type":"uint8"},{"name":"wallet","type":"address"}],"Mail":[{"name":"from","type":"Person"},{"name":"to","type":"Person"},{"name":"contents","type":"string"}]},"primaryType":"Mail","domain":{"name":"Ether Mail","version":"1","chainId":"1","verifyingContract":"NearNeEhbhvwQ7uG7mikHkF8G94Yr4vk6g"},"message":{"from":{"name":"Cow","test":"3","wallet":"NecnK1yTgMwzJoZo4Sek6hJL1svrkjW9XV"},"to":{"name":"Bob","wallet":"Nd2cSZx5ghEUp2MniUdbKjm1MSSkcL8EBc","test":"2"},"contents":"Hello, Bob!"}}`
 		//_, err := api.SignData(ctx, accounts.MimetypeTypedData, *addr, hexutil.Encode([]byte(data)))
 		var typedData core.TypedData
 		err := json.Unmarshal([]byte(data), &typedData)
@@ -844,9 +844,9 @@ func decryptSeed(keyjson []byte, auth string) ([]byte, error) {
 func GenDoc(ctx *cli.Context) {
 
 	var (
-		a, _ = common.NeutAddressStringToAddressCheck("EdTKeF2ugJwiN4su8qeq2VbDU1zMthLSMr")
+		a, _ = common.NeutAddressStringToAddressCheck("NgDPLQzfsvDEijfddEKCj12x479E7uJFqz")
 		b, _ = common.NeutAddressStringToAddressCheck("EJi9Rf8N8pFfEEM4ZXBMvmK9q8RA3FGtLk")
-		c, _ = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+		c, _ = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
 		d, _ = common.NeutAddressStringToAddressCheck("EgVWUh8o98knojjwqGKqVGFkQ9m55ikaHX")
 
 		meta = core.Metadata{

@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	testAddress  = "ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr"
+	testAddress  = "NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH"
 	testAddress2 = "EZWrgXmSqtUc46GE7cr63r8sBh1MQefwDt"
 )
 
@@ -28,10 +28,10 @@ func TestValidatorSet(t *testing.T) {
 
 func TestDefaultSet_GetNeighbor(t *testing.T) {
 	var (
-		a, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-		b, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-		c, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
-		d, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
+		a, _      = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
+		b, _      = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezqzTxcW")
+		c, _      = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh")
+		d, _      = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjf17rTWMC")
 		addresses = []common.Address{
 			a,
 			b,

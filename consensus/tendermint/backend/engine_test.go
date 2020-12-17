@@ -25,7 +25,7 @@ import (
 func TestSimulateSubscribeAndReceiveToSeal(t *testing.T) {
 	var (
 		nodePKString = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _  = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _  = common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 		validators   = []common.Address{
 			nodeAddr,
 		}
@@ -56,7 +56,7 @@ func TestSimulateSubscribeAndReceiveToSeal(t *testing.T) {
 func TestAuthor(t *testing.T) {
 	var (
 		nodePKString = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _  = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _  = common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 		validators   = []common.Address{
 			nodeAddr,
 		}
@@ -79,7 +79,7 @@ func TestAuthor(t *testing.T) {
 func TestPrepare(t *testing.T) {
 	var (
 		nodePKString = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _  = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _  = common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 		validators   = []common.Address{
 			nodeAddr,
 		}
@@ -106,7 +106,7 @@ func TestPrepare(t *testing.T) {
 func TestVerifySeal(t *testing.T) {
 	var (
 		nodePKString = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _  = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _  = common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 		validators   = []common.Address{
 			nodeAddr,
 		}
@@ -132,7 +132,7 @@ func TestVerifySeal(t *testing.T) {
 func TestPrepareExtra(t *testing.T) {
 	var (
 		nodePKString = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _  = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _  = common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 		validators   = []common.Address{
 			nodeAddr,
 		}
@@ -175,11 +175,11 @@ func TestBackend_VerifyHeaders(t *testing.T) {
 		config        = tendermint.DefaultConfig
 		epochSize     = 5
 		nodePKString  = "bb047e5940b6d83354d9432db7c449ac8fca2248008aaa7271369880f9f11cc1"
-		nodeAddr, _   = common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+		nodeAddr, _   = common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 		nodePKString2 = "ce900e4057ef7253ce737dccf3979ec4e74a19d595e8cc30c6c5ea92dfdd37f1"
-		nodeAddr2, _  = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
+		nodeAddr2, _  = common.NeutAddressStringToAddressCheck("NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK")
 		nodePKString3 = "e74f3525fb69f193b51d33f4baf602c4572d81ede57907c61a62eaf9ed95374a"
-		nodeAddr3, _  = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		nodeAddr3, _  = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
 	)
 
 	pk, _ := crypto.HexToECDSA(nodePKString)

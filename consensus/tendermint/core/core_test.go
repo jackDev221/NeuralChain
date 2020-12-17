@@ -52,7 +52,7 @@ func TestRecoverCoreTimeoutWithPropose(t *testing.T) {
 	var (
 		nodePrivateKey = tests_utils.MakeNodeKey()
 		nodeAddr       = crypto.PubkeyToAddress(nodePrivateKey.PublicKey)
-		nodeAddr2, _   = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+		nodeAddr2, _   = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
 		validators     = []common.Address{
 			nodeAddr,
 			nodeAddr2,
@@ -82,7 +82,7 @@ func TestRecoverCoreTimeoutWithPrevoteWait(t *testing.T) {
 	var (
 		nodePrivateKey = tests_utils.MakeNodeKey()
 		nodeAddr       = crypto.PubkeyToAddress(nodePrivateKey.PublicKey)
-		nodeAddr2, _   = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+		nodeAddr2, _   = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
 		validators     = []common.Address{
 			nodeAddr,
 			nodeAddr2,
@@ -156,7 +156,7 @@ func TestCoreFutureMessage(t *testing.T) {
 	zap.ReplaceGlobals(logger.Desugar())
 
 	// create fake block
-	to, _ := common.NeutAddressStringToAddressCheck("EPXt4N4aPgV4BEKLtYJgz2NdiAHfa7c2ao")
+	to, _ := common.NeutAddressStringToAddressCheck("NSHwkY2LbHkaXu75Nvy4gXpNJFSXmyBzTU")
 	tx := types.NewTransaction(0, to, big.NewInt(10), 800000, big.NewInt(params.GasPriceConfig), nil)
 	tx, err = types.SignTx(tx, types.BaseSigner{}, nodePrivateKey)
 	assert.NoError(t, err)

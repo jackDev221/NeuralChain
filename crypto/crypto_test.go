@@ -30,7 +30,7 @@ import (
 	"github.com/lvbin2012/NeuralChain/common/hexutil"
 )
 
-var testAddrStr = "EWvcuLqPT8oMDtuA6uL2aFwiNrT5AhssPd"
+var testAddrStr = "NZggbWo9ek4saZgtbHzQGmPSxwbwT8TYNn"
 var testPrivHex = "289c2857d4598e37fb9647507e47a309d6133539bf21a8b9cb6df88fd5232032"
 
 // These tests are sanity checks.
@@ -134,9 +134,9 @@ func TestNewContractAddress(t *testing.T) {
 	caddr0 := CreateAddress(addr, 0)
 	caddr1 := CreateAddress(addr, 1)
 	caddr2 := CreateAddress(addr, 2)
-	addr0, _ := common.NeutAddressStringToAddressCheck("EMpp56kzt1gBkpCCcd2MJufcNKNXYE9XdC")
-	addr1, _ := common.NeutAddressStringToAddressCheck("EVuP8n4NsUrCU834G4sPZhrK8956kWdy4E")
-	addr2, _ := common.NeutAddressStringToAddressCheck("EbZHB5HiBdXNaWT3G1uisTMweezw52NVxk")
+	addr0, _ := common.NeutAddressStringToAddressCheck("NQasmGim5cwi7Uyw71gj1R7LxQXPi5STpL")
+	addr1, _ := common.NeutAddressStringToAddressCheck("NYfSpx29567ipnpnkTXmGDJ3iEDxweturX")
+	addr2, _ := common.NeutAddressStringToAddressCheck("NeKLsFFUPEntwBEmkQa6ZxogEk9oConE5W")
 	checkAddr(t, addr0, caddr0)
 	checkAddr(t, addr1, caddr1)
 	checkAddr(t, addr2, caddr2)

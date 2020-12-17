@@ -153,7 +153,7 @@ func makeHeaderFromParent(parent *types.Block) *types.Header {
 }
 
 func GetAddress() common.Address {
-	addr, _ := common.NeutAddressStringToAddressCheck("ETPomY44tjk5aaQVhVSeT5WBkq6n3QbRLr")
+	addr, _ := common.NeutAddressStringToAddressCheck("NW9sTi1q6M1bwFCEBt729awvLvFeDdv5DH")
 	return addr
 }
 

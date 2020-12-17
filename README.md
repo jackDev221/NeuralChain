@@ -259,7 +259,7 @@ ones either). To start a `gnc` instance for mining, run it with all your usual f
 by:
 
 ```shell
-$ gnc <usual-flags> --mine --minerthreads=1 --etherbase=EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9
+$ gnc <usual-flags> --mine --minerthreads=1 --etherbase=NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf
 ```
 
 Which will start mining blocks and transactions on a single CPU thread, crediting all

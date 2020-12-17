@@ -174,9 +174,9 @@ The bellow example explains how to deploy 3 nodes manually.
     > 0
     
     Which accounts are validators? (mandatory at least one)
-    > EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe
-    > EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG
-    > EPXt4N4aPgV4BEKLtYJgz2NdiAHfa7c2ao
+    > NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK
+    > NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk
+    > NSHwkY2LbHkaXu75Nvy4gXpNJFSXmyBzTU
     >
     
     Do you want to use fixed validators? (default = no)
@@ -191,12 +191,12 @@ The bellow example explains how to deploy 3 nodes manually.
     
     Input params to init staking SC:
     - What is the address of candidates owner? (expected 3 address)
-    > EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe
-    > EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG
-    > EPXt4N4aPgV4BEKLtYJgz2NdiAHfa7c2ao
+    > NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK
+    > NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk
+    > NSHwkY2LbHkaXu75Nvy4gXpNJFSXmyBzTU
     >
     - What is the admin address of staking SC?
-    > EWjXq29urRYfhDfV35mnVaYVNB4GfN9o83
+    > NZVbXC7g42pC3tTDXUSAC5zDxGD8xpvrgJ
     - How many blocks for epoch period? (default = 1024)
     > 40
     - What is the max size of validators? (max number of candidates to be selected as validators for producing blocks)
@@ -207,7 +207,7 @@ The bellow example explains how to deploy 3 nodes manually.
     > 1
     
     What is the address of staking smart contract? (avoid special address from 0x0000000000000000000000000000000000000001 to 0x0000000000000000000000000000000000000008)
-    > EMHju71XkmyxKJgaqf1QnzxdwGu627GEnN
+    > NQ3obGyHxPFUfyUKL3fnVWQNXN3xDkSzJE
     INFO [03-16|13:20:30.546] Persisted trie from memory database      nodes=1 size=150.00B time=13.189µs gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
     INFO [03-16|13:20:30.558] Loaded most recent local header          number=0 hash=9e540f…644118 td=0 age=50y11mo1w
     INFO [03-16|13:20:30.558] Loaded most recent local full block      number=0 hash=9e540f…644118 td=0 age=50y11mo1w

@@ -167,7 +167,7 @@ func (ch suicideChange) dirtied() *common.Address {
 	return ch.account
 }
 
-var ripemd, _ = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
+var ripemd, _ = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjf17rTWMC")
 
 func (ch touchChange) revert(s *StateDB) {
 }

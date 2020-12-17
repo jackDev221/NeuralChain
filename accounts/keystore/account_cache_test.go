@@ -36,13 +36,13 @@ import (
 
 var (
 	cachetestDir, _   = filepath.Abs(filepath.Join("testdata", "keystore"))
-	a, _              = common.NeutAddressStringToAddressCheck("EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG")
-	b, _              = common.NeutAddressStringToAddressCheck("EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
-	c, _              = common.NeutAddressStringToAddressCheck("ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp")
+	a, _              = common.NeutAddressStringToAddressCheck("NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE")
+	b, _              = common.NeutAddressStringToAddressCheck("NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3")
+	c, _              = common.NeutAddressStringToAddressCheck("NPcidcz48peqYvNtzQpQbQ34NM67jbCuJF")
 	cachetestAccounts = []accounts.Account{
 		{
 			Address: a,
-			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(cachetestDir, "UTC--2016-03-22T12-57-55.920751759Z--EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG")},
+			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(cachetestDir, "UTC--2016-03-22T12-57-55.920751759Z--NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE")},
 		},
 		{
 			Address: b,
@@ -153,31 +153,31 @@ func TestCacheAddDeleteOrder(t *testing.T) {
 		URL     accounts.URL
 	}{
 		{
-			Address: "EJ1Sm7ZPs136zds7axDPJ2LCGQtSi8B2AN",
+			Address: "NLmWTHXA4cJdMJer5LskzXmvrW3Jra3uiB",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "-309830980"},
 		},
 		{
-			Address: "EME7Q5zpWQpNMkwA4HiSConcvqxmDDEQix",
+			Address: "NPzB6Fxai25tiRitYgNouKEMWw7dRbUXKp",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "ggg"},
 		},
 		{
-			Address: "EVuP8n4NsUrCU834G4sPZhrK8956kWdy4E",
+			Address: "NYfSpx29567ipnpnkTXmGDJ3iEDxweturX",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "zzzzzz-the-very-last-one.keyXXX"},
 		},
 		{
-			Address: "EcYANF4cundMHHr519f2T2LEAT3vcMZp8S",
+			Address: "NfJE4R2P7PtsdxdoVYKQ9XmxkYCnmcpCtd",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "SOMETHING.key"},
 		},
 		{
-			Address: "EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG",
-			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "UTC--2016-03-22T12-57-55.920751759Z--EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG"},
+			Address: "NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE",
+			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "UTC--2016-03-22T12-57-55.920751759Z--NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE"},
 		},
 		{
-			Address: "EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB",
+			Address: "NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "aaa"},
 		},
 		{
-			Address: "ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp",
+			Address: "NPcidcz48peqYvNtzQpQbQ34NM67jbCuJF",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: "zzz"},
 		},
 	}
@@ -207,10 +207,10 @@ func TestCacheAddDeleteOrder(t *testing.T) {
 		}
 	}
 
-	addressTem, _ := common.NeutAddressStringToAddressCheck("EgGs84QsSHPpnZhECxqXZwvqg2G8Z1B5xx")
+	addressTem, _ := common.NeutAddressStringToAddressCheck("Nj2vpENddtfM9EUxhMVuGTNaG7Qzmk9waR")
 
 	if cache.hasAddress(addressTem) {
-		t.Errorf("expected EgGs84QsSHPpnZhECxqXZwvqg2G8Z1B5xx to return false")
+		t.Errorf("expected Nj2vpENddtfM9EUxhMVuGTNaG7Qzmk9waR to return false")
 	}
 
 	// Delete a few keys from the cache.
@@ -248,19 +248,19 @@ func TestCacheFind(t *testing.T) {
 		URL     accounts.URL
 	}{
 		{
-			Address: "EJ1Sm7ZPs136zds7axDPJ2LCGQtSi8B2AN",
+			Address: "NLmWTHXA4cJdMJer5LskzXmvrW3Jra3uiB",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(dir, "a.key")},
 		},
 		{
-			Address: "EME7Q5zpWQpNMkwA4HiSConcvqxmDDEQix",
+			Address: "NPzB6Fxai25tiRitYgNouKEMWw7dRbUXKp",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(dir, "b.key")},
 		},
 		{
-			Address: "EcYANF4cundMHHr519f2T2LEAT3vcMZp8S",
+			Address: "NfJE4R2P7PtsdxdoVYKQ9XmxkYCnmcpCtd",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(dir, "c.key")},
 		},
 		{
-			Address: "EcYANF4cundMHHr519f2T2LEAT3vcMZp8S",
+			Address: "NfJE4R2P7PtsdxdoVYKQ9XmxkYCnmcpCtd",
 			URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(dir, "c2.key")},
 		},
 	}
@@ -275,7 +275,7 @@ func TestCacheFind(t *testing.T) {
 		cache.add(a)
 	}
 
-	addrTem, _ := common.NeutAddressStringToAddressCheck("EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
+	addrTem, _ := common.NeutAddressStringToAddressCheck("NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3")
 	nomatchAccount := accounts.Account{
 		Address: addrTem,
 		URL:     accounts.URL{Scheme: KeyStoreScheme, Path: filepath.Join(dir, "something")},

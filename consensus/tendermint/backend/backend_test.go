@@ -161,9 +161,9 @@ func TestBackend_Gossip(t *testing.T) {
 		}
 		genesisHeader = tests_utils.MakeGenesisHeader(validators)
 		be            = mustCreateAndStartNewBackend(t, nodePrivateKey, genesisHeader, validators)
-		a, _          = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-		b, _          = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
-		c, _          = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN")
+		a, _          = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezqzTxcW")
+		b, _          = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh")
+		c, _          = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjf17rTWMC")
 		nodeAddrs     = []common.Address{
 			a,
 			b,
@@ -269,8 +269,8 @@ func TestBackend_Multicast(t *testing.T) {
 		//	nodeAddr,
 		//}
 
-		a, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ")
-		b, _      = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+		a, _      = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezqzTxcW")
+		b, _      = common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh")
 		sentAddrs = map[common.Address]bool{
 			a: true,
 			b: true,

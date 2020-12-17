@@ -38,7 +38,7 @@ const (
 // Tests that a node embedded within a console can be started up properly and
 // then terminated by closing the input stream.
 func TestConsoleWelcome(t *testing.T) {
-	coinbase := "EVNYzXvbj9eHNM3Q35WaytXaeSqK8W1Jhd"
+	coinbase := "NY8cghtMvkuoj1q8XUAxgPyKEXzBMHS8px"
 
 	// Start a gnc console, make sure it's cleaned up and terminate the console
 	gev := runGev(t,
@@ -72,7 +72,7 @@ at block: 0 ({{niltime}})
 // Tests that a console can be attached to a running node via various means.
 func TestIPCAttachWelcome(t *testing.T) {
 	// Configure the instance for IPC attachement
-	coinbase := "EVNYzXvbj9eHNM3Q35WaytXaeSqK8W1Jhd"
+	coinbase := "NY8cghtMvkuoj1q8XUAxgPyKEXzBMHS8px"
 	var ipc string
 	if runtime.GOOS == "windows" {
 		ipc = `\\.\pipe\gev` + strconv.Itoa(trulyRandInt(100000, 999999))
@@ -95,7 +95,7 @@ func TestIPCAttachWelcome(t *testing.T) {
 }
 
 func TestHTTPAttachWelcome(t *testing.T) {
-	coinbase := "EVNYzXvbj9eHNM3Q35WaytXaeSqK8W1Jhd"
+	coinbase := "NY8cghtMvkuoj1q8XUAxgPyKEXzBMHS8px"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
 	gev := runGev(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
@@ -111,7 +111,7 @@ func TestHTTPAttachWelcome(t *testing.T) {
 func TestWSAttachWelcome(t *testing.T) {
 	t.Skip()
 
-	coinbase := "EVNYzXvbj9eHNM3Q35WaytXaeSqK8W1Jhd"
+	coinbase := "NY8cghtMvkuoj1q8XUAxgPyKEXzBMHS8px"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
 
 	gev := runGev(t,

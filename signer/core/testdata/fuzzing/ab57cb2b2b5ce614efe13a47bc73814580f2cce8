@@ -39,7 +39,7 @@
  "domain": {
 "name":"theMail",    "version": "1",
     "chainId": "1",
-    "verifyingntract": "EbpngUGwQ6fR3T7XdP4NbEoPg3ugbofgeN"
+    "verifyingntract": "NearNeEhbhvwQ7uG7mikHkF8G94Yr4vk6g"
   },
   "message": {   "from": {
     "name": "Cow",

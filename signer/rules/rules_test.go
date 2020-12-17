@@ -159,7 +159,7 @@ func TestSignTxRequest(t *testing.T) {
 		console.log("transaction.value", r.transaction.value);
 		console.log("transaction.nonce", r.transaction.nonce);
 		if(r.transaction.from=="EH9uVaqWRxHuzJbroqzX18yxmefhTGd9V2"){ return "Approve"}
-		if(r.transaction.from.toLowerCase()=="EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD"){ return "Reject"}
+		if(r.transaction.from.toLowerCase()=="NKuyBkoGdZZSLyPbJEetheRhMmZt6MKMwX"){ return "Reject"}
 	}`
 
 	r, err := initRuleEngine(js)
@@ -167,7 +167,7 @@ func TestSignTxRequest(t *testing.T) {
 		t.Errorf("Couldn't create evaluator %v", err)
 		return
 	}
-	to, err := mixAddr("EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD")
+	to, err := mixAddr("NKuyBkoGdZZSLyPbJEetheRhMmZt6MKMwX")
 	if err != nil {
 		t.Error(err)
 		return
@@ -427,8 +427,8 @@ const ExampleTxWindow = `
 
 func dummyTx(value hexutil.Big) *core.SignTxRequest {
 
-	to, _ := mixAddr("EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD")
-	from, _ := mixAddr("EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD")
+	to, _ := mixAddr("NKuyBkoGdZZSLyPbJEetheRhMmZt6MKMwX")
+	from, _ := mixAddr("NKuyBkoGdZZSLyPbJEetheRhMmZt6MKMwX")
 	n := hexutil.Uint64(3)
 	gas := hexutil.Uint64(21000)
 	gasPrice := hexutil.Big(*big.NewInt(2000000))
@@ -456,7 +456,7 @@ func dummyTxWithV(value uint64) *core.SignTxRequest {
 }
 func dummySigned(value *big.Int) *types.Transaction {
 
-	to, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmgR1tGRUmD")
+	to, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMmZt6MKMwX")
 	gas := uint64(21000)
 	gasPrice := big.NewInt(2000000)
 	data := make([]byte, 0)
@@ -588,7 +588,7 @@ func TestSignData(t *testing.T) {
     return "Approve"
 }
 function ApproveSignData(r){
-    if( r.address == "ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J")
+    if( r.address == "NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh")
     {
         if(r.message[0].value.indexOf("bazonk") >= 0){
             return "Approve"
@@ -604,7 +604,7 @@ function ApproveSignData(r){
 	}
 	message := "baz bazonk foo"
 	hash, rawdata := accounts.TextAndHash([]byte(message))
-	addr, _ := mixAddr("ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J")
+	addr, _ := mixAddr("NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh")
 
 	fmt.Printf("address %v %v\n", addr.String(), addr.Original())
 

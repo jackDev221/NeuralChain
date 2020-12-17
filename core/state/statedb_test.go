@@ -455,8 +455,8 @@ func TestCopyOfCopy(t *testing.T) {
 func TestStateDB_AddProvider(t *testing.T) {
 	var (
 		contractAddr, _    = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
-		ownerAddr, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		providerAddr, _    = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		ownerAddr, _       = common.NeutAddressStringToAddressCheck("NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK")
+		providerAddr, _    = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
 		newProviderAddr, _ = common.NeutAddressStringToAddressCheck("ENgapvtxruaDvhhygA4jeqSQkgufFnHoAH")
 		addr, _            = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT")
 	)
@@ -480,8 +480,8 @@ func TestStateDB_AddProvider(t *testing.T) {
 func TestEVM_RemoveProvider(t *testing.T) {
 	var (
 		contractAddr, _ = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18zc1uiRuj2DGN")
-		ownerAddr, _    = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		providerAddr, _ = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
+		ownerAddr, _    = common.NeutAddressStringToAddressCheck("NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK")
+		providerAddr, _ = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
 		addr, _         = common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT")
 	)
 

@@ -33,7 +33,7 @@ var customGenesisTests = []struct {
 	{
 		genesis: `{
 			"alloc"      : {},
-			"coinbase"   : "EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9",
+			"coinbase"   : "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf",
 			"difficulty" : "0x20000",
 			"extraData"  : "",
 			"gasLimit"   : "0x2fefd8",
@@ -49,7 +49,7 @@ var customGenesisTests = []struct {
 	{
 		genesis: `{
 			"alloc"      : {},
-			"coinbase"   : "EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9",
+			"coinbase"   : "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf",
 			"difficulty" : "0x20000",
 			"extraData"  : "",
 			"gasLimit"   : "0x2fefd8",

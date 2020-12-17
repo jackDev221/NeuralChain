@@ -698,7 +698,7 @@ func authTwitter(url string) (string, string, common.Address, error) {
 		return "", "", common.Address{}, err
 	}
 
-	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
+	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("N[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
 	if address == (common.Address{}) || err != nil {
 		return "", "", common.Address{}, errors.New("No NeuralChain address found to fund")
 	}
@@ -732,7 +732,7 @@ func authFacebook(url string) (string, string, common.Address, error) {
 	if err != nil {
 		return "", "", common.Address{}, err
 	}
-	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
+	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("N[1-9a-km-zA-HJ-NP-Z]{33}").Find(body)))
 	if address == (common.Address{}) || err != nil {
 		return "", "", common.Address{}, errors.New("No NeuralChain address found to fund")
 	}
@@ -747,7 +747,7 @@ func authFacebook(url string) (string, string, common.Address, error) {
 // without actually performing any remote authentication. This mode is prone to
 // Byzantine attack, so only ever use for truly private networks.
 func authNoAuth(url string) (string, string, common.Address, error) {
-	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("E[1-9a-km-zA-HJ-NP-Z]{33}").FindString(url)))
+	address, err := common.NeutAddressStringToAddressCheck(string(regexp.MustCompile("N[1-9a-km-zA-HJ-NP-Z]{33}").FindString(url)))
 	if address == (common.Address{}) || err != nil {
 		return "", "", common.Address{}, errors.New("No NeuralChain address found to fund")
 	}

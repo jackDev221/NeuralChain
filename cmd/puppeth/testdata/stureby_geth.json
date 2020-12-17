@@ -10,30 +10,30 @@
   "gasLimit": "0x47b760",
   "difficulty": "0x20000",
   "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "coinbase": "EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9",
+  "coinbase": "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf",
   "alloc": {
-    "EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJ": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjezqzTxcW": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW8pZptqN": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjf17rTWMC": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW8vQxDxk": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjf1EUEcnJ": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW94KW4wg": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjf1GYfv46": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW9DoUTe1": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjf1RantHD": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW9KMUV2x": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjf1XDXYmG": {
       "balance": "0x01"
     },
-    "EH9uVaqWRxHuzJbroqzX18yxmeW9NBqmcb": {
+    "NKuyBkoGdZZSLyPbJEetheRhMjf1gRLyCn": {
       "balance": "0x01"
     }
   }

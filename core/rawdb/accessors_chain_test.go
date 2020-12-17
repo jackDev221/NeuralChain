@@ -271,8 +271,8 @@ func TestBlockReceiptStorage(t *testing.T) {
 	db := NewMemoryDatabase()
 
 	// Create a live block since we need metadata to reconstruct the receipt
-	to1, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8fmHkiJK")
-	to2, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+	to1, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vhk")
+	to2, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh")
 	tx1 := types.NewTransaction(1, to1, big.NewInt(1), 1, big.NewInt(1), nil)
 	tx2 := types.NewTransaction(2, to2, big.NewInt(2), 2, big.NewInt(2), nil)
 

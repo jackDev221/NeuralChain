@@ -51,7 +51,7 @@ func TestPassingBlockNumber(t *testing.T) {
 
 	mc := &mockCaller{}
 
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
 	bc := bind.NewBoundContract(contractAddress, abi.ABI{
 		Methods: map[string]abi.Method{
 			"something": {
@@ -88,8 +88,8 @@ func TestPassingBlockNumber(t *testing.T) {
 const hexData = "0x000000000000000000000000376c47978271565f56deb45495afa69e59c16ab200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000158"
 
 func TestUnpackIndexedStringTyLogIntoMap(t *testing.T) {
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-	senderAddress, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
+	senderAddress, _ := common.NeutAddressStringToAddressCheck("NQy24i5Hs2gwFqhquM1nmoorRgaQxjBvu8")
 	hash := crypto.Keccak256Hash([]byte("testName"))
 	mockLog := types.Log{
 		Address: contractAddress,
@@ -139,8 +139,8 @@ func TestUnpackIndexedStringTyLogIntoMap(t *testing.T) {
 }
 
 func TestUnpackIndexedSliceTyLogIntoMap(t *testing.T) {
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-	senderAddress, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
+	senderAddress, _ := common.NeutAddressStringToAddressCheck("NQy24i5Hs2gwFqhquM1nmoorRgaQxjBvu8")
 	sliceBytes, err := rlp.EncodeToBytes([]string{"name1", "name2", "name3", "name4"})
 	if err != nil {
 		t.Fatal(err)
@@ -194,8 +194,8 @@ func TestUnpackIndexedSliceTyLogIntoMap(t *testing.T) {
 }
 
 func TestUnpackIndexedArrayTyLogIntoMap(t *testing.T) {
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-	senderAddress, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
+	senderAddress, _ := common.NeutAddressStringToAddressCheck("NQy24i5Hs2gwFqhquM1nmoorRgaQxjBvu8")
 	arrBytes, err := rlp.EncodeToBytes([2]common.Address{contractAddress, senderAddress})
 	if err != nil {
 		t.Fatal(err)
@@ -249,9 +249,9 @@ func TestUnpackIndexedArrayTyLogIntoMap(t *testing.T) {
 }
 
 func TestUnpackIndexedFuncTyLogIntoMap(t *testing.T) {
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-	senderAddress, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
-	mockAddress, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
+	senderAddress, _ := common.NeutAddressStringToAddressCheck("NQy24i5Hs2gwFqhquM1nmoorRgaQxjBvu8")
+	mockAddress, _ := common.NeutAddressStringToAddressCheck("NQy24i5Hs2gwFqhquM1nmoorRgaQxjBvu8")
 	addrBytes := mockAddress.Bytes()
 	hash := crypto.Keccak256Hash([]byte("mockFunction(address,uint)"))
 	functionSelector := hash[:4]
@@ -308,8 +308,8 @@ func TestUnpackIndexedFuncTyLogIntoMap(t *testing.T) {
 func TestUnpackIndexedBytesTyLogIntoMap(t *testing.T) {
 	byts := []byte{1, 2, 3, 4, 5}
 	hash := crypto.Keccak256Hash(byts)
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
-	senderAddress, _ := common.NeutAddressStringToAddressCheck("ENCxNY7XfRRQuAv7QxMR5JN7qbRYnP2S6Y")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
+	senderAddress, _ := common.NeutAddressStringToAddressCheck("NQy24i5Hs2gwFqhquM1nmoorRgaQxjBvu8")
 	mockLog := types.Log{
 		Address: contractAddress,
 		Topics: []common.Hash{
@@ -358,7 +358,7 @@ func TestUnpackIndexedBytesTyLogIntoMap(t *testing.T) {
 }
 
 func TestUnpackIntoMapNamingConflict(t *testing.T) {
-	contractAddress, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9")
+	contractAddress, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf")
 	hash := crypto.Keccak256Hash([]byte("testName"))
 	mockLog := types.Log{
 		Address: contractAddress,

@@ -44,7 +44,7 @@
     "name": "Ether Mail",
     "version": "1",
     "chainId": "1",
-    "verifyingContract": "EbpngUGwQ6fR3T7XdP4NbEoPg3ugbofgeN"
+    "verifyingContract": "NearNeEhbhvwQ7uG7mikHkF8G94Yr4vk6g"
   },
   "message": {
     "from": { "name": "Cow"},

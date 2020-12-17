@@ -53,15 +53,15 @@ func TestAccountList(t *testing.T) {
 	defer gev.ExpectExit()
 	if runtime.GOOS == "windows" {
 		gev.Expect(`
-Account #0: {EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG} keystore://{{.Datadir}}\keystore\UTC--2016-03-22T12-57-55.920751759Z--EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG
-Account #1: {EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB} keystore://{{.Datadir}}\keystore\aaa
-Account #2: {ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp} keystore://{{.Datadir}}\keystore\zzz
+Account #0: {NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE} keystore://{{.Datadir}}\keystore\UTC--2016-03-22T12-57-55.920751759Z--NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE
+Account #1: {NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3} keystore://{{.Datadir}}\keystore\aaa
+Account #2: {NPcidcz48peqYvNtzQpQbQ34NM67jbCuJF} keystore://{{.Datadir}}\keystore\zzz
 `)
 	} else {
 		gev.Expect(`
-Account #0: {EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG} keystore://{{.Datadir}}/keystore/UTC--2016-03-22T12-57-55.920751759Z--EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG
-Account #1: {EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB} keystore://{{.Datadir}}/keystore/aaa
-Account #2: {ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp} keystore://{{.Datadir}}/keystore/zzz
+Account #0: {NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE} keystore://{{.Datadir}}/keystore/UTC--2016-03-22T12-57-55.920751759Z--NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE
+Account #1: {NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3} keystore://{{.Datadir}}/keystore/aaa
+Account #2: {NPcidcz48peqYvNtzQpQbQ34NM67jbCuJF} keystore://{{.Datadir}}/keystore/zzz
 `)
 	}
 }
@@ -104,10 +104,10 @@ func TestAccountUpdate(t *testing.T) {
 	datadir := tmpDatadirWithKeystore(t)
 	gev := runGev(t, "account", "update",
 		"--datadir", datadir, "--lightkdf",
-		"EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
+		"NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3")
 	defer gev.ExpectExit()
 	gev.Expect(`
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 1/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
 Please give a new password. Do not forget this password.
@@ -122,7 +122,7 @@ func TestWalletImport(t *testing.T) {
 	gev.Expect(`
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foo"}}
-Address: {EcWgX4DxhvAcNwzzo7jQ6SweutC7B4wiAc}
+Address: {NfGkDEBiuXS8jcnjHWPmnxPPVyLyPGD3DM}
 `)
 
 	files, err := ioutil.ReadDir(filepath.Join(gev.Datadir, "keystore"))
@@ -145,10 +145,10 @@ func TestUnlockFlag(t *testing.T) {
 	datadir := tmpDatadirWithKeystore(t)
 	gev := runGev(t,
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--maxpeers", "0", "--port", "0",
-		"--unlock", "EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB",
+		"--unlock", "NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3",
 		"js", "testdata/empty.js")
 	gev.Expect(`
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 1/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
 `)
@@ -156,7 +156,7 @@ Passphrase: {{.InputLine "foobar"}}
 
 	wantMessages := []string{
 		"Unlocked account",
-		"=EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB",
+		"=NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3",
 	}
 	for _, m := range wantMessages {
 		if !strings.Contains(gev.StderrText(), m) {
@@ -169,17 +169,17 @@ func TestUnlockFlagWrongPassword(t *testing.T) {
 	datadir := tmpDatadirWithKeystore(t)
 	gev := runGev(t,
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--maxpeers", "0", "--port", "0",
-		"--unlock", "EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
+		"--unlock", "NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3")
 	defer gev.ExpectExit()
 	gev.Expect(`
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 1/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "wrong1"}}
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 2/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 2/3
 Passphrase: {{.InputLine "wrong2"}}
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 3/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 3/3
 Passphrase: {{.InputLine "wrong3"}}
-Fatal: Failed to unlock account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB (could not decrypt key with given passphrase)
+Fatal: Failed to unlock account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 (could not decrypt key with given passphrase)
 `)
 }
 
@@ -201,8 +201,8 @@ Passphrase: {{.InputLine "foobar"}}
 
 	wantMessages := []string{
 		"Unlocked account",
-		"=EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG",
-		"=ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp",
+		"=NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE",
+		"=NPcidcz48peqYvNtzQpQbQ34NM67jbCuJF",
 	}
 	for _, m := range wantMessages {
 		if !strings.Contains(gev.StderrText(), m) {
@@ -221,8 +221,8 @@ func TestUnlockFlagPasswordFile(t *testing.T) {
 
 	wantMessages := []string{
 		"Unlocked account",
-		"=EUjCujBMGzMuzdu6SChYq3gFrKrHVZXnZG",
-		"=ELrewT2HwDPKCFbAW2A2ttbKnFwFZNfKXp",
+		"=NXVGbu97UbdSMJgpvbMvXZ7zSR19diWesE",
+		"=NPcidcz48peqYvNtzQpQbQ34NM67jbCuJF",
 	}
 	for _, m := range wantMessages {
 		if !strings.Contains(gev.StderrText(), m) {
@@ -246,7 +246,7 @@ func TestUnlockFlagAmbiguous(t *testing.T) {
 	store := filepath.Join("..", "..", "accounts", "keystore", "testdata", "dupes")
 	gev := runGev(t,
 		"--keystore", store, "--nat", "none", "--nodiscover", "--maxpeers", "0", "--port", "0",
-		"--unlock", "EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB",
+		"--unlock", "NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3",
 		"js", "testdata/empty.js")
 	defer gev.ExpectExit()
 
@@ -256,10 +256,10 @@ func TestUnlockFlagAmbiguous(t *testing.T) {
 		return abs
 	})
 	gev.Expect(`
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 1/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
-Multiple key files exist for address EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB:
+Multiple key files exist for address NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3:
    keystore://{{keypath "1"}}
    keystore://{{keypath "2"}}
 Testing your passphrase against all of them...
@@ -271,7 +271,7 @@ In order to avoid this warning, you need to remove the following duplicate key f
 
 	wantMessages := []string{
 		"Unlocked account",
-		"=EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB",
+		"=NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3",
 	}
 	for _, m := range wantMessages {
 		if !strings.Contains(gev.StderrText(), m) {
@@ -284,7 +284,7 @@ func TestUnlockFlagAmbiguousWrongPassword(t *testing.T) {
 	store := filepath.Join("..", "..", "accounts", "keystore", "testdata", "dupes")
 	gev := runGev(t,
 		"--keystore", store, "--nat", "none", "--nodiscover", "--maxpeers", "0", "--port", "0",
-		"--unlock", "EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB")
+		"--unlock", "NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3")
 	defer gev.ExpectExit()
 
 	// Helper for the expect template, returns absolute keystore path.
@@ -293,10 +293,10 @@ func TestUnlockFlagAmbiguousWrongPassword(t *testing.T) {
 		return abs
 	})
 	gev.Expect(`
-Unlocking account EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB | Attempt 1/3
+Unlocking account NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3 | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "wrong"}}
-Multiple key files exist for address EfSBBjvr9A4L8W8GTyEbhNrKYLbgSorRzB:
+Multiple key files exist for address NiCEsutcLmKrVAuzxMtyPtJ48RkYcAbLj3:
    keystore://{{keypath "1"}}
    keystore://{{keypath "2"}}
 Testing your passphrase against all of them...

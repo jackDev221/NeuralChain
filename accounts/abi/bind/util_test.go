@@ -31,7 +31,7 @@ import (
 )
 
 var testKey, _ = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
-var addr, _ = common.NeutAddressStringToAddressCheck("ENTHVCWQS29XPhqygjQ5fyNYjYLKFDLJ5J")
+var addr, _ = common.NeutAddressStringToAddressCheck("NRDMBNUAddR3kNdiB84TNUpHKdVBYX1qJc")
 
 var waitDeployedTests = map[string]struct {
 	code        string

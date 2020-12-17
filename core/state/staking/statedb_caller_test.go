@@ -19,9 +19,9 @@ import (
 
 func TestCheckIndex(t *testing.T) {
 	var (
-		a, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		b, _       = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		c, _       = common.NeutAddressStringToAddressCheck("EWjXq29urRYfhDfV35mnVaYVNB4GfN9o83")
+		a, _       = common.NeutAddressStringToAddressCheck("NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK")
+		b, _       = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
+		c, _       = common.NeutAddressStringToAddressCheck("NZVbXC7g42pC3tTDXUSAC5zDxGD8xpvrgJ")
 		candidates = []common.Address{
 			a,
 			b,

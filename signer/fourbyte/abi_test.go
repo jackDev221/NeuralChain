@@ -57,7 +57,7 @@ func TestNewUnpacker(t *testing.T) {
 		calldata string
 		exp      []interface{}
 	}
-	addr, _ := common.NeutAddressStringToAddressCheck("EH9uVujzDKjqR5R7F9TaeJNayfeJQrEwmp")
+	addr, _ := common.NeutAddressStringToAddressCheck("NKuyC5hkQw1MmkCqjY7xLopKZkoAhrypGZ")
 	testcases := []unpackTest{
 		{ // https://solidity.readthedocs.io/en/develop/abi-spec.html#use-of-dynamic-types
 			`[{"type":"function","name":"f", "inputs":[{"type":"uint256"},{"type":"uint32[]"},{"type":"bytes10"},{"type":"bytes"}]}]`,

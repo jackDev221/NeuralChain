@@ -55,14 +55,14 @@ class StdIOHandler():
             "method": "ApproveTx",
             "params": [{
                 "transaction": {
-                    "to": "EZ53L1cPokpVFR2dsuRbSM58G9x74KDeQ4",
+                    "to": "Nbq72BaA1N61c5pNNJ5y8rWrrF6yCoNCbD",
                     "gas": "0x333",
                     "gasPrice": "0x123",
                     "value": "0x10",
                     "data": "0xd7a5865800000000000000000000000000000000000000000000000000000000000000ff",
                     "nonce": "0x0"
                 },
-                "from": "EZ53L1cPokpVFR2dsuRbSM58G9x74KDeQ4",
+                "from": "Nbq72BaA1N61c5pNNJ5y8rWrrF6yCoNCbD",
                 "call_info": "Warning! Could not validate ABI-data against calldata\nSupplied ABI spec does not contain method signature in data: 0xd7a58658",
                 "meta": {
                     "remote": "127.0.0.1:34572",

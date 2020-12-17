@@ -119,10 +119,10 @@ func TestAddressUnmarshalJSON(t *testing.T) {
 		{`"0x00"`, true, nil},
 		{`"0x0000000000000000000000000000000000000010"`, true, nil},
 		{`"0x0000000000000000000000000000000000000000"`, true, nil},
-		{`"EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9d"`, true, nil},
-		{`"EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9"`, false, big.NewInt(0)},
-		{`"EH9uVaqWRxHuzJbroqzX18yxmeWAGk5R72"`, false, big.NewInt(16)},
-		{`"DspJWUYDimq3AsTmnRfCX1iB99FDc7eWAR"`, true, nil},
+		{`"NKuyBkoGdZZSLyPbJEetheRhMjeznFZszfd"`, true, nil},
+		{`"NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf"`, false, big.NewInt(0)},
+		{`"NKuyBkoGdZZSLyPbJEetheRhMjf2YeCsQV"`, false, big.NewInt(16)},
+		{`"9rSGfPZLcyCGzY4uYEL1fkzJr6fnWGXgSh"`, true, nil},
 	}
 	for i, test := range tests {
 		var v Address
@@ -146,11 +146,11 @@ func TestAddressHexChecksum(t *testing.T) {
 		Input  string
 		Output string
 	}{
-		{"ERRPbyyv9bu3jxbvjuKM7T9c8dQTUYZs6b", "ERRPbyyv9bu3jxbvjuKM7T9c8dQTUYZs6b"},
-		{"Eg5EzF235K8YkmWHfJJRQtZ6TR7kpSGacF", "Eg5EzF235K8YkmWHfJJRQtZ6TR7kpSGacF"},
-		{"EdCqGAkqad1E6FoshjEGTjsUfzGDtpHcKi", "EdCqGAkqad1E6FoshjEGTjsUfzGDtpHcKi"},
-		{"EcDhVmP9EthNpd8XTwvzQtG6sPV95EyCg6", "EcDhVmP9EthNpd8XTwvzQtG6sPV95EyCg6"},
-		{"EH9uVaqWRxHuzJbroqzX18yxmeW9cqfaTq", "EH9uVaqWRxHuzJbroqzX18yxmeW9cqfaTq"},
+		{"NaB8XWnRSBxfifAC9WeahvFMSjsQwVjxuB", "NaB8XWnRSBxfifAC9WeahvFMSjsQwVjxuB"},
+		{"NSDjo3Pg6ex3bej1RHyMspVzkNpeYH6y6p", "NSDjo3Pg6ex3bej1RHyMspVzkNpeYH6y6p"},
+		{"NZbZgh7MWvbiDYkPcvL7C6sZUNvUgseVYN", "NZbZgh7MWvbiDYkPcvL7C6sZUNvUgseVYN"},
+		{"NXfyyPZgjnPH6uVZ8RT1FPnUrVxkUb4tcX", "NXfyyPZgjnPH6uVZ8RT1FPnUrVxkUb4tcX"},
+		{"NipaQokN7qCQoSQN5iqLmd7XiwJrsNh4P2", "NipaQokN7qCQoSQN5iqLmd7XiwJrsNh4P2"},
 	}
 	for i, test := range tests {
 		addr, err := NeutAddressStringToAddressCheck(test.Input)
@@ -165,7 +165,7 @@ func TestAddressHexChecksum(t *testing.T) {
 }
 
 func BenchmarkAddressHex(b *testing.B) {
-	testAddr, _ := NeutAddressStringToAddressCheck("ERRPbyyv9bu3jxbvjuKM7T9c8dQTUYZs6b")
+	testAddr, _ := NeutAddressStringToAddressCheck("NUBTJ9wgMDAa6dPfEHyioxbLiiZKeNM7rh")
 	for n := 0; n < b.N; n++ {
 		testAddr.Hex()
 	}
@@ -181,8 +181,8 @@ func TestMixedcaseAccount_Address(t *testing.T) {
 		Valid bool
 	}
 	if err := json.Unmarshal([]byte(`[
-		{"A" : "EZ53L1cPokpVFR2dsuRbSM58G9x74KDeQ4", "Valid": true},
-		{"A" : "EJi9Rf88LxzNaQ9LbtFTrifRcEMw8hREvg", "Valid": true}
+		{"A" : "NXfyyPZgjnPH6uVZ8RT1FPnUrVxkUb4tcX", "Valid": true},
+		{"A" : "NgUXzUmgzj2zjSy8zJMkSoqM48C9gCzMdM", "Valid": true}
 		]`), &res); err != nil {
 		t.Fatal(err)
 	}
@@ -196,13 +196,13 @@ func TestMixedcaseAccount_Address(t *testing.T) {
 	//These should throw exceptions:
 	var r2 []MixedcaseAddress
 	for _, r := range []string{
-		`["EZ53L1cPokpVFR2dsuRbSM58G9x74KDe"]`,        // Too short
-		`["EZ53L1cPokpVFR2dsuRbSM58G9KDeQ4"]`,         // Too short
-		`["EZ53L1cPokpVFR2dsuRbSM58G9x74KDeQ4ddd"]`,   // Too long
-		`["EZ53L1cPokpVFR2dsuRbSM58G9x74KkdwefDeQ4"]`, // Too long
-		`["EZ53L1cPokpVFR2dsuRbSM58G9x74KDOOeQ4"]`,    // wrong 'O'
-		`["EZ53L1cPokpVFR2dsuRbSM58llG9x74KDOOeQ4"]`,  // wrong 'l'
-		`["E9jSLuK76aMcRytYrV6GxDoLdehAKWJRfK"]`,      // wrong byte prefix 32
+		`["Nho3U7nXUZ3j7r5Z2RfRYwanY6FxmGWcw"]`,   // Too short
+		`["Nho3U7nXUZ3j7r5Z2RfRYwanY6FxmGcwK"]`,   // Too short
+		`["Nho3U7nXUZ3j7r5Z2RfRYwanY6FxmGKWcwK"]`, // Too long
+		`["Nho3U7nXUZ3j7r5Z2RfRYwaKnY6FxmGWcwK"]`, // Too long
+		`["NhO3U7nXUZ3j7r5Z2RfRYwanY6FxmGWcwK"]`,  // wrong 'O'
+		`["NXCUcdy4wKxa2yzelXL2EXUWXpcGRNy9uF"]`,  // wrong 'l'
+
 	} {
 		if err := json.Unmarshal([]byte(r), &r2); err == nil {
 			t.Errorf("Expected failure, input %v", r)
@@ -395,8 +395,8 @@ func TestAddressToNeutAddressString(t *testing.T) {
 		Expect   string
 		WantFail bool
 	}{
-		{"0x0000000000000000000000000000000000000000",  "EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9", false},
-		{"0x0000000000000000000000000000000000000011",  "EH9uVaqWRxHuzJbroqzX18yxmeWAULFYZT", false},
+		{"0x0000000000000000000000000000000000000000", "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf", false},
+		{"0x0000000000000000000000000000000000000011", "NKuyBkoGdZZSLyPbJEetheRhMjf2fq6qkK", false},
 	}
 	for i, test := range tests {
 		address := HexToAddress(test.Input)
@@ -415,10 +415,10 @@ func TestNeutAddress(t *testing.T) {
 		Expect        *big.Int
 		WantFail      bool
 	}{
-		{"EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9",  new(big.Int).SetUint64(0), false},
-		{"EH9uVaqWRxHuzJbroqzX18yxmeWAopEdUM",  new(big.Int).SetUint64(20), false},
-		{"EH9uVaqWRxHuzJbroqzX18yxmeWBLHhJUd",  new(big.Int).SetUint64(25), false},
-		{"EH9uVaqWRxHuzJbroqzX18yxmeWBLHhJUd",  new(big.Int).SetUint64(26), true},
+		{"NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf", new(big.Int).SetUint64(0), false},
+		{"NKuyBkoGdZZSLyPbJEetheRhMjf32JwCcf", new(big.Int).SetUint64(20), false},
+		{"NKuyBkoGdZZSLyPbJEetheRhMjf3Zd2Rqa", new(big.Int).SetUint64(25), false},
+		{"NKuyBkoGdZZSLyPbJEetheRhMjf3Zd2Rqa", new(big.Int).SetUint64(26), true},
 	}
 	for i, test := range tests {
 		addr, err := NeutAddressStringToAddressCheck(test.NeutAddrssStr)

@@ -36,9 +36,9 @@ func TestStateDBStakingCaller_GetValidators(t *testing.T) {
 
 func testGetValidators(t *testing.T, indexCfg *staking.IndexConfigs) {
 	var (
-		a, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		b, _       = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		c, _       = common.NeutAddressStringToAddressCheck("ENDA7pzFPhjW1FKiXSKXkGrUPxvPTxBBCQ")
+		a, _       = common.NeutAddressStringToAddressCheck("NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK")
+		b, _       = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
+		c, _       = common.NeutAddressStringToAddressCheck("NQyDozx1bK12Mv7T1pyuSnJCz45FgiKCyu")
 		candidates = []common.Address{
 			a,
 			b,
@@ -132,9 +132,9 @@ func TestStateDBStakingCaller_GetValidatorsData(t *testing.T) {
 
 func testGetValidatorsData(t *testing.T, indexCfg *staking.IndexConfigs) {
 	var (
-		a, _       = common.NeutAddressStringToAddressCheck("EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe")
-		b, _       = common.NeutAddressStringToAddressCheck("EWmMyKETQCsTYEC3W51dZ3bpUWvn3XtrwG")
-		c, _       = common.NeutAddressStringToAddressCheck("ENDA7pzFPhjW1FKiXSKXkGrUPxvPTxBBCQ")
+		a, _       = common.NeutAddressStringToAddressCheck("NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK")
+		b, _       = common.NeutAddressStringToAddressCheck("NZXRfVCDbp8yttymzTg1FZ3Z4c5eJiKPDk")
+		c, _       = common.NeutAddressStringToAddressCheck("NQyDozx1bK12Mv7T1pyuSnJCz45FgiKCyu")
 		candidates = []common.Address{
 			a,
 			b,

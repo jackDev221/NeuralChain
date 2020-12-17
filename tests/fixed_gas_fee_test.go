@@ -21,9 +21,9 @@ To run these test, please deploy your own account/ contract and extract privatek
 // TestSendNormalTxWithFixedFee
 func TestSendNormalTxWithFixedFee(t *testing.T) {
 	const (
-		normalAddress = "EaHAtNKwh5NMnVQCR1Tjs4HPypncDwAA8H"
+		normalAddress = "Nd3EaYHhtgdt9ABvuQ87ZZj8ZuwURMat4o"
 		senderPK      = "62199ECEC394ED8B6BEB52924B8AF3AE41D1887D624A368A3305ED8894B99DCF"
-		senderAddrStr = "EapmLgEVZtT1Um8QksnVxnv1dR8sb9wRiW"
+		senderAddrStr = "Ndaq2rCFmViXqRv9FGSsfJMkDWHjn1V3y9"
 
 		testBal1     = 1000000 //1e6
 		testBal2     = 2000000 //2e6

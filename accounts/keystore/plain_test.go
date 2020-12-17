@@ -107,13 +107,13 @@ func TestImportPreSaleKey(t *testing.T) {
 	// file content of a presale key file generated with:
 	// python pyethsaletool.py genwallet
 	// with password "foo"
-	fileContent := "{\"encseed\": \"26d87f5f2bf9835f9a47eefae571bc09f9107bb13d54ff12a4ec095d01f83897494cf34f7bed2ed34126ecba9db7b62de56c9d7cd136520a0427bfb11b8954ba7ac39b90d4650d3448e31185affcd74226a68f1e94b1108e6e0a4a91cdd83eba\", \"ethaddr\": \"EcWgX4DxhvAcNwzzo7jQ6SweutC7B4wiAc\", \"email\": \"gustav.simonsson@gmail.com\", \"btcaddr\": \"1EVknXyFC68kKNLkh6YnKzW41svSRoaAcx\"}"
+	fileContent := "{\"encseed\": \"26d87f5f2bf9835f9a47eefae571bc09f9107bb13d54ff12a4ec095d01f83897494cf34f7bed2ed34126ecba9db7b62de56c9d7cd136520a0427bfb11b8954ba7ac39b90d4650d3448e31185affcd74226a68f1e94b1108e6e0a4a91cdd83eba\", \"ethaddr\": \"NfGkDEBiuXS8jcnjHWPmnxPPVyLyPGD3DM\", \"email\": \"gustav.simonsson@gmail.com\", \"btcaddr\": \"1EVknXyFC68kKNLkh6YnKzW41svSRoaAcx\"}"
 	pass := "foo"
 	account, _, err := importPreSaleKey(ks, []byte(fileContent), pass)
 	if err != nil {
 		t.Fatal(err)
 	}
-	addrExpec, _ := common.NeutAddressStringToAddressCheck("EcWgX4DxhvAcNwzzo7jQ6SweutC7B4wiAc")
+	addrExpec, _ := common.NeutAddressStringToAddressCheck("NfGkDEBiuXS8jcnjHWPmnxPPVyLyPGD3DM")
 	if account.Address != addrExpec {
 		t.Errorf("imported account has wrong address %x", account.Address)
 	}
@@ -193,8 +193,8 @@ func TestV1_1(t *testing.T) {
 func TestV1_2(t *testing.T) {
 	t.Parallel()
 	ks := &keyStorePassphrase{"testdata/v1", LightScryptN, LightScryptP, true}
-	addr, _ := common.NeutAddressStringToAddressCheck("EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg")
-	file := "testdata/v1/EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg/EbhHsCERsmj9LKqCvtwvo9EY893RALFbCg"
+	addr, _ := common.NeutAddressStringToAddressCheck("NeTMZNCC5NzfgzcwRHcJVegGiECHNJMSxF")
+	file := "testdata/v1/NeTMZNCC5NzfgzcwRHcJVegGiECHNJMSxF/NeTMZNCC5NzfgzcwRHcJVegGiECHNJMSxF"
 	k, err := ks.GetKey(addr, file, "g")
 	if err != nil {
 		t.Fatal(err)

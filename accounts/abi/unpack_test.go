@@ -615,7 +615,7 @@ func TestMultiReturnWithStringArray(t *testing.T) {
 	temp, _ := big.NewInt(0).SetString("30000000000000000000", 10)
 	ret1, ret1Exp := new([3]*big.Int), [3]*big.Int{big.NewInt(1545304298), big.NewInt(6), temp}
 	ret2 := new(common.Address)
-	ret2Exp, _ := common.NeutAddressStringToAddressCheck("EYkT1kREXj7Fd1gNq4v5aXGdBn9r2LMhBB")
+	ret2Exp, _ := common.NeutAddressStringToAddressCheck("NbWWhvNzjLNmygU7KTaTH2iMmsJiGHNPYx")
 	ret3, ret3Exp := new([2]string), [2]string{"NeuralChainNode", "Hello, NeuralChainNode!"}
 	ret4, ret4Exp := new(bool), false
 	if err := abi.Unpack(&[]interface{}{ret1, ret2, ret3, ret4}, "multi", buff.Bytes()); err != nil {

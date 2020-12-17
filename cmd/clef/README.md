@@ -203,8 +203,8 @@ Response
   "id": 0,
   "jsonrpc": "2.0",
   "result": {
-    "address": "EaY2SwRM6mMGQUJfTf4fHa4M4yFAZPNpxU",
-    "url": "keystore:///my/keystore/UTC--2017-08-24T08-40-15.419655028Z--EaY2SwRM6mMGQUJfTf4fHa4M4yFAZPNpxU"
+    "address": "NdJ697P7JNcnm96Px3j2z5W5f4Q2mwDYsV",
+    "url": "keystore:///my/keystore/UTC--2017-08-24T08-40-15.419655028Z--NdJ697P7JNcnm96Px3j2z5W5f4Q2mwDYsV"
   }
 }
 ```
@@ -239,14 +239,14 @@ Response
   "jsonrpc": "2.0",
   "result": [
     {
-      "address": "EZAv8yFdackSTnrym8tsb8RXEaBUZp9Y6D",
+      "address": "Nbvyq9DPnE1xpTeiFXZFHdsFpfLLpbWQuH",
       "type": "account",
-      "url": "keystore:///tmp/keystore/UTC--2017-08-24T07-26-47.162109726Z--EZAv8yFdackSTnrym8tsb8RXEaBUZp9Y6D"
+      "url": "keystore:///tmp/keystore/UTC--2017-08-24T07-26-47.162109726Z--Nbvyq9DPnE1xpTeiFXZFHdsFpfLLpbWQuH"
     },
     {
-      "address": "EaY2SwRM6mMGQUJfTf4fHa4M4yFAZPNpxU",
+      "address": "NdJ697P7JNcnm96Px3j2z5W5f4Q2mwDYsV",
       "type": "account",
-      "url": "keystore:///tmp/keystore/UTC--2017-08-24T08-40-15.419655028Z--EaY2SwRM6mMGQUJfTf4fHa4M4yFAZPNpxU"
+      "url": "keystore:///tmp/keystore/UTC--2017-08-24T08-40-15.419655028Z--NdJ697P7JNcnm96Px3j2z5W5f4Q2mwDYsV"
     }
   ]
 }
@@ -281,12 +281,12 @@ Response
   "method": "account_signTransaction",
   "params": [
     {
-      "from": "EKSqU2jknpuDVtzqzgyCrQrTwAA4e2VFcg",
+      "from": "NNCuAChWzSAjrZnaV5daYvJCXFJvt313F2",
       "gas": "0x55555",
       "gasPrice": "0x1234",
       "input": "0xabcd",
       "nonce": "0x0",
-      "to": "EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT",
+      "to": "NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx",
       "value": "0x1234"
     }
   ]
@@ -314,11 +314,11 @@ Response
   "method": "account_signTransaction",
   "params": [
     {
-      "from": "ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J",
+      "from": "NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh",
       "gas": "0x333",
       "gasPrice": "0x1",
       "nonce": "0x0",
-      "to": "EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT",
+      "to": "NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx",
       "value": "0x0",
       "data": "0x4401a6e40000000000000000000000000000000000000000000000000000000000000012"
     },
@@ -338,7 +338,7 @@ Response
       "nonce": "0x0",
       "gasPrice": "0x1",
       "gas": "0x333",
-      "to": "EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT",
+      "to": "NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx",
       "value": "0x0",
       "input": "0x4401a6e40000000000000000000000000000000000000000000000000000000000000012",
       "v": "0x26",
@@ -352,9 +352,9 @@ Response
 
 Bash example:
 ```bash
-#curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"account_signTransaction","params":[{"from":"ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J","gas":"0x333","gasPrice":"0x1","nonce":"0x0","to":"EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT", "value":"0x0", "data":"0x4401a6e40000000000000000000000000000000000000000000000000000000000000012"},"safeSend(address)"],"id":67}' http://localhost:8550/
+#curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"account_signTransaction","params":[{"from":"NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh","gas":"0x333","gasPrice":"0x1","nonce":"0x0","to":"NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx", "value":"0x0", "data":"0x4401a6e40000000000000000000000000000000000000000000000000000000000000012"},"safeSend(address)"],"id":67}' http://localhost:8550/
 
-{"jsonrpc":"2.0","id":67,"result":{"raw":"0xf88380018203339407a565b7ed7d7a678680a4c162885bedbb695fe080a44401a6e4000000000000000000000000000000000000000000000000000000000000001226a0223a7c9bcf5531c99be5ea7082183816eb20cfe0bbc322e97cc5c7f71ab8b20ea02aadee6b34b45bb15bc42d9c09de4a6754e7000908da72d48cc7704971491663","tx":{"nonce":"0x0","gasPrice":"0x1","gas":"0x333","to":"EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT","value":"0x0","input":"0x4401a6e40000000000000000000000000000000000000000000000000000000000000012","v":"0x26","r":"0x223a7c9bcf5531c99be5ea7082183816eb20cfe0bbc322e97cc5c7f71ab8b20e","s":"0x2aadee6b34b45bb15bc42d9c09de4a6754e7000908da72d48cc7704971491663","hash":"0xeba2df809e7a612a0a0d444ccfa5c839624bdc00dd29e3340d46df3870f8a30e"}}}
+{"jsonrpc":"2.0","id":67,"result":{"raw":"0xf88380018203339407a565b7ed7d7a678680a4c162885bedbb695fe080a44401a6e4000000000000000000000000000000000000000000000000000000000000001226a0223a7c9bcf5531c99be5ea7082183816eb20cfe0bbc322e97cc5c7f71ab8b20ea02aadee6b34b45bb15bc42d9c09de4a6754e7000908da72d48cc7704971491663","tx":{"nonce":"0x0","gasPrice":"0x1","gas":"0x333","to":"NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx","value":"0x0","input":"0x4401a6e40000000000000000000000000000000000000000000000000000000000000012","v":"0x26","r":"0x223a7c9bcf5531c99be5ea7082183816eb20cfe0bbc322e97cc5c7f71ab8b20e","s":"0x2aadee6b34b45bb15bc42d9c09de4a6754e7000908da72d48cc7704971491663","hash":"0xeba2df809e7a612a0a0d444ccfa5c839624bdc00dd29e3340d46df3870f8a30e"}}}
 ```
 
 ### account_signData
@@ -381,7 +381,7 @@ Bash example:
   "method": "account_signData",
   "params": [
     "data/plain",
-    "EKSqU2jknpuDVtzqzgyCrQrTwAA4e2VFcg",
+    "NNCuAChWzSAjrZnaV5daYvJCXFJvt313F2",
     "0xaabbccdd"
   ]
 }
@@ -415,7 +415,7 @@ Response
   "jsonrpc": "2.0",
   "method": "account_signTypedData",
   "params": [
-    "Ebricr1hUkgTx8n4a3zNQBrbRnmzVHdaGf",
+    "NecnK1yTgMwzJoZo4Sek6hJL1svrkjW9XV",
     {
       "types": {
         "EIP712Domain": [
@@ -466,16 +466,16 @@ Response
         "name": "Ether Mail",
         "version": "1",
         "chainId": 1,
-        "verifyingContract": "EbpngUGwQ6fR3T7XdP4NbEoPg3ugbofgeN"
+        "verifyingContract": "NearNeEhbhvwQ7uG7mikHkF8G94Yr4vk6g"
       },
       "message": {
         "from": {
           "name": "Cow",
-          "wallet": "Ebricr1hUkgTx8n4a3zNQBrbRnmzVHdaGf"
+          "wallet": "NecnK1yTgMwzJoZo4Sek6hJL1svrkjW9XV"
         },
         "to": {
           "name": "Bob",
-          "wallet": "EaGYkPzKV5xxTMa4E5yDdEKGmMHtQVHX5f"
+          "wallet": "Nd2cSZx5ghEUp2MniUdbKjm1MSSkcL8EBc"
         },
         "contents": "Hello, Bob!"
       }
@@ -525,7 +525,7 @@ Response
 {
   "id": 4,
   "jsonrpc": "2.0",
-  "result": "EKSqU2jknpuDVtzqzgyCrQrTwAA4e2VFcg"
+  "result": "NNCuAChWzSAjrZnaV5daYvJCXFJvt313F2"
 }
 ```
 
@@ -552,7 +552,7 @@ Response
   "method": "account_import",
   "params": [
     {
-      "address": "EbKU419qEiFKf7BT7ikEYgosCHaKAzxoKe",
+      "address": "Ne5XkB7bSKWr1myBc7QcFCFbnNjBMijPUB",
       "crypto": {
         "cipher": "aes-128-ctr",
         "cipherparams": {
@@ -582,9 +582,9 @@ Response
   "id": 6,
   "jsonrpc": "2.0",
   "result": {
-    "address": "EbKU419qEiFKf7BT7ikEYgosCHaKAzxoKe",
+    "address": "Ne5XkB7bSKWr1myBc7QcFCFbnNjBMijPUB",
     "type": "account",
-    "url": "keystore:///tmp/keystore/UTC--2017-08-24T11-00-42.032024108Z--EbKU419qEiFKf7BT7ikEYgosCHaKAzxoKe"
+    "url": "keystore:///tmp/keystore/UTC--2017-08-24T11-00-42.032024108Z--Ne5XkB7bSKWr1myBc7QcFCFbnNjBMijPUB"
   }
 }
 ```
@@ -609,7 +609,7 @@ Response
   "jsonrpc": "2.0",
   "method": "account_export",
   "params": [
-    "EbKU419qEiFKf7BT7ikEYgosCHaKAzxoKe"
+    "Ne5XkB7bSKWr1myBc7QcFCFbnNjBMijPUB"
   ]
 }
 ```
@@ -620,7 +620,7 @@ Response
   "id": 5,
   "jsonrpc": "2.0",
   "result": {
-    "address": "EbKU419qEiFKf7BT7ikEYgosCHaKAzxoKe",
+    "address": "Ne5XkB7bSKWr1myBc7QcFCFbnNjBMijPUB",
     "crypto": {
       "cipher": "aes-128-ctr",
       "cipherparams": {
@@ -671,7 +671,7 @@ Invoked when there's a transaction for approval.
 Here's a method invocation:
 ```bash
 
-curl -i -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"account_signTransaction","params":[{"from":"ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J","gas":"0x333","gasPrice":"0x1","nonce":"0x0","to":"EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT", "value":"0x0", "data":"0x4401a6e40000000000000000000000000000000000000000000000000000000000000012"},"safeSend(address)"],"id":67}' http://localhost:8550/
+curl -i -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"account_signTransaction","params":[{"from":"NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh","gas":"0x333","gasPrice":"0x1","nonce":"0x0","to":"NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx", "value":"0x0", "data":"0x4401a6e40000000000000000000000000000000000000000000000000000000000000012"},"safeSend(address)"],"id":67}' http://localhost:8550/
 ```
 Results in the following invocation on the UI:
 ```json
@@ -683,8 +683,8 @@ Results in the following invocation on the UI:
   "params": [
     {
       "transaction": {
-        "from": "ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J",
-        "to": "EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT",
+        "from": "NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh",
+        "to": "NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx",
         "gas": "0x333",
         "gasPrice": "0x1",
         "value": "0x0",
@@ -716,7 +716,7 @@ Results in the following invocation on the UI:
 The same method invocation, but with invalid data:
 ```bash
 
-curl -i -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"account_signTransaction","params":[{"from":"ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J","gas":"0x333","gasPrice":"0x1","nonce":"0x0","to":"EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT", "value":"0x0", "data":"0x4401a6e40000000000000002000000000000000000000000000000000000000000000012"},"safeSend(address)"],"id":67}' http://localhost:8550/
+curl -i -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"account_signTransaction","params":[{"from":"NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh","gas":"0x333","gasPrice":"0x1","nonce":"0x0","to":"NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx", "value":"0x0", "data":"0x4401a6e40000000000000002000000000000000000000000000000000000000000000012"},"safeSend(address)"],"id":67}' http://localhost:8550/
 ```
 
 ```json
@@ -728,8 +728,8 @@ curl -i -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","me
   "params": [
     {
       "transaction": {
-        "from": "ESkTzhS4rvGEaMdRoHjUs2Gekyvcx8286J",
-        "to": "EHrLMwDK5JFVmtpLktAu43YEDJfzcQSCgT",
+        "from": "NVWXgsPq4XXkw2RAHgPrZXiPM55V9pLRDh",
+        "to": "NLcQ47B5GuX28Zc5FGqGkYyxoPprmPcpjx",
         "gas": "0x333",
         "gasPrice": "0x1",
         "value": "0x0",
@@ -813,13 +813,13 @@ Invoked when a request for account listing has been made.
       "accounts": [
         {
           "type": "Account",
-          "url": "keystore:///home/bazonk/.neuralChain/keystore/UTC--2017-11-20T14-44-54.089682944Z--EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV",
-          "address": "EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV"
+          "url": "keystore:///home/bazonk/.neuralChain/keystore/UTC--2017-11-20T14-44-54.089682944Z--NMaDgp3KAzcEwjxZHLRCzakUMYqe7sWngt",
+          "address": "NMaDgp3KAzcEwjxZHLRCzakUMYqe7sWngt"
         },
         {
           "type": "Account",
-          "url": "keystore:///home/bazonk/.neuralChain/keystore/UTC--2017-11-23T21-59-03.199240693Z--EbfF9FM2Nrd8Lntv4VHnGx3qgroQQV3rHN",
-          "address": "EbfF9FM2Nrd8Lntv4VHnGx3qgroQQV3rHN"
+          "url": "keystore:///home/bazonk/.neuralChain/keystore/UTC--2017-11-23T21-59-03.199240693Z--NeRJqRJnaTtehTgeYsx9yTVaGwxGeCpD86",
+          "address": "NeRJqRJnaTtehTgeYsx9yTVaGwxGeCpD86"
         }
       ],
       "meta": {
@@ -845,7 +845,7 @@ Invoked when a request for account listing has been made.
   "method": "ui_approveSignData",
   "params": [
     {
-      "address": "EJp9ze5YyPLib5ApnwkqJ5JjmTgmu4D3oV",
+      "address": "NMaDgp3KAzcEwjxZHLRCzakUMYqe7sWngt",
       "raw_data": "0x01020304",
       "message": "\u0019NeuralChain Signed Message:\n4\u0001\u0002\u0003\u0004",
       "hash": "0x7e3a4e7a9d1744bc5c675c25e1234ca8ed9162bd17f78b9085e48047c15ac310",

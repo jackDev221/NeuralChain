@@ -145,7 +145,7 @@ func TestOmahaSigningCompatible(t *testing.T) {
 		expectedS, _ = new(big.Int).SetString("39748707077210856456616806995773321404126510975285671090303555280372005595386", 10)
 	)
 	signer := NewOmahaSigner(big.NewInt(18))
-	to, _ := common.NeutAddressStringToAddressCheck("EH9uVaqWRxHuzJbroqzX18yxmeW8hGraaK")
+	to, _ := common.NeutAddressStringToAddressCheck("NKuyBkoGdZZSLyPbJEetheRhMjezwhg9vh")
 	tx, err := SignTx(NewTransaction(0, to, big.NewInt(20), 0, new(big.Int), nil), signer, testKey)
 	require.NoError(t, err)
 

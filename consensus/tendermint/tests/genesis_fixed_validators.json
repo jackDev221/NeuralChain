@@ -7,7 +7,7 @@
       "policy": 0,
       "stakingSCAddress": null,
       "fixedValidators": [
-        "EQzeFSroGjB4xodbMYP1qydXeWYgypGSJe"
+        "NTkhwcpZULSbKURKqw3PYV5GEbhZFXjjBK"
       ]
     }
   },
@@ -17,7 +17,7 @@
   "gasLimit": "0x47b760",
   "difficulty": "0x1",
   "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "coinbase": "EH9uVaqWRxHuzJbroqzX18yxmeW8XVJyV9",
+  "coinbase": "NKuyBkoGdZZSLyPbJEetheRhMjeznFZszf",
   "alloc": {},
   "number": "0x0",
   "gasUsed": "0x0",
